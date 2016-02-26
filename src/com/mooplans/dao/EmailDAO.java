@@ -21,7 +21,8 @@ public class EmailDAO {
 	    props.put("mail.smtp.host", "m.outlook.com");
 	    props.put("mail.smtp.auth", "true");
 
-		String username = "thecows@mooplans.com", password = "-1holbrook";
+		final String username = "thecows@mooplans.com";
+		final String password = "-1holbrook";
 		try{
 
 			Session session = Session.getDefaultInstance(props, new Authenticator(){

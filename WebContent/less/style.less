@@ -1,10 +1,17 @@
 // Set background image (pattern)
 
+@colorDark:#FF7052;
+@colorMedium:#FF7052;
+@colorLight:#afdefa;
+@colorWhite:#fff;
+@colorBorder:#EDEDED;
+@colorGreen:#2ecc71;
+
 *{
   -ms-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
   border: 0;
@@ -23,10 +30,10 @@ html, body{
 .login{
   position: relative;
   top: 50%;
-	width: 250px;
+  width: 250px;
   display: table;
   margin: -150px auto 0 auto;
-  background: #fff;
+  background: @colorLight;
   border-radius: 4px;
 }
 
@@ -34,9 +41,9 @@ html, body{
   position: relative;
   width: 100%;
   display: block;
-  background: #FF7052;
+  background: @colorDark;
   padding: 15px;
-  color: #fff;
+  color: @colorWhite;
   font-size: 20px;
   
   &:after{
@@ -62,7 +69,7 @@ html, body{
   span{
     position: absolute;
     display: block;
-    color: darken(#EDEDED, 10%);
+    color: darken(@colorBorder, 20%);
     left: 10px;
     top: 8px;
     font-size: 20px;
@@ -70,17 +77,17 @@ html, body{
   
   input{
     width: 100%;
-    padding: 10px 5px 10px 40px;
+    padding: 15px 5px 15px 40px;
     display: block;
-    border: 1px solid #EDEDED;
+    border: 1px solid @colorBorder;
     border-radius: 4px;
     transition: 0.2s ease-out;
-    color: darken(#EDEDED, 30%);
+    color: darken(@colorBorder, 40%);
     
     &:focus{
-      padding: 10px 5px 10px 10px;
+      padding: 18px 5px 18px 10px;
       outline: 0;
-      border-color: #FF7052;
+      border-color: @colorMedium;
     }
   }
 }
@@ -90,18 +97,18 @@ html, body{
   height: 45px;
   display: block;
   margin: 0 auto -15px auto;
-  background: #fff;
+  background: @colorWhite;
   border-radius: 100%;
-  border: 1px solid #FF7052;
-  color: #FF7052;
+  border: 1px solid @colorMedium;
+  color: @colorMedium;
   font-size: 24px;
   cursor: pointer;
-  box-shadow: 0px 0px 0px 7px #fff;
+  box-shadow: 0px 0px 0px 7px @colorWhite;
   transition: 0.2s ease-out;
   
   &:hover, &:focus{
-    background: #FF7052;
-    color: #fff;
+    background: @colorMedium;
+    color: @colorWhite;
     outline: 0;
   }
 }
@@ -111,8 +118,8 @@ html, body{
   bottom: -70px;
   width: 100%;
   text-align: center;
-  color: #fff;
-  background: #2ecc71;
+  color: @colorWhite;
+  background: @colorGreen;
   padding: 10px 0;
   font-size: 12px;
   display: none;
@@ -128,7 +135,7 @@ html, body{
     position: absolute;
     pointer-events: none;
     border-color: rgba(46, 204, 113, 0);
-    border-bottom-color: #2ecc71;
+    border-bottom-color: @colorGreen;
     border-width: 10px;
     margin-left: -10px;
     

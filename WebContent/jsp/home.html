@@ -11,23 +11,29 @@
 		<link rel="shortcut icon" href="../favicon.ico">
 		<link rel="stylesheet" type="text/css" href="../css/default.css" />
 		<link rel="stylesheet" type="text/css" href="../css/component.css" />
+		<link rel='stylesheet prefetch' href='../css/font-awesome.css'>
 		<script src="../js/modernizr.custom.js"></script>
+		<script src="../js/jquery.min.js"></script>
 	</head>
 	<body class="cbp-spmenu-push">
 		<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
-			<div style="height: 75px;width: 75px;background-color: #0d77b6;border-radius: 999999px;margin-top: 30px;margin-left: 32%;margin-bottom: 15px" align="center"></div>
+			<div id="sideProfile" align="center"></div>
 			<h3>Omkar Kulkarni</h3>
 			<h4>Moo Points: 175</h4>
-			<a href="#">My Profile</a>
-			<a href="#">Add Moo Points</a>
-			<a href="#">Place an Order</a>
-			<a href="#">My Past Orders</a>
-			<a href="#">Contact Us</a>
+			<a href="#" id="myProfile" onclick="displayPages(this)">My Profile</a>
+			<a href="#" id="addPoints" onclick="displayPages(this)">Add Moo Points</a>
+			<a href="#" id="orders" onclick="displayPages(this)">Place an Order</a>
+			<a href="#" id="pastOrders" onclick="displayPages(this)">My Past Orders</a>
+			<a href="#" id="contactUs" onclick="displayPages(this)">Contact Us</a>
 		</nav>
 		<div class="container">
-			<div style="float: left;cursor:pointer;font-size: 30px;color: black;position: fixed;z-index: 9999" id="showLeftPush">#</div>
+			<div style="cursor:pointer;font-size: 50px;z-index: 1010;margin: 5px;" id="showLeftPush">
+			<div class="zooming" id="expandMenu" onclick="toggleArrows()" style="width: 50px;height: 50px;"><i class="fa fa-angle-right"></i></div>
+			</div>
+			<div style="text-align: center;">Welcome to Moo Plans!</div>
+			
+			<div id="other" style="width: auto;height: 500px;"> <iframe width="100%" height="100%" frameborder="0" ></iframe> </div>
 		</div>
-		<!-- Classie - class helper functions by @desandro https://github.com/desandro/classie -->
 		<script src="../js/classie.js"></script>
 		<script>
 			var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
@@ -46,6 +52,23 @@
 				if( button !== 'showLeftPush' ) {
 					classie.toggle( showLeftPush, 'disabled' );
 				}
+			}
+			
+			function toggleArrows(){
+				if($("#expandMenu").hasClass("expanded")){
+					$("#expandMenu").removeClass("expanded");
+					$("#expandMenu").html('<i class="fa fa-angle-right"></i>');
+				}else{
+					$("#expandMenu").addClass("expanded");
+					$("#expandMenu").html('<i class="fa fa-angle-left"></i>');
+				}
+			}
+			
+			function displayPages(ele){
+				var id = ele.id;
+				console.log("================>"+id)
+				$("#other").find("iframe").empty();
+				$("#other").find("iframe").attr("src",id+".jsp");
 			}
 		</script>
 	</body>
