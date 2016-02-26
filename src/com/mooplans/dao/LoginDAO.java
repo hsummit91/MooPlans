@@ -220,5 +220,23 @@ public class LoginDAO {
 			release();
 		}
 	}
+	
+	public static boolean addImage(String imagepath, int ID){
+		try{
+			getConnection();
+			String sql = "UPDATE user SET user_image = ? WHERE user_id = ?";
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setString(1, imagepath);
+			pstmt.setInt(2, ID);
+			pstmt.executeUpdate();
+			
+		}catch(SQLException se){
+			System.err.println(se.getMessage());
+			se.printStackTrace();
+		}finally{
+			release();
+		}
+		return true;
+	}
 
 }
