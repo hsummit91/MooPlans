@@ -67,7 +67,7 @@ public class LoginDAO {
 		try{
 			getConnection();
 			String sql = "select user_password, user_firstname, user_lastname, user_email,"
-					+ "user_phone, user_university, user_address, user_role, user_points from user where user_id = ?";
+					+ "user_phone, user_university, user_address, user_role, user_points, user_image from user where user_id = ?";
 			pstmt = connection.prepareStatement(sql);
 			pstmt.setInt(1, ID);
 			rs = pstmt.executeQuery();
@@ -84,6 +84,7 @@ public class LoginDAO {
 				user.setUser_address(rs.getString(7));
 				user.setUser_role(rs.getString(8));
 				user.setUser_points(rs.getInt(9));
+				user.setUser_image(rs.getString(10));
 			}
 
 		}catch(SQLException e){
@@ -204,7 +205,6 @@ public class LoginDAO {
 		return ID;
 	}
 	
-	
 	public static void updatePoints(int ID, int points){
 		try{
 			getConnection();
@@ -237,6 +237,26 @@ public class LoginDAO {
 			release();
 		}
 		return true;
+	}
+	
+	public static String getImagePath(User user){
+		String imagePath = null;
+		try{
+			getConnection();
+			String sql = "SELECT user_image FROM user WHERE user_email = ?";
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setString(1, user.getUser_email());
+			
+			if(rs.next()){
+				imagePath = rs.getString(1);
+			}
+
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			release();
+		}
+		return imagePath;
 	}
 
 }

@@ -6,9 +6,17 @@ public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private String user_password, user_firstname,user_lastname,user_email;
-	private String user_phone,user_university, user_address, user_role;
+	private String user_phone,user_university, user_address, user_role, user_image;
 	private int user_id,user_points;
 	
+	
+	
+	public String getUser_image() {
+		return user_image;
+	}
+	public void setUser_image(String user_image) {
+		this.user_image = user_image;
+	}
 	public String getUser_password() {
 		return user_password;
 	}
