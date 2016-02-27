@@ -44,8 +44,6 @@ public class Login extends HttpServlet {
 		String url = "/jsp/login.jsp";
 		RequestDispatcher rd = null;  
 
-
-
 		String emailId= request.getParameter("email");
 		String password=request.getParameter("password");
 

@@ -48,7 +48,7 @@ public class ImageUpload extends HttpServlet {
 		}
 		
 		HttpSession se = request.getSession();
-		User user = (User) se.getAttribute("user");
+		User user = (User) se.getAttribute("User=");
 		int id = user.getUser_id();
 		for (Part part : request.getParts()) {
 			String fileName = extractFileName(part);
