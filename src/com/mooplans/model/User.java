@@ -9,14 +9,33 @@ public class User implements Serializable{
 	private String user_phone,user_university, user_address, user_role, user_image;
 	private int user_id,user_points;
 	
+	public User(){
+		// Default constructor
+	}
 	
-	
+	public User(String user_password, String user_firstname,
+			String user_lastname, String user_email, String user_phone,
+			String user_university, String user_address, String user_role,
+			int user_id, int user_points) {
+		this.user_password = user_password;
+		this.user_firstname = user_firstname;
+		this.user_lastname = user_lastname;
+		this.user_email = user_email;
+		this.user_phone = user_phone;
+		this.user_university = user_university;
+		this.user_address = user_address;
+		this.user_role = user_role;
+		this.user_id = user_id;
+		this.user_points = user_points;
+	}
+
 	public String getUser_image() {
 		return user_image;
 	}
 	public void setUser_image(String user_image) {
 		this.user_image = user_image;
 	}
+	
 	public String getUser_password() {
 		return user_password;
 	}

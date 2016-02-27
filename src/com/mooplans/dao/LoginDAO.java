@@ -61,7 +61,6 @@ public class LoginDAO {
 		return role;
 	}
 
-
 	public static User getDetails(int ID){
 		User user = null;
 		try{
@@ -95,27 +94,58 @@ public class LoginDAO {
 		return user;
 	}
 
+
+
+	public static boolean isUserRegistered(String email, String phone){
+
+		boolean isExists = false;
+
+		try{
+			getConnection();
+			String sql = "SELECT user_id FROM user WHERE user_email = ?"; //AND user_phone = ?"; (future work if required)
+
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setString(1, email);
+			//pstmt.setString(2, phone);
+
+			rs = pstmt.executeQuery();
+
+			if(rs.next()){
+				int ID = rs.getInt(1);
+				isExists = (ID > 0) ? true : false; 
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			release();
+		}
+		return isExists;
+	}
+
 	public static int registerUser(User user){
 		int ID = 0;
 		try{
-			getConnection();
-			String sql = "INSERT INTO user (user_password, user_firstname, user_lastname, user_email,"
-					+ " user_phone, user_university, user_address, user_role, user_points)"
-					+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-			pstmt = connection.prepareStatement(sql);
-			pstmt.setString(1, user.getUser_password());
-			pstmt.setString(2, user.getUser_firstname());
-			pstmt.setString(3, user.getUser_lastname());
-			pstmt.setString(4, user.getUser_email());
-			pstmt.setString(5, user.getUser_phone());
-			pstmt.setString(6, user.getUser_university());
-			pstmt.setString(7, user.getUser_address());
-			pstmt.setString(8, user.getUser_role());
-			pstmt.setInt(9, user.getUser_points());
-			pstmt.executeUpdate();
-			
-			
-			ID = getUserID(user);
+			// Check if the email and phone number exists
+			boolean isExists = isUserRegistered(user.getUser_email(), user.getUser_phone());
+
+			if(!isExists){
+				getConnection();
+				String sql = "INSERT INTO user (user_password, user_firstname, user_lastname, user_email,"
+						+ " user_phone, user_university, user_address, user_role, user_points)"
+						+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				pstmt = connection.prepareStatement(sql);
+				pstmt.setString(1, user.getUser_password());
+				pstmt.setString(2, user.getUser_firstname());
+				pstmt.setString(3, user.getUser_lastname());
+				pstmt.setString(4, user.getUser_email());
+				pstmt.setString(5, user.getUser_phone());
+				pstmt.setString(6, user.getUser_university());
+				pstmt.setString(7, user.getUser_address());
+				pstmt.setString(8, user.getUser_role());
+				pstmt.setInt(9, user.getUser_points());
+				ID = pstmt.executeUpdate();
+			}
+			else return -1;
 
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -192,7 +222,7 @@ public class LoginDAO {
 			String sql = "SELECT user_id FROM user WHERE user_email = ?";
 			pstmt = connection.prepareStatement(sql);
 			pstmt.setString(1, user.getUser_email());
-			
+
 			if(rs.next()){
 				ID = rs.getInt(1);
 			}
@@ -204,7 +234,8 @@ public class LoginDAO {
 		}
 		return ID;
 	}
-	
+
+
 	public static void updatePoints(int ID, int points){
 		try{
 			getConnection();
@@ -220,7 +251,7 @@ public class LoginDAO {
 			release();
 		}
 	}
-	
+
 	public static boolean addImage(String imagepath, int ID){
 		try{
 			getConnection();

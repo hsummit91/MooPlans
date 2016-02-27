@@ -15,8 +15,16 @@ input[type="submit"] {
 	font-family: FontAwesome;
 }
 </style>
+
+<script type="text/javaScript">
+function disableBackButton()
+{
+window.history.forward();
+}
+setTimeout("disableBackButton()", 0);
+</script>
 </head>
-<body background="../images/Logo black.png">
+<body onload="disableBackButton()" background="../images/Logo black.png">
 	<%
 		String valid = (String) request.getAttribute("errormsg");
 		if (valid != null)

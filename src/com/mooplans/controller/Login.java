@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -40,9 +41,11 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session=request.getSession();
-		String loggedIn = "false";
+		//String loggedIn = "false";
 		String url = "/jsp/login.jsp";
 		RequestDispatcher rd = null;  
+
+
 
 		String emailId= request.getParameter("email");
 		String password=request.getParameter("password");
@@ -66,12 +69,19 @@ public class Login extends HttpServlet {
 			if (ID == 0) {
 				request.setAttribute("errormsg", "Username and Password does not Match..!!");
 			}else{
-				loggedIn = "true";
-				session.setAttribute("loggedIn", loggedIn);
+	            session.setAttribute("user", emailId);
+	            //setting session to expiry in 30 mins
+	            session.setMaxInactiveInterval(30*60);
+	            Cookie userName = new Cookie("user", emailId);
+	            userName.setMaxAge(30*60);
+	            response.addCookie(userName);
+
+	          //  loggedIn = "true";
+				//session.setAttribute("loggedIn", loggedIn);
 				User u = LoginDAO.getDetails(ID);
 				session.setAttribute("User", u);
 				if(u.getUser_role().equalsIgnoreCase("student")){
-					url = "/jsp/home.html";
+					url = "/jsp/home.jsp";
 				}
 				// for future work
 				else if(u.getUser_role().equalsIgnoreCase("restaurant")){
@@ -81,6 +91,7 @@ public class Login extends HttpServlet {
 		}
 
 		System.out.println("Validation ==>"+request.getAttribute("errormsg"));
+		System.out.println("Session Validation ==>"+session.getAttribute("user"));
 		//rd = request.getRequestDispatcher(url);
 		//rd.forward(request, response);
 		response.sendRedirect(getServletContext().getContextPath()+url);
