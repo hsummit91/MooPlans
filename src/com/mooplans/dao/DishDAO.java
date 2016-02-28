@@ -43,8 +43,9 @@ public class DishDAO {
 		
 		try{
 			getConnection();
-			String sql = "SELECT dishes.dish_name, dishes.dish_category, restaurant.rest_name, dishes.dish_price "
-					+ "FROM dishes INNER JOIN restaurant ON dishes.dish_rest_id=restaurant.rest_id";
+			String sql = "SELECT dishes.dish_name, dishes.dish_category, restaurant.rest_name, dishes.dish_price"
+					+ " FROM dishes INNER JOIN restaurant ON dishes.dish_rest_id=restaurant.rest_id"
+					+ " WHERE restaurant.rest_status <> 0 ";
 			pstmt = connection.prepareStatement(sql);
 
 			getConnection(); // connection  re-established

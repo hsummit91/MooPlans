@@ -4,7 +4,14 @@ public class Restaurant {
 
 	private int restId;
 	private String restName, restPhone;
+	private boolean restStatus = false;
 	
+	public boolean isRestStatus() {
+		return restStatus;
+	}
+	public void setRestStatus(boolean restStatus) {
+		this.restStatus = restStatus;
+	}
 	public int getRestId() {
 		return restId;
 	}
