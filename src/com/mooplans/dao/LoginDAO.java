@@ -2,6 +2,9 @@ package com.mooplans.dao;
 
 import java.sql.SQLException;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.mooplans.model.User;
 
 import static com.mooplans.dao.DBConnection.*;
@@ -61,6 +64,39 @@ public class LoginDAO {
 		return role;
 	}
 
+	public static JSONObject getUserDetails(int ID){
+		JSONObject userDetails = new JSONObject();
+		try{
+			getConnection();
+			String sql = "select user_password, user_firstname, user_lastname, user_email,"
+					+ "user_phone, user_university, user_address, user_role, user_points from user where user_id = ?";
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, ID);
+			rs = pstmt.executeQuery();
+
+			if(rs.next()){
+				userDetails.put("userId",ID);
+				userDetails.put("password", rs.getString(1));
+				userDetails.put("firstName", rs.getString(2));
+				userDetails.put("lastName", rs.getString(3));
+				userDetails.put("email", rs.getString(4));
+				userDetails.put("phone", rs.getString(5));
+				userDetails.put("university", rs.getString(6));
+				userDetails.put("address", rs.getString(7));
+				userDetails.put("role", rs.getString(8));
+				userDetails.put("points", rs.getString(9));								
+			}
+
+		}catch(SQLException e){
+			e.printStackTrace();
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}finally{
+			release();
+		}
+		return userDetails;
+	}
+	
 	public static User getDetails(int ID){
 		User user = null;
 		try{
