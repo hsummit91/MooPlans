@@ -44,19 +44,19 @@ public class Login extends HttpServlet {
 		//String loggedIn = "false";
 		String url = "/jsp/login.jsp";
 		RequestDispatcher rd = null;  
-
-
-
+		
 		String emailId= request.getParameter("email");
 		String password=request.getParameter("password");
+		String errorMsg = "";
+		Boolean isError = false;
 
 		if(emailId == null || emailId.equals("")){
-			request.setAttribute("errormsg", "Username can not be empty");
+			errorMsg = "Username can not be empty";
 			if(password == null || password.equals("")){
-				request.setAttribute("errormsg", "User and Password can not be Empty..!!");
+				errorMsg = "User and Password can not be empty..";
 			}
 		}else if(password == null || password.equals("")){
-			request.setAttribute("errormsg", "Password can not be Empty..!!");
+			errorMsg = "Password can not be empty..";
 		}else {
 
 			System.out.println("userName ="+emailId);
@@ -67,7 +67,7 @@ public class Login extends HttpServlet {
 			System.out.println("ID ####> "+ID);
 
 			if (ID == 0) {
-				request.setAttribute("errormsg", "Username and Password does not Match..!!");
+				errorMsg = "Username and Password does not match..";
 			}else{
 	            session.setAttribute("user", emailId);
 	            session.setAttribute("userId", ID);
@@ -91,10 +91,14 @@ public class Login extends HttpServlet {
 			}
 		}
 
-		System.out.println("Validation ==>"+request.getAttribute("errormsg"));
+		System.out.println("errorMsg ==>"+errorMsg);
 		System.out.println("Session Validation ==>"+session.getAttribute("user"));
+		
+		if(errorMsg != ""){
+			isError = true;
+		}
 		//rd = request.getRequestDispatcher(url);
 		//rd.forward(request, response);
-		response.sendRedirect(getServletContext().getContextPath()+url);
+		response.sendRedirect(getServletContext().getContextPath()+url+"?errorMsg="+errorMsg+"&isError="+isError);
 	}
 }

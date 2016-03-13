@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="refresh" content="0; url=../welcome.html" />
 <title>Logged Out</title>
 <script type="text/javaScript">
 	function disableBackButton() {
@@ -17,11 +18,11 @@
 <center>
 <h1>Page Redirection</h1>
 </center>
-<%
+<%-- <%
    // New location to be redirected
-   String site = new String("http://localhost:8080/MooPlans/");
+   String site = new String("welcome.html");
    response.setStatus(response.SC_MOVED_TEMPORARILY);
    response.setHeader("Location", site); 
-%>
+%> --%>
 </body>
 </html>

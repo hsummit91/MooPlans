@@ -97,7 +97,7 @@ public class Registration extends HttpServlet {
 				request.setAttribute("errormsg", "Email ID already exists.");
 			}else{
 				System.out.println("Registraion done success ID :"+ID);
-				url = "/jsp/success.jsp";
+				url = "/jsp/login.jsp?errorMsg=Registration Successful&isError=true";
 			}
 		}
 
