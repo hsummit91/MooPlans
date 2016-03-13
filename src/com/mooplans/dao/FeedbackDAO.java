@@ -13,24 +13,20 @@ public class FeedbackDAO {
 	
 	
 	public static int insertFeedback(User user){
-		int ID = 0;
+		int ID = -1;
 		try{
-			
-			if(user.getUser_id() > 0){
 				getConnection();
-				String sql = "INSERT INTO user_feedback (user_id, user_name, user_email,"
+				String sql = "INSERT INTO user_feedback (user_name, user_email,"
 						+ " user_phone, message)"
-						+ " VALUES (?, ?, ?, ?, ?)";
+						+ " VALUES (?, ?, ?, ?)";
 				pstmt = connection.prepareStatement(sql);
-				pstmt.setInt(1, user.getUser_id());
-				pstmt.setString(2, user.getUser_firstname());
-				pstmt.setString(3, user.getUser_email());
-				pstmt.setString(4, user.getUser_phone());
-				pstmt.setString(5, user.getUser_message());
-				ID = pstmt.executeUpdate();
-			}
-			else return -1;
 
+				pstmt.setString(1, user.getUser_firstname());
+				pstmt.setString(2, user.getUser_email());
+				pstmt.setString(3, user.getUser_phone());
+				pstmt.setString(4, user.getUser_message());
+				ID = pstmt.executeUpdate();
+				
 		}catch(SQLException e){
 			e.printStackTrace();
 		}finally{

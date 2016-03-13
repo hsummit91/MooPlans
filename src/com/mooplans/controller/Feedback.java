@@ -40,21 +40,18 @@ public class Feedback extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String url = "/jsp/home.jsp";
-		HttpSession session=request.getSession();
 		
-		int userId = Integer.parseInt((String) session.getAttribute("userId"));
-		String firstname= request.getParameter("firstname");
-		String emailId= request.getParameter("email");
-		String phone=request.getParameter("phone");
-		String message=request.getParameter("message");
+		String firstname= request.getParameter("userName");
+		String emailId= request.getParameter("userEmail");
+		String phone=request.getParameter("userPhone");
+		String message=request.getParameter("userMsg");
 		
-		    System.out.println("userID ="+userId);
 			System.out.println("firstname ="+firstname);
 			System.out.println("userName ="+emailId);
 			System.out.println("phone ="+phone);
 			System.out.println("message ="+message);
 
-			User userObject = new User(firstname, emailId, phone, message, userId);
+			User userObject = new User(firstname, emailId, phone, message);
 
 			int ID = FeedbackDAO.insertFeedback(userObject);
 
@@ -67,7 +64,7 @@ public class Feedback extends HttpServlet {
 				request.setAttribute("errormsg", "Email ID already exists.");
 			}else{
 				System.out.println("Registraion done success ID :"+ID);
-				url = "/jsp/success.jsp";
+				url = "/contact.jsp";
 			}
 		response.sendRedirect(getServletContext().getContextPath()+url);
 	}

@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -17,23 +18,26 @@ input[type="submit"] {
 </style>
 
 <script type="text/javaScript">
-function disableBackButton()
-{
-window.history.forward();
+function disableBackButton(){
+	window.history.forward();
 }
 setTimeout("disableBackButton()", 0);
 </script>
 </head>
-<body onload="disableBackButton()" background="../images/Logo black.png">
-	<%
-		String valid = (String) request.getAttribute("errormsg");
-		if (valid != null)
-			out.print(valid);
-	%>
-
+<body onload="disableBackButton();checkError();" background="../images/Logo black.png">
+<%
+		String valid = request.getParameter("errorMsg");
+		String isError = request.getParameter("isError");
+		if (valid == null){
+			valid = "";
+		}
+		if(isError == null){
+			isError = "";
+		}
+	%>	
 	<form method="post" name="login" action="../Login" class="login">
 		<fieldset>
-			<legend class="legend">Login</legend>
+			<legend class="legend">Login</legend>	
 			<div class="input">
 				<input type="email" name="email" placeholder="Email" required /> <span><i
 					class="fa fa-envelope-o"></i></span>
@@ -43,13 +47,15 @@ setTimeout("disableBackButton()", 0);
 				<input type="password" name="password" placeholder="Password"
 					required /> <span><i class="fa fa-lock"></i></span>
 			</div>
-
+			
+			<input type="hidden" id="isError" value="<%=isError %>" />
+			<input type="hidden" id="message" value="<%=valid %>" />
 			<input type="submit" name="submit" class="submit" value="&#xf061;" />
 
 		</fieldset>
 
-		<div class="feedback">
-			login successful <br /> redirecting...
+		<div id="feedback" class="feedbackErr">
+			
 		</div>
 
 	</form>

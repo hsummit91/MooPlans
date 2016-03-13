@@ -30,12 +30,11 @@ public class User implements Serializable{
 	}
 	
 	// Constructor for getting User feedback
-	public User(String user_firstname,String user_email, String user_phone,String user_message,int user_id) {
+	public User(String user_firstname,String user_email, String user_phone,String user_message) {
 		this.user_firstname = user_firstname;
 		this.user_email = user_email;
 		this.user_phone = user_phone;
 		this.user_message = user_message;
-		this.user_id = user_id;
 	}
 	
 

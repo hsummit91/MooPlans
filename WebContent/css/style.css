@@ -61,7 +61,7 @@ body {
   top: 8px;
   font-size: 20px;
 }
-.input input {
+.input input,select {
   width: 100%;
   padding: 15px 5px 15px 40px;
   display: block;
@@ -71,6 +71,11 @@ body {
   color: #878787;
 }
 .input input:focus {
+  padding: 18px 5px 18px 10px;
+  outline: 0;
+  border-color: #E84A5F;
+}
+.input select:focus {
   padding: 18px 5px 18px 10px;
   outline: 0;
   border-color: #E84A5F;
@@ -121,6 +126,33 @@ body {
   pointer-events: none;
   border-color: rgba(46, 204, 113, 0);
   border-bottom-color: #2ecc71;
+  border-width: 10px;
+  margin-left: -10px;
+}
+
+.feedbackErr {
+  position: absolute;
+  bottom: -70px;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  background: #FFBABA;
+  padding: 10px 0;
+  font-size: 12px;
+  display: none;
+  opacity: 0;
+}
+.feedbackErr:before {
+  bottom: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: "";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba(46, 204, 113, 0);
+  border-bottom-color: #FFBABA;
   border-width: 10px;
   margin-left: -10px;
 }
