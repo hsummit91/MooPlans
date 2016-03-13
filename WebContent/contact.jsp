@@ -24,7 +24,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 				<ul class="follow_icon">
 					<li><a href="jsp/login.jsp">Login</a> |</li>
-					<li>Register</li>
+					<li><a href="jsp/register.jsp">Register</a></li>
 				</ul>
 			    <div class="clear"></div> 
 			</div> 
@@ -35,7 +35,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<li><a href="welcome.html">Home</a></li> |
 					<li><a href="about.html">About</a></li> |
 					<li><a href="menu.html">Menu</a></li> |
-					<li class="active"><a href="contact.html">Contact</a></li>
+					<li class="active"><a href="contact.html">Contact</a></li> |
+					<li><a href="http://fahadshaikh05.wix.com/aboutdevelopers" target="_blank">About the Developers</a></li>					
 				</ul>
 			</div>
 		</div>		
@@ -47,7 +48,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="col span_2_of_contact">
 				  <div class="contact-form">
 				  	<h3>Contact Us</h3>
-					    <form method="post" action="contact-post.html">
+					    <form action="Feedback" method="post">
 					    	<div>
 						    	<span><label>Name</label></span>
 						    	<span><input name="userName" type="text" class="textbox"></span>
@@ -78,65 +79,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							  </div>
       				</div>
       			<div class="company_address">
-				     	<h3>Address</h3>
-						    	<p>500 Lorem Ipsum Dolor Sit,</p>
-						   		<p>22-56-2-9 Sit Amet, Lorem,</p>
+				     	<h3>Moo Plans</h3>
 						   	
-				   		<p>Phone:(00) 222 666 444</p>
-				   		<p>Fax: (000) 000 00 00 0</p>
-				 	 	<p>Email: <span>info[at]mycompany.com</span></p>
-				   		<p>Follow on: <span>Facebook</span>, <span>Twitter</span></p>
+				   		<p>Phone:(855) 255-2328</p>
+				 	 	<p>Email: <span><a href="mailto:thecows@mooplans.com">thecows[at]mooplans.com</a></span></p>
+				   		<p>Follow on: <span><a href="https://www.facebook.com/mooplans/?fref=ts" target="_blank">Facebook</a></span></p>
 				   </div>
 				 </div>
 				 <div class="clear"></div> 
 			  </div>
-		   		<div class="heading">
-				  	<h3>Our Staff</h3>
-				</div>
-		   		<div class="about-bottom">
-				<div class="col_1_of_4 span_1_of_4">
-					<img src="images/pic17.jpg" alt=""/>
-						<div class="item_content">
- 							<h6 class="item_title">
-							<span class="item_title_part0">John McCois </span></h6>
-							<div class="item_text"><p>lorem ipsum doloerut</p></div>
-							<div class="item_text"><p>Ph No:800-000000</p></div>
-							<span class="item_title_part0">Mail(at)superior.com </span>
-						</div>
-				</div>
-				<div class="col_1_of_4 span_1_of_4">
-					<img src="images/pic18.jpg" alt=""/>
-						<div class="item_content">
- 							<h6 class="item_title">
-							<span class="item_title_part0">John McCois </span></h6>
-							<div class="item_text"><p>lorem ipsum doloerut</p></div>
-							<div class="item_text"><p>Ph No:800-000000</p></div>
-							<span class="item_title_part0">Mail(at)superior.com </span>
-						</div>
-				</div>
-				<div class="col_1_of_4 span_1_of_4">
-					<img src="images/pic19.jpg" alt=""/>
-						<div class="item_content">
- 							<h6 class="item_title">
-							<span class="item_title_part0">John McCois </span></h6>
-							<div class="item_text"><p>lorem ipsum doloerut</p></div>
-							<div class="item_text"><p>Ph No:800-000000</p></div>
-							<span class="item_title_part0">Mail(at)superior.com </span>
-						</div>
-				</div>
-				<div class="col_1_of_4 span_1_of_4">
-					<img src="images/pic20.jpg" alt=""/>
-						<div class="item_content">
- 							<h6 class="item_title">
-							<span class="item_title_part0">John McCois </span></h6>
-							<div class="item_text"><p>lorem ipsum doloerut</p></div>
-							<div class="item_text"><p>Ph No:800-000000</p></div>
-							<span class="item_title_part0">Mail(at)superior.com </span>
-						</div>
-				</div>
-				<div class="clear"></div> 		
-			</div>
-		     <div class="clear"> </div>
 			</div>
 	</div>
 <div class="footer-bottom">

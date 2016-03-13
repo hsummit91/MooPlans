@@ -14,6 +14,27 @@
 input[type="submit"] {
 	font-family: FontAwesome;
 }
+
+td{
+ vertical-align: middle !important;
+ margin: 10px;
+}
+
+.login{
+	width: 600px !important;
+}
+
+.input input{
+	margin-left: 2em !important;
+	margin-bottom: 0.5em !important;
+	width: 420px !important;
+}
+
+.input select{
+	margin-left: 2em !important;
+	margin-bottom: 0.5em !important;
+	width: 95% !important;
+}
 </style>
 </head>
 <body background="../images/Logo black.png">
@@ -25,7 +46,7 @@ input[type="submit"] {
 	<form method="post" name="register" action="../Registration"
 		class="login">
 		<fieldset>
-			<legend class="legend">Get registered with Mooplans</legend>
+			<legend class="legend">Get registered with Mooplans.</legend>
 			<div class="input">
 
 				<table style="with: 100%">
@@ -44,7 +65,7 @@ input[type="submit"] {
 					</tr>
 					<tr>
 						<td>Password</td>
-						<td><input type="text" name="password" placeholder="Password"
+						<td><input type="password" name="password" placeholder="Password"
 							required /></td>
 					</tr>
 					<tr>
