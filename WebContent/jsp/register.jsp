@@ -25,7 +25,7 @@ input[type="submit"] {
 	<form method="post" name="register" action="../Registration"
 		class="login">
 		<fieldset>
-			<legend class="legend">Get registered with Mooplans.</legend>
+			<legend class="legend">Get registered with Mooplans</legend>
 			<div class="input">
 
 				<table style="with: 100%">
