@@ -6,7 +6,7 @@ public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private String user_password, user_firstname,user_lastname,user_email;
-	private String user_phone,user_university, user_address, user_role, user_image;
+	private String user_phone,user_university, user_address, user_role, user_image,user_message;
 	private int user_id,user_points;
 	
 	public User(){
@@ -27,6 +27,24 @@ public class User implements Serializable{
 		this.user_role = user_role;
 		this.user_id = user_id;
 		this.user_points = user_points;
+	}
+	
+	// Constructor for getting User feedback
+	public User(String user_firstname,String user_email, String user_phone,String user_message,int user_id) {
+		this.user_firstname = user_firstname;
+		this.user_email = user_email;
+		this.user_phone = user_phone;
+		this.user_message = user_message;
+		this.user_id = user_id;
+	}
+	
+
+	public String getUser_message() {
+		return user_message;
+	}
+
+	public void setUser_message(String user_message) {
+		this.user_message = user_message;
 	}
 
 	public String getUser_image() {

@@ -70,6 +70,7 @@ public class Login extends HttpServlet {
 				request.setAttribute("errormsg", "Username and Password does not Match..!!");
 			}else{
 	            session.setAttribute("user", emailId);
+	            session.setAttribute("userId", ID);
 	            //setting session to expiry in 30 mins
 	            session.setMaxInactiveInterval(30*60);
 	            Cookie userName = new Cookie("user", emailId);
