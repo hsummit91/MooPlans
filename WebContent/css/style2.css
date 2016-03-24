@@ -1088,6 +1088,18 @@ span.item_title_part0:hover {
 		width:100%;
 	}
 }
+
+@media (max-width:550px){
+	.logo {
+		width: 60%;
+		height: 50%;
+	}
+	
+	.top-nav ul li a {
+		padding: 2px 2px;
+	}
+}
+	
 @media (max-width:480px){
 	.wrap{
 		width:90%;
