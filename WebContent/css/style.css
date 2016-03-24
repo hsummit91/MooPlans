@@ -21,7 +21,7 @@ body {
 .login {
   position: relative;
   top: 60%;
-  width: 400px;
+  width: 35%;
   display: table;
   margin: -150px auto 0 auto;
   background: #FECEA8;
@@ -51,14 +51,14 @@ body {
 .input {
   position: relative;
   width: 90%;
-  margin: 15px auto;
+  margin: 15px auto; 
 }
 .input span {
   position: absolute;
   display: block;
   color: #bababa;
   left: 10px;
-  top: 8px;
+  top: 14px;
   font-size: 20px;
 }
 .input input,select {
@@ -157,25 +157,82 @@ body {
   margin-left: -10px;
 }
 
-@media (max-width:640px){
+@media screen and (max-width:640px){
 	
+	html,
+	body {
+	  background-size: 300px 150px;
+	}
 	.login {
-	  width: 500px;
+	  width: 60%;
+	}
+	.input {
+      margin: 10px auto; 
+	}
+	.input span {
+	  font-size: 15px;
+	}
+	.input input,select {
+	  padding: 12px 5px 12px 35px;
+	}
+	.input input:focus {
+	  padding: 15px 5px 15px 10px;
+	}
+	.input select:focus {
+	  padding: 15px 5px 15px 10px;
 	}
 
 }
 
-@media (max-width:480px){
+@media screen and (max-width:480px){
 	
-	.login {
-	  width: 500px;
+	html,
+	body {
+	  background-size: 200px 100px;
 	}
-
+	.login {
+	  width: 70%;
+	}
+	.input {
+      margin: 8px auto; 
+	}
+	.input span {
+	  font-size: 12px;
+	}
+	.input input,select {
+	  padding: 10px 5px 10px 30px;
+	}
+	.input input:focus {
+	  padding: 12px 5px 12px 10px;
+	}
+	.input select:focus {
+	  padding: 12px 5px 12px 10px;
+	}
 }
 
-@media (max-width:320px){
+@media screen and (max-width:320px){
 	
-	.login {
-	  width: 500px;
+	html,
+	body {
+	  background-size: 200px 100px;
 	}
+	.login {
+	  width: 70%;
+	}
+	.input {
+      margin: 8px auto; 
+	}
+	.input span {
+	  font-size: 12px;
+	}
+	.input input,select {
+	  padding: 10px 5px 10px 30px;
+	}
+	.input input:focus {
+	  padding: 12px 5px 12px 10px;
+	}
+	.input select:focus {
+	  padding: 12px 5px 12px 10px;
+	}
+	
 }
