@@ -39,9 +39,8 @@
 		}
 	}
 %>
-	<h3>Welcome :<%=userName%></h3>
-		<form action="${pageContext.request.contextPath}/Logout" method="post">
-		<div align="right"><input type="submit" value="Logout" /></div>
+	
+		<form action="${pageContext.request.contextPath}/Logout" id="logoutForm" method="post">
 	</form>
 	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
 		<div id="sideProfile" align="center"></div>
@@ -51,7 +50,6 @@
 		<a href="#" id="addPoints" onclick="displayPages(this)">Add Moo Points</a> 
 		<a href="#" id="orderRedirect" onclick="displayPages(this)">Place an Order</a> 
 		<a href="#" id="pastOrders" onclick="displayPages(this)">My Past Orders</a> 
-		<a href="#" id="contactUs" onclick="displayPages(this)">Contact Us</a>
 		<a href="#" id="logout">Logout</a>
 	</nav>
 	<div class="container">
@@ -60,10 +58,10 @@
 				<i class="fa fa-angle-right"></i>
 			</div>
 		</div>
-		<div style="text-align: center;">Welcome to Moo Plans!</div>
+		<!-- <div style="text-align: center;">Welcome to Moo Plans!</div> -->
 
 		<div id="other" style="width: auto;height: 580px;">
-			<iframe width="100%" height="100%" frameborder="0"></iframe>
+			<iframe width="100%" height="100%" id="homeIframe" frameborder="0"></iframe>
 		</div>
 	</div>
 	<script src="../js/classie.js"></script>
@@ -97,7 +95,6 @@
 
 		function displayPages(ele){
 			var id = ele.id;
-			console.log("================>" + id)
 			$("#other").find("iframe").empty();
 			$("#other").find("iframe").attr("src", id + ".jsp");
 		}
@@ -117,7 +114,13 @@
 						  $("#mooPoints").html(msg.points);
 					});
 			    
+				$("#other").find("iframe").attr("src", "myProfile.jsp");
 		}
+		
+		$( "#logout" ).click(function() {
+			  $( "#logoutForm" ).submit();
+		});
+		
 	</script>
 </body>
 </html>
