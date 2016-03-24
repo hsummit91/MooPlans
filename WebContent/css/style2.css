@@ -125,6 +125,7 @@ body{
 }
 .logo{
 	float:left;
+	width: 40%;
 }
 /*--content--*/
 /*  GRID OF FOUR   ============================================================================= */
@@ -1143,13 +1144,14 @@ span.item_title_part0:hover {
 		width:100%;
 	}
 	.logo {
-		width: 40%;
+		width: 60%;
+		height: 50%;
 	}
 	.search-bar input[type="text"] {
 		width: 135px;
 	}
 	.top-nav ul li a {
-		padding: 12px 17px;
+		padding: 2px 2px;
 	}
 	.top-nav {
 		padding: 20px 0;	
@@ -1219,7 +1221,7 @@ span.item_title_part0:hover {
 		width: 135px;
 	}
 	.top-nav ul li a {
-		padding: 10px 2px;
+		padding: 2px 2px;
 	}
 	.top-nav {
 		padding: 20px 0;	
