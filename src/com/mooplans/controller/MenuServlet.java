@@ -10,27 +10,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import com.mooplans.dao.DishDAO;
 import com.mooplans.model.Dishes;
 import com.mooplans.model.Restaurant;
 
 /**
- * Servlet implementation class ActionServlet
+ * Servlet implementation class MenuServlet
  */
-@WebServlet("/ActionServlet")
-public class ActionServlet extends HttpServlet {
+@WebServlet("/MenuServlet")
+public class MenuServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public ActionServlet() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public MenuServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -43,22 +40,21 @@ public class ActionServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		System.out.println("Inaction");
-		String action = request.getParameter("action");
-
-		if(action == null){
-			action = "";
-		}
-
-		if(action.equals("")){
-			ArrayList<Restaurant> restList = new ArrayList<Restaurant>();
-			restList = DishDAO.getRestnames();
-			System.out.println("number of rest "+restList.size());
-
-			request.setAttribute("restList", restList);
-			getServletConfig().getServletContext().getRequestDispatcher("/jsp/orders.jsp").forward(request,response);
-
-		}	
+		System.out.println("In menu action");
+		
+		String restName = request.getParameter("restName");
+		System.out.println(restName);
+		
+			ArrayList<Dishes> menuList = new ArrayList<Dishes>();
+			menuList = DishDAO.getDishDetailsByName(restName);
+			
+			for (int i = 0; i < menuList.size(); i++) {
+				System.out.println(menuList.get(i).getDishName());
+				System.out.println(menuList.get(i).getDishCategory());
+				System.out.println(menuList.get(i).getDishPrice());
+			}
+			
+			request.setAttribute("menuList", menuList); 
+			getServletConfig().getServletContext().getRequestDispatcher("/jsp/menu.jsp").forward(request,response);
 	}
 }
