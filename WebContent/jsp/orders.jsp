@@ -11,9 +11,91 @@
 <link rel="stylesheet" type="text/css" href="./css/dataTables.css">
  <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
 <style type="text/css">
-#example_wrapper {
-        width: 90%;
+	#example_wrapper {
+        width: 98%;
+        margin: 1em 0 0 1em;
     }
+    th{
+        background-color: #2a363b !important;
+    	color: #ff847c;
+    	font-size: 20px;
+    }
+    td{
+    	font-size: 18px;
+    }
+    .odd{
+    	background-color: #FECEA8 !important;
+    }
+    tr.odd > .sorting_1{
+    	background-color: #feb9a8 !important;
+    }
+	tr.even > .sorting_1{
+		background-color: #fedcc1 !important;
+	} 
+	
+	@media screen and (max-width: 800px){
+		#example_wrapper {
+        	width: 97%;
+    	}
+    	th{
+    		font-size: 18px;
+    	}
+    	td{
+    		font-size: 16px;
+    	}
+	}
+	
+		
+	@media screen and (max-width: 640px){
+		#example_wrapper {
+        	width: 95%;
+    	}
+    	th{
+    		font-size: 16px;
+    	}
+    	td{
+    		font-size: 14px;
+    	}
+	}
+	
+	@media screen and (max-width: 480px){
+		#example_wrapper {
+        	width: 95%;
+    	}
+    	th{
+    		font-size: 14px;
+    	}
+    	td{
+    		font-size: 12px;
+    	}
+	}
+	
+	@media screen and (max-width: 390px){
+		#example_wrapper {
+        	width: 95%;
+    	}
+    	th{
+    		font-size: 14px;
+    		padding: 8px 10px;
+    	}
+    	td{
+    		font-size: 12px;
+    	}
+	}
+    
+    @media screen and (max-width: 390px){
+		#example_wrapper {
+        	width: 95%;
+    	}
+    	th{
+    		font-size: 12px;
+    		padding: 5px 5px;
+    	}
+    	td{
+    		font-size: 11px;
+    	}
+	}
+    
 </style>
 </head>
 <body>
