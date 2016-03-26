@@ -52,7 +52,7 @@ h1{
     width:50%;
     position:absolute;
     top:2%;
-    left:25.5%;
+    left:27.5%;
     
     -webkit-box-shadow: 0px 0px 8px 0px rgba(50, 50, 50, 0.54);
 -moz-box-shadow:    0px 0px 8px 0px rgba(50, 50, 50, 0.54);
@@ -66,7 +66,7 @@ box-shadow:         0px 0px 8px 0px rgba(50, 50, 50, 0.54);
         height:80%;
         position:absolute;
         top:10%;
-        left:5%;
+        left:7%;
         
         -webkit-box-shadow: 0px 0px 8px 0px rgba(50, 50, 50, 0.54);
 -moz-box-shadow:    0px 0px 8px 0px rgba(50, 50, 50, 0.54);
@@ -74,6 +74,23 @@ box-shadow:         0px 0px 8px 0px rgba(50, 50, 50, 0.54);
     }
 }
 
+@media (max-width: 480px) {
+    .login_box{
+        left:10%;
+    }
+}
+
+@media (max-width: 350px) {
+	h1{
+		font-size: 18px;
+	}
+	h3{
+		font-size: 16px;
+	}
+	.label{
+		font-size: 14px;
+	}
+}
 
 .follow{
     background-color:#E84A5F;
@@ -189,5 +206,7 @@ box-shadow:         0px 0px 8px 0px rgba(50, 50, 50, 0.54);
                      <div class="label" id="address"></div>
                 </div>
         </div>
+     </div>
+  </div>
 	</body>
 </html>

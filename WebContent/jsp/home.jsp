@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>Moo Home</title>
 <meta name="description" content="Blueprint: Slide and Push Menus" />
 <meta name="keywords" content="sliding menu, pushing menu, navigation, responsive, menu, css, jquery" />
@@ -49,7 +50,7 @@
 		<a href="#" id="myProfile" onclick="displayPages(this)">My Profile</a>
 		<a href="#" id="addPoints" onclick="displayPages(this)">Add Moo Points</a> 
 		<a href="#" id="orderRedirect" onclick="displayPages(this)">Place an Order</a> 
-		<a href="#" id="pastOrders" onclick="displayPages(this)">My Past Orders</a> 
+		<a href="#" id="imageUpload" onclick="displayPages(this)">My Past Orders</a> 
 		<a href="#" id="logout">Logout</a>
 	</nav>
 	<div class="container">
@@ -58,7 +59,7 @@
 				<i class="fa fa-angle-right"></i>
 			</div>
 		</div>
-		<!-- <div style="text-align: center;">Welcome to Moo Plans!</div> -->
+		 <div style="text-align: center;">Welcome to Moo Plans!</div>
 
 		<div id="other" style="width: auto;height: 580px;">
 			<iframe width="100%" height="100%" id="homeIframe" frameborder="0"></iframe>
