@@ -35,12 +35,10 @@ public class EmailDAO {
 
 			MimeMessage message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(username));
-			//message.addRecipient(Message.RecipientType.TO, new InternetAddress(user.getUser_address()));
-			message.addRecipient(Message.RecipientType.TO, new InternetAddress("fahad.spring2015@gmail.com"));
+			message.addRecipient(Message.RecipientType.TO, new InternetAddress(user.getUser_email()));
 
 			StringBuilder sb = new StringBuilder();
-			//sb.append("Hi "+user.getUser_firstname()+",\n");
-			sb.append("Hi Fahad,\n");
+			sb.append("Hi "+user.getUser_firstname()+",\n");
 			switch(type){
 
 			case 1:
@@ -85,12 +83,11 @@ public class EmailDAO {
 			e.printStackTrace();
 		}
 	}
-	
-	public static void main(String[] args) {
-		User user = new User();
-		user.setUser_firstname("Fahad");
-		user.setUser_email("fahad.spring2015@gmail.com");
-		sendMail(user, 1);
-	}
-
 }
+	
+//	public static void main(String[] args) {
+//		User user = new User();
+//		user.setUser_firstname("Fahad");
+//		user.setUser_email("fahad.spring2015@gmail.com");
+//		sendMail(user, 1);
+//	}
