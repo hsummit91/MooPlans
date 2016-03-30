@@ -7,11 +7,102 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Orders Menu</title>
+<script src="./js/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="./css/dataTables.css">
-<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+ <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+<style type="text/css">
+	#example_wrapper {
+        width: 98%;
+        margin: 1em 0 0 1em;
+    }
+    th{
+        background-color: #2a363b !important;
+    	color: #ff847c;
+    	font-size: 20px;
+    }
+    td{
+    	font-size: 18px;
+    }
+    .odd{
+    	background-color: #FECEA8 !important;
+    }
+    tr.odd > .sorting_1{
+    	background-color: #feb9a8 !important;
+    }
+	tr.even > .sorting_1{
+		background-color: #fedcc1 !important;
+	} 
+	
+	@media screen and (max-width: 800px){
+		#example_wrapper {
+        	width: 97%;
+    	}
+    	th{
+    		font-size: 18px;
+    	}
+    	td{
+    		font-size: 16px;
+    	}
+	}
+	
+		
+	@media screen and (max-width: 640px){
+		#example_wrapper {
+        	width: 95%;
+    	}
+    	th{
+    		font-size: 16px;
+    	}
+    	td{
+    		font-size: 14px;
+    	}
+	}
+	
+	@media screen and (max-width: 480px){
+		#example_wrapper {
+        	width: 95%;
+    	}
+    	th{
+    		font-size: 14px;
+    	}
+    	td{
+    		font-size: 12px;
+    	}
+	}
+	
+	@media screen and (max-width: 390px){
+		#example_wrapper {
+        	width: 95%;
+    	}
+    	th{
+    		font-size: 14px;
+    		padding: 8px 10px;
+    	}
+    	td{
+    		font-size: 12px;
+    	}
+	}
+    
+    @media screen and (max-width: 390px){
+		#example_wrapper {
+        	width: 95%;
+    	}
+    	th{
+    		font-size: 12px;
+    		padding: 5px 5px;
+    	}
+    	td{
+    		font-size: 11px;
+    	}
+	}
+    
+</style>
 </head>
-<body onload="load()">
-	<table id="example" class="display" cellspacing="0" width="80%">
+<body>
+
+
+
+ 	<table id="example" class="display dataTable" cellspacing="0">
 		<thead>
 			<tr>
 				<th>Food Item</th>
@@ -20,21 +111,12 @@
 				<th>Price</th>
 			</tr>
 		</thead>
-		<tfoot>
-			<tr>
-				<th>Food Item</th>
-				<th>Category</th>
-				<th>Restaurant</th>
-				<th>Price</th>
-			</tr>
-		</tfoot>
 		<tbody>
 
 			<%
 				ArrayList<Dishes> menu = (ArrayList<Dishes>) request
 						.getAttribute("menuList");
 
-				for (int i = 0; i < 100; i++) {
 					for (Dishes dishes : menu) {
 			%>
 
@@ -63,14 +145,16 @@
 
 			<%
 				}
-				}
 			%>
 
 		</tbody>
 	</table>
-	<script src="./js/jquery.min.js"></script>
-	<script src="./js/dataTables.js"></script>
-	<script src="./js/app.js"></script>
-
+	
+ 	<script src="./js/jquery.dataTables.min.js"></script>
+ 	<script type="text/javascript">
+ 	$(document).ready(function() {
+ 	    var table = $('#example').DataTable();
+ 	});
+ 	</script>
 </body>
 </html>

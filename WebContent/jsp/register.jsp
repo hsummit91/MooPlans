@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Moo Registration</title>
 <script src="http://s.codepen.io/assets/libs/modernizr.js"
 	type="text/javascript"></script>
@@ -13,6 +14,76 @@
 <style>
 input[type="submit"] {
 	font-family: FontAwesome;
+}
+
+td{
+ vertical-align: middle !important;
+ margin: 10px;
+}
+
+.login{
+	width: 600px !important;
+}
+
+.input input{
+	margin-left: 2em !important;
+	margin-bottom: 0.5em !important;
+	width: 420px !important;
+}
+
+.input select{
+	margin-left: 2em !important;
+	margin-bottom: 0.5em !important;
+	width: 95% !important;
+}
+
+@media screen and (max-width:640px){
+	.login{
+		width: 500px !important;
+	}
+	.input input{
+		margin-left: 1.5em !important;
+		width: 320px !important;
+	}
+	
+	.input select{
+		margin-left: 1.5em !important;
+		width: 94% !important;
+	}
+
+}
+
+@media screen and (max-width:480px){
+	
+	.login{
+		width: 300px !important;
+	}
+	.input input{
+		margin-left: 1em !important;
+		width: 180px !important;
+	}
+	
+	.input select{
+		margin-left: 1em !important;
+		width: 91% !important;
+	}
+}
+
+@media screen and (max-width:320px){
+	
+	.login{
+		width: 300px !important;
+	}
+	.input input{
+		margin-left: 1em !important;
+		width: 180px !important;
+	}
+	
+	.input select{
+		margin-left: 1em !important;
+		width: 91% !important;
+	}
+	
 }
 </style>
 </head>
@@ -44,7 +115,7 @@ input[type="submit"] {
 					</tr>
 					<tr>
 						<td>Password</td>
-						<td><input type="text" name="password" placeholder="Password"
+						<td><input type="password" name="password" placeholder="Password"
 							required /></td>
 					</tr>
 					<tr>

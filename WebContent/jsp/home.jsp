@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>Moo Home</title>
 <meta name="description" content="Blueprint: Slide and Push Menus" />
 <meta name="keywords" content="sliding menu, pushing menu, navigation, responsive, menu, css, jquery" />
@@ -14,6 +15,12 @@
 <link rel='stylesheet prefetch' href='../css/font-awesome.css'>
 <script src="../js/modernizr.custom.js"></script>
 <script src="../js/jquery.min.js"></script>
+<script type="text/javaScript">
+	function disableBackButton() {
+		window.history.forward();
+	}
+	setTimeout("disableBackButton()", 0);
+</script>
 </head>
 <body class="cbp-spmenu-push" onload="getUserDetails()">
 <%
@@ -33,7 +40,9 @@
 		}
 	}
 %>
-	<h3>Hi<%=userName%>, Login successful. Your Session ID=<%=sessionID%></h3>
+	
+		<form action="${pageContext.request.contextPath}/Logout" id="logoutForm" method="post">
+	</form>
 	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
 		<div id="sideProfile" align="center"></div>
 		<h3><span id="firstName">Omkar Kulkarni</span></h3>
@@ -41,8 +50,8 @@
 		<a href="#" id="myProfile" onclick="displayPages(this)">My Profile</a>
 		<a href="#" id="addPoints" onclick="displayPages(this)">Add Moo Points</a> 
 		<a href="#" id="orderRedirect" onclick="displayPages(this)">Place an Order</a> 
-		<a href="#" id="pastOrders" onclick="displayPages(this)">My Past Orders</a> 
-		<a href="#" id="contactUs" onclick="displayPages(this)">Contact Us</a>
+		<a href="#" id="imageUpload" onclick="displayPages(this)">My Past Orders</a> 
+		<a href="#" id="logout">Logout</a>
 	</nav>
 	<div class="container">
 		<div style="cursor:pointer;font-size: 50px;z-index: 1010; margin: 5px;width: 30px;height: 30px;" id="showLeftPush">
@@ -50,10 +59,10 @@
 				<i class="fa fa-angle-right"></i>
 			</div>
 		</div>
-		<div style="text-align: center;">Welcome to Moo Plans!</div>
+		 <div style="text-align: center;">Welcome to Moo Plans!</div>
 
 		<div id="other" style="width: auto;height: 580px;">
-			<iframe width="100%" height="100%" frameborder="0"></iframe>
+			<iframe width="100%" height="100%" id="homeIframe" frameborder="0"></iframe>
 		</div>
 	</div>
 	<script src="../js/classie.js"></script>
@@ -87,7 +96,6 @@
 
 		function displayPages(ele){
 			var id = ele.id;
-			console.log("================>" + id)
 			$("#other").find("iframe").empty();
 			$("#other").find("iframe").attr("src", id + ".jsp");
 		}
@@ -107,7 +115,13 @@
 						  $("#mooPoints").html(msg.points);
 					});
 			    
+				$("#other").find("iframe").attr("src", "myProfile.jsp");
 		}
+		
+		$( "#logout" ).click(function() {
+			  $( "#logoutForm" ).submit();
+		});
+		
 	</script>
 </body>
 </html>

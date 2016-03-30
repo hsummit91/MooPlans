@@ -18,7 +18,8 @@ public class DBConnection {
 	public static void getConnection(){
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
-			connection = DriverManager.getConnection("jdbc:mysql://50.62.209.227:3308/moop2823825443","moop2823825443", "U7/I/nddsJ)E");
+			connection = DriverManager.getConnection("jdbc:mysql://moop2823825443.c1cyexirjeyj.us-west-2.rds.amazonaws.com/moop2823825443","moop2823825443", "mooplans2016");
+			//connection = DriverManager.getConnection("jdbc:mysql://50.62.209.227:3308/moop2823825443","moop2823825443", "U7/I/nddsJ)E");
 		}catch(SQLException sql){
 			sql.printStackTrace();
 		}catch(ClassNotFoundException c){

@@ -1,8 +1,13 @@
 // Set background image (pattern)
 
-@colorDark:#FF7052;
-@colorMedium:#FF7052;
-@colorLight:#afdefa;
+//@colorDark:#258ecd;
+//@colorMedium:#47a3da;
+//@colorLight:#afdefa;
+
+@colorDark:#E84A5F;
+@colorMedium:#FF847C;
+@colorLight:#FECEA8;
+
 @colorWhite:#fff;
 @colorBorder:#EDEDED;
 @colorGreen:#2ecc71;
@@ -20,7 +25,10 @@
 html, body{
   width: 100%;
   height: 100%;
-  background: url(http://subtlepatterns.com/patterns/sativa.png) repeat fixed;
+  background-repeat: no-repeat;
+  background-size: 500px 250px;
+  background-attachment: fixed;
+  background-position: top;
   font-family: 'Open Sans', sans-serif;
   font-weight: 200;
 }
@@ -29,8 +37,8 @@ html, body{
 
 .login{
   position: relative;
-  top: 50%;
-  width: 250px;
+  top: 60%;
+  width: 400px;
   display: table;
   margin: -150px auto 0 auto;
   background: @colorLight;
@@ -41,14 +49,13 @@ html, body{
   position: relative;
   width: 100%;
   display: block;
-  background: @colorDark;
+  background: @colorMedium;
   padding: 15px;
   color: @colorWhite;
   font-size: 20px;
   
   &:after{
     content: "";
-    background-image: url(http://simpleicon.com/wp-content/uploads/multy-user.png);
     background-size: 100px 100px;
     background-repeat: no-repeat;
     background-position: 152px -16px;
@@ -87,7 +94,7 @@ html, body{
     &:focus{
       padding: 18px 5px 18px 10px;
       outline: 0;
-      border-color: @colorMedium;
+      border-color: @colorDark;
     }
   }
 }
@@ -99,7 +106,7 @@ html, body{
   margin: 0 auto -15px auto;
   background: @colorWhite;
   border-radius: 100%;
-  border: 1px solid @colorMedium;
+  border: 1px solid @colorDark;
   color: @colorMedium;
   font-size: 24px;
   cursor: pointer;
@@ -110,6 +117,10 @@ html, body{
     background: @colorMedium;
     color: @colorWhite;
     outline: 0;
+  }
+  
+  &:after{
+    color: @colorWhite;
   }
 }
 

@@ -19,6 +19,7 @@ public class LoginDAO {
 		try{
 
 			getConnection();
+			
 
 			String sql = "SELECT user_id FROM user WHERE user_email = ? AND user_password = ? AND user_role = ?";
 			pstmt = connection.prepareStatement(sql);
