@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Free uperior Website Template | Contact :: w3layouts</title>
+<title>Contact</title>
 <link href="css/style2.css" rel="stylesheet" type="text/css" media="all" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -22,10 +22,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="logo">
 					<a href="welcome.html"><img style="height: inherit;width: inherit;" src="images/Logo_White.jpg" alt=""/></a>
 				</div>
-				<ul class="follow_icon">
-					<!-- <li><a href="jsp/login.jsp">Login</a> |</li> -->
+<!-- 				<ul class="follow_icon">
+					<li><a href="jsp/login.jsp">Login</a> |</li>
 					<li><a style="font-size: 24px" href="jsp/register.jsp">Register for Beta Test</a></li>
-				</ul>
+				</ul> -->
 			    <div class="clear"></div> 
 			</div> 
 		 </div>	

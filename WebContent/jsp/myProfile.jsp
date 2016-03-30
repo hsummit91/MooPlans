@@ -13,7 +13,7 @@
 	    $.ajax({
 			  method: "POST",
 			  url: "../FetchData",
-			  data: { action: "getUserDetails", userId: "1"  }
+			  data: { action: "getUserDetails", userId: "2"  }
 			}).done(function( msg ) {
 				  console.log(msg.firstName);
 				  var lastName = "";
