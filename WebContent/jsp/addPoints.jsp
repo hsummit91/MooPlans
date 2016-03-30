@@ -19,10 +19,10 @@ Plans</td>
 </tr>
 <tr>
 <td><select name="os0">
-<option value="Mini Plan">Mini Plan $25.00 USD</option>
-<option value="Medium Plan">Medium Plan $50.00 USD</option>
-<option value="Large Plan">Large Plan $100.00 USD</option>
-<option value="Premium Plan">Premium Plan $175.00 USD</option>
+<option value="Mini Plan">Mini Plan</option>
+<option value="Medium Plan">Medium Plan</option>
+<option value="Large Plan">Large Plan</option>
+<option value="Premium Plan">Premium Plan</option>
 </select></td>
 </tr>
 </table>

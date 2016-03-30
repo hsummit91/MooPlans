@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import="java.util.*" %>
+<%@ page import="com.mooplans.model.User" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -25,11 +27,13 @@
 <body class="cbp-spmenu-push" onload="getUserDetails()">
 <%
 		//allow access only if session exists
-	String user = null;
-	if(session.getAttribute("user") == null){
+	User user = null;
+	if(session.getAttribute("User") == null){
 		out.print("Session Invalidate");
 	    response.sendRedirect("login.jsp");
-	}else user = (String) session.getAttribute("user");
+	}else {
+		user = (User) session.getAttribute("User");
+	}
 	String userName = null;
 	String sessionID = null;
 	Cookie[] cookies = request.getCookies();
@@ -53,6 +57,7 @@
 		<a href="#" id="imageUpload" onclick="displayPages(this)">My Past Orders</a> 
 		<a href="#" id="logout">Logout</a>
 	</nav>
+	<input type="hidden" id="userId" value="<%=user.getUser_id() %>" />
 	<div class="container">
 		<div style="cursor:pointer;font-size: 50px;z-index: 1010; margin: 5px;width: 30px;height: 30px;" id="showLeftPush">
 			<div class="zooming" id="expandMenu" onclick="toggleArrows()" style="width: 30px;height: 30px;">
@@ -100,11 +105,13 @@
 			$("#other").find("iframe").attr("src", id + ".jsp");
 		}
 		
-		function getUserDetails(){				
+		function getUserDetails(){		
+			var userId = $("#userId").val();
+			
 			    $.ajax({
 					  method: "POST",
 					  url: "../FetchData",
-					  data: { action: "getUserDetails", userId: "1"  }
+					  data: { action: "getUserDetails", userId: userId  }
 					}).done(function( msg ) {
 						  console.log(msg.firstName);
 						  var lastName = "";

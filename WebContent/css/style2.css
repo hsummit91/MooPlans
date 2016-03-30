@@ -124,8 +124,13 @@ body{
 	border-bottom:5px solid #F0745F;
 }
 .logo{
-	float:left;
+	/* float:left; */
 	width: 40%;
+	 display: block;
+    margin: 0 auto;
+}
+.menu{
+	text-align: center;
 }
 /*--content--*/
 /*  GRID OF FOUR   ============================================================================= */
@@ -138,6 +143,14 @@ body{
 .span_1_of_4 {
 	width: 23.8%;
 }
+
+.imgDim{
+	height: 300px;
+	width: 300px;
+	display: block;
+    margin: 0 auto;
+}
+
 .span_1_of_4  h3{
 	color:#C94848;
 	margin-bottom: .5em;
@@ -158,7 +171,21 @@ body{
 	.wrap{
 		width:95%;
 	}	
+	
+	.imgDim{
+		height: 250px;
+		width: 250px;
+	}
 }
+
+@media only screen and (max-width: 850px) {
+
+	.imgDim{
+		height: 220px;
+		width: 220px;
+	}
+}
+
 /*  GO FULL WIDTH AT LESS THAN 640 PIXELS */
 @media only screen and (max-width: 640px) and (min-width: 480px) {
 	.wrap{
@@ -170,6 +197,11 @@ body{
 	.span_1_of_4 {
 		width:94%;
 		padding:3%;  
+	}
+	
+	.imgDim{
+		height: 200px;
+		width: 200px;
 	}
 }
 /*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
