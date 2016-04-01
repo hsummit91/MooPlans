@@ -1,11 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import="java.util.*"%>
+<%@ page import="com.mooplans.model.User"%>
+<%@ page import="com.mooplans.model.Image"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en" class="no-js">
 	<head>
 	<link rel="stylesheet" type="text/css" href="../css/default.css" />
 	<link rel="stylesheet" type="text/css" href="../css/component.css" />
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="../css/profile.css" />
 	<script src="../js/jquery.min.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
 	<script type="text/javascript">
@@ -13,7 +17,7 @@
 	    $.ajax({
 			  method: "POST",
 			  url: "../FetchData",
-			  data: { action: "getUserDetails", userId: "2"  }
+			  data: { action: "getUserDetails", userId: "1"  }
 			}).done(function( msg ) {
 				  console.log(msg.firstName);
 				  var lastName = "";
@@ -26,139 +30,34 @@
 				  $("#phone").html(msg.phone);
 				  $("#address").html(msg.address);
 				  $("#university").html(msg.university);
-			});
-	    
+				  $("#profileImg").attr("src",msg.image);
+			});    
+	}
+	
+	function selectImage(){
+		$(".container").hide();
+		$("#imageSelector").show("slow");
+	}
+	
+	function getPath(ele){
+		var path = $(ele).attr("src");
+		var imgId = $(ele).attr("id");
+		$("#profileImg").attr("src",path);
+		$("#imageSelector").hide();
+		$(".container").show("slow");
+		//console.log(imgId)
+ 	    $.ajax({
+			  method: "POST",
+			  url: "../ImageUpload",
+			  data: { imageId : imgId }
+			}).done(function( msg ) {
+				  console.log(msg);
+			});  
 	}
 	</script>
-	<style type="text/css">
-
-*{
-    font-family: 'Raleway', sans-serif;
-    color : #FFF;
-    
-}
-
-
-div span {
-     font-weight: 200;
-}
-
-h1{
-     font-weight: 200;
-}
-
-.login_box{
-    background: #FF847C;
-    width:50%;
-    position:absolute;
-    top:2%;
-    left:27.5%;
-    
-    -webkit-box-shadow: 0px 0px 8px 0px rgba(50, 50, 50, 0.54);
--moz-box-shadow:    0px 0px 8px 0px rgba(50, 50, 50, 0.54);
-box-shadow:         0px 0px 8px 0px rgba(50, 50, 50, 0.54);
-}
-
-@media (max-width: 767px) {
-    .login_box{
-        background: #FF847C;
-        width:90%;
-        height:80%;
-        position:absolute;
-        top:10%;
-        left:7%;
-        
-        -webkit-box-shadow: 0px 0px 8px 0px rgba(50, 50, 50, 0.54);
--moz-box-shadow:    0px 0px 8px 0px rgba(50, 50, 50, 0.54);
-box-shadow:         0px 0px 8px 0px rgba(50, 50, 50, 0.54);
-    }
-}
-
-@media (max-width: 480px) {
-    .login_box{
-        left:10%;
-    }
-}
-
-@media (max-width: 350px) {
-	h1{
-		font-size: 18px;
-	}
-	h3{
-		font-size: 16px;
-	}
-	.label{
-		font-size: 14px;
-	}
-}
-
-.follow{
-    background-color:#E84A5F;
-    cursor:pointer;
-}
-
-.follow:hover{
-    background-color: #FECEA8; /*E84A5F FECEA8*/
-    color:black;
-    cursor:pointer;
-}
-.follow:hover span{
-    color:black;
-}
-
-.login_control{
-    background-color:#FFF;
-    padding:10px;
-    
-}
-
-.control {
-    color:#000;
-    margin:10px;
-    text-align: center;
-}
-
-.label {
-    color: #E84A5F;
-    font-size: 18px;
-    font-weight: 500;
-}
-
-.line{
-    border-bottom : 2px solid #E84A5F;
-}
-
-
-.outter{
-    padding: 0px;
-    border: 1px solid rgba(255, 255, 255, 0.29);
-    border-radius: 50%;
-    background-color: #2A363B;
-    width: 150px;
-    height: 150px;
-}
-
-
-.profile-header-img > img.img-circle {
-    width: 150px;
-    height: 150px;
-    border: 1px solid #2A363B;
-}
-
-.rank-label-container {
-    margin-top: -19px;
-    text-align: center;
-    cursor: pointer;
-}
-
-.label.label-default.rank-label {
-    background-color: #2A363B;
-    padding: 5px 10px 5px 10px;
-    border-radius: 27px;
-}
-	</style>
 	</head>
 	<body onload="getUserDetails()">
+
 <div class="container">
 	<div class="row login_box">
 	    <div class="col-md-12 col-xs-12" align="center">
@@ -166,10 +65,10 @@ box-shadow:         0px 0px 8px 0px rgba(50, 50, 50, 0.54);
             <!-- <div class="outter"></div> -->
             <div class="profile-header-container">   
     		<div class="profile-header-img">
-                <img class="img-circle" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" />
+                <img class="img-circle" id="profileImg" src="" />
                 <!-- badge -->
                 <div class="rank-label-container">
-                    <span class="label label-default rank-label">Change Image</span>
+                    <a href="#" onclick="selectImage()" ><span class="label label-default rank-label">Change Image</span></a>
                 </div>
             </div>
         </div>   
@@ -207,6 +106,17 @@ box-shadow:         0px 0px 8px 0px rgba(50, 50, 50, 0.54);
                 </div>
         </div>
      </div>
+  </div>
+  <div id="imageSelector" style="display: none;">
+  <%
+	ArrayList<Image> img = (ArrayList<Image>) session.getAttribute("images");
+	for (Image imageCodes : img) {
+  %>
+	<div class="col-xs-6 col-md-3 foo" style="height: 250px;width: 250px;margin: 0.5em">
+		<img alt="Profile Image" onclick="getPath(this)" id="<%=imageCodes.getImageId()%>" style="height: inherit;width: inherit;cursor: pointer;" src="<%=imageCodes.getImagePath()%>" />
+	</div> 
+
+  <%}%>
   </div>
 	</body>
 </html>

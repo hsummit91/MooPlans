@@ -13,6 +13,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href='http://fonts.googleapis.com/css?family=Merriweather+Sans' rel='stylesheet' type='text/css'>
 <link href='css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+<style type="text/css">
+.foo img:last-child{display:none}
+.foo:hover img:first-child{display:none}
+.foo:hover img:last-child{display:inline-block}
+</style>
 </head>
 <body>
 <div class="header-box"></div>
@@ -20,6 +25,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="total">
 		<div class="header">
 			<div class="header-bot">
+				<div class="loginIcon" style="float: right;width: 150px;height: 150px;">
+					<a style="font-size: 22px" href="jsp/register.jsp"><img src="images/beta.png" alt="Click here to Beta Test" /></a>
+				</div>
 				<div class="logo">
 					<a href="welcome.html"><img style="height: inherit;width: inherit;" src="images/Logo_White.jpg" alt=""/></a>
 				</div>
@@ -45,12 +53,30 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		</div>
    </div>
  <div class="main">
- <div class="col-xs-6 col-md-3" style="height: 300px;width: 300px;"><img src="images/dc pizza round.png" alt="DC Pizza" /></div>
- <div class="col-xs-6 col-md-3" style="height: 300px;width: 300px;"><img src="images/oasis.png" alt="Oasis" /></div>
- <div class="col-xs-6 col-md-3" style="height: 300px;width: 300px;"><img src="images/jewel-of-india.png" alt="Jewel of India" /></div>
- <div class="col-xs-6 col-md-3" style="height: 300px;width: 300px;"><img src="images/healthy on lark.png" alt="Healthy on Lark" /></div>
- <div class="col-xs-6 col-md-3" style="height: 300px;width: 300px;"><img src="images/Bombers.png" alt="Bombers" /></div>
- <div class="col-xs-6 col-md-3" style="height: 300px;width: 300px;"><img src="images/Stacks.png" alt="Stacks" /></div>
+ <div class="col-xs-6 col-md-3 foo" style="height: 300px;width: 300px;">
+ 	<img src="images/restLogos/DCs PIZZA.jpg" alt="DC Pizza" />
+ 	<img src="images/restLogos/DCs PIZZA Raw.jpg" alt="DC Pizza" />
+ </div>
+ <div class="col-xs-6 col-md-3 foo" style="height: 300px;width: 300px;">
+ 	<img src="images/restLogos/Oasis Mediterranean Cafe.jpg" alt="Oasis" />
+ 	<img src="images/restLogos/Oasis Mediterranean Cafe Raw.jpg" alt="Oasis" />
+ </div>
+ <div class="col-xs-6 col-md-3 foo" style="height: 300px;width: 300px;">
+ 	<img src="images/restLogos/Jewel of India.jpg" alt="Jewel of India" />
+ 	<img src="images/restLogos/Jewel of India Raw.jpg" alt="Jewel of India" />
+ </div>
+ <div class="col-xs-6 col-md-3 foo" style="height: 300px;width: 300px;">
+ 	<img src="images/restLogos/Healthy on Lark.jpg" alt="Healthy on Lark" />
+ 	<img src="images/restLogos/Healthy on Lark Raw.jpg" alt="Healthy on Lark" />
+ </div>
+ <div class="col-xs-6 col-md-3 foo" style="height: 300px;width: 300px;">
+ 	<img src="images/restLogos/Bombers.jpg" alt="Bombers" />
+ 	<img src="images/restLogos/Bombers Raw.jpg" alt="Bombers" />
+ </div>
+ <div class="col-xs-6 col-md-3 foo" style="height: 300px;width: 300px;">
+ 	<img src="images/restLogos/Stacks.jpg" alt="Stacks" />
+ 	<img src="images/restLogos/Stacks Raw.jpg" alt="Stacks" />
+ </div>
 <!--	  <div class="pricing">
 				<div class="col_1_of_menu span_1_of_menu">
 					<div class="inner-block">

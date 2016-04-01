@@ -129,6 +129,8 @@ body{
 	 display: block;
     margin: 0 auto;
 }
+
+
 .menu{
 	text-align: center;
 }
@@ -175,6 +177,10 @@ body{
 	.imgDim{
 		height: 250px;
 		width: 250px;
+	}
+	.loginIcon{
+		width: 13% !important;
+		height: 13% !important;
 	}
 }
 

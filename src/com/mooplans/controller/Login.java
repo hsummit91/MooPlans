@@ -1,8 +1,8 @@
 package com.mooplans.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.mooplans.dao.LoginDAO;
+import com.mooplans.model.Image;
 import com.mooplans.model.User;
 
 /**
@@ -41,9 +42,7 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session=request.getSession();
-		//String loggedIn = "false";
 		String url = "/jsp/login.jsp";
-		RequestDispatcher rd = null;  
 		
 		String emailId= request.getParameter("email");
 		String password=request.getParameter("password");
@@ -77,9 +76,9 @@ public class Login extends HttpServlet {
 	            userName.setMaxAge(30*60);
 	            response.addCookie(userName);
 
-	          //  loggedIn = "true";
-				//session.setAttribute("loggedIn", loggedIn);
 				User u = LoginDAO.getDetails(ID);
+				String address = u.getUser_address();
+				session.setAttribute("userAddress", address);
 				session.setAttribute("User", u);
 				if(u.getUser_role().equalsIgnoreCase("student")){
 					url = "/jsp/home.jsp";
@@ -90,6 +89,10 @@ public class Login extends HttpServlet {
 				}
 			}
 		}
+		
+		ArrayList<Image> images = new ArrayList<Image>();
+		images = LoginDAO.getCodeImages();
+		session.setAttribute("images", images);
 
 		System.out.println("errorMsg ==>"+errorMsg);
 		System.out.println("Session Validation ==>"+session.getAttribute("user"));
