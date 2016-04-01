@@ -9,7 +9,7 @@ function callMenu(){
 }
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Calling Menu</title>
+<title>Cancelled Transaction</title>
 </head>
 <body onload="callMenu()">
 	<form id="redirectForm" action="../ActionServlet?action=restPage" name="formName" method="post"></form>

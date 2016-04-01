@@ -99,7 +99,7 @@ public class DishDAO {
 		
 		try{
 			getConnection();
-			String sql = "SELECT dish_name, dishes.dish_category, dishes.dish_price"
+			String sql = "SELECT dish_name, dishes.dish_category, dishes.dish_price, dishes.dish_id"
 					+ " FROM dishes INNER JOIN restaurant ON dishes.dish_rest_id=restaurant.rest_id"
 					+ " WHERE restaurant.rest_status <> 0 and restaurant.rest_name=(?)";
 
@@ -112,6 +112,7 @@ public class DishDAO {
 				dishes.setDishName(rs.getString(1));
 				dishes.setDishCategory(rs.getString(2));
 				dishes.setDishPrice(rs.getFloat(3)); 
+				dishes.setDishId(rs.getInt(4)); 
 				userDishes.add(dishes);
 			}
 		}catch(SQLException e){

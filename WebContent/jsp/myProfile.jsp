@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import="java.util.*"%>
+<%@ page import="com.mooplans.model.User"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en" class="no-js">
 	<head>
@@ -142,6 +144,14 @@ box-shadow:         0px 0px 8px 0px rgba(50, 50, 50, 0.54);
 	</style>
 	</head>
 	<body onload="getUserDetails()">
+	<%
+		//allow access only if session exists
+	User user = null;
+	if(session.getAttribute("User") == null){
+		out.print("Session expired. Please re-login.");
+	    response.sendRedirect("login.jsp");
+	}else user = (User) session.getAttribute("User");
+%>
 <div class="container">
 	<div class="row login_box">
 	    <div class="col-md-12 col-xs-12" align="center">
@@ -149,10 +159,10 @@ box-shadow:         0px 0px 8px 0px rgba(50, 50, 50, 0.54);
             <!-- <div class="outter"></div> -->
             <div class="profile-header-container">   
     		<div class="profile-header-img">
-                <img class="img-circle" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" />
+                <img class="img-circle" src="<%=user.getUser_image()%>" />
                 <!-- badge -->
                 <div class="rank-label-container">
-                    <span class="label label-default rank-label">Change Image</span>
+                    <a href="imageRedirect.jsp"><span class="label label-default rank-label">Change Image</span></a>
                 </div>
             </div>
         </div>   

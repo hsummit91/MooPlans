@@ -1,14 +1,15 @@
 package com.mooplans.dao;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.mooplans.model.Image;
 import com.mooplans.model.User;
 
 import static com.mooplans.dao.DBConnection.*;
-
 
 
 public class LoginDAO {
@@ -96,7 +97,7 @@ public class LoginDAO {
 		}
 		return userDetails;
 	}
-	
+
 	public static User getDetails(int ID){
 		User user = null;
 		try{
@@ -296,7 +297,7 @@ public class LoginDAO {
 			pstmt.setString(1, imagepath);
 			pstmt.setInt(2, ID);
 			pstmt.executeUpdate();
-			
+
 		}catch(SQLException se){
 			System.err.println(se.getMessage());
 			se.printStackTrace();
@@ -305,7 +306,7 @@ public class LoginDAO {
 		}
 		return true;
 	}
-	
+
 	public static String getImagePath(User user){
 		String imagePath = null;
 		try{
@@ -313,7 +314,7 @@ public class LoginDAO {
 			String sql = "SELECT user_image FROM user WHERE user_email = ?";
 			pstmt = connection.prepareStatement(sql);
 			pstmt.setString(1, user.getUser_email());
-			
+
 			if(rs.next()){
 				imagePath = rs.getString(1);
 			}
@@ -325,5 +326,72 @@ public class LoginDAO {
 		}
 		return imagePath;
 	}
+	
+	
+	public static ArrayList<Image> getCodeImages(){
+		ArrayList<Image> img = new ArrayList<Image>();
+		try{
+			getConnection();
+			String sql = "SELECT image_id,user_image FROM image_codes";
+			pstmt = connection.prepareStatement(sql);
+			rs = pstmt.executeQuery();
 
+			while(rs.next()){
+				Image i = new Image();
+				i.setImageId(rs.getInt(1));
+				i.setImagePath(rs.getString(2));
+				img.add(i);
+			}
+
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			//release();
+		}
+		return img;
+	}
+	
+	public static String getCodeImagePath(int imageId){
+		String imagePath = null;
+		try{
+			getConnection();
+			String sql = "SELECT user_image FROM image_codes WHERE image_id = ?";
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, imageId);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				imagePath = rs.getString(1);
+				System.out.println("changed path: " +imagePath);
+			}
+
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			release();
+		}
+		return imagePath;
+	}
+
+
+	public static boolean updateImagePath(User user, int imageId){
+		boolean flag = false;
+		String imagePath = getCodeImagePath(imageId);
+		
+		try{
+			getConnection();
+			String sql = "UPDATE user SET user_image = ? WHERE user_email = ? and user_id = ?";
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setString(1, imagePath);
+			pstmt.setString(2, user.getUser_email());
+			pstmt.setInt(3, user.getUser_id());
+			pstmt.executeUpdate();
+			flag = true;
+		}catch(SQLException e){
+			flag = false;
+			e.printStackTrace();
+		}finally{
+			release();
+		}
+		return flag;
+	}
 }

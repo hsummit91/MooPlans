@@ -8,27 +8,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Restaurants</title>
 <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
-<script type="text/javascript">
-<script type="text/javascript">
-function getTaskId(){
-    var id = document.getElementById('getTaskId').value;
-    alert(id);
-}
-</script>
 </head>
 <body onload="load()">
-<form method="post" name="restName" action="./MenuServlet">
-	<table>
-		<tbody>
+<form method="post" name="formName" action="./ActionServlet?action=menuPage">
+	
 			<%
 				ArrayList<Restaurant> rest = (ArrayList<Restaurant>) request.getAttribute("restList");
 					for (Restaurant rst : rest) {%>
-			<tr>
-			<td><input type="submit" class="btn btn-primary btn-lg" name="restName" value="<%=rst.getRestName()%>" /></td>
-			<tr>
+		
+			<div><input type="submit" class="btn btn-primary btn-lg col-xs-6 col-md-3" name="restName" value="<%=rst.getRestName()%>" /></div>
+		
 			<%}%>
-		</tbody>
-	</table>
+		
 </form>
 </body>
 </html>
