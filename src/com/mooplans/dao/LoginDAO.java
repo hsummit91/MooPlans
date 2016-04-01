@@ -70,7 +70,7 @@ public class LoginDAO {
 		try{
 			getConnection();
 			String sql = "select user_password, user_firstname, user_lastname, user_email,"
-					+ "user_phone, user_university, user_address, user_role, user_points from user where user_id = ?";
+					+ "user_phone, user_university, user_address, user_role, user_points, user_image from user where user_id = ?";
 			pstmt = connection.prepareStatement(sql);
 			pstmt.setInt(1, ID);
 			rs = pstmt.executeQuery();
@@ -85,7 +85,8 @@ public class LoginDAO {
 				userDetails.put("university", rs.getString(6));
 				userDetails.put("address", rs.getString(7));
 				userDetails.put("role", rs.getString(8));
-				userDetails.put("points", rs.getString(9));								
+				userDetails.put("points", rs.getString(9));		
+				userDetails.put("image", rs.getString(10));	
 			}
 
 		}catch(SQLException e){

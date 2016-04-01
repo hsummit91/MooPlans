@@ -1,6 +1,7 @@
 package com.mooplans.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.mooplans.dao.LoginDAO;
+import com.mooplans.model.Image;
 import com.mooplans.model.User;
 
 /**
@@ -87,6 +89,10 @@ public class Login extends HttpServlet {
 				}
 			}
 		}
+		
+		ArrayList<Image> images = new ArrayList<Image>();
+		images = LoginDAO.getCodeImages();
+		session.setAttribute("images", images);
 
 		System.out.println("errorMsg ==>"+errorMsg);
 		System.out.println("Session Validation ==>"+session.getAttribute("user"));
