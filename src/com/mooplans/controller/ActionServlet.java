@@ -9,12 +9,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.mooplans.dao.DishDAO;
+import com.mooplans.model.Cart;
 import com.mooplans.model.Dishes;
+import com.mooplans.model.Restaurant;
 
 /**
  * Servlet implementation class ActionServlet
@@ -35,7 +38,7 @@ public class ActionServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		doPost(request, response);
 	}
 
 	/**
@@ -43,33 +46,35 @@ public class ActionServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		System.out.println("Inaction");
-		
-		PrintWriter out = response.getWriter();
-
 		String action = request.getParameter("action");
-
-		if(action == null){
-			action = "";
-		}
-
-		if(action.equals("")){
-			ArrayList<Dishes> menuList = new ArrayList<Dishes>();
-			menuList = DishDAO.getDishDetails();
-			
-//
-//			for (int i = 0; i < menuList.size(); i++) {
-//		
-//				System.out.println(menuList.get(i).getDishName());
-//				System.out.println(menuList.get(i).getDishCategory());
-//				System.out.println(menuList.get(i).getDishPrice());
-//				System.out.println(menuList.get(i).getRest_name());
-//			}
-//			
-
-			request.setAttribute("menuList", menuList); //categorylist is an arraylist      contains object of class category  
+		System.out.println("Action called "+action);
+		
+		if(action.equalsIgnoreCase("restPage")){
+			System.out.println("In Rest action");
+			ArrayList<Restaurant> restList = new ArrayList<Restaurant>();
+			restList = DishDAO.getRestnames();
+			request.setAttribute("restList", restList);
 			getServletConfig().getServletContext().getRequestDispatcher("/jsp/orders.jsp").forward(request,response);
+		}
+		
+		if(action.equalsIgnoreCase("menuPage")){
+			System.out.println("In Menu action");
+			HttpSession session = request.getSession();
+			Cart shoppingCart;
+			shoppingCart = (Cart) session.getAttribute("cart");
+			if(shoppingCart == null){
+				System.out.println("Menu servlet where cart is null");
+				shoppingCart = new Cart();
+				session.setAttribute("cart", shoppingCart);
+			}
 
-		}	
+			String restName = request.getParameter("restName");
+			System.out.println("Selected restaurant: "+restName);
+
+			ArrayList<Dishes> menuList = new ArrayList<Dishes>();
+			menuList = DishDAO.getDishDetailsByName(restName);	
+			request.setAttribute("menuList", menuList); 
+			getServletConfig().getServletContext().getRequestDispatcher("/jsp/menu.jsp").forward(request,response);
+		}
 	}
 }

@@ -9,9 +9,9 @@ function callMenu(){
 }
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Calling Menu</title>
+<title>Calling Images</title>
 </head>
 <body onload="callMenu()">
-	<form id="redirectForm" action="../ActionServlet?action=restPage" name="formName" method="post"></form>
+	<form id="redirectForm" action="../ImageUpload?action=default" name="formName" method="get"></form>
 </body>
 </html>

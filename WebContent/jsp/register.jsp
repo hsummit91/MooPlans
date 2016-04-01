@@ -96,7 +96,7 @@ td{
 	<form method="post" name="register" action="../Registration"
 		class="login">
 		<fieldset>
-			<legend class="legend">Get registered with Mooplans.</legend>
+			<legend class="legend">Get registered with Mooplans</legend>
 			<div class="input">
 
 				<table style="with: 100%">
@@ -120,8 +120,8 @@ td{
 					</tr>
 					<tr>
 						<td>Cell Phone</td>
-						<td><input type="text" maxlength="12" name="phone"
-							title="123-456-7890" pattern="\d{3}[\-]\d{3}[\-]\d{4}"
+						<td><input type="text" maxlength="10" name="phone"
+							title="1234567890" pattern="\d{10}"
 							placeholder="Cell Phone" required /></td>
 					</tr>
 					<tr>

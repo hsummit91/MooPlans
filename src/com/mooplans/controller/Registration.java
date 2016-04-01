@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mooplans.dao.EmailDAO;
 import com.mooplans.dao.LoginDAO;
 import com.mooplans.model.User;
 
@@ -96,6 +97,13 @@ public class Registration extends HttpServlet {
 				System.out.println("Registraion failed ID :"+ID);
 				request.setAttribute("errormsg", "Email ID already exists.");
 			}else{
+				// Sending welcome email to user
+				User user = new User();
+				user.setUser_firstname(firstname);
+				user.setUser_email(emailId);
+				EmailDAO.sendMail(user, 1);
+				
+				// Set success message
 				System.out.println("Registraion done success ID :"+ID);
 				url = "/jsp/login.jsp?errorMsg=Registration Successful&isError=true";
 			}

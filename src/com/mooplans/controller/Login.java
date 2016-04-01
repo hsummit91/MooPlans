@@ -2,7 +2,6 @@ package com.mooplans.controller;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -41,9 +40,7 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session=request.getSession();
-		//String loggedIn = "false";
 		String url = "/jsp/login.jsp";
-		RequestDispatcher rd = null;  
 		
 		String emailId= request.getParameter("email");
 		String password=request.getParameter("password");
@@ -77,9 +74,9 @@ public class Login extends HttpServlet {
 	            userName.setMaxAge(30*60);
 	            response.addCookie(userName);
 
-	          //  loggedIn = "true";
-				//session.setAttribute("loggedIn", loggedIn);
 				User u = LoginDAO.getDetails(ID);
+				String address = u.getUser_address();
+				session.setAttribute("userAddress", address);
 				session.setAttribute("User", u);
 				if(u.getUser_role().equalsIgnoreCase("student")){
 					url = "/jsp/home.jsp";
