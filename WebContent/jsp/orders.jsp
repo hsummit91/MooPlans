@@ -16,24 +16,12 @@
 			<%
 				ArrayList<Restaurant> rest = (ArrayList<Restaurant>) request.getAttribute("restList");
 					for (Restaurant rst : rest) {%>
-		
-			
-				<%-- <input type="submit" class="btn btn-primary btn-lg col-xs-6 col-md-3" name="restName" value="<%=rst.getRestName()%>" /> --%>
-				
-<%-- 				<div class="col-xs-6 col-md-3 foo" style="height: 250px;width: 250px;margin: 0.5em">
-					<input type="image" alt="test" style="height: inherit;width: inherit;" name="restName" value="<%=rst.getRestName()%>" src="images/restLogos/DCs.jpg" />
-				</div> --%>
 				
 				<div class="col-xs-6 col-md-3 foo" style="height: 250px;width: 250px;margin: 0.5em">
 					<button  name="restName" style="height: inherit;width: inherit;" value="<%=rst.getRestName()%>">
-						<input type="image" alt="<%=rst.getRestName()%>" style="height: 230px;width: 230px;" src='images/restLogos/<%=rst.getRestName()%>.jpg' />
+						<input type="image" name="restName" alt="<%=rst.getRestName()%>" value="<%=rst.getRestName()%>" style="height: 230px;width: 230px;" src='images/restLogos/<%=rst.getRestName()%>.jpg' />
 					</button>
 				</div>
-				
-				
-<!-- 				<div class="col-xs-6 col-md-3 foo" style="height: 250px;width: 250px;margin: 0.5em">
-					<img alt="test" style="height: inherit;width: inherit;" src="images/restLogos/DCs.jpg" />
-				</div> -->
 		
 			<%}%>
 		
