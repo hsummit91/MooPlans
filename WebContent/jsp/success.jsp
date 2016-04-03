@@ -4,9 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>User registered</title>
+<title>Food ordered.</title>
 </head>
 <body>
-<h1> Wow !!! Registration success.</h1>
+<% 
+String msg = (String)session.getAttribute("message");
+%>
+<h1> Wow!!! food ordered success.</h1>
+<h4><%=msg%></h4>
 </body>
 </html>

@@ -8,6 +8,10 @@ pageEncoding="UTF-8"%>
 </head>
 <body>
 <div style="text-align: center;">
+<% 
+String msg = (String)session.getAttribute("message");
+if(msg != null){
+%><h4><%=msg%></h4><%}%>
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post"
 target="_top">
 <input type="hidden" name="cmd" value="_s-xclick"> <input
