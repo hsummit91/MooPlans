@@ -99,7 +99,7 @@
 </style>
 </head>
 <body>
-	<form name="formName" method="post" action="./CartServlet">
+	<!-- <form name="formName" method=post action="./CartServlet"> -->
  	<table id="example" class="display dataTable" cellspacing="0">
 		<thead>
 			<tr>
@@ -113,7 +113,6 @@
 
 			<%
 				ArrayList<Dishes> rest = (ArrayList<Dishes>) request.getAttribute("menuList");
-				int index=0;
 					for (Dishes dishes : rest) { 
 			%>
 			<tr>	
@@ -127,16 +126,16 @@
             		<%=dishes.getDishPrice()%>
             	</td>
             	<td>
-            		<input type="submit" class="btn btn-primary" value="Add to cart">
-            		<input type="hidden" name="dishId" value="<%=dishes.getDishId()%>"/>
+            	<%-- 	<input type="hidden" name="dishId" value="<%=dishes.getDishId()%> "/>
             		<input type="hidden" name="dishName" value="<%=dishes.getDishName()%>" />
-            		<input type="hidden" name="dishPoints" value="<%=dishes.getDishPrice()%>"/>
+            		<input type="hidden" name="dishPoints" value="<%=dishes.getDishPrice()%>"/> --%>
+            		<a href="<%=request.getContextPath()%>/CartServlet?button=add&dishId=<%=dishes.getDishId()%>&dishName=<%=dishes.getDishName()%>">Add to Cart</a>
             	</td>
 			</tr>          	
 			<%}%>
 		</tbody>
 	</table>
-	</form>
+<!-- 	</form> -->
 </body>
  <script src="./js/jquery.dataTables.min.js"></script>
  <script type="text/javascript">

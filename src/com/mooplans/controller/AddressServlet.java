@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import com.mooplans.dao.PayPalDAO;
 import com.mooplans.model.Cart;
 import com.mooplans.model.Dishes;
+import com.mooplans.model.Order;
 import com.mooplans.model.User;
 
 /**
@@ -23,14 +24,14 @@ import com.mooplans.model.User;
 @WebServlet("/AddressServlet")
 public class AddressServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AddressServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public AddressServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -43,7 +44,7 @@ public class AddressServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		String action = request.getParameter("action");
 		HttpSession session = request.getSession();
 		Cart shoppingCart;
@@ -53,44 +54,53 @@ public class AddressServlet extends HttpServlet {
 		String shippingAddress = null;
 		String phone = null;
 		String url = null;
+		String message = null;
 		User user = null;
 		if(session.getAttribute("User") == null)
-		    url = "/login.jsp";
+			url = "/login.jsp";
 		else user = (User) session.getAttribute("User");
-		
+
 		if(action.equalsIgnoreCase("currentAddress")){
 			name = user.getUser_firstname();
 			for(Integer key: items.keySet()){
 				System.out.println("Key"+items.get(key)+" value="+key);
 			}
-			System.out.println("Try "+user.getUser_firstname());
-			System.out.println("Try "+user.getUser_address());
-			System.out.println("Try "+user.getUser_phone());
-			System.out.println("Points "+user.getUser_points());
 		}
-		
+
 		else if(action.equalsIgnoreCase("newAddress")){
 			name = request.getParameter("fullname");
 			shippingAddress = request.getParameter("address");
 			phone = request.getParameter("phone");
-			System.out.println("New"+name);
-			System.out.println("New"+shippingAddress);
-			System.out.println("New"+phone);
-			System.out.println("Points "+user.getUser_points());
+			user.setUser_firstname(name);
+			user.setUser_address(shippingAddress);
+			user.setUser_phone(phone);
+		}
+
+		// Calling PayDAO to deduct User points based on his order and make entry in the order table(s)
+		float totalBill = 0;
+		for(Integer key: items.keySet()){
+			System.out.println("Key"+items.get(key)+" value="+key);
+			// Get all Dish Points here and prepare Bill
+			totalBill += PayPalDAO.getBill(key); 
 		}
 		
-		// Calling PayDAO to deduct User points based on his order and make entry in the order table(s)
-		PayPalDAO pp = new PayPalDAO();
-		ArrayList<Dishes> userDishes = new ArrayList<Dishes>();
-	//	float totalBill = pp.getBill(items);
-		//pp.updateUserPoints(user, totalBill);
-		
-		
-		//String url = "/paypal.jsp";
-		
-		//RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
-		//dispatcher.forward(request, response);	
-		
+		boolean pointsDeducted = PayPalDAO.updateUserPoints(user, items);
+		if(pointsDeducted){
+			// Create the new order and update order table
+			int orderId = PayPalDAO.createOrder(user, items);
+			url = "/jsp/orderSummary.jsp";
+			message = "Thank you for your purchase. Your Order #"+orderId;
+			session.setAttribute("totalBill", String.valueOf(totalBill));
+			session.setAttribute("message", message);
+		}
+		else{
+			url = "/jsp/addPoints.jsp";
+			message = "Not enough points. Please add points";
+			session.setAttribute("message", message);
+		}
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+		dispatcher.forward(request, response);	
+
 	}
 
 }
