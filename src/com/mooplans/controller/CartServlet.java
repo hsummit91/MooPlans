@@ -35,9 +35,8 @@ public class CartServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		processRequest(request, response);
+		doPost(request, response);
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -49,17 +48,30 @@ public class CartServlet extends HttpServlet {
 		shoppingCart = (Cart) session.getAttribute("cart");
 
 		if(shoppingCart == null){
-			System.out.println("Cart servlet where cart is null");
+			System.out.println("Cart servlet where cart is empty");
 			shoppingCart = new Cart();
 			session.setAttribute("cart", shoppingCart);
 		}
 
-		int dishId = Integer.parseInt(request.getParameter("dishId"));
-		String dishName = request.getParameter("dishName");
-		Float dishPoints = Float.parseFloat(request.getParameter("dishPoints"));
+		//Float dishPoints = Float.parseFloat(request.getParameter("dishPoints"));
 		//int quantity = Integer.parseInt(request.getParameter("quantity"));
-		System.out.println("Ordered ID item "+dishName+" for points "+dishPoints);
-		shoppingCart.addToCart(dishId, dishName);
+		String dishName = "";
+		String dishId = "";
+		String buttonClick  = "";
+		try{
+			buttonClick  = request.getParameter("button");
+		}catch(NullPointerException ne){}
+		
+		if(buttonClick != null){
+			    dishName = request.getParameter("dishName").trim();
+				dishId = request.getParameter("dishId").trim();
+				shoppingCart.addToCart(Integer.parseInt(dishId), dishName);
+		}
+		else{
+			dishId = request.getParameter("dishId").trim();
+			shoppingCart.deleteFromCart(Integer.parseInt(dishId));
+		}
+	
 		session.setAttribute("cart", shoppingCart);
 		try (PrintWriter out = response.getWriter()) {
 			out.println("<!DOCTYPE html>");
@@ -77,49 +89,14 @@ public class CartServlet extends HttpServlet {
 
 			out.println("<th>Food Item</th>");
 			for(Integer key: items.keySet()){
-				out.println("<form action='CartServlet' method='doGet'><input type='hidden' name='itemId' value='"+key+"'>"
+				out.println("<form action='CartServlet?button=delete' method='doGet'><input type='hidden' name='dishId' value='"+key+"'>"
 						+ "<tr><td>"+items.get(key)+"</td><td><input type='submit' value='delete'></td></tr></form>");
 			}
 			out.println("</table>");
+			if(!items.isEmpty())
 			out.println("<a href="+request.getContextPath()+"/jsp/checkout.jsp><input type='submit' value='Proceed Checkout'></a>");
 			out.println("</body>");
 			out.println("</html>");
 		  }
 		}
-	
-	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-		System.out.println("in process");
-        response.setContentType("text/html;charset=UTF-8");
-        int itemId = Integer.parseInt(request.getParameter("itemId"));
-          HttpSession session = request.getSession();
-        Cart shoppingCart;
-        shoppingCart = (Cart) session.getAttribute("cart");
-        shoppingCart.deleteFromCart(itemId);
-        session.setAttribute("cart", shoppingCart);
-         shoppingCart = (Cart) session.getAttribute("cart");
-        try (PrintWriter out = response.getWriter()) {
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Delete Item</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Meal successfully deleted from cart </h1>");
-			out.println("<a href="+request.getContextPath()+"/ActionServlet?action=restPage><input type='submit' value='Add more Items'></a>");
-            HashMap<Integer, String> items = shoppingCart.getCartItems();
-            System.out.println("Size "+items.size());
-            out.println("<table border='1px'>");
-             
-            out.println("<th>Food Item</th>");
-			for(Integer key: items.keySet()){
-				out.println("<form action='CartServlet' method='doGet'><input type='hidden' name='itemId' value='"+key+"'>"
-						+ "<tr><td>"+items.get(key)+"</td><td><input type='submit' value='delete'></td></tr></form>");
-			}
-			out.println("</table>");
-			out.println("<a href="+request.getContextPath()+"/jsp/checkout.jsp><input type='submit' value='Proceed Checkout'></a>");
-			out.println("</body>");
-			out.println("</html>");
-        }
-    }
 }

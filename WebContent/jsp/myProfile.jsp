@@ -12,12 +12,21 @@
 	<link rel="stylesheet" type="text/css" href="../css/profile.css" />
 	<script src="../js/jquery.min.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
+	<%
+		//allow access only if session exists
+	User user = null;
+	if(session.getAttribute("User") == null){
+		out.print("Session Invalidate");
+	    response.sendRedirect("login.jsp");
+	}else {
+		user = (User) session.getAttribute("User");
+	}%>
 	<script type="text/javascript">
 	function getUserDetails(){				
 	    $.ajax({
 			  method: "POST",
 			  url: "../FetchData",
-			  data: { action: "getUserDetails", userId: "1"  }
+			  data: { action: "getUserDetails", userId: "<%=user.getUser_id()%>"  }
 			}).done(function( msg ) {
 				  console.log(msg.firstName);
 				  var lastName = "";

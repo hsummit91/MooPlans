@@ -7,6 +7,8 @@ import java.util.HashMap;
  */
 public class Cart {
     HashMap<Integer, String> cartItems;
+    private float totalBill;
+    
     public Cart(){
      cartItems = new HashMap<>();
       
@@ -21,5 +23,10 @@ public class Cart {
     public void deleteFromCart(int itemId){
         cartItems.remove(itemId);
     }
-     
+	public float getTotalBill() {
+		return totalBill;
+	}
+	public void setTotalBill(float totalBill) {
+		this.totalBill = totalBill;
+	}    
 }

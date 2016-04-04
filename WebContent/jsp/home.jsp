@@ -49,8 +49,8 @@
 	</form>
 	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
 		<div id="sideProfile" align="center"></div>
-		<h3><span id="firstName">Omkar Kulkarni</span></h3>
-		<h4>Moo Points: <span id="mooPoints"> 175 </span></h4>
+		<h3><span id="firstName"><%=user.getUser_firstname() %></span></h3>
+		<h4>Moo Points: <span id="mooPoints"> <%=user.getUser_points()%> </span></h4>
 		<a href="#" id="myProfile" onclick="displayPages(this)">My Profile</a>
 		<a href="#" id="addPoints" onclick="displayPages(this)">Add Moo Points</a> 
 		<a href="#" id="orderRedirect" onclick="displayPages(this)">Place an Order</a> 
