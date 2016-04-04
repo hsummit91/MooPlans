@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import com.mooplans.dao.PayPalDAO;
 import com.mooplans.model.Cart;
 import com.mooplans.model.Dishes;
+import com.mooplans.model.Order;
 import com.mooplans.model.User;
 
 /**
@@ -59,34 +60,37 @@ public class AddressServlet extends HttpServlet {
 			url = "/login.jsp";
 		else user = (User) session.getAttribute("User");
 
-		float total = 0; 
 		if(action.equalsIgnoreCase("currentAddress")){
 			name = user.getUser_firstname();
 			for(Integer key: items.keySet()){
 				System.out.println("Key"+items.get(key)+" value="+key);
-				total += key; 
 			}
-			System.out.println("Try "+user.getUser_firstname());
-			System.out.println("Try "+user.getUser_address());
-			System.out.println("Try "+user.getUser_phone());
-			System.out.println("Points "+user.getUser_points());
 		}
 
 		else if(action.equalsIgnoreCase("newAddress")){
 			name = request.getParameter("fullname");
 			shippingAddress = request.getParameter("address");
 			phone = request.getParameter("phone");
-			System.out.println("New"+name);
-			System.out.println("New"+shippingAddress);
-			System.out.println("New"+phone);
-			System.out.println("Points "+user.getUser_points());
+			user.setUser_firstname(name);
+			user.setUser_address(shippingAddress);
+			user.setUser_phone(phone);
 		}
 
 		// Calling PayDAO to deduct User points based on his order and make entry in the order table(s)
-		boolean pointsDeducted = PayPalDAO.updateUserPoints(user, total);
+		float totalBill = 0;
+		for(Integer key: items.keySet()){
+			System.out.println("Key"+items.get(key)+" value="+key);
+			// Get all Dish Points here and prepare Bill
+			totalBill += PayPalDAO.getBill(key); 
+		}
+		
+		boolean pointsDeducted = PayPalDAO.updateUserPoints(user, items);
 		if(pointsDeducted){
-			url = "/jsp/success.jsp";
-			message = "Food is on its way";
+			// Create the new order and update order table
+			int orderId = PayPalDAO.createOrder(user, items);
+			url = "/jsp/orderSummary.jsp";
+			message = "Thank you for your purchase. Your Order #"+orderId;
+			session.setAttribute("totalBill", String.valueOf(totalBill));
 			session.setAttribute("message", message);
 		}
 		else{

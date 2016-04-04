@@ -60,14 +60,11 @@ public class CartServlet extends HttpServlet {
 		String buttonClick  = "";
 		try{
 			buttonClick  = request.getParameter("button");
-			System.out.println("Button "+buttonClick);
 		}catch(NullPointerException ne){}
 		
 		if(buttonClick != null){
 			    dishName = request.getParameter("dishName").trim();
 				dishId = request.getParameter("dishId").trim();
-				System.out.println("Ordered item "+dishName);
-				System.out.println("Ordered ID "+dishId+" item "+dishName);
 				shoppingCart.addToCart(Integer.parseInt(dishId), dishName);
 		}
 		else{

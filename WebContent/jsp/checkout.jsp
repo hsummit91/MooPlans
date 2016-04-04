@@ -3,17 +3,19 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.*"%>
 <%@ page import="com.mooplans.model.User"%>
+<%@ page import="com.mooplans.model.Cart"%>
+<%@ page import="com.mooplans.model.Order"%>
 <div class="container">
 		<h5><a href="orderRedirect.jsp">Add more items</a></h5>
 	<%
 		//allow access only if session exists
+		
 	User user = null;
 	if(session.getAttribute("User") == null){
 		out.print("Session Invalidate");
 	    response.sendRedirect("login.jsp");
 	}else user = (User) session.getAttribute("User");
 %>
-
 	<div class="container">
 		<div class="col-md-4" style="float: left; width: 40%;">
 			<div class="panel panel-default">
@@ -21,7 +23,6 @@
 					<h3 class="panel-title">Current Address</h3>
 				</div>
 				<div class="panel-body">
-
 					<form class="form-horizontal" action="../AddressServlet?action=currentAddress" method="post">
 						<!-- Buyer address same as shipping address-->
 						<div class="form-group">

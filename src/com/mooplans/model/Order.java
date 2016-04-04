@@ -3,7 +3,8 @@ package com.mooplans.model;
 import java.util.ArrayList;
 
 public class Order {
-	private int order_id, order_number, order_user_id, order_rest_id, order_total;
+	private int order_id, order_number, order_user_id, order_rest_id;
+	private float order_total;
 	private String order_deliverat;
 	private ArrayList<OrderItems> order_content;
 	public int getOrder_id() {
@@ -30,10 +31,10 @@ public class Order {
 	public void setOrder_rest_id(int order_rest_id) {
 		this.order_rest_id = order_rest_id;
 	}
-	public int getOrder_total() {
+	public float getOrder_total() {
 		return order_total;
 	}
-	public void setOrder_total(int order_total) {
+	public void setOrder_total(float order_total) {
 		this.order_total = order_total;
 	}
 	public String getOrder_deliverat() {
