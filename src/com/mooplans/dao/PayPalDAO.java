@@ -66,7 +66,9 @@ public class PayPalDAO {
 				pstmt.setInt(2, (int)totalBill);
 				pstmt.setString(3, user.getUser_address());
 				pstmt.setString(4, getCurrentTimeStamp());
-				pstmt.setString(5, sb.toString());
+				String order_ids = sb.toString();
+				order_ids = order_ids.substring(0, order_ids.length()-1);
+				pstmt.setString(5, order_ids);
 				pstmt.executeUpdate();
 				
 				String sql2 = "SELECT order_id FROM orders ORDER BY order_id DESC LIMIT 1";
