@@ -15,9 +15,11 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.mooplans.dao.DishDAO;
+import com.mooplans.dao.PayPalDAO;
 import com.mooplans.model.Cart;
 import com.mooplans.model.Dishes;
 import com.mooplans.model.Restaurant;
+import com.mooplans.model.User;
 
 /**
  * Servlet implementation class ActionServlet
@@ -46,9 +48,10 @@ public class ActionServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		HttpSession session = request.getSession();
 		String action = request.getParameter("action");
 		System.out.println("Action called "+action);
-		
+
 		if(action.equalsIgnoreCase("restPage")){
 			System.out.println("In Rest action");
 			ArrayList<Restaurant> restList = new ArrayList<Restaurant>();
@@ -56,10 +59,9 @@ public class ActionServlet extends HttpServlet {
 			request.setAttribute("restList", restList);
 			getServletConfig().getServletContext().getRequestDispatcher("/jsp/orders.jsp").forward(request,response);
 		}
-		
+
 		if(action.equalsIgnoreCase("menuPage")){
 			System.out.println("In Menu action");
-			HttpSession session = request.getSession();
 			Cart shoppingCart;
 			shoppingCart = (Cart) session.getAttribute("cart");
 			if(shoppingCart == null){
@@ -75,6 +77,18 @@ public class ActionServlet extends HttpServlet {
 			menuList = DishDAO.getDishDetailsByName(restName);	
 			request.setAttribute("menuList", menuList); 
 			getServletConfig().getServletContext().getRequestDispatcher("/jsp/menu.jsp").forward(request,response);
+		}
+		else{
+			System.out.println("In addedPoints action");
+			int points = Integer.parseInt(action);
+			System.out.println("check points" +points);
+			User user = (User)session.getAttribute("User");
+			boolean pointsAdded = PayPalDAO.addPoints(user, points);
+			if(pointsAdded)
+				request.setAttribute("message", "Added "+points+" points");
+			else
+				request.setAttribute("message", "Transaction failed. Please try again");
+			response.sendRedirect(getServletContext().getContextPath()+"/jsp/home.jsp");
 		}
 	}
 }
