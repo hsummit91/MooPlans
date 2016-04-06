@@ -386,6 +386,7 @@ public class LoginDAO {
 			pstmt.setString(2, user.getUser_email());
 			pstmt.setInt(3, user.getUser_id());
 			pstmt.executeUpdate();
+			user.setUser_image(imagePath);
 			flag = true;
 		}catch(SQLException e){
 			flag = false;
