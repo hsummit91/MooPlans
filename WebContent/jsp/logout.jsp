@@ -14,15 +14,7 @@
 	setTimeout("disableBackButton()", 0);
 </script>
 </head>
-<body>
-<center>
-<h1>Page Redirection</h1>
-</center>
-<%-- <%
-   // New location to be redirected
-   String site = new String("welcome.html");
-   response.setStatus(response.SC_MOVED_TEMPORARILY);
-   response.setHeader("Location", site); 
-%> --%>
+<body onload="disableBackButton()">
+<a href="../index.html">Homepage</a>
 </body>
 </html>

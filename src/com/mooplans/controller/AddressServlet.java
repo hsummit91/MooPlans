@@ -95,6 +95,7 @@ public class AddressServlet extends HttpServlet {
 		}
 		else{
 			url = "/jsp/addPoints.jsp";
+			items.clear();
 			message = "Not enough points. Please add points";
 			session.setAttribute("message", message);
 		}

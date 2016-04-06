@@ -26,6 +26,6 @@
 	<table border='2px'>
 	<thead>Total Points</thead>
 	<tr><td><%=total%></td></tr>
-	</table>
+	</table><%items.clear();%>
 </body>
 </html>
