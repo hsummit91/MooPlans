@@ -8,6 +8,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Order's Summary</title>
+<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+<script src="./js/jquery.min.js"></script>
 </head>
 <body>
 	<%
@@ -16,16 +18,40 @@
 		Cart shoppingCart = (Cart) session.getAttribute("cart");
 		HashMap<Integer, String> items = shoppingCart.getCartItems();
 	%>
-	<h4><%=msg%></h4>
-	<table border='2px'>
-		<thead>Food Item</thead>
-		<%for (Integer key : items.keySet()) {%>
-		<tr><td><%=items.get(key)%></td>
-		</tr><%}%>
-	</table>
-	<table border='2px'>
-	<thead>Total Points</thead>
-	<tr><td><%=total%></td></tr>
-	</table><%items.clear();%>
+<div class="col-sm-11" style="margin-left: 5%">
+	
+	<div class="alert alert-success"><%=msg%> Your Order is on it's way!</div>
+		
+	<div class="col-sm-6">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title">Your Order Summary</h3>
+		</div>
+		<div class="panel-body">		
+			<%for (Integer key : items.keySet()) {%>
+					<div><%=items.get(key)%></div>
+			<%}%>
+		</div>
+	</div>
+	</div>
+	
+	<div class="col-sm-6">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title">Total Points</h3>
+		</div>
+		<div class="panel-body"><%=total%></div>
+	</div>
+	</div>
+	<div class="col-sm-1">
+		<a class="btn btn-primary" href="./jsp/myProfile.jsp" style="margin-left: 16px;">Home</a>
+	</div>
+	<div class="col-sm-1">
+		<a class="btn btn-primary" href="./jsp/orderRedirect.jsp" style="margin-left: 16px;">Order Again?</a>
+	</div>
+</div>
+<% items.clear();
+	session.setAttribute("message", "");
+%>
 </body>
 </html>

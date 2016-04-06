@@ -97,7 +97,7 @@ public class AddressServlet extends HttpServlet {
 			url = "/jsp/addPoints.jsp";
 			items.clear();
 			message = "Not enough points. Please add points";
-			session.setAttribute("message", message);
+			session.setAttribute("errMessage", message);
 		}
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
 		dispatcher.forward(request, response);	
