@@ -10,7 +10,6 @@
 <% 
 String msg = (String)session.getAttribute("message");
 %>
-<h1> Wow!!! food ordered success.</h1>
 <h4><%=msg%></h4>
 </body>
 </html>

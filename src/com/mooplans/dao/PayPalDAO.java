@@ -7,8 +7,6 @@ import static com.mooplans.dao.DBConnection.release;
 import static com.mooplans.dao.DBConnection.rs;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
 
 import com.mooplans.model.Dishes;
@@ -66,7 +64,9 @@ public class PayPalDAO {
 				pstmt.setInt(2, (int)totalBill);
 				pstmt.setString(3, user.getUser_address());
 				pstmt.setString(4, getCurrentTimeStamp());
-				pstmt.setString(5, sb.toString());
+				String order_ids = sb.toString();
+				order_ids = order_ids.substring(0, order_ids.length()-1);
+				pstmt.setString(5, order_ids);
 				pstmt.executeUpdate();
 				
 				String sql2 = "SELECT order_id FROM orders ORDER BY order_id DESC LIMIT 1";
@@ -116,6 +116,31 @@ public class PayPalDAO {
 				release();
 			}
 		}
+		return deductedPoints;
+	}
+	
+	public static boolean addPoints(User user, int points){
+
+		boolean deductedPoints = false;
+		int newPoints = user.getUser_points() + points;
+
+		try{
+				getConnection();
+				String sql = "UPDATE user SET user_points = ? where user_email = ? and user_id=?";
+				pstmt = connection.prepareStatement(sql);
+				pstmt.setInt(1, newPoints);
+				pstmt.setString(2, user.getUser_email());
+				pstmt.setInt(3, user.getUser_id());
+				int row = pstmt.executeUpdate();
+				if(row==1) {
+					deductedPoints = true;
+					user.setUser_points(newPoints);
+				}
+			}catch(SQLException e){
+				e.printStackTrace();
+			}finally{
+				release();
+			}
 		return deductedPoints;
 	}
 
