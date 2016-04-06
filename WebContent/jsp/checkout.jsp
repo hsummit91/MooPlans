@@ -5,8 +5,23 @@
 <%@ page import="com.mooplans.model.User"%>
 <%@ page import="com.mooplans.model.Cart"%>
 <%@ page import="com.mooplans.model.Order"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Check out</title>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/loading.js"></script>
+</head>
+<body>
 <div class="container">
-		<h5><a href="orderRedirect.jsp">Add more items</a></h5>
+	<div>
+		<a class="btn btn-primary" href="orderRedirect.jsp" style="margin-left: 16px;">Add more items</a>
+	</div>
+	<br/>
 	<%
 		//allow access only if session exists
 		
@@ -16,7 +31,7 @@
 	    response.sendRedirect("login.jsp");
 	}else user = (User) session.getAttribute("User");
 %>
-	<div class="container">
+	<div>
 		<div class="col-md-4" style="float: left; width: 40%;">
 			<div class="panel panel-default">
 				<div class="panel-heading">
@@ -27,7 +42,7 @@
 						<!-- Buyer address same as shipping address-->
 						<div class="form-group">
 							<label class="col-md-4 control-label" for="fullname">Current Address</label>
-							<div class="col-md-4">
+							<div class="col-md-8">
 								<p class="form-control-static">
 									<%=user.getUser_firstname()%><br/>
 									<%=user.getUser_address()%><br/>
@@ -40,7 +55,7 @@
 						<div class="form-group">
 							<label class="col-md-4 control-label" for="submit"></label>
 							<div class="col-md-4">
-								<button type="submit" id="submit" name="submit" class="btn btn-default">Ship to this address</button>
+								<button onclick="waitingDialog.show('Brace Yourself.. Placing Order');" type="submit" id="submit" name="submit" class="btn btn-primary">Deliver to this address</button>
 							</div>
 						</div>
 					</form>
@@ -53,7 +68,7 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title">
-						Add a new address<br /> <small>Be sure to click "Ship to
+						Add a new address<br /> <small>Be sure to click "Deliver to
 							this address" when done.</small>
 					</h3>
 				</div>
@@ -63,7 +78,7 @@
 						<!-- Text input -->
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="fullname">Name</label>
-						<div class="col-md-4">
+						<div class="col-md-8">
 							<input id="fullname" name="fullname" type="text"
 								placeholder="Name" class="form-control input-md">
 						</div>
@@ -72,7 +87,7 @@
 						<!-- Address area -->
 						<div class="form-group">
 							<label class="col-md-4 control-label" for="address">Address</label>
-							<div class="col-md-4">
+							<div class="col-md-8">
 								<textarea class="form-control" id="address" name="address"></textarea>
 							</div>
 						</div>
@@ -81,7 +96,7 @@
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="phone">Phone
 							Number</label>
-						<div class="col-md-4">
+						<div class="col-md-8">
 							<input id="phone" name="phone" type="text"
 								placeholder="Phone Number" class="form-control input-md">
 						</div>
@@ -91,8 +106,8 @@
 						<div class="form-group">
 							<label class="col-md-4 control-label" for="submit"></label>
 							<div class="col-md-4">
-								<button type="submit" id="submit" name="submit"
-									class="btn btn-default">Ship to this address</button>
+								<button onclick="waitingDialog.show('Brace Yourself.. Placing Order');" type="submit" id="submit" name="submit"
+									class="btn btn-primary">Deliver to this address</button>
 							</div>
 						</div>
 					</form>
@@ -101,3 +116,4 @@
 		</div>
 	</div>
 </div>
+</body>

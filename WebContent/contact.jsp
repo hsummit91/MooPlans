@@ -20,10 +20,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="header">
 			<div class="header-bot">
 				<div class="loginIcon" style="float: right;width: 150px;height: 150px;">
-					<a style="font-size: 22px" href="jsp/register.jsp"><img src="images/beta.png" alt="Click here to Beta Test" /></a>
+					<a style="font-size: 22px" href="jsp/login.jsp"><img src="images/beta.png" alt="Click here to Beta Test" /></a>
 				</div>
 				<div class="logo">
-					<a href="welcome.html"><img style="height: inherit;width: inherit;" src="images/Logo_White.jpg" alt=""/></a>
+					<a href="welcome.html"><img style="height: inherit;width: inherit;" src="images/ribbon logo.png" alt=""/></a>
 				</div>
 <!-- 				<ul class="follow_icon">
 					<li><a href="jsp/login.jsp">Login</a> |</li>
@@ -38,8 +38,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<li><a href="welcome.html">Home</a></li> |
 					<li><a href="about.html">About</a></li> |
 					<li><a href="menu.html">Menu</a></li> |
-					<li class="active"><a href="contact.jsp">Contact</a></li> |
-					<li><a href="http://fahadshaikh05.wix.com/aboutdevelopers" target="_blank">Developers</a></li>					
+					<li class="active"><a href="contact.jsp">Contact</a></li>
+					<!-- <li><a href="http://fahadshaikh05.wix.com/aboutdevelopers" target="_blank">Developers</a></li>	 -->				
 				</ul>
 			</div>
 		</div>		
@@ -96,7 +96,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <div class="footer-bottom">
  	<div class="wrap">
  		<div class="copy">
-			<p> Â© 2013 All rights Reserved | Design by <a href="http://w3layouts.com">W3Layouts</a></p>
+			<p>  © 2016 All rights Reserved | MooPlans</p>
 		</div>
  	</div>
  </div>

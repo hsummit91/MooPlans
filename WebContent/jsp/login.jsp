@@ -26,7 +26,7 @@ function disableBackButton(){
 setTimeout("disableBackButton()", 0);
 </script>
 </head>
-<body onload="disableBackButton();checkError();" background="../images/Logo black.png">
+<body onload="disableBackButton();checkError();" background="../images/Logo Transparent.png">
 <%
 		String valid = request.getParameter("errorMsg");
 		String isError = request.getParameter("isError");
@@ -39,7 +39,7 @@ setTimeout("disableBackButton()", 0);
 	%>	
 	<form method="post" name="login" action="../Login" class="login">
 		<fieldset>
-			<legend class="legend">Login</legend>	
+			<legend class="legend">Login <span style="float: right;"><a href="register.jsp">Not A Member?</a></span></legend>	
 			<div class="input">
 				<input type="email" name="email" placeholder="Email" required /> <span><i
 					class="fa fa-envelope-o"></i></span>

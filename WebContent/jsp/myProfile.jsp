@@ -28,6 +28,7 @@
 			  url: "../FetchData",
 			  data: { action: "getUserDetails", userId: "<%=user.getUser_id()%>"  }
 			}).done(function( msg ) {
+				  sessionStorage.setItem("myProfilPoints", msg.points);
 				  console.log(msg.firstName);
 				  var lastName = "";
 				  if(msg.lastName != undefined){
@@ -40,6 +41,8 @@
 				  $("#address").html(msg.address);
 				  $("#university").html(msg.university);
 				  $("#profileImg").attr("src",msg.image);
+				  
+				  window.parent.updatePoints();
 			});    
 	}
 	
@@ -80,7 +83,7 @@
                     <a href="#" onclick="selectImage()" ><span class="label label-default rank-label">Change Image</span></a>
                 </div>
             </div>
-        </div>   
+        	</div>   
             <h1><div id="name"></div></h1>
             <!-- <span><div id="points"></div></span> -->
 	    </div>
@@ -89,10 +92,12 @@
                  <span><span id="points"></span> Points</span>
             </h3>
         </div>
-        <div class="col-md-6 col-xs-6 follow line" align="center">
+        <div class="col-md-6 col-xs-6 follow line"   align="center">
+        <a href="addPoints.jsp">
             <h3 class="points">
                  <span>Add Points</span>
             </h3>
+        </a>
         </div>
         
         <div class="col-xs-6 login_control">

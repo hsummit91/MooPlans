@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>Orders Menu</title>
 <script src="./js/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="./css/dataTables.css">
@@ -129,7 +130,7 @@
             	<%-- 	<input type="hidden" name="dishId" value="<%=dishes.getDishId()%> "/>
             		<input type="hidden" name="dishName" value="<%=dishes.getDishName()%>" />
             		<input type="hidden" name="dishPoints" value="<%=dishes.getDishPrice()%>"/> --%>
-            		<a href="<%=request.getContextPath()%>/CartServlet?button=add&dishId=<%=dishes.getDishId()%>&dishName=<%=dishes.getDishName()%>">Add to Cart</a>
+            		<a class="btn btn-primary" href="<%=request.getContextPath()%>/CartServlet?button=add&dishId=<%=dishes.getDishId()%>&dishName=<%=dishes.getDishName()%>">Add to Cart</a>
             	</td>
 			</tr>          	
 			<%}%>
