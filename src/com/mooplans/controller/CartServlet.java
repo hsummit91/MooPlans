@@ -77,24 +77,39 @@ public class CartServlet extends HttpServlet {
 			out.println("<!DOCTYPE html>");
 			out.println("<html>");
 			out.println("<head>");
-			out.println("<title>Cart</title>");            
+			out.println("<title>Cart</title>");
+			out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/bootstrap.min.css\">");
+			out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/menutable.css\">");
+			out.println("<script src=\"./js/jquery.min.js\"></script>");		
 			out.println("</head>");
 			out.println("<body>");
-			out.println("<h1>Meal successfully added to cart </h1>");
-			out.println("<a href="+request.getContextPath()+"/ActionServlet?action=restPage><input type='submit' value='Add more Items'></a>");
+			out.println("<div class='col-sm-11' style='margin-left: 5%'>");
+			out.println("<div class='alert alert-success'>Meal successfully added to cart </div>");
+			out.println("<a href="+request.getContextPath()+"/ActionServlet?action=restPage><input type='submit' style='margin-left: 16px;' class='btn btn-primary' value='Add more Items'></a>");
 			out.println("<hr>");
-			out.println("<h2>Cart</h2>");
+			out.println("<h3>Cart</h3>");
 			HashMap<Integer, String> items = shoppingCart.getCartItems();
-			out.println("<table border='1px'>");
+			out.println("<table class='table cartTable'>");
 
 			out.println("<th>Food Item</th>");
+			out.println("<th></th>");
+			int count = 0;
 			for(Integer key: items.keySet()){
-				out.println("<form action='CartServlet?button=delete' method='doGet'><input type='hidden' name='dishId' value='"+key+"'>"
-						+ "<tr><td>"+items.get(key)+"</td><td><input type='submit' value='delete'></td></tr></form>");
+				count++;
+				out.println("<form action='CartServlet?button=delete' method='doGet'><input type='hidden' name='dishId' value='"+key+"'>");
+				if(count % 2 == 0){
+					out.println("<tr class='even'><td>"+items.get(key)+"</td><td align='center'><input type='submit' class='btn btn-primary' value='delete'></td></tr></form>");
+				}else{
+					out.println("<tr class='odd'><td>"+items.get(key)+"</td><td align='center'><input type='submit' class='btn btn-primary' value='delete'></td></tr></form>");	
+				}
+				
+			}
+			if(items.size() == 0){
+				out.println("<tr><td colspan=2>No items in cart</td></tr>");
 			}
 			out.println("</table>");
 			if(!items.isEmpty())
-			out.println("<a href="+request.getContextPath()+"/jsp/checkout.jsp><input type='submit' value='Proceed Checkout'></a>");
+			out.println("<a href="+request.getContextPath()+"/jsp/checkout.jsp><input type='submit' style='margin-left: 16px;' class='btn btn-primary' value='Proceed Checkout'></a>");
 			out.println("</body>");
 			out.println("</html>");
 		  }

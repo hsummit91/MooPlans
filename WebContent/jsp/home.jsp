@@ -23,6 +23,13 @@
 	}
 	setTimeout("disableBackButton()", 0);
 </script>
+<style type="text/css">
+sideProfile > img .img-circle {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #2A363B;
+}
+</style>
 </head>
 <body class="cbp-spmenu-push" onload="getUserDetails()">
 <%
@@ -48,23 +55,25 @@
 		<form action="${pageContext.request.contextPath}/Logout" id="logoutForm" method="post">
 	</form>
 	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
-		<div id="sideProfile" align="center"></div>
-		<h3><span id="firstName"><%=user.getUser_firstname() %></span></h3>
+		<div id="sideProfile" align="center">
+			<img class="img-circle" id="profileImg" height="100px" width="100px" style="margin-left: -14px;margin-top: -5px;" src="../images/Logo faded.png" />
+		</div>
+		<h3><span id="firstName"><%=user.getUser_firstname() %> <%=user.getUser_lastname() %></span></h3>
 		<h4>Moo Points: <span id="mooPoints"> <%=user.getUser_points()%> </span></h4>
 		<a href="#" id="myProfile" onclick="displayPages(this)">My Profile</a>
 		<a href="#" id="addPoints" onclick="displayPages(this)">Add Moo Points</a> 
 		<a href="#" id="orderRedirect" onclick="displayPages(this)">Place an Order</a> 
-		<a href="#" id="imageUpload" onclick="displayPages(this)">My Past Orders</a> 
+		<a href="#" id="pastOrders" onclick="displayPages(this)">My Past Orders</a> 
 		<a href="#" id="logout">Logout</a>
 	</nav>
 	<input type="hidden" id="userId" value="<%=user.getUser_id() %>" />
 	<div class="container">
 		<div style="cursor:pointer;font-size: 50px;z-index: 1010; margin: 5px;width: 30px;height: 30px;" id="showLeftPush">
-			<div class="zooming" id="expandMenu" onclick="toggleArrows()" style="width: 30px;height: 30px;">
+			<div class="zooming" id="expandMenu" onclick="toggleArrows()" style="width: 30px;height: 30px;position: fixed;">
 				<i class="fa fa-angle-right"></i>
 			</div>
 		</div>
-		 <div style="text-align: center;">Welcome to Moo Plans!</div>
+		 <!-- <div style="text-align: center;">Welcome to Moo Plans!</div> -->
 
 		<div id="other" style="width: auto;height: 580px;">
 			<iframe width="100%" height="100%" id="homeIframe" frameborder="0"></iframe>
@@ -103,26 +112,21 @@
 			var id = ele.id;
 			$("#other").find("iframe").empty();
 			$("#other").find("iframe").attr("src", id + ".jsp");
+			
+			var elem = document.getElementById("showLeftPush");
+			if (typeof elem.onclick == "function") {
+			    elem.onclick.apply(elem);
+			}
+			toggleArrows();
 		}
 		
-		function getUserDetails(){		
-			var userId = $("#userId").val();
-			
-			    $.ajax({
-					  method: "POST",
-					  url: "../FetchData",
-					  data: { action: "getUserDetails", userId: userId  }
-					}).done(function( msg ) {
-						  console.log(msg.firstName);
-						  var lastName = "";
-						  if(msg.lastName != undefined){
-							  lastName = msg.lastName;
-						  }
-						  $("#firstName").html(msg.firstName + " " + lastName);
-						  $("#mooPoints").html(msg.points);
-					});
-			    
-				$("#other").find("iframe").attr("src", "myProfile.jsp");
+		function getUserDetails(){			    
+			$("#other").find("iframe").attr("src", "myProfile.jsp");
+		}
+		
+		function updatePoints(){
+			var points = sessionStorage.getItem("myProfilPoints");
+			$("#mooPoints").html(points);
 		}
 		
 		$( "#logout" ).click(function() {
