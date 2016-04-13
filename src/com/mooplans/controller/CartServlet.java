@@ -79,7 +79,8 @@ public class CartServlet extends HttpServlet {
 			out.println("<head>");
 			out.println("<title>Cart</title>");
 			out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/bootstrap.min.css\">");
-			out.println("<script src=\"./js/jquery.min.js\"></script>");
+			out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/menutable.css\">");
+			out.println("<script src=\"./js/jquery.min.js\"></script>");		
 			out.println("</head>");
 			out.println("<body>");
 			out.println("<div class='col-sm-11' style='margin-left: 5%'>");
@@ -88,13 +89,20 @@ public class CartServlet extends HttpServlet {
 			out.println("<hr>");
 			out.println("<h3>Cart</h3>");
 			HashMap<Integer, String> items = shoppingCart.getCartItems();
-			out.println("<table class='table table-bordered'>");
+			out.println("<table class='table cartTable'>");
 
 			out.println("<th>Food Item</th>");
 			out.println("<th></th>");
+			int count = 0;
 			for(Integer key: items.keySet()){
-				out.println("<form action='CartServlet?button=delete' method='doGet'><input type='hidden' name='dishId' value='"+key+"'>"
-						+ "<tr><td>"+items.get(key)+"</td><td><input type='submit' class='btn btn-primary' value='delete'></td></tr></form>");
+				count++;
+				out.println("<form action='CartServlet?button=delete' method='doGet'><input type='hidden' name='dishId' value='"+key+"'>");
+				if(count % 2 == 0){
+					out.println("<tr class='even'><td>"+items.get(key)+"</td><td align='center'><input type='submit' class='btn btn-primary' value='delete'></td></tr></form>");
+				}else{
+					out.println("<tr class='odd'><td>"+items.get(key)+"</td><td align='center'><input type='submit' class='btn btn-primary' value='delete'></td></tr></form>");	
+				}
+				
 			}
 			if(items.size() == 0){
 				out.println("<tr><td colspan=2>No items in cart</td></tr>");

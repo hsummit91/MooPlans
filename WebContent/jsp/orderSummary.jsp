@@ -10,6 +10,35 @@
 <title>Order's Summary</title>
 <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
 <script src="./js/jquery.min.js"></script>
+<style type="text/css">
+.panel-default > .panel-heading {
+    background-color: #2a363b;
+    border-color: #e84a5f;
+    color: #ff847c;
+}
+h3 small {
+    color: #ff847c;
+}
+.panel-body {
+    background-color: #fecea8;
+}
+h3{
+	font-weight: bolder;
+}
+.panel-title {
+    font-size: 18px;
+    padding: 4px;
+}
+.btn-primary {
+    background-color: #ff847c;
+    border-color: #e84a5f;
+    color: #fff;
+}
+.btn-primary:hover {
+   	background-color: #e84a5f;
+   	border-color: #e84a5f;
+}
+</style>
 </head>
 <body>
 	<%
@@ -23,7 +52,7 @@
 	<div class="alert alert-success"><%=msg%> Your Order is on it's way!</div>
 		
 	<div class="col-sm-6">
-	<div class="panel panel-primary">
+	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h3 class="panel-title">Your Order Summary</h3>
 		</div>
@@ -36,7 +65,7 @@
 	</div>
 	
 	<div class="col-sm-6">
-	<div class="panel panel-primary">
+	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h3 class="panel-title">Total Points</h3>
 		</div>

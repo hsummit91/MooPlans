@@ -15,6 +15,56 @@
 <script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/loading.js"></script>
+
+<style type="text/css">
+.panel-default > .panel-heading {
+    background-color: #2a363b;
+    border-color: #e84a5f;
+    color: #ff847c;
+}
+h3 small {
+    color: #ff847c;
+}
+.panel-body {
+    background-color: #fecea8;
+}
+h3{
+	font-weight: bolder;
+}
+.panel-title {
+    font-size: 18px;
+    padding: 4px;
+}
+.btn-primary {
+    background-color: #ff847c;
+    border-color: #e84a5f;
+    color: #fff;
+}
+.btn-primary:hover {
+   	background-color: #e84a5f;
+   	border-color: #e84a5f;
+}
+
+	@media screen and (max-width: 640px){
+    	.btn{
+    		padding: 5px 10px !important;
+    	}
+	}
+	
+	@media screen and (max-width: 480px){
+    	.btn{
+    		padding: 4px 8px !important;
+    		font-size: 12px !important;
+    	}
+	}
+	    
+    @media screen and (max-width: 390px){
+    	.btn{
+    		padding: 3px 6px !important;
+    		font-size: 11px !important;
+    	}
+	}
+</style>
 </head>
 <body>
 <div class="container">
@@ -32,7 +82,7 @@
 	}else user = (User) session.getAttribute("User");
 %>
 	<div>
-		<div class="col-md-4" style="float: left; width: 40%;">
+		<div class="col-md-6">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title">Current Address</h3>
@@ -64,7 +114,7 @@
 		</div>
 
 
-		<div class="col-md-4" style="float: right; width: 50%;">
+		<div class="col-md-6">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title">
