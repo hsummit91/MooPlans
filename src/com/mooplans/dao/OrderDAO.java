@@ -6,8 +6,13 @@ import static com.mooplans.dao.DBConnection.pstmt;
 import static com.mooplans.dao.DBConnection.release;
 import static com.mooplans.dao.DBConnection.rs;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import com.mooplans.model.Order;
 import com.mooplans.model.OrderItems;
@@ -75,4 +80,46 @@ public class OrderDAO {
 		return userOrders;
 	}
 	
+	public static JSONArray getPastOrders(int ID){
+		JSONArray userDetailsArr = new JSONArray();
+		try{
+			getConnection();
+			String sql = "SELECT order_id, order_total, order_deliverat, order_date, order_ids "
+					   + "FROM orders where order_user_id = ?";
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, ID);
+			rs = pstmt.executeQuery();
+
+			while(rs.next()){
+				JSONObject userDetails = new JSONObject();
+				userDetails.put("userId",ID);
+				userDetails.put("orderId", rs.getString(1));
+				userDetails.put("orderTotal", rs.getString(2));
+				userDetails.put("deliver", rs.getString(3));
+				userDetails.put("orderDate", rs.getString(4));
+				
+				String sql2 = "select dish_name from dishes where dish_id in ("+rs.getString(5)+")";
+				pstmt = connection.prepareStatement(sql2);
+				ResultSet rs1 = pstmt.executeQuery();
+				ArrayList<String> dishes = new ArrayList<String>();
+				while(rs1.next()){
+					dishes.add(rs1.getString(1));
+				}
+				userDetails.put("orderItems", dishes);
+				userDetailsArr.put(userDetails);
+			}
+			
+
+		}catch(SQLException e){
+			e.printStackTrace();
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}finally{
+			release();
+		}
+		
+		System.out.println("ORDERS = "+userDetailsArr);
+		
+		return userDetailsArr;
+	}
 }
