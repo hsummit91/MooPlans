@@ -9,9 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.mooplans.dao.LoginDAO;
+import com.mooplans.dao.OrderDAO;
 
 /**
  * Servlet implementation class FetchData
@@ -50,6 +52,12 @@ public class FetchData extends HttpServlet {
 			int userId = Integer.parseInt(request.getParameter("userId"));
 			
 			JSONObject userDetails = LoginDAO.getUserDetails(userId);
+	        response.setContentType("application/json");
+	        out.write(userDetails+"");
+		}else if(action.equals("getPastOrders")){
+			int userId = Integer.parseInt(request.getParameter("userId"));
+			
+			JSONArray userDetails = OrderDAO.getPastOrders(userId);
 	        response.setContentType("application/json");
 	        out.write(userDetails+"");
 		}else{

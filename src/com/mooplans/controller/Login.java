@@ -1,6 +1,7 @@
 package com.mooplans.controller;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -39,6 +40,7 @@ public class Login extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@SuppressWarnings("deprecation")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session=request.getSession();
@@ -102,6 +104,6 @@ public class Login extends HttpServlet {
 		}
 		//rd = request.getRequestDispatcher(url);
 		//rd.forward(request, response);
-		response.sendRedirect(getServletContext().getContextPath()+url+"?errorMsg="+errorMsg+"&isError="+isError);
+		response.sendRedirect(getServletContext().getContextPath()+url+"?errorMsg="+URLEncoder.encode(errorMsg)+"&isError="+isError);
 	}
 }

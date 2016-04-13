@@ -63,7 +63,7 @@ sideProfile > img .img-circle {
 		<a href="#" id="myProfile" onclick="displayPages(this)">My Profile</a>
 		<a href="#" id="addPoints" onclick="displayPages(this)">Add Moo Points</a> 
 		<a href="#" id="orderRedirect" onclick="displayPages(this)">Place an Order</a> 
-		<a href="#" id="imageUpload" onclick="displayPages(this)">My Past Orders</a> 
+		<a href="#" id="pastOrders" onclick="displayPages(this)">My Past Orders</a> 
 		<a href="#" id="logout">Logout</a>
 	</nav>
 	<input type="hidden" id="userId" value="<%=user.getUser_id() %>" />
