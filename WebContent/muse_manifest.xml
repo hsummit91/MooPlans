@@ -1,0 +1,257 @@
+<manifest alg="2" build="2015.1.2.344" opt="true" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive" exportTarget="other" domain="http://www.mooplans.com" resolutions="1x,2x" timestamp="1460591487344">
+  <folder name="css">
+    <file name="site_global.css" crc="131700929"/>
+    <file name="master_a-master.css" crc="3886584561" ref="press:bombers:jewel-of-india:become-a-restaurant:index:dcs-pizza:oasis:healthy-on-lark:lilac-blossom:faq:office:stack-espresso:catering"/>
+    <file name="press.css" crc="214587200" ref="press"/>
+    <file name="bombers.css" crc="507631489" ref="bombers"/>
+    <file name="jewel-of-india.css" crc="61880615" ref="jewel-of-india"/>
+    <file name="become-a-restaurant.css" crc="11153585" ref="become-a-restaurant"/>
+    <file name="index.css" crc="4225838081" ref="index"/>
+    <file name="dcs-pizza.css" crc="4086600025" ref="dcs-pizza"/>
+    <file name="oasis.css" crc="135398089" ref="oasis"/>
+    <file name="healthy-on-lark.css" crc="3982169101" ref="healthy-on-lark"/>
+    <file name="lilac-blossom.css" crc="323984495" ref="lilac-blossom"/>
+    <file name="faq.css" crc="133574746" ref="faq"/>
+    <file name="office.css" crc="111289524" ref="office"/>
+    <file name="stack-espresso.css" crc="304705724" ref="stack-espresso"/>
+    <file name="catering.css" crc="281726733" ref="catering"/>
+  </folder>
+  <folder name="fonts">
+    <file name="ostrichsans-black.woff" crc="4035045905"/>
+    <file name="ostrichsans-black.eot" crc="3815979679"/>
+    <file name="ostrichsans-black.svg" crc="107033767"/>
+  </folder>
+  <folder name="scripts">
+    <file name="jquery-1.8.3.min.js" crc="207176553" ref="index:stack-espresso:oasis:healthy-on-lark:faq:catering:press:become-a-restaurant:dcs-pizza:lilac-blossom:jewel-of-india:bombers:office"/>
+    <file name="museutils.js" crc="3790713428" ref="index:stack-espresso:oasis:healthy-on-lark:faq:catering:press:become-a-restaurant:dcs-pizza:lilac-blossom:jewel-of-india:bombers:office"/>
+    <file name="whatinput.js" crc="84559013" ref="index:stack-espresso:oasis:healthy-on-lark:faq:catering:press:become-a-restaurant:dcs-pizza:lilac-blossom:jewel-of-india:bombers:office"/>
+    <file name="webpro.js" crc="329496574" ref="index:faq:become-a-restaurant"/>
+    <file name="musewpslideshow.js" crc="394033048" ref="index"/>
+    <file name="jquery.museoverlay.js" crc="4265131668" ref="index"/>
+    <file name="touchswipe.js" crc="497316881" ref="index"/>
+    <file name="jquery.watch.js" crc="4244854265" ref="index:stack-espresso:oasis:healthy-on-lark:faq:catering:press:become-a-restaurant:dcs-pizza:lilac-blossom:jewel-of-india:bombers:office"/>
+    <file name="jquery.musepolyfill.bgsize.js" crc="3918880840" ref="index:stack-espresso:oasis:healthy-on-lark:faq:catering:press:become-a-restaurant:dcs-pizza:lilac-blossom:jewel-of-india:bombers:office"/>
+    <file name="form_check.php" crc="3805695515" ref="faq:become-a-restaurant"/>
+    <file name="form_throttle.php" crc="3802629389" ref="faq:become-a-restaurant"/>
+    <file name="form_process.php" crc="54267062" ref="faq:become-a-restaurant"/>
+    <file name="form-u7307.php" crc="3907776598" ref="faq"/>
+    <file name="form-u6266.php" crc="4135022094" ref="become-a-restaurant"/>
+  </folder>
+  <folder name="images">
+    <file name="logo high quality.jpg" crc="28212897" seo="true" ref="index:stack-espresso:oasis:healthy-on-lark:faq:catering:press:become-a-restaurant:dcs-pizza:lilac-blossom:jewel-of-india:bombers:office"/>
+    <file name="logo high quality_2x.jpg" crc="290157858" seo="true" ref="index:stack-espresso:oasis:healthy-on-lark:faq:catering:press:become-a-restaurant:dcs-pizza:lilac-blossom:jewel-of-india:bombers:office"/>
+    <file name="chocolate-dessert-brownies-cake.jpg" crc="237537601" seo="true" ref="index"/>
+    <file name="blank.gif" crc="4208392903" ref="index"/>
+    <file name="food-plate-rucola-salad.jpg" crc="4113699313" seo="true" ref="index"/>
+    <file name="pexels-photo (2).jpg" crc="38548250" seo="true" ref="index"/>
+    <file name="loading.gif" crc="3815509949" ref="index"/>
+    <file name="43542-o3v6qk.jpg" crc="103072635" seo="true" ref="index"/>
+    <file name="43542-o3v6qk_2x.jpg" crc="270543123" seo="true" ref="index"/>
+    <file name="stickers 018.png" crc="120660269" seo="true" ref="index"/>
+    <file name="stickers 018_2x.png" crc="3862067283" seo="true" ref="index"/>
+    <file name="step 1 order-crop-u672.png" crc="56792143" ref="index"/>
+    <file name="step 1 order-crop-u672_2x.png" crc="3772978919" ref="index"/>
+    <file name="step 2 option 1.png" crc="3821683331" seo="true" ref="index"/>
+    <file name="step 2 option 1_2x.png" crc="387186882" seo="true" ref="index"/>
+    <file name="step 3 enjoy-crop-u722.png" crc="8736881" ref="index"/>
+    <file name="step 3 enjoy-crop-u722_2x.png" crc="471502719" ref="index"/>
+    <file name="custom.jpg" crc="4238854228" seo="true" ref="index"/>
+    <file name="custom_2x.jpg" crc="152639449" seo="true" ref="index"/>
+    <file name="banner sections 1.jpg" crc="379258262" seo="true" ref="index"/>
+    <file name="banner sections 1_2x.jpg" crc="388002829" seo="true" ref="index"/>
+    <file name="banner sections 2.jpg" crc="3794814224" seo="true" ref="index"/>
+    <file name="banner sections 2_2x.jpg" crc="477564492" seo="true" ref="index"/>
+    <file name="banner sections 3.jpg" crc="373874633" seo="true" ref="index"/>
+    <file name="banner sections 3_2x.jpg" crc="3814522963" seo="true" ref="index"/>
+    <file name="banner sections 4.jpg" crc="66687323" seo="true" ref="index"/>
+    <file name="banner sections 4_2x.jpg" crc="243468031" seo="true" ref="index"/>
+    <file name="banner sections 5.jpg" crc="4223479067" seo="true" ref="index"/>
+    <file name="banner sections 5_2x.jpg" crc="464125962" seo="true" ref="index"/>
+    <file name="banner sections 6.jpg" crc="4192910437" seo="true" ref="index"/>
+    <file name="banner sections 6_2x.jpg" crc="4204779404" seo="true" ref="index"/>
+    <file name="arrows-u763.png" crc="356648773" ref="index"/>
+    <file name="arrows-u763_2x.png" crc="396638373" ref="index"/>
+    <file name="books-u771.png" crc="224270123" ref="index"/>
+    <file name="books-u771_2x.png" crc="3851606085" ref="index"/>
+    <file name="icon.png" crc="4239175693" seo="true" ref="index"/>
+    <file name="icon_2x.png" crc="493457085" seo="true" ref="index"/>
+    <file name="shop-u785.png" crc="4068634865" ref="index"/>
+    <file name="shop-u785_2x.png" crc="3835859987" ref="index"/>
+    <file name="thumb-u792.png" crc="521445651" ref="index"/>
+    <file name="thumb-u792_2x.png" crc="81302091" ref="index"/>
+    <file name="transport.png" crc="123777207" seo="true" ref="index"/>
+    <file name="transport_2x.png" crc="4237111227" seo="true" ref="index"/>
+    <file name="chicken-korma-lgh-29bc64ed-e391-471d-9b58-9ba3737e45e0-0-1400x919-crop-u1991.jpg" crc="222707945" ref="index"/>
+    <file name="chicken-korma-lgh-29bc64ed-e391-471d-9b58-9ba3737e45e0-0-1400x919-crop-u1991_2x.jpg" crc="4047937378" ref="index"/>
+    <file name="jewel_of_india_interior-crop-u5220.jpg" crc="19732102" ref="index"/>
+    <file name="jewel_of_india_interior-crop-u5220_2x.jpg" crc="3855870721" ref="index"/>
+    <file name="sept-24_chicken-tikka-masala.jpg" crc="289557046" seo="true" ref="index"/>
+    <file name="sept-24_chicken-tikka-masala_2x.jpg" crc="4199677480" seo="true" ref="index"/>
+    <file name="o-crop-u1817.jpg" crc="4236980071" ref="index"/>
+    <file name="o-crop-u1817_2x.jpg" crc="146021842" ref="index"/>
+    <file name="pina-colada-700_0.jpg" crc="523227836" seo="true" ref="index"/>
+    <file name="pina-colada-700_0_2x.jpg" crc="3970098201" seo="true" ref="index"/>
+    <file name="vegan-food-plans-in-london-crop-u5581.jpg" crc="4281276836" ref="index"/>
+    <file name="vegan-food-plans-in-london-crop-u5581_2x.jpg" crc="3810141560" ref="index"/>
+    <file name="o (1)-crop-u1730.jpg" crc="101275615" ref="index"/>
+    <file name="o (1)-crop-u1730_2x.jpg" crc="130424428" ref="index"/>
+    <file name="o (2)-crop-u5352.jpg" crc="95660843" ref="index"/>
+    <file name="o (2)-crop-u5352_2x.jpg" crc="415093761" ref="index"/>
+    <file name="o155x155.jpg" crc="42472964" seo="true" ref="index"/>
+    <file name="o155x155_2x.jpg" crc="158160771" seo="true" ref="index"/>
+    <file name="o (2)-crop-u1904.jpg" crc="379047567" ref="index"/>
+    <file name="o (2)-crop-u1904_2x.jpg" crc="4034612388" ref="index"/>
+    <file name="o (6)-crop-u5418.jpg" crc="142669700" ref="index"/>
+    <file name="o (6)-crop-u5418_2x.jpg" crc="197030275" ref="index"/>
+    <file name="o-crop-u5438.jpg" crc="100071978" ref="index"/>
+    <file name="o-crop-u5438_2x.jpg" crc="169295511" ref="index"/>
+    <file name="bombers raw155x155.jpg" crc="4092387399" seo="true" ref="index"/>
+    <file name="bombers raw155x155_2x.jpg" crc="438027800" seo="true" ref="index"/>
+    <file name="ceaboawwaaak-7t155x155.jpg" crc="369082950" seo="true" ref="index"/>
+    <file name="ceaboawwaaak-7t_2x.jpg" crc="4194504024" seo="true" ref="index"/>
+    <file name="a_monday-crop-u1144.jpg" crc="243405569" ref="index"/>
+    <file name="a_monday-crop-u1144_2x.jpg" crc="3820599167" ref="index"/>
+    <file name="bombers-u1011-fr.jpg" crc="472910535" ref="index"/>
+    <file name="bombers-u1011-fr_2x.jpg" crc="4236767237" ref="index"/>
+    <file name="healthy on lark-u1191-fr.jpg" crc="202017250" ref="index"/>
+    <file name="healthy on lark-u1191-fr_2x.jpg" crc="105394949" ref="index"/>
+    <file name="jewel of india-u1194-fr.jpg" crc="385475798" ref="index"/>
+    <file name="jewel of india-u1194-fr_2x.jpg" crc="492847217" ref="index"/>
+    <file name="201303211753066-crop-u1202.jpg" crc="3793000442" ref="index"/>
+    <file name="201303211753066-crop-u1202_2x.jpg" crc="415586207" ref="index"/>
+    <file name="img_0741-crop-u5286.jpg" crc="164575758" ref="index"/>
+    <file name="img_0741-crop-u5286_2x.jpg" crc="448549368" ref="index"/>
+    <file name="o-crop-u5306.jpg" crc="3891266007" ref="index"/>
+    <file name="o-crop-u5306_2x.jpg" crc="4036292043" ref="index"/>
+    <file name="lilac-u1223-fr.jpg" crc="135740744" ref="index"/>
+    <file name="lilac-u1223-fr_2x.jpg" crc="75242797" ref="index"/>
+    <file name="11392877_10153327272247299_4911128721211252707_n-crop-u1643.jpg" crc="4261569086" ref="index"/>
+    <file name="11392877_10153327272247299_4911128721211252707_n-crop-u1643_2x.jpg" crc="3791900355" ref="index"/>
+    <file name="food-pizza-fastfood155x155.jpg" crc="438434200" seo="true" ref="index"/>
+    <file name="food-pizza-fastfood155x155_2x.jpg" crc="3774902287" seo="true" ref="index"/>
+    <file name="mac and cheese bite-crop-u5054.jpg" crc="4130361608" ref="index"/>
+    <file name="mac and cheese bite-crop-u5054_2x.jpg" crc="309753010" ref="index"/>
+    <file name="oasis-u1224-fr.jpg" crc="28766304" ref="index"/>
+    <file name="oasis-u1224-fr_2x.jpg" crc="4226875015" ref="index"/>
+    <file name="stacks-u1225-fr.jpg" crc="483810012" ref="index"/>
+    <file name="stacks-u1225-fr_2x.jpg" crc="3859910942" ref="index"/>
+    <file name="dcs-u1188-fr.jpg" crc="292199027" ref="index"/>
+    <file name="dcs-u1188-fr_2x.jpg" crc="4299265" ref="index"/>
+    <file name="logo remade.png" crc="202086313" seo="true" ref="index:stack-espresso:oasis:healthy-on-lark:faq:catering:press:become-a-restaurant:dcs-pizza:lilac-blossom:jewel-of-india:bombers:office"/>
+    <file name="logo remade_2x.png" crc="3816321677" seo="true" ref="index:stack-espresso:oasis:healthy-on-lark:faq:catering:press:become-a-restaurant:dcs-pizza:lilac-blossom:jewel-of-india:bombers:office"/>
+    <file name="u3253.png" crc="3917025347" ref="index:stack-espresso:oasis:healthy-on-lark:faq:catering:press:become-a-restaurant:dcs-pizza:lilac-blossom:jewel-of-india:bombers:office"/>
+    <file name="u3253-r.png" crc="360343564" ref="index:stack-espresso:oasis:healthy-on-lark:faq:catering:press:become-a-restaurant:dcs-pizza:lilac-blossom:jewel-of-india:bombers:office"/>
+    <file name="u3253_2x.png" crc="4024782139" ref="index:stack-espresso:oasis:healthy-on-lark:faq:catering:press:become-a-restaurant:dcs-pizza:lilac-blossom:jewel-of-india:bombers:office"/>
+    <file name="u3253-r_2x.png" crc="257471201" ref="index:stack-espresso:oasis:healthy-on-lark:faq:catering:press:become-a-restaurant:dcs-pizza:lilac-blossom:jewel-of-india:bombers:office"/>
+    <file name="u3255.png" crc="3927370107" ref="index:stack-espresso:oasis:healthy-on-lark:faq:catering:press:become-a-restaurant:dcs-pizza:lilac-blossom:jewel-of-india:bombers:office"/>
+    <file name="u3255-r.png" crc="4010253694" ref="index:stack-espresso:oasis:healthy-on-lark:faq:catering:press:become-a-restaurant:dcs-pizza:lilac-blossom:jewel-of-india:bombers:office"/>
+    <file name="u3255_2x.png" crc="4059782271" ref="index:stack-espresso:oasis:healthy-on-lark:faq:catering:press:become-a-restaurant:dcs-pizza:lilac-blossom:jewel-of-india:bombers:office"/>
+    <file name="u3255-r_2x.png" crc="4119834872" ref="index:stack-espresso:oasis:healthy-on-lark:faq:catering:press:become-a-restaurant:dcs-pizza:lilac-blossom:jewel-of-india:bombers:office"/>
+    <file name="u3257.png" crc="3888683531" ref="index:stack-espresso:oasis:healthy-on-lark:faq:catering:press:become-a-restaurant:dcs-pizza:lilac-blossom:jewel-of-india:bombers:office"/>
+    <file name="u3257-r.png" crc="3872056847" ref="index:stack-espresso:oasis:healthy-on-lark:faq:catering:press:become-a-restaurant:dcs-pizza:lilac-blossom:jewel-of-india:bombers:office"/>
+    <file name="u3257_2x.png" crc="28677628" ref="index:stack-espresso:oasis:healthy-on-lark:faq:catering:press:become-a-restaurant:dcs-pizza:lilac-blossom:jewel-of-india:bombers:office"/>
+    <file name="u3257-r_2x.png" crc="452844004" ref="index:stack-espresso:oasis:healthy-on-lark:faq:catering:press:become-a-restaurant:dcs-pizza:lilac-blossom:jewel-of-india:bombers:office"/>
+    <file name="o (7)-crop-u4345.jpg" crc="4139302817" ref="stack-espresso"/>
+    <file name="o (7)-crop-u4345_2x.jpg" crc="3994694027" ref="stack-espresso"/>
+    <file name="o-crop-u4520.jpg" crc="434986775" ref="stack-espresso"/>
+    <file name="o-crop-u4520_2x.jpg" crc="109309071" ref="stack-espresso"/>
+    <file name="o (2)-crop-u4528.jpg" crc="3819931731" ref="stack-espresso"/>
+    <file name="o (2)-crop-u4528_2x.jpg" crc="344882587" ref="stack-espresso"/>
+    <file name="o (8)-crop-u4535.jpg" crc="4275120621" ref="stack-espresso"/>
+    <file name="o (8)-crop-u4535_2x.jpg" crc="315871390" ref="stack-espresso"/>
+    <file name="capture-crop-u5627.jpg" crc="4122518977" ref="oasis"/>
+    <file name="capture-crop-u5627_2x.jpg" crc="4066229242" ref="oasis"/>
+    <file name="o (2)-crop-u5632.jpg" crc="255542528" ref="oasis"/>
+    <file name="o (2)-crop-u5632_2x.jpg" crc="4097918098" ref="oasis"/>
+    <file name="o-crop-u5624.jpg" crc="173381554" ref="oasis"/>
+    <file name="o-crop-u5624_2x.jpg" crc="230015917" ref="oasis"/>
+    <file name="shawarma2-crop-u5616.jpg" crc="3789794723" ref="oasis"/>
+    <file name="shawarma2-crop-u5616_2x.jpg" crc="4267558417" ref="oasis"/>
+    <file name="o (1)-crop-u5619.jpg" crc="4284655328" ref="oasis"/>
+    <file name="dsc_0064-crop-u5694.jpg" crc="3784854985" ref="healthy-on-lark"/>
+    <file name="dsc_0064-crop-u5694_2x.jpg" crc="3956794169" ref="healthy-on-lark"/>
+    <file name="dsc_0068-crop-u5739.jpg" crc="3874632606" ref="healthy-on-lark"/>
+    <file name="dsc_0068-crop-u5739_2x.jpg" crc="4079212519" ref="healthy-on-lark"/>
+    <file name="b07c78c3-483c-4a04-82a2-d0ed54ea7bfa-crop-u5690.jpg" crc="355853704" ref="healthy-on-lark"/>
+    <file name="b07c78c3-483c-4a04-82a2-d0ed54ea7bfa-crop-u5690_2x.jpg" crc="4249272477" ref="healthy-on-lark"/>
+    <file name="dsc-0063-crop-u5701.jpg" crc="3929976895" ref="healthy-on-lark"/>
+    <file name="dsc-0063-crop-u5701_2x.jpg" crc="194251161" ref="healthy-on-lark"/>
+    <file name="dsc-0087-crop-u5699.jpg" crc="51959888" ref="healthy-on-lark"/>
+    <file name="dsc-0087-crop-u5699_2x.jpg" crc="4067476662" ref="healthy-on-lark"/>
+    <file name="u7312-17.png" crc="311828129" ref="faq"/>
+    <file name="u7312-17-r.png" crc="3844863548" ref="faq"/>
+    <file name="u7312-17-m.png" crc="446077895" ref="faq"/>
+    <file name="u7312-17-fs.png" crc="51175883" ref="faq"/>
+    <file name="u7312-17_2x.png" crc="103267543" ref="faq"/>
+    <file name="u7312-17-r_2x.png" crc="4152153754" ref="faq"/>
+    <file name="u7312-17-m_2x.png" crc="4197132409" ref="faq"/>
+    <file name="u7312-17-fs_2x.png" crc="4259258613" ref="faq"/>
+    <file name="capture-crop-u7175.jpg" crc="436623612" ref="press"/>
+    <file name="capture-crop-u7175_2x.jpg" crc="362467575" ref="press"/>
+    <file name="capture1-crop-u7185.jpg" crc="4162850097" ref="press"/>
+    <file name="capture1-crop-u7185_2x.jpg" crc="428083366" ref="press"/>
+    <file name="picture2.jpg" crc="3840802933" seo="true" ref="press"/>
+    <file name="picture3-u7205.png" crc="4129821164" ref="press"/>
+    <file name="u6245.png" crc="4128858888" ref="press"/>
+    <file name="u6245-r.png" crc="395439160" ref="press"/>
+    <file name="u6245_2x.png" crc="3864728896" ref="press"/>
+    <file name="u6245-r_2x.png" crc="299514332" ref="press"/>
+    <file name="u6284-17.png" crc="4128096851" ref="become-a-restaurant"/>
+    <file name="u6284-17-r.png" crc="4142084940" ref="become-a-restaurant"/>
+    <file name="u6284-17-m.png" crc="3794677942" ref="become-a-restaurant"/>
+    <file name="u6284-17-fs.png" crc="474726167" ref="become-a-restaurant"/>
+    <file name="u6284-17_2x.png" crc="232609061" ref="become-a-restaurant"/>
+    <file name="u6284-17-r_2x.png" crc="53306635" ref="become-a-restaurant"/>
+    <file name="u6284-17-m_2x.png" crc="329373968" ref="become-a-restaurant"/>
+    <file name="u6284-17-fs_2x.png" crc="4237484105" ref="become-a-restaurant"/>
+    <file name="photo-11-crop-u6047.jpg" crc="4142253140" ref="dcs-pizza"/>
+    <file name="photo-11-crop-u6047_2x.jpg" crc="318945534" ref="dcs-pizza"/>
+    <file name="food-pizza-fastfood-crop-u6033.jpg" crc="3933530700" ref="dcs-pizza"/>
+    <file name="food-pizza-fastfood-crop-u6033_2x.jpg" crc="235096610" ref="dcs-pizza"/>
+    <file name="mac and cheese bite-crop-u6041.jpg" crc="331839066" ref="dcs-pizza"/>
+    <file name="mac and cheese bite-crop-u6041_2x.jpg" crc="308705343" ref="dcs-pizza"/>
+    <file name="pexels-photo (1)-crop-u6045.jpg" crc="168751354" ref="dcs-pizza"/>
+    <file name="pexels-photo (1)-crop-u6045_2x.jpg" crc="320632748" ref="dcs-pizza"/>
+    <file name="11392877_10153327272247299_4911128721211252707_n-crop-u6037.jpg" crc="4153224884" ref="dcs-pizza"/>
+    <file name="ls-crop-u6096.jpg" crc="4019941620" ref="lilac-blossom"/>
+    <file name="33b6ad208c8faaf1c7168a099e0ca972_featured_v2-crop-u6089.jpg" crc="3798643861" ref="lilac-blossom"/>
+    <file name="33b6ad208c8faaf1c7168a099e0ca972_featured_v2-crop-u6089_2x.jpg" crc="3981931677" ref="lilac-blossom"/>
+    <file name="lilac-blossom-healthy-highlight-crop-u6099.jpg" crc="26344552" ref="lilac-blossom"/>
+    <file name="o.jpg" crc="4103850729" seo="true" ref="lilac-blossom"/>
+    <file name="o_2x.jpg" crc="63388088" seo="true" ref="lilac-blossom"/>
+    <file name="dsc_0064-crop-u6158.jpg" crc="3784854985" ref="jewel-of-india"/>
+    <file name="dsc_0064-crop-u6158_2x.jpg" crc="3956794169" ref="jewel-of-india"/>
+    <file name="b07c78c3-483c-4a04-82a2-d0ed54ea7bfa-crop-u6162.jpg" crc="355853704" ref="jewel-of-india"/>
+    <file name="b07c78c3-483c-4a04-82a2-d0ed54ea7bfa-crop-u6162_2x.jpg" crc="4249272477" ref="jewel-of-india"/>
+    <file name="dsc-0063-crop-u6151.jpg" crc="3929976895" ref="jewel-of-india"/>
+    <file name="dsc-0063-crop-u6151_2x.jpg" crc="194251161" ref="jewel-of-india"/>
+    <file name="dsc-0087-crop-u6149.jpg" crc="51959888" ref="jewel-of-india"/>
+    <file name="dsc-0087-crop-u6149_2x.jpg" crc="4067476662" ref="jewel-of-india"/>
+    <file name="a_thursday-crop-u6208.jpg" crc="160198661" ref="bombers"/>
+    <file name="bombers raw-crop-u6205.jpg" crc="3875779971" ref="bombers"/>
+    <file name="bombers raw-crop-u6205_2x.jpg" crc="4124625153" ref="bombers"/>
+    <file name="348s-crop-u6216.jpg" crc="4222704490" ref="bombers"/>
+    <file name="ls (1)-crop-u6213.jpg" crc="4117770375" ref="bombers"/>
+    <file name="employee button 1.jpg" crc="4227766919" seo="true" ref="office"/>
+    <file name="employee button 1_2x.jpg" crc="4198574169" seo="true" ref="office"/>
+    <file name="employee button 2.jpg" crc="393142496" seo="true" ref="office"/>
+    <file name="employee button 2_2x.jpg" crc="3851413420" seo="true" ref="office"/>
+    <file name="36727-o0ucfe.jpg" crc="3824808627" seo="true" ref="office"/>
+    <file name="36727-o0ucfe_2x.jpg" crc="376601871" seo="true" ref="office"/>
+    <file name="36727-o0ucfe1.jpg" crc="495844853" seo="true" ref="office"/>
+    <file name="36727-o0ucfe1_2x.jpg" crc="3956068845" seo="true" ref="office"/>
+  </folder>
+  <file name="index.html" crc="4083549055" seo="true" mt="1460591357848" redirect="true"/>
+  <file name="stack-espresso.html" crc="4276778392" seo="true" mt="1460590297628" redirect="true"/>
+  <file name="oasis.html" crc="4026302700" seo="true" mt="1460525059958" redirect="true"/>
+  <file name="healthy-on-lark.html" crc="51344275" seo="true" mt="1460525059958" redirect="true"/>
+  <file name="faq.html" crc="391377122" seo="true" mt="1460590566742" redirect="true"/>
+  <file name="catering.html" crc="198554234" seo="true" mt="1460590724559" redirect="true"/>
+  <file name="press.html" crc="145426318" seo="true" mt="1460527359001" redirect="true"/>
+  <file name="become-a-restaurant.html" crc="4255007401" seo="true" mt="1460591436230" redirect="true"/>
+  <file name="dcs-pizza.html" crc="6372427" seo="true" mt="1460590332705" redirect="true"/>
+  <file name="lilac-blossom.html" crc="4171620094" seo="true" mt="1460590346043" redirect="true"/>
+  <file name="jewel-of-india.html" crc="4185820762" seo="true" mt="1460590351850" redirect="true"/>
+  <file name="bombers.html" crc="3885770425" seo="true" mt="1460590357022" redirect="true"/>
+  <file name="office.html" crc="3986352532" seo="true" mt="1460590755933" redirect="true"/>
+</manifest>

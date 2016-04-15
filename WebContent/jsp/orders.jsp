@@ -8,7 +8,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Restaurants</title>
 <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
-<script src="./js/jquery.min.js"></script>
 </head>
 <body>
 <form method="post" name="formName" action="./ActionServlet?action=menuPage">
@@ -26,5 +25,6 @@
 			<%}%>
 		
 </form>
+<script src="./js/jquery.min.js"></script>
 </body>
 </html>
