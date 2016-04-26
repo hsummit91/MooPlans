@@ -9,6 +9,9 @@ import static com.mooplans.dao.DBConnection.rs;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import com.mooplans.model.Dishes;
 import com.mooplans.model.Restaurant;
 
@@ -37,8 +40,8 @@ public class DishDAO {
 		return restaurant;
 	}
 	
-	public static ArrayList<Restaurant> getRestnames(){
-		ArrayList<Restaurant> restDetails = new ArrayList<Restaurant>();
+	public static JSONArray getRestnames(){
+		JSONArray restDetails = new JSONArray();
 		
 		try{
 			getConnection();
@@ -51,10 +54,14 @@ public class DishDAO {
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()){
-				Restaurant rest = new Restaurant();
-				rest.setRestName(rs.getString(1));
-				rest.setRestId(rs.getInt(2));
-				restDetails.add(rest);
+				JSONObject rest = new JSONObject();
+				try{
+					rest.put("restName", rs.getString(1));
+					rest.put("restId", rs.getString(2));
+					restDetails.put(rest);					
+				}catch(Exception e){
+					
+				}
 			}
 		}catch(SQLException e){
 			e.printStackTrace();

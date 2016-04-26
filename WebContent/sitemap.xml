@@ -1,404 +1,1472 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://www.mooplans.com/assets/press-package.zip</loc>
+    <lastmod>2016-04-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://www.mooplans.com/images/logo%20high%20quality.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/images/logo%20high%20quality_2x.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/images/chocolate-dessert-brownies-cake.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/images/food-plate-rucola-salad.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/images/pexels-photo%20(2).jpg</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>http://www.mooplans.com/images/43542-o3v6qk.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
+    <loc>http://www.mooplans.com/images/step%202%20option%201229x251.png</loc>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>http://www.mooplans.com/images/43542-o3v6qk_2x.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
+    <loc>http://www.mooplans.com/images/step%202%20option%201229x251_2x.png</loc>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>http://www.mooplans.com/images/stickers%20018.png</loc>
-    <lastmod>2016-04-13</lastmod>
+    <loc>http://www.mooplans.com/images/calendar.png</loc>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>http://www.mooplans.com/images/stickers%20018_2x.png</loc>
-    <lastmod>2016-04-13</lastmod>
+    <loc>http://www.mooplans.com/images/calendar_2x.png</loc>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>http://www.mooplans.com/images/step%202%20option%201.png</loc>
-    <lastmod>2016-04-13</lastmod>
+    <loc>http://www.mooplans.com/images/clock.png</loc>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>http://www.mooplans.com/images/step%202%20option%201_2x.png</loc>
-    <lastmod>2016-04-13</lastmod>
+    <loc>http://www.mooplans.com/images/clock_2x.png</loc>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>http://www.mooplans.com/images/custom.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
+    <loc>http://www.mooplans.com/images/people.png</loc>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>http://www.mooplans.com/images/custom_2x.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
+    <loc>http://www.mooplans.com/images/people_2x.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/food.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/food_2x.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/people%20(1).png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/people%20(1)_2x.png</loc>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/images/banner%20sections%201.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/images/banner%20sections%201_2x.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/images/banner%20sections%202.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/images/banner%20sections%202_2x.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/images/banner%20sections%203.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/images/banner%20sections%203_2x.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/images/banner%20sections%204.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/images/banner%20sections%204_2x.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/images/banner%20sections%205.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/images/banner%20sections%205_2x.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/images/banner%20sections%206.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/images/banner%20sections%206_2x.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>http://www.mooplans.com/images/icon.png</loc>
-    <lastmod>2016-04-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>http://www.mooplans.com/images/icon_2x.png</loc>
-    <lastmod>2016-04-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>http://www.mooplans.com/images/transport.png</loc>
-    <lastmod>2016-04-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>http://www.mooplans.com/images/transport_2x.png</loc>
-    <lastmod>2016-04-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>http://www.mooplans.com/images/sept-24_chicken-tikka-masala.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>http://www.mooplans.com/images/sept-24_chicken-tikka-masala_2x.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>http://www.mooplans.com/images/pina-colada-700_0.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>http://www.mooplans.com/images/pina-colada-700_0_2x.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>http://www.mooplans.com/images/o155x155.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>http://www.mooplans.com/images/o155x155_2x.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/images/bombers%20raw155x155.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/images/bombers%20raw155x155_2x.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/images/ceaboawwaaak-7t155x155.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/images/ceaboawwaaak-7t_2x.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/bombers.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/bombers_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/dcs.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/dcs_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/images/food-pizza-fastfood155x155.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/images/food-pizza-fastfood155x155_2x.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/pina-colada-700_0.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/pina-colada-700_0_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/healthy%20on%20lark.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/healthy%20on%20lark_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/jewel%20of%20india.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/jewel%20of%20india_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/sept-24_chicken-tikka-masala.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/sept-24_chicken-tikka-masala_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/lilac.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/lilac_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/o155x155.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/o155x155_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/oasis.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/oasis_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/stacks.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/stacks_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/images/logo%20remade.png</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/images/logo%20remade_2x.png</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/logo%20high%20quality83x67.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/logo%20high%20quality83x67_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/step%202%20option%201184x201.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/step%202%20option%201184x201_2x.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/calendar125x125.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/calendar125x125_2x.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/clock127x127.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/clock127x127_2x.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/people152x152.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/people152x152_2x.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/food138x138.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/food138x138_2x.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/people%20(1)140x140.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/people%20(1)140x140_2x.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/banner%20sections%201142x218.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/banner%20sections%201142x218_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/banner%20sections%202142x218.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/banner%20sections%202142x218_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/banner%20sections%203142x218.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/banner%20sections%203142x218_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/banner%20sections%204140x214.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/banner%20sections%204140x214_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/banner%20sections%205140x214.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/banner%20sections%205140x214_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/banner%20sections%206140x214.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/banner%20sections%206140x214_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/logo%20remade107x82.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/logo%20remade107x82_2x.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/logo%20high%20quality93x75.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/logo%20high%20quality93x75_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/step%202%20option%201157x172.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/step%202%20option%201157x172_2x.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/calendar78x78.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/calendar78x78_2x.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/clock80x80.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/clock80x80_2x.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/people95x95.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/people95x95_2x.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/food86x86.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/food86x86_2x.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/people%20(1)87x87.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/people%20(1)87x87_2x.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/banner%20sections%201127x194.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/banner%20sections%201127x194_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/banner%20sections%202127x195.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/banner%20sections%202127x195_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/banner%20sections%203127x194.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/banner%20sections%203127x194_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/banner%20sections%204125x191.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/banner%20sections%204125x191_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/banner%20sections%205125x191.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/banner%20sections%205125x191_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/banner%20sections%206125x191.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/banner%20sections%206125x191_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/logo%20remade115x88.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/logo%20remade115x88_2x.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/logo%20high%20quality77x62.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/logo%20high%20quality77x62_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/step%202%20option%201.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/step%202%20option%201_2x.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/calendar81x81.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/calendar81x81_2x.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/clock82x82.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/clock82x82_2x.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/food110x110.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/food110x110_2x.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/people121x121.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/people121x121_2x.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/people%20(1)118x118.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/people%20(1)118x118_2x.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/banner%20sections%201131x200.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/banner%20sections%201131x200_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/banner%20sections%202131x201.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/banner%20sections%202131x201_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/banner%20sections%203131x200.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/banner%20sections%203131x200_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/banner%20sections%204129x197.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/banner%20sections%204129x197_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/banner%20sections%205129x197.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/banner%20sections%205129x197_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/banner%20sections%206129x197.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/banner%20sections%206129x197_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/logo%20remade77x59.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/logo%20remade77x59_2x.png</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/dsc-006385x56.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/dsc-006385x56_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/dsc-006371x47.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/dsc-006371x47_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/images/picture2.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/picture2310x45.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/picture2194x28.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/picture2129x19.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/mac%20and%20cheese%20bite94x70.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/mac%20and%20cheese%20bite94x70_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/mac%20and%20cheese%20bite63x47.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/mac%20and%20cheese%20bite63x47_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/images/o.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/images/o_2x.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>http://www.mooplans.com/images/employee%20button%201.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
+    <loc>http://www.mooplans.com/images/o149x112.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>http://www.mooplans.com/images/employee%20button%201_2x.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
+    <loc>http://www.mooplans.com/images/o149x112_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>http://www.mooplans.com/images/employee%20button%202.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
+    <loc>http://www.mooplans.com/images/o75x56.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>http://www.mooplans.com/images/employee%20button%202_2x.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
+    <loc>http://www.mooplans.com/images/o75x56_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/o63x47.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/o63x47_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/dsc-006329x19.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/dsc-006329x19_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/employee%20button%201191x65.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/employee%20button%201191x65_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/employee%20button%202190x65.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/employee%20button%202190x65_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/images/36727-o0ucfe.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/images/36727-o0ucfe_2x.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/images/36727-o0ucfe1.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/images/36727-o0ucfe1_2x.jpg</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/employee%20button%201153x52.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/employee%20button%201153x52_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/employee%20button%202152x52.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/employee%20button%202152x52_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/36727-o0ucfe358x185.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/36727-o0ucfe358x185_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/36727-o0ucfe1355x185.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/36727-o0ucfe1355x185_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/employee%20button%201.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/employee%20button%201_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/employee%20button%202.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/employee%20button%202_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/36727-o0ucfe224x116.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/36727-o0ucfe224x116_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/36727-o0ucfe1222x116.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/36727-o0ucfe1222x116_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/employee%20button%201143x49.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/employee%20button%201143x49_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/employee%20button%202143x49.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/employee%20button%202143x49_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/36727-o0ucfe150x77.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/36727-o0ucfe150x77_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/36727-o0ucfe1148x77.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/36727-o0ucfe1148x77_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/aaeaaqaaaaaaaapxaaaajdfhmtk5odi3lwvknzitndmyys1hmzc5lwzmyjbjnti2m2q0zq.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/aaeaaqaaaaaaaapxaaaajdfhmtk5odi3lwvknzitndmyys1hmzc5lwzmyjbjnti2m2q0zq_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/social-media25x25.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/social-media25x25_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/aaeaaqaaaaaaaawmaaaajgmxzwfjmzrhltqyzmqtndhkmi1hywy0lwyxyzc2m2u4ndm4yw.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/aaeaaqaaaaaaaacaaaaajdkynza0nmqzlti5nzqtngq0zs04njflltjkody2m2qyytdmmw.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/aaeaaqaaaaaaaapxaaaajdfhmtk5odi3lwvknzitndmyys1hmzc5lwzmyjbjnti2m2q0zq153x153.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/aaeaaqaaaaaaaapxaaaajdfhmtk5odi3lwvknzitndmyys1hmzc5lwzmyjbjnti2m2q0zq153x153_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/social-media20x20.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/social-media20x20_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/aaeaaqaaaaaaaawmaaaajgmxzwfjmzrhltqyzmqtndhkmi1hywy0lwyxyzc2m2u4ndm4yw153x153.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/aaeaaqaaaaaaaacaaaaajdkynza0nmqzlti5nzqtngq0zs04njflltjkody2m2qyytdmmw153x153.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/aaeaaqaaaaaaaapxaaaajdfhmtk5odi3lwvknzitndmyys1hmzc5lwzmyjbjnti2m2q0zq77x77.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/aaeaaqaaaaaaaapxaaaajdfhmtk5odi3lwvknzitndmyys1hmzc5lwzmyjbjnti2m2q0zq77x77_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/social-media10x10.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/social-media10x10_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/aaeaaqaaaaaaaawmaaaajgmxzwfjmzrhltqyzmqtndhkmi1hywy0lwyxyzc2m2u4ndm4yw77x77.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/aaeaaqaaaaaaaacaaaaajdkynza0nmqzlti5nzqtngq0zs04njflltjkody2m2qyytdmmw77x77.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/aaeaaqaaaaaaaapxaaaajdfhmtk5odi3lwvknzitndmyys1hmzc5lwzmyjbjnti2m2q0zq64x64.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/aaeaaqaaaaaaaapxaaaajdfhmtk5odi3lwvknzitndmyys1hmzc5lwzmyjbjnti2m2q0zq64x64_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/social-media.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/social-media_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/aaeaaqaaaaaaaawmaaaajgmxzwfjmzrhltqyzmqtndhkmi1hywy0lwyxyzc2m2u4ndm4yw64x64.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/aaeaaqaaaaaaaacaaaaajdkynza0nmqzlti5nzqtngq0zs04njflltjkody2m2qyytdmmw64x64.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/social-media44x44.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/images/social-media44x44_2x.jpg</loc>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/index.html</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/stack-espresso.html</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/oasis.html</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/healthy-on-lark.html</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/faq.html</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/catering.html</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/press.html</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/become-a-restaurant.html</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/dcs-pizza.html</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/lilac-blossom.html</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/jewel-of-india.html</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/bombers.html</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.mooplans.com/office.html</loc>
-    <lastmod>2016-04-13</lastmod>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/developers.html</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/contact-us.html</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/$35.html</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/$55.html</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/$150.html</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/$400.html</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/$1600.html</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/$1900.html</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/building.html</loc>
+    <lastmod>2016-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.mooplans.com/wait-list.html</loc>
+    <lastmod>2016-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

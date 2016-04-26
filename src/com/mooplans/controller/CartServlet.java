@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import com.mooplans.dao.DishDAO;
 import com.mooplans.model.Cart;
 import com.mooplans.model.Dishes;
+import com.mooplans.model.User;
 
 /**
  * Servlet implementation class CartServlet
@@ -46,72 +47,40 @@ public class CartServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		Cart shoppingCart;
 		shoppingCart = (Cart) session.getAttribute("cart");
-
+		
+		//allow access only if session exists		
+		User user = null;
+		if(session.getAttribute("User") != null){
+			user = (User) session.getAttribute("User");
+		}
+		
 		if(shoppingCart == null){
 			System.out.println("Cart servlet where cart is empty");
 			shoppingCart = new Cart();
 			session.setAttribute("cart", shoppingCart);
 		}
 
-		//Float dishPoints = Float.parseFloat(request.getParameter("dishPoints"));
-		//int quantity = Integer.parseInt(request.getParameter("quantity"));
 		String dishName = "";
 		String dishId = "";
 		String buttonClick  = "";
+		
 		try{
 			buttonClick  = request.getParameter("button");
-		}catch(NullPointerException ne){}
+		}catch(NullPointerException ne){
+			
+		}
 		
 		if(buttonClick != null){
-			    dishName = request.getParameter("dishName").trim();
-				dishId = request.getParameter("dishId").trim();
-				shoppingCart.addToCart(Integer.parseInt(dishId), dishName);
-		}
-		else{
+			dishName = request.getParameter("dishName").trim();
+			dishId = request.getParameter("dishId").trim();
+			shoppingCart.addToCart(Integer.parseInt(dishId), dishName);
+		}else{
 			dishId = request.getParameter("dishId").trim();
 			shoppingCart.deleteFromCart(Integer.parseInt(dishId));
 		}
 	
 		session.setAttribute("cart", shoppingCart);
-		try (PrintWriter out = response.getWriter()) {
-			out.println("<!DOCTYPE html>");
-			out.println("<html>");
-			out.println("<head>");
-			out.println("<title>Cart</title>");
-			out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/bootstrap.min.css\">");
-			out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/menutable.css\">");
-			out.println("<script src=\"./js/jquery.min.js\"></script>");		
-			out.println("</head>");
-			out.println("<body>");
-			out.println("<div class='col-sm-11' style='margin-left: 5%'>");
-			out.println("<div class='alert alert-success'>Meal successfully added to cart </div>");
-			out.println("<a href="+request.getContextPath()+"/ActionServlet?action=restPage><input type='submit' style='margin-left: 16px;' class='btn btn-primary' value='Add more Items'></a>");
-			out.println("<hr>");
-			out.println("<h3>Cart</h3>");
-			HashMap<Integer, String> items = shoppingCart.getCartItems();
-			out.println("<table class='table cartTable'>");
-
-			out.println("<th>Food Item</th>");
-			out.println("<th></th>");
-			int count = 0;
-			for(Integer key: items.keySet()){
-				count++;
-				out.println("<form action='CartServlet?button=delete' method='doGet'><input type='hidden' name='dishId' value='"+key+"'>");
-				if(count % 2 == 0){
-					out.println("<tr class='even'><td>"+items.get(key)+"</td><td align='center'><input type='submit' class='btn btn-primary' value='delete'></td></tr></form>");
-				}else{
-					out.println("<tr class='odd'><td>"+items.get(key)+"</td><td align='center'><input type='submit' class='btn btn-primary' value='delete'></td></tr></form>");	
-				}
-				
-			}
-			if(items.size() == 0){
-				out.println("<tr><td colspan=2>No items in cart</td></tr>");
-			}
-			out.println("</table>");
-			if(!items.isEmpty())
-			out.println("<a href="+request.getContextPath()+"/jsp/checkout.jsp><input type='submit' style='margin-left: 16px;' class='btn btn-primary' value='Proceed Checkout'></a>");
-			out.println("</body>");
-			out.println("</html>");
-		  }
+		
+		response.sendRedirect(getServletContext().getContextPath()+"/jsp/cart.jsp?added=true");
 		}
 }
