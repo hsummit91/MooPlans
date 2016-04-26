@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="refresh" content="0; url=../welcome.html" />
+<meta http-equiv="refresh" content="0; url=../index.html" />
 <title>Logged Out</title>
 <script type="text/javaScript">
 	function disableBackButton() {
@@ -15,6 +15,6 @@
 </script>
 </head>
 <body onload="disableBackButton()">
-<a href="../index.html">Homepage</a>
+<a href="../index.html">Redirecting to Homepage..</a>
 </body>
 </html>

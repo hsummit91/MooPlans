@@ -15,6 +15,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.mooplans.dao.DishDAO;
+import com.mooplans.dao.EmailDAO;
 import com.mooplans.dao.PayPalDAO;
 import com.mooplans.model.Cart;
 import com.mooplans.model.Dishes;
@@ -33,7 +34,6 @@ public class ActionServlet extends HttpServlet {
 	 */
 	public ActionServlet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -47,20 +47,17 @@ public class ActionServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
 		String action = request.getParameter("action");
 		System.out.println("Action called "+action);
-
+if(action != null){
 		if(action.equalsIgnoreCase("restPage")){
 			System.out.println("In Rest action");
-			ArrayList<Restaurant> restList = new ArrayList<Restaurant>();
-			restList = DishDAO.getRestnames();
-			request.setAttribute("restList", restList);
-			getServletConfig().getServletContext().getRequestDispatcher("/jsp/orders.jsp").forward(request,response);
-		}
-
-		if(action.equalsIgnoreCase("menuPage")){
+			JSONArray restList = DishDAO.getRestnames();
+			response.setContentType("application/json");
+			out.write(restList+"");			
+		}else if(action.equalsIgnoreCase("menuPage")){
 			System.out.println("In Menu action");
 			Cart shoppingCart;
 			shoppingCart = (Cart) session.getAttribute("cart");
@@ -78,17 +75,25 @@ public class ActionServlet extends HttpServlet {
 			request.setAttribute("menuList", menuList); 
 			getServletConfig().getServletContext().getRequestDispatcher("/jsp/menu.jsp").forward(request,response);
 		}
-		else{
+}else{
 			System.out.println("In addedPoints action");
-			int points = Integer.parseInt(action);
-			System.out.println("check points" +points);
-			User user = (User)session.getAttribute("User");
-			boolean pointsAdded = PayPalDAO.addPoints(user, points);
-			if(pointsAdded)
-				request.setAttribute("message", "Added "+points+" points");
-			else
-				request.setAttribute("message", "Transaction failed. Please try again");
+			String transactionId = request.getParameter("tx");
+			String status = request.getParameter("st");
+			float points = Float.parseFloat(request.getParameter("amt"));
+
+			if(points == 0){
+				session.setAttribute("message", "Your previous transaction was cancelled.");
+			}else{
+				User user = (User)session.getAttribute("User");
+				boolean pointsAdded = PayPalDAO.addPoints(user, transactionId, (int)points, status);
+				if(pointsAdded){
+					EmailDAO.sendMail(user, 2, points);
+					session.setAttribute("message", "Added "+points+" points");
+				}else{
+					session.setAttribute("message", "Transaction failed. Please try again");
+				}
+			}
 			response.sendRedirect(getServletContext().getContextPath()+"/jsp/home.jsp");
-		}
+}
 	}
 }

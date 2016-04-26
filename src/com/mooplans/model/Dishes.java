@@ -4,18 +4,51 @@ import java.util.ArrayList;
 
 public class Dishes {
 	
-	//"SELECT dishes.dish_name, dishes.dish_category, restaurant.rest_name, dishes.dish_price "
-	//		+ "FROM dishes INNER JOIN restaurant ON dishes.dish_rest_id=restaurant.rest_id";
-	
 	private int dishId;
 	private String dishName;
 	private String dishCategory;
 	private float dishPrice;
 	private int restId;
 	private String rest_name;
+	private String restEmail;
+	private String dishDescription;
+	private String dishChoice;
+	private String dishSides;
+	private String dishHealth;
 	private ArrayList<Restaurant> rest_details;
 	
 	
+	
+	public String getDishDescription() {
+		return dishDescription;
+	}
+	public void setDishDescription(String dishDescription) {
+		this.dishDescription = dishDescription;
+	}
+	public String getDishChoice() {
+		return dishChoice;
+	}
+	public void setDishChoice(String dishChoice) {
+		this.dishChoice = dishChoice;
+	}
+	public String getDishSides() {
+		return dishSides;
+	}
+	public void setDishSides(String dishSides) {
+		this.dishSides = dishSides;
+	}
+	public String getDishHealth() {
+		return dishHealth;
+	}
+	public void setDishHealth(String dishHealth) {
+		this.dishHealth = dishHealth;
+	}
+	public String getRestEmail() {
+		return restEmail;
+	}
+	public void setRestEmail(String restEmail) {
+		this.restEmail = restEmail;
+	}
 	public String getRest_name() {
 		return rest_name;
 	}

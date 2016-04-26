@@ -92,6 +92,17 @@ td{
 		String valid = (String) request.getAttribute("errormsg");
 		if (valid != null)
 			out.print(valid);
+		
+		String pay = "";
+		try{
+			pay = request.getParameter("pay");			
+		}catch(Exception e){
+			
+		}
+		if(pay == null){
+			pay = "0";
+		}
+		System.out.println("|====>"+pay+"<====|");
 	%>
 	<form method="post" name="register" action="../Registration"
 		class="login">
@@ -142,7 +153,7 @@ td{
 				</table>
 			</div>
 			<input type="submit" name="register" class="submit" value="&#xf061;" />
-			<!-- <input type="submit" value="register" /> -->
+			<input type="hidden" name="pay" value=<%=pay %> />
 		</fieldset>
 
 	</form>

@@ -48,6 +48,8 @@ public class Login extends HttpServlet {
 		
 		String emailId= request.getParameter("email");
 		String password=request.getParameter("password");
+		String pay=request.getParameter("pay");
+		
 		String errorMsg = "";
 		Boolean isError = false;
 
@@ -82,12 +84,16 @@ public class Login extends HttpServlet {
 				String address = u.getUser_address();
 				session.setAttribute("userAddress", address);
 				session.setAttribute("User", u);
-				if(u.getUser_role().equalsIgnoreCase("student")){
-					url = "/jsp/home.jsp";
-				}
-				// for future work
-				else if(u.getUser_role().equalsIgnoreCase("restaurant")){
-					url = "/jsp/restaurant.jsp";
+				if(!pay.equals("0")){
+					url = "/jsp/addPoints.jsp";
+					System.out.println("NOT NULL = "+pay);
+				}else{
+					System.out.println("###NULL===");
+					if(u.getUser_role().equalsIgnoreCase("student")){
+						url = "/jsp/home.jsp";
+					}else if(u.getUser_role().equalsIgnoreCase("restaurant")){ // for future work
+						url = "/jsp/restaurant.jsp";
+					}
 				}
 			}
 		}
@@ -104,6 +110,6 @@ public class Login extends HttpServlet {
 		}
 		//rd = request.getRequestDispatcher(url);
 		//rd.forward(request, response);
-		response.sendRedirect(getServletContext().getContextPath()+url+"?errorMsg="+URLEncoder.encode(errorMsg)+"&isError="+isError);
+		response.sendRedirect(getServletContext().getContextPath()+url+"?errorMsg="+URLEncoder.encode(errorMsg)+"&isError="+isError+"&pay="+pay);
 	}
 }
