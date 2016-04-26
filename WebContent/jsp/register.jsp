@@ -107,7 +107,7 @@ td{
 	<form method="post" name="register" action="../Registration"
 		class="login">
 		<fieldset>
-			<legend class="legend">Get registered with Mooplans <span style="float: right;"><a href="login.jsp">Login</a></span></legend>
+			<legend class="legend">Get registered with Mooplans <span style="float: right;"><a href="login.jsp?pay=<%=pay %>">Already a Member?</a></span></legend>
 			<div class="input">
 
 				<table style="with: 100%">
