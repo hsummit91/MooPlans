@@ -1,11 +1,14 @@
 
 *{
     font-family: 'Raleway', sans-serif;
-    color : #FFF;
-    
+    color : #FFF; 
 }
-
-
+.glyphicon{
+	color: black;
+}
+.caret, .modal-title{
+	color: black;
+}
 div span {
      font-weight: 200;
 }
@@ -18,7 +21,6 @@ h1{
     background: #FF847C;
     width:50%;
     position:absolute;
-    top:2%;
     left:27.5%;
     
     -webkit-box-shadow: 0px 0px 8px 0px rgba(50, 50, 50, 0.54);
@@ -32,7 +34,6 @@ box-shadow:         0px 0px 8px 0px rgba(50, 50, 50, 0.54);
         width:90%;
         height:80%;
         position:absolute;
-        top:10%;
         left:7%;
         
         -webkit-box-shadow: 0px 0px 8px 0px rgba(50, 50, 50, 0.54);

@@ -2,36 +2,15 @@
     pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.*" %>
 <%@ page import="com.mooplans.model.User" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<title>Moo Home</title>
-<meta name="description" content="Blueprint: Slide and Push Menus" />
-<meta name="keywords" content="sliding menu, pushing menu, navigation, responsive, menu, css, jquery" />
-<meta name="author" content="Codrops" />
-<link rel="shortcut icon" href="../favicon.ico">
-<link rel="stylesheet" type="text/css" href="../css/default.css" />
-<link rel="stylesheet" type="text/css" href="../css/component.css" />
-<link rel='stylesheet prefetch' href='../css/font-awesome.css'>
-<script src="../js/modernizr.custom.js"></script>
-<script src="../js/jquery.min.js"></script>
-<script type="text/javaScript">
-	function disableBackButton() {
-		window.history.forward();
-	}
-	setTimeout("disableBackButton()", 0);
-</script>
-<style type="text/css">
-sideProfile > img .img-circle {
-    width: 100px;
-    height: 100px;
-    border: 1px solid #2A363B;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
+<title>Home</title>
 </head>
-<body class="cbp-spmenu-push" onload="getUserDetails()">
+<body>
 <%
 		//allow access only if session exists
 	User user = null;
@@ -51,88 +30,57 @@ sideProfile > img .img-circle {
 		}
 	}
 %>
-	
-		<form action="${pageContext.request.contextPath}/Logout" id="logoutForm" method="post">
-	</form>
-	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
-		<div id="sideProfile" align="center">
-			<img class="img-circle" id="profileImg" height="100px" width="100px" style="margin-left: -14px;margin-top: -5px;" src="../images/Logo faded.png" />
-		</div>
-		<h3><span id="firstName"><%=user.getUser_firstname() %> <%=user.getUser_lastname() %></span></h3>
-		<h4>Moo Points: <span id="mooPoints"> <%=user.getUser_points()%> </span></h4>
-		<a href="#" id="myProfile" onclick="displayPages(this)">My Profile</a>
-		<a href="#" id="addPoints" onclick="displayPages(this)">Add Moo Points</a> 
-		<a href="#" id="orderRedirect" onclick="displayPages(this)">Place an Order</a> 
-		<a href="#" id="pastOrders" onclick="displayPages(this)">My Past Orders</a> 
-		<a href="#" id="logout">Logout</a>
-	</nav>
-	<input type="hidden" id="userId" value="<%=user.getUser_id() %>" />
-	<div class="container">
-		<div style="cursor:pointer;font-size: 50px;z-index: 1010; margin: 5px;width: 30px;height: 30px;" id="showLeftPush">
-			<div class="zooming" id="expandMenu" onclick="toggleArrows()" style="width: 30px;height: 30px;position: fixed;">
-				<i class="fa fa-angle-right"></i>
-			</div>
-		</div>
-		 <!-- <div style="text-align: center;">Welcome to Moo Plans!</div> -->
+<div class="container">
 
-		<div id="other" style="width: auto;height: 580px;">
-			<iframe width="100%" height="100%" id="homeIframe" frameborder="0"></iframe>
-		</div>
-	</div>
-	<script src="../js/classie.js"></script>
-	<script>
-		var menuLeft = document.getElementById('cbp-spmenu-s1'), showLeft = document
-				.getElementById('showLeft'), showLeftPush = document
-				.getElementById('showLeftPush'), body = document.body;
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            	<img class="block" id="u3284_img" src="../images/logo%20high%20quality.jpg" alt="Moo Plans" style="margin-right: 1em;"/>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="orders.jsp">Place Order</a></li>
+              <li><a href="pastOrders.jsp">Past Orders</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+             <li><a href="cart.jsp?added=false"><i class="glyphicon glyphicon-shopping-cart"></i></a></li>
+             <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hi <%=user.getUser_firstname() %>! <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#"><%=user.getUser_points()%> Points</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li class="dropdown-header">Profile Settings</li>
+                  <li><a href="../jsp/myProfile.jsp">View Profile</a></li>
+                </ul>
+              </li>
+              <li><a href="#" id="logout">Logout</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
 
-		showLeftPush.onclick = function() {
-			classie.toggle(this, 'active');
-			classie.toggle(body, 'cbp-spmenu-push-toright');
-			classie.toggle(menuLeft, 'cbp-spmenu-open');
-			disableOther('showLeftPush');
-		};
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <h1>Welcome Back! <%=user.getUser_firstname()%></h1>
+        <p>What would you like to order today?</p>
+      </div>
 
-		function disableOther(button) {
-			if (button !== 'showLeftPush') {
-				classie.toggle(showLeftPush, 'disabled');
-			}
-		}
-
-		function toggleArrows(){
-			if ($("#expandMenu").hasClass("expanded")){
-				$("#expandMenu").removeClass("expanded");
-				$("#expandMenu").html('<i class="fa fa-angle-right"></i>');
-			} else {
-				$("#expandMenu").addClass("expanded");
-				$("#expandMenu").html('<i class="fa fa-angle-left"></i>');
-			}
-		}
-
-		function displayPages(ele){
-			var id = ele.id;
-			$("#other").find("iframe").empty();
-			$("#other").find("iframe").attr("src", id + ".jsp");
-			
-			var elem = document.getElementById("showLeftPush");
-			if (typeof elem.onclick == "function") {
-			    elem.onclick.apply(elem);
-			}
-			toggleArrows();
-		}
-		
-		function getUserDetails(){			    
-			$("#other").find("iframe").attr("src", "myProfile.jsp");
-		}
-		
-		function updatePoints(){
-			var points = sessionStorage.getItem("myProfilPoints");
-			$("#mooPoints").html(points);
-		}
-		
-		$( "#logout" ).click(function() {
-			  $( "#logoutForm" ).submit();
-		});
-		
-	</script>
+    </div>
+<script src="../js/jquery.min.js" type="text/javascript"></script>
+<script src="../js/bootstrap.min.js" type="text/javascript"></script>
+<form action="${pageContext.request.contextPath}/Logout" id="logoutForm" method="post"></form>
+<script type="text/javascript">
+$( "#logout" ).click(function() {
+	  $( "#logoutForm" ).submit();
+});
+</script>
 </body>
 </html>

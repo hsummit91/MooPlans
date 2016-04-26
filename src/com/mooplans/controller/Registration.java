@@ -24,7 +24,6 @@ public class Registration extends HttpServlet {
 	 */
 	public Registration() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -40,7 +39,16 @@ public class Registration extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String url = "/jsp/register.jsp";
-
+		String pay = "";
+		try{
+			pay = request.getParameter("pay");
+			if(pay == null){
+				pay = "0";
+			}
+			System.out.println("====>"+pay+"<====");
+		}catch(Exception e){
+			
+		}
 		String firstname= request.getParameter("firstname");
 		String lastname=request.getParameter("lastname");
 		String emailId= request.getParameter("email");
@@ -101,11 +109,11 @@ public class Registration extends HttpServlet {
 				User user = new User();
 				user.setUser_firstname(firstname);
 				user.setUser_email(emailId);
-				EmailDAO.sendMail(user, 1);
+				EmailDAO.sendMail(user, 1, 0);
 				
 				// Set success message
 				System.out.println("Registraion done success ID :"+ID);
-				url = "/jsp/login.jsp?errorMsg=Registration Successful&isError=true";
+				url = "/jsp/login.jsp?errorMsg=Registration Successful&isError=true&pay="+pay;
 			}
 		}
 

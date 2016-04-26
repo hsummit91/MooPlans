@@ -1,20 +1,77 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page import="com.mooplans.model.User"%>
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>Past Orders</title>
-<script src="../js/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/dataTables.css">
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../css/menutable.css">
-<script type="text/javascript">
+</head>
+<body onload="getPastOrders()">
+<%
+	//allow access only if session exists		
+	User user = null;
+	if(session.getAttribute("User") == null){
+		out.print("Session Invalidate");
+	    response.sendRedirect("login.jsp");
+	}else user = (User) session.getAttribute("User");
+%>
+<div class="container">
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            	<img class="block" id="u3284_img" src="../images/logo%20high%20quality.jpg" alt="Moo Plans" style="margin-right: 1em;"/>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="home.jsp">Home</a></li>
+              <li><a href="orders.jsp">Place Order</a></li>
+              <li class="active"><a href="#">Past Orders</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+             <li><a href="cart.jsp?added=false"><i class="glyphicon glyphicon-shopping-cart"></i></a></li>
+             <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hi <%=user.getUser_firstname()%>! <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#"><%=user.getUser_points()%> Points</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li class="dropdown-header">Profile Settings</li>
+                  <li><a href="../jsp/myProfile.jsp">View Profile</a></li>
+                </ul>
+              </li>
+              <li><a href="#" id="logout">Logout</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+      
+<div id="history"></div>
+</div>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js" type="text/javascript"></script>
+ <script src="../js/jquery.dataTables.min.js"></script>
+ <form action="${pageContext.request.contextPath}/Logout" id="logoutForm" method="post"></form>
+ <script type="text/javascript">
+ $( "#logout" ).click(function() {
+	  $( "#logoutForm" ).submit();
+});
+ 
 function getPastOrders(){				
     $.ajax({
 		  method: "POST",
 		  url: "../FetchData",
-		  data: { action: "getPastOrders", userId: 1  }
+		  data: { action: "getPastOrders", userId: <%=user.getUser_id()%>  }
 		}).done(function( msg ) {
 			  console.log(msg.length);
 			  
@@ -58,9 +115,5 @@ function getPastOrders(){
 		});    
 }
 </script>
-</head>
-<body onload="getPastOrders()">
-<div id="history"></div>
 </body>
- <script src="../js/jquery.dataTables.min.js"></script>
 </html>

@@ -36,6 +36,16 @@ setTimeout("disableBackButton()", 0);
 		if(isError == null){
 			isError = "";
 		}
+		String pay = "";
+		try{
+			pay = request.getParameter("pay");			
+		}catch(Exception e){
+			
+		}
+		if(pay == null){
+			pay = "0";
+		}
+		System.out.println("Login|====>"+pay+"<====|");
 	%>	
 	<form method="post" name="login" action="../Login" class="login">
 		<fieldset>
@@ -52,6 +62,7 @@ setTimeout("disableBackButton()", 0);
 			
 			<input type="hidden" id="isError" value="<%=isError %>" />
 			<input type="hidden" id="message" value="<%=valid %>" />
+			<input type="hidden" name="pay" value="<%=pay %>" />
 			<input type="submit" name="submit" class="submit" value="&#xf061;" />
 
 		</fieldset>
