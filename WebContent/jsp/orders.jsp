@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<script src="../js/socialSharing.js" type="text/javascript"></script>
 <title>Restaurants</title>
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 <style type="text/css">
