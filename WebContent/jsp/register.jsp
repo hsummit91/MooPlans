@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -16,7 +17,7 @@ input[type="submit"] {
 	font-family: FontAwesome;
 }
 
-td{
+ td{
  vertical-align: middle !important;
  margin: 10px;
 }
@@ -87,12 +88,16 @@ td{
 }
 </style>
 </head>
-<body background="../images/Logo Transparent.png">
-	<%
-		String valid = (String) request.getAttribute("errormsg");
-		if (valid != null)
-			out.print(valid);
-		
+<body onload="checkError();" background="../images/Logo Transparent.png">
+<%
+		String valid = request.getParameter("errorMsg");
+		String isError = request.getParameter("isError");
+		if (valid == null){
+			valid = "";
+		}
+		if(isError == null){
+			isError = "";
+		}
 		String pay = "";
 		try{
 			pay = request.getParameter("pay");			
@@ -102,12 +107,11 @@ td{
 		if(pay == null){
 			pay = "0";
 		}
-		System.out.println("|====>"+pay+"<====|");
-	%>
+	%>	
 	<form method="post" name="register" action="../Registration"
 		class="login">
 		<fieldset>
-			<legend class="legend">Get registered with Mooplans <span style="float: right;"><a href="login.jsp?pay=<%=pay %>">Already a Member?</a></span></legend>
+			<legend class="legend">Get registered with Moo Plans <span style="float: right;"><a href="login.jsp?pay=<%=pay %>">Already a Member?</a></span></legend>
 			<div class="input">
 
 				<table style="with: 100%">
@@ -152,8 +156,10 @@ td{
 					</tr>
 				</table>
 			</div>
+			<input type="hidden" id="isError" value="<%=isError %>" />
+			<input type="hidden" id="message" value="<%=valid %>" />
+			<input type="hidden" name="pay" value="<%=pay %>" />
 			<input type="submit" name="register" class="submit" value="&#xf061;" />
-			<input type="hidden" name="pay" value=<%=pay %> />
 		</fieldset>
 
 	</form>
