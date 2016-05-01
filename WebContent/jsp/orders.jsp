@@ -55,7 +55,8 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hi <%=user.getUser_firstname() %>! <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#"><%=user.getUser_points()%> Points</a></li>
+                  <li><a href="mealPlans.jsp"><%=user.getUser_points()%> Points</a></li>
+                  <li><a href="mealPlans.jsp">Purchase a Meal Plan</a></li>
                   <li role="separator" class="divider"></li>
                   <li class="dropdown-header">Profile Settings</li>
                   <li><a href="../jsp/myProfile.jsp">View Profile</a></li>

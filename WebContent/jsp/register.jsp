@@ -88,12 +88,16 @@ td{
 }
 </style>
 </head>
-<body background="../images/Logo Transparent.png">
+<body  onload="checkError();" background="../images/Logo Transparent.png">
 	<%
-		String valid = (String) request.getAttribute("errormsg");
-		if (valid != null)
-			out.print(valid);
-		
+		String valid = (String) request.getParameter("errorMsg");
+	    String isError = (String) request.getParameter("isError");
+		if (valid == null){
+			valid = "";
+		}
+		if(isError == null){
+			isError = "";
+		}
 		String pay = "";
 		try{
 			pay = request.getParameter("pay");			
@@ -103,14 +107,12 @@ td{
 		if(pay == null){
 			pay = "0";
 		}
-		System.out.println("|====>"+pay+"<====|");
 	%>
 	<form method="post" name="register" action="../Registration"
 		class="login">
 		<fieldset>
-			<legend class="legend">Get registered with Mooplans <span style="float: right;"><a href="login.jsp?pay=<%=pay %>">Already a Member?</a></span></legend>
+			<legend class="legend">Get registered with Moo plans <span style="float: right;"><a href="login.jsp?pay=<%=pay %>">Already a Member?</a></span></legend>
 			<div class="input">
-
 				<table style="with: 100%">
 					<tr>
 						<td>First Name</td>
@@ -144,19 +146,25 @@ td{
 					<tr>
 						<td>University</td>
 						<td><select name="university" required="required">
-								<option selected="selected" value="SUNY Albany Uptown">SUNY
-									Albany Uptown</option>
-								<option value="SUNY Albany Downtown">SUNY Albany
-									Downtown</option>
-								<option value="Saint Rose">Saint Rose</option>
+								<option selected="selected" value="Campus Center">University at Albany: Campus Center</option>
+								<option value="Dutch Quad">Dutch Quad</option>
+								<option value="Colonial Quad">Colonial Quad</option>
+								<option value="State Quad">State Quad</option>
+								<option value="Indian Quad">Indian Quad</option>
+								<option value="Freedom Apartments">Freedom Apartments</option>
+								<option value="Liberty Terrace Apartments">Liberty Terrace Apartments</option>
+								<option value="Empire Commons">Empire Commons</option>
+								<option value="Alumni (Bus Stop)">Alumni (Bus Stop)</option>
 						</select></td>
 					</tr>
 				</table>
 			</div>
 			<input type="submit" name="register" class="submit" value="&#xf061;" />
 			<input type="hidden" name="pay" value=<%=pay %> />
+			<input type="hidden" id="isError" value="<%=isError %>" />
+			<input type="hidden" id="message" value="<%=valid %>" />
 		</fieldset>
-
+<div id="feedback" class="feedbackErr"></div>
 	</form>
 	<script src='../js/jquery.min.js'></script>
 
