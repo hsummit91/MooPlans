@@ -1,6 +1,7 @@
 package com.mooplans.controller;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,10 +37,14 @@ public class Registration extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@SuppressWarnings("deprecation")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String url = "/jsp/register.jsp";
 		String pay = "";
+		String errorMsg = "";
+		Boolean isError = false;
+		
 		try{
 			pay = request.getParameter("pay");
 			if(pay == null){
@@ -61,36 +66,28 @@ public class Registration extends HttpServlet {
 		int id = 0;
 
 		if(firstname == null || firstname.equals("")){
-			request.setAttribute("errormsg", "Fist name can not be empty");
+			errorMsg = "Fist name can not be empty";
 		}
 		if(emailId == null || emailId.equals("")){
-			request.setAttribute("errormsg", "Username can not be empty");
+			errorMsg =  "Username can not be empty";
 			if(password == null || password.equals("")){
-				request.setAttribute("errormsg", "User and Password can not be Empty..!!");
+				errorMsg = "User and Password can not be Empty..!!";
 			}
 		}
 
 		if(phone == null || phone.equals("")){
-			request.setAttribute("errormsg", "Phone can not be empty");
+			errorMsg = "Phone can not be empty";
 		}
 
 		if(university == null || university.equals("")){
-			request.setAttribute("errormsg", "University can not be empty");
+			errorMsg = "University can not be empty";
 		}
 
 		if(address == null || address.equals("")){
-			request.setAttribute("errormsg", "Address can not be empty");
+			errorMsg =  "Address can not be empty";
 		}
 
 		else {
-
-			System.out.println("firstname ="+firstname);
-			System.out.println("lastname ="+lastname);
-			System.out.println("userName ="+emailId);
-			System.out.println("password ="+password);
-			System.out.println("phone ="+phone);
-			System.out.println("university ="+university);
-			System.out.println("address ="+address);
 
 			User userObject = new User(password, firstname, lastname, emailId, 
 					phone, university, address, role, id, points);
@@ -98,26 +95,34 @@ public class Registration extends HttpServlet {
 			int ID = LoginDAO.registerUser(userObject);
 
 			if (ID == 0) {
-				System.out.println("Registraion failed ID :"+ID);
-				request.setAttribute("errormsg", "Registration failed. Please try again.");
+				errorMsg =  "Registration failed, please try again";
 			}
 			else if (ID < 0) {
-				System.out.println("Registraion failed ID :"+ID);
-				request.setAttribute("errormsg", "Email ID already exists.");
+				errorMsg = "Email ID already registered";
 			}else{
 				// Sending welcome email to user
-				User user = new User();
+				final User user = new User();
 				user.setUser_firstname(firstname);
 				user.setUser_email(emailId);
-				EmailDAO.sendMail(user, 1, 0);
+				
+				new Thread(new Runnable() {
+				    public void run() {
+				    	EmailDAO.sendMail(user, 1, 0);
+				    }
+				}).start();
 				
 				// Set success message
 				System.out.println("Registraion done success ID :"+ID);
-				url = "/jsp/login.jsp?errorMsg=Registration Successful&isError=true&pay="+pay;
+				url = "/jsp/login.jsp";
+				errorMsg="Registration_Successful";
+				isError=true;
+				pay="0";
 			}
 		}
-
-		System.out.println("Validation ==>"+request.getAttribute("errormsg"));
-		response.sendRedirect(getServletContext().getContextPath()+url);
+		
+		if(errorMsg != ""){
+			isError = true;
+		}
+		response.sendRedirect(getServletContext().getContextPath()+url+"?errorMsg="+URLEncoder.encode(errorMsg)+"&isError="+isError+"&pay="+pay);
 	}
 }

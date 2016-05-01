@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.mooplans.dao.EmailDAO;
 import com.mooplans.dao.PayPalDAO;
 import com.mooplans.model.Cart;
 import com.mooplans.model.Dishes;
@@ -88,6 +89,15 @@ public class AddressServlet extends HttpServlet {
 		if(pointsDeducted){
 			// Create the new order and update order table
 			int orderId = PayPalDAO.createOrder(user, items);
+			
+//			new Thread(new Runnable() {
+//			    public void run() {
+			    	EmailDAO.sendOrderMailRest(user, items, orderId);
+					EmailDAO.sendOrderMailUser(user, items, orderId);
+//			    }
+//			}).start();
+			
+			
 			url = "/jsp/orderSummary.jsp";
 			message = "Thank you for your purchase. Your Order #"+orderId;
 			session.setAttribute("totalBill", String.valueOf(totalBill));
