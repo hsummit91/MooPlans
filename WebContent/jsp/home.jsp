@@ -10,6 +10,12 @@
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
 <script src="../js/socialSharing.js" type="text/javascript"></script>
 <title>Home</title>
+<style type="text/css">
+.btn-primary{
+	background-color: #FF847C !important;
+	border-color: #FF847C !important;
+}
+</style>
 </head>
 <body>
 <%
@@ -56,7 +62,8 @@
              <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hi <%=user.getUser_firstname() %>! <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#"><%=user.getUser_points()%> Points</a></li>
+                  <li><a href="mealPlans.jsp"><%=user.getUser_points()%> Points</a></li>
+                  <li><a href="mealPlans.jsp">Purchase a Meal Plan</a></li>
                   <li role="separator" class="divider"></li>
                   <li class="dropdown-header">Profile Settings</li>
                   <li><a href="../jsp/myProfile.jsp">View Profile</a></li>
@@ -71,8 +78,53 @@
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
         <h1>Welcome Back! <%=user.getUser_firstname()%></h1>
-        <p>What would you like to order today?</p>
+        <p>You have <strong><%=user.getUser_points()%></strong> MooPoints. What would you like to order today?</p>
       </div>
+      
+<!-- <div class="row">
+  <div class="col-xs-6 col-md-3">
+    <a href="#" class="thumbnail">
+      <img src="../images/banner%20sections%201.jpg" alt="Add Points">
+    </a>
+  </div>
+  <div class="col-xs-6 col-md-3">
+    <a href="#" class="thumbnail">
+      <img src="../images/banner%20sections%201.jpg" alt="Add Points">
+    </a>
+  </div>
+</div> -->
+
+<div class="row">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img id="mealPlan" src="../images/banner%20sections%201.jpg" alt="Purchase a Meal Plan">
+      <div class="caption">
+        <h3>Purchase a Meal Plan</h3>
+        <p>We have Meal Plans starting from just $35</p>
+        <p><a href="mealPlans.jsp" class="btn btn-primary" role="button">See All Plans</a></p>
+      </div>
+    </div>
+  </div>
+    <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img id="restaurants" style="height: 250px;width: 250px;" src="../images/restLogos/DCs PIZZA.jpg" alt="Featured Restaurants">
+      <div class="caption">
+        <h3>Featured Restaurants</h3>
+        <p>We have some great local restaurants to order from!</p>
+        <p><a href="orders.jsp" class="btn btn-primary" role="button">See All Restaurants</a></p>
+      </div>
+    </div>
+  </div>  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img id="dishes" src="../images/o-crop-u4520.jpg" alt="Featured Dishes">
+      <div class="caption">
+        <h3>Featured Dishes</h3>
+        <p>Some awesome dishes you can't resist!</p>
+        <p><a href="orders.jsp" class="btn btn-primary" role="button">Place an order</a></p>
+      </div>
+    </div>
+  </div>
+</div>
 
     </div>
 <script src="../js/jquery.min.js" type="text/javascript"></script>

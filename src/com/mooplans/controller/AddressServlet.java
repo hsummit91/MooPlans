@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.mooplans.dao.EmailDAO;
 import com.mooplans.dao.PayPalDAO;
 import com.mooplans.model.Cart;
 import com.mooplans.model.Dishes;
@@ -55,6 +56,7 @@ public class AddressServlet extends HttpServlet {
 		String phone = null;
 		String url = null;
 		String message = null;
+		String time = null;
 		User user = null;
 		if(session.getAttribute("User") == null)
 			url = "/login.jsp";
@@ -71,6 +73,8 @@ public class AddressServlet extends HttpServlet {
 			name = request.getParameter("fullname");
 			shippingAddress = request.getParameter("address");
 			phone = request.getParameter("phone");
+			time = request.getParameter("time");
+			System.out.println("TIME=> "+time);
 			user.setUser_firstname(name);
 			user.setUser_address(shippingAddress);
 			user.setUser_phone(phone);
@@ -88,6 +92,15 @@ public class AddressServlet extends HttpServlet {
 		if(pointsDeducted){
 			// Create the new order and update order table
 			int orderId = PayPalDAO.createOrder(user, items);
+			
+//			new Thread(new Runnable() {
+//			    public void run() {
+			    	EmailDAO.sendOrderMailRest(user, items, orderId);
+					EmailDAO.sendOrderMailUser(user, items, orderId);
+//			    }
+//			}).start();
+			
+			
 			url = "/jsp/orderSummary.jsp";
 			message = "Thank you for your purchase. Your Order #"+orderId;
 			session.setAttribute("totalBill", String.valueOf(totalBill));
