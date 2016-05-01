@@ -83,7 +83,7 @@
             </h3>
         </div>
         <div class="col-md-6 col-xs-6 follow line"   align="center">
-        <a href="addPoints.jsp">
+        <a href="mealPlans.jsp">
             <h3 class="points">
                  <span>Add Points</span>
             </h3>

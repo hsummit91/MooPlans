@@ -80,10 +80,10 @@ h3{
                   <li><a href="mealPlans.jsp">Purchase a Meal Plan</a></li>
                   <li role="separator" class="divider"></li>
                   <li class="dropdown-header">Profile Settings</li>
-                  <li><a href="#">View Profile</a></li>
+                  <li><a href="myProfile.jsp">View Profile</a></li>
                 </ul>
               </li>
-              <li><a href="#">Logout</a></li>
+              <li><a href="#" id="logout">Logout</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
@@ -133,5 +133,11 @@ h3{
 </div>
 <script src="./js/jquery.min.js"></script>
 <script src="./js/bootstrap.min.js" type="text/javascript"></script>
+<form action="${pageContext.request.contextPath}/Logout" id="logoutForm" method="post"></form>
+<script type="text/javascript">
+$( "#logout" ).click(function() {
+	  $( "#logoutForm" ).submit();
+});
+</script>
 </body>
 </html>
