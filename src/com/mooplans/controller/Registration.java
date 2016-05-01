@@ -101,14 +101,22 @@ public class Registration extends HttpServlet {
 				errorMsg = "Email ID already registered";
 			}else{
 				// Sending welcome email to user
-				User user = new User();
+				final User user = new User();
 				user.setUser_firstname(firstname);
 				user.setUser_email(emailId);
-				EmailDAO.sendMail(user, 1, 0);
+				
+				new Thread(new Runnable() {
+				    public void run() {
+				    	EmailDAO.sendMail(user, 1, 0);
+				    }
+				}).start();
 				
 				// Set success message
 				System.out.println("Registraion done success ID :"+ID);
-				url = "/jsp/login.jsp?errorMsg=Registration_Successful&isError=true&pay="+pay;
+				url = "/jsp/login.jsp";
+				errorMsg="Registration_Successful";
+				isError=true;
+				pay="0";
 			}
 		}
 		
