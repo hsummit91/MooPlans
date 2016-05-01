@@ -68,6 +68,7 @@ public class Login extends HttpServlet {
 			int ID = LoginDAO.checkUserDetails(emailId, password);
 
 			System.out.println("ID ####> "+ID);
+			System.out.println("Checking for pay-->"+pay);
 
 			if (ID == 0) {
 				errorMsg = "Username and Password does not match..";

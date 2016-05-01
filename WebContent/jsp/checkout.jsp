@@ -1,4 +1,3 @@
-<%@ page language="java" import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.*"%>
@@ -13,6 +12,7 @@
 <script src="../js/socialSharing.js" type="text/javascript"></script>
 <title>Check out</title>
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../css/bootstrap-timepicker.min.css">
 <style type="text/css">
 .panel-default > .panel-heading {
     background-color: #2a363b;
@@ -88,16 +88,17 @@ h3{
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li><a href="jsp/home.jsp">Home</a></li>
-              <li class="active"><a href="jsp/orders.jsp">Place Order</a></li>
-              <li><a href="jsp/pastOrders.jsp">Past Orders</a></li>
+              <li><a href="home.jsp">Home</a></li>
+              <li class="active"><a href="orders.jsp">Place Order</a></li>
+              <li><a href="pastOrders.jsp">Past Orders</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-             <li><a href="#"><i class="glyphicon glyphicon-shopping-cart"></i></a></li>
+             <li><a href="cart.jsp?added=false"><i class="glyphicon glyphicon-shopping-cart"></i></a></li>
              <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hi <%=user.getUser_firstname()%>! <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#"><%=user.getUser_points()%> Points</a></li>
+                  <li><a href="mealPlans.jsp"><%=user.getUser_points()%> Points</a></li>
+                  <li><a href="mealPlans.jsp">Purchase a Meal Plan</a></li>
                   <li role="separator" class="divider"></li>
                   <li class="dropdown-header">Profile Settings</li>
                   <li><a href="#">View Profile</a></li>
@@ -138,7 +139,7 @@ h3{
 						<div class="form-group">
 							<label class="col-md-4 control-label" for="submit"></label>
 							<div class="col-md-4">
-								<button onclick="waitingDialog.show('Brace Yourself.. Placing Order');" type="submit" id="submit" name="submit" class="btn btn-primary">Deliver to this address</button>
+								<!-- <button onclick="waitingDialog.show('Brace Yourself.. Placing Order');" type="submit" id="submit" name="submit" class="btn btn-primary">Deliver to this address</button> -->
 							</div>
 						</div>
 					</form>
@@ -169,9 +170,29 @@ h3{
 					
 						<!-- Address area -->
 						<div class="form-group">
-							<label class="col-md-4 control-label" for="address">Address</label>
-							<div class="col-md-8">
-								<textarea class="form-control" id="address" name="address"></textarea>
+						<label class="col-md-4 control-label" for="address">Address</label>
+						<div class="col-md-8">
+						<select  class="form-control" id="address" name="address" >
+								<option selected="selected" value="Campus Center">University at Albany: Campus Center</option>
+								<option value="Dutch Quad">Dutch Quad</option>
+								<option value="Colonial Quad">Colonial Quad</option>
+								<option value="State Quad">State Quad</option>
+								<option value="Indian Quad">Indian Quad</option>
+								<option value="Freedom Apartments">Freedom Apartments</option>
+								<option value="Liberty Terrace Apartments">Liberty Terrace Apartments</option>
+								<option value="Empire Commons">Empire Commons</option>
+								<option value="Alumni (Bus Stop)">Alumni (Bus Stop)</option>
+						</select>
+						</div>	
+						</div>
+						
+						<div class="form-group">
+						<label class="col-md-4 control-label" for="time">Deliver By</label>						
+						 	<div class="col-md-8">
+								<div class="input-group bootstrap-timepicker timepicker">
+            						<input id="timepicker1" name="time" type="text" class="form-control input-small">
+            						<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+        						</div>
 							</div>
 						</div>
 
@@ -201,5 +222,9 @@ h3{
 </div>
 <script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<script src="../js/bootstrap-timepicker.min.js"></script>
 <script src="../js/loading.js"></script>
+<script type="text/javascript">
+   $('#timepicker1').timepicker();
+</script>
 </body>

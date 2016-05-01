@@ -30,3 +30,14 @@ function checkError(){
 		  $("#feedback").html(message);
 	}
 }
+
+function checkErrorReg(){
+	var isError = $("#isError").val();	
+	console.log("---"+isError);
+	
+	if(isError == "true"){
+		var message = $("#message").val();
+		$("#feedback").html(message);
+		console.log("---"+message);
+	}
+}

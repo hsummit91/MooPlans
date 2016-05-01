@@ -4,30 +4,7 @@
   <session-config>
     <session-timeout>30</session-timeout>
   </session-config>
-<!--   <welcome-file-list>
-    <welcome-file>payment.jsp</welcome-file>
-  </welcome-file-list> -->
-  
-  <!--  For sandbox un-comment below block and comment production block -->
-<!--   <context-param>
-    <param-name>authtoken</param-name>
-    <param-value>nioDvEgUKYeIJu1oBUaA9VAfgxb7YiFX7d-cRy5UIp155IIithpTAJqg0dW</param-value>
-  </context-param>
   <context-param>
-    <param-name>posturl</param-name>
-    <param-value>https://www.sandbox.paypal.com/cgi-bin/webscr</param-value>
-  </context-param>
-  <context-param>
-    <param-name>business</param-name>
-    <param-value>fshaikh-seller@albany.edu</param-value>
-  </context-param>
-  <context-param>
-    <param-name>returnurl</param-name>
-    <param-value>http://localhost:8080/MooPlans/ActionServlet</param-value>
-  </context-param> -->
-  
- <!--  For production un-comment below block and comment sandbox block -->
-    <context-param>
     <param-name>authtoken</param-name>
     <param-value>lomcNhnxD0aaHNjxgl7lSN2-QSk7fkjuz_B_WcIDKWo4Qn_Zeta3zwr7vZK</param-value>
   </context-param>
@@ -41,8 +18,6 @@
   </context-param>
   <context-param>
     <param-name>returnurl</param-name>
-  <!--  <param-value>http://localhost:8080/MooPlans/ActionServlet</param-value> -->
-     <param-value>http://52.37.72.68:8080/MooPlans/ActionServlet</param-value> 
-  </context-param> 
-  
+    <param-value>http://52.37.72.68:8080/MooPlans/ActionServlet</param-value>
+  </context-param>
 </web-app>
