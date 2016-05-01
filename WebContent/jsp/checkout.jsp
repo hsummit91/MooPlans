@@ -101,10 +101,10 @@ h3{
                   <li><a href="mealPlans.jsp">Purchase a Meal Plan</a></li>
                   <li role="separator" class="divider"></li>
                   <li class="dropdown-header">Profile Settings</li>
-                  <li><a href="#">View Profile</a></li>
+                  <li><a href="myProfile.jsp">View Profile</a></li>
                 </ul>
               </li>
-              <li><a href="#">Logout</a></li>
+              <li><a href="#" id="logout">Logout</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
@@ -220,11 +220,16 @@ h3{
 		</div>
 	</div>
 </div>
+<form action="${pageContext.request.contextPath}/Logout" id="logoutForm" method="post"></form>
 <script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/bootstrap-timepicker.min.js"></script>
 <script src="../js/loading.js"></script>
 <script type="text/javascript">
+$( "#logout" ).click(function() {
+	  $( "#logoutForm" ).submit();
+});
+
    $('#timepicker1').timepicker();
 </script>
 </body>
