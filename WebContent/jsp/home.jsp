@@ -66,7 +66,7 @@
                   <li><a href="mealPlans.jsp">Purchase a Meal Plan</a></li>
                   <li role="separator" class="divider"></li>
                   <li class="dropdown-header">Profile Settings</li>
-                  <li><a href="../jsp/myProfile.jsp">View Profile</a></li>
+                  <li><a href="myProfile.jsp">View Profile</a></li>
                 </ul>
               </li>
               <li><a href="#" id="logout">Logout</a></li>
