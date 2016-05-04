@@ -79,14 +79,14 @@ if(action != null){
 			System.out.println("In addedPoints action");
 			String transactionId = request.getParameter("tx");
 			String status = request.getParameter("st");
-			final float points = Float.parseFloat(request.getParameter("amt"));
+			final float amount = Float.parseFloat(request.getParameter("amt"));
 
-			if(points == 0){
+			if(amount == 0){
 				session.setAttribute("message", "Your previous transaction was cancelled.");
 			}else{
 				final User user = (User)session.getAttribute("User");
-				boolean pointsAdded = PayPalDAO.addPoints(user, transactionId, (int)points, status);
-				if(pointsAdded){
+				final float points = PayPalDAO.addPoints(user, transactionId, (int)amount, status);
+				if(points>0){
 					
 					new Thread(new Runnable() {
 					    public void run() {

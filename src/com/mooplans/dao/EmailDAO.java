@@ -62,7 +62,7 @@ public class EmailDAO {
 			case 2:
 				sb.append("You've successfully added "+points+" points to your account.<br>");
 				sb.append("You have total "+user.getUser_points()+" points.<br><br>Happy Eating!");
-				message.setContent("<img src = \"http://i65.tinypic.com/j9buo4.jpg\"/>"+"<br><br>"+sb.toString(), "text/html" );
+				message.setContent("<img src = \"http://i68.tinypic.com/157dn46.png\"/>"+"<br><br>"+sb.toString(), "text/html" );
 				message.setSubject("Moo Plans - Points Added!");
 				break;
 			}
@@ -121,7 +121,7 @@ public class EmailDAO {
 			sb.append("</tbody></table>");
 			sb.append("<br><br>Delivery Address<br>" +user.getUser_address());
 
-			message.setContent("<img src = \"http://i65.tinypic.com/j9buo4.jpg\"/>"+"<br><br>"+sb.toString(), "text/html" );
+			message.setContent("<img src = \"http://i68.tinypic.com/157dn46.png\"/>"+"<br><br>"+sb.toString(), "text/html" );
 			message.setSubject("Moo Plans Order #"+orderId);
 			message.setSentDate(new Date());
 			Transport.send(message);
@@ -196,7 +196,7 @@ public class EmailDAO {
 				sbb.append("</tbody></table>");
 				sbb.append("<br><br>Please delivery food at Address:<br>" +user.getUser_address());
 
-				message.setContent("<img src = \"http://i65.tinypic.com/j9buo4.jpg\"/>"+"<br><br>"+sbb.toString(), "text/html" );
+				message.setContent("<img src = \"http://i68.tinypic.com/157dn46.png\"/>"+"<br><br>"+sbb.toString(), "text/html" );
 				message.setSubject("Moo Plans Order #"+orderId);
 				message.setSentDate(new Date());
 				Transport.send(message);
