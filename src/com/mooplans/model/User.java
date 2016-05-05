@@ -4,7 +4,7 @@ public class User{
 
 	private static final long serialVersionUID = 1L;
 	
-	private String user_password, user_firstname,user_lastname,user_email;
+	private String user_password, user_firstname,user_lastname,user_email,delivery_time;
 	private String user_phone,user_university, user_address, user_role, user_image,user_message;
 	private int user_id,user_points;
 	
@@ -12,6 +12,14 @@ public class User{
 		// Default constructor
 	}
 	
+	public String getDelivery_time() {
+		return delivery_time;
+	}
+
+	public void setDelivery_time(String delivery_time) {
+		this.delivery_time = delivery_time;
+	}
+
 	public User(String user_password, String user_firstname,
 			String user_lastname, String user_email, String user_phone,
 			String user_university, String user_address, String user_role,

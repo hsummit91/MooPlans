@@ -67,17 +67,12 @@ public class AddressServlet extends HttpServlet {
 			for(Integer key: items.keySet()){
 				System.out.println("Key"+items.get(key)+" value="+key);
 			}
-		}
-
-		else if(action.equalsIgnoreCase("newAddress")){
-			name = request.getParameter("fullname");
+		}else if(action.equalsIgnoreCase("newAddress")){
 			shippingAddress = request.getParameter("address");
-			phone = request.getParameter("phone");
 			time = request.getParameter("time");
-			System.out.println("TIME=> "+time);
-			user.setUser_firstname(name);
+			
+			user.setDelivery_time(time);
 			user.setUser_address(shippingAddress);
-			user.setUser_phone(phone);
 		}
 
 		// Calling PayDAO to deduct User points based on his order and make entry in the order table(s)
