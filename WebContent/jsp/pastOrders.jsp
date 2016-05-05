@@ -81,7 +81,7 @@ function getPastOrders(){
 		    	text += '<thead><tr>';
 		    	text += '<th>Order ID</th>';
 		    	text += '<th>Date</th>';
-		    	text += '<th>Delivered at</th>';
+		    	text += '<th>Address</th>';
 		    	text += '<th>Dishes</th>';
 		    	text += '<th>Total</th>';
 		    	text += '</tr></thead><tbody>';
