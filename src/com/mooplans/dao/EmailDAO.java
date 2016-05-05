@@ -134,7 +134,7 @@ public class EmailDAO {
 
 	public static void sendOrderMailRest(User user, HashMap<Integer, String> items, int orderId){
 
-		final String INIT = "Customer, "+user.getUser_firstname()+",\nhas ordered food from MooPlans<br>"
+		final String INIT = "Customer "+user.getUser_firstname()+",\nhas ordered food from MooPlans<br>"
 				+"<br>Order Summary:<br><br>"
 				+"<table><thead><tr><th>Food Item</th><th>Points</th></tr></thead><tbody>";
 
