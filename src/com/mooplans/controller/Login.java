@@ -76,9 +76,9 @@ public class Login extends HttpServlet {
 	            session.setAttribute("user", emailId);
 	            session.setAttribute("userId", ID);
 	            //setting session to expiry in 30 mins
-	            session.setMaxInactiveInterval(30*60);
+	            session.setMaxInactiveInterval(10*60);
 	            Cookie userName = new Cookie("user", emailId);
-	            userName.setMaxAge(30*60);
+	            userName.setMaxAge(10*60);
 	            response.addCookie(userName);
 
 				User u = LoginDAO.getDetails(ID);
