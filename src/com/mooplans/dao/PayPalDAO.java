@@ -59,16 +59,18 @@ public class PayPalDAO {
 		}
 		try{
 			getConnection();
-			String sql = "INSERT INTO orders (order_user_id, order_total,order_deliverat,order_date,order_ids)"
-					+ " VALUES (?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO orders (order_user_id, order_total,order_deliverat,order_date,order_phone,delivery_time,order_ids)"
+					+ " VALUES (?, ?, ?, ?, ?, ?, ?)";
 			pstmt = connection.prepareStatement(sql);
 			pstmt.setInt(1, user.getUser_id());
 			pstmt.setInt(2, (int)totalBill);
 			pstmt.setString(3, user.getUser_address());
 			pstmt.setString(4, getCurrentTimeStamp());
+			pstmt.setString(5, user.getUser_phone());
+			pstmt.setString(6, user.getDelivery_time());
 			String order_ids = sb.toString();
 			order_ids = order_ids.substring(0, order_ids.length()-1);
-			pstmt.setString(5, order_ids);
+			pstmt.setString(7, order_ids);
 			pstmt.executeUpdate();
 
 			String sql2 = "SELECT order_id FROM orders ORDER BY order_id DESC LIMIT 1";
@@ -121,26 +123,35 @@ public class PayPalDAO {
 		return deductedPoints;
 	}
 
-	public static boolean addPoints(User user, String tx_id, int points, String status){
+	public static float addPoints(User user, String tx_id, int amount, String status){
 
 		int txCompleted = 0;
-		boolean pointsAdded = false;
-		int newPoints = user.getUser_points() + points;
+		float pointsAdded = 0;
+		int points=0;
 
 		try{
 			getConnection();
 
+			// Get points based on the amount from 
+
+			String sql2 = "SELECT points FROM meal_plans where amount="+amount;
+			pstmt = connection.prepareStatement(sql2);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				points = rs.getInt(1); 
+			}
+			int newPoints = user.getUser_points() + points;
 
 			String sql1 = "INSERT INTO user_payment (tx_id, user_id, amount, payment_date, status)"
 					+ " VALUES (?, ?, ?, ?, ?)";
 			pstmt = connection.prepareStatement(sql1);
 			pstmt.setString(1, tx_id);
 			pstmt.setInt(2, user.getUser_id());
-			pstmt.setInt(3, points);
+			pstmt.setInt(3, amount);
 			pstmt.setString(4, getCurrentTimeStamp());
 			pstmt.setString(5, status);
 			txCompleted = pstmt.executeUpdate();
-			
+
 			if(txCompleted>0){
 				String sql = "UPDATE user SET user_points = ? where user_email = ? and user_id=?";
 				pstmt = connection.prepareStatement(sql);
@@ -149,7 +160,7 @@ public class PayPalDAO {
 				pstmt.setInt(3, user.getUser_id());
 				int row = pstmt.executeUpdate();
 				if(row==1) {
-					pointsAdded = true;
+					pointsAdded = points;
 					user.setUser_points(newPoints);
 				}
 			}

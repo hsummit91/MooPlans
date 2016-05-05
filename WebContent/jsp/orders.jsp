@@ -13,11 +13,12 @@
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 <style type="text/css">
 .restImages{
-	height: 220px;
-	width: 220px;
-	margin: 0.5em;
+	height: 200px;
+	width: 200px;
 }
 .restButtons{
+	height: 230px;
+	width: 230px;
 	margin-bottom: 1em; 
 }
 </style>
