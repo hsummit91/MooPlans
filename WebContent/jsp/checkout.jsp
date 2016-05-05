@@ -116,37 +116,18 @@ h3{
 	<br/>
 	
 	<div>
+
 		<div class="col-md-6">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h3 class="panel-title">Current Address</h3>
+					<h3 class="panel-title">Final Step!</h3>
 				</div>
-				<div class="panel-body">
-					<form class="form-horizontal" action="../AddressServlet?action=currentAddress" method="post">
-						<!-- Buyer address same as shipping address-->
-						<div class="form-group">
-							<label class="col-md-4 control-label" for="fullname">Current Address</label>
-							<div class="col-md-8">
-								<p class="form-control-static">
- 									<%=user.getUser_firstname()%><br/>
-									<%=user.getUser_address()%><br/>
-									Phone: <%=user.getUser_phone()%>
-								</p>
-							</div>
-						</div>
-
-						<!-- If new shipping address -->
-						<div class="form-group">
-							<label class="col-md-4 control-label" for="submit"></label>
-							<div class="col-md-4">
-								<!-- <button onclick="waitingDialog.show('Brace Yourself.. Placing Order');" type="submit" id="submit" name="submit" class="btn btn-primary">Deliver to this address</button> -->
-							</div>
-						</div>
-					</form>
+				<div class="panel-body" style="font-size: x-large;">
+					Tell us where you want your food to be delivered. 
+					<strong>You are just a click away from delicious food!</strong>
 				</div>
 			</div>
 		</div>
-
 
 		<div class="col-md-6">
 			<div class="panel panel-default">
@@ -163,8 +144,8 @@ h3{
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="fullname">Name</label>
 						<div class="col-md-8">
-							<input id="fullname" name="fullname" type="text"
-								placeholder="Name" class="form-control input-md">
+							<input id="fullname" readonly name="fullname" type="text"
+								placeholder="Name" value="<%=user.getUser_firstname()%> <%=user.getUser_lastname()%>" class="form-control input-md">
 						</div>
 					</div>
 					
@@ -201,8 +182,8 @@ h3{
 						<label class="col-md-4 control-label" for="phone">Phone
 							Number</label>
 						<div class="col-md-8">
-							<input id="phone" name="phone" type="text"
-								placeholder="Phone Number" class="form-control input-md">
+							<input id="phone" readonly name="phone" type="text"
+								placeholder="Phone Number" value="<%=user.getUser_phone()%>" class="form-control input-md">
 						</div>
 					</div>
 					
@@ -218,6 +199,7 @@ h3{
 				</div>
 			</div>
 		</div>
+				
 	</div>
 </div>
 <form action="${pageContext.request.contextPath}/Logout" id="logoutForm" method="post"></form>

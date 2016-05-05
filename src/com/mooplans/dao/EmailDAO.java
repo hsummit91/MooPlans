@@ -45,25 +45,25 @@ public class EmailDAO {
 			switch(type){
 
 			case 1:
-				sb.append("Thanks for joining MooPlans<br>");
-				sb.append("You'll be happy to know that we deliver breakfast, lunch and dinner right to your<br>");
-				sb.append("home, school, or office every day -- you've probably seen our Moo Plans swag<br>");
-				sb.append("around already.<br><br>");
-				sb.append("Food is ordered via our website, and we feature a new local restaurant every<br>");
-				sb.append("day. Here's a video so you know what we're all about.<br>");
-				sb.append("If you want one free week of food, check out your referral code.");
-				sb.append("<br><br>Reply to this email if you have any questions");
+				sb.append("<br><br>Thanks for registering on the Moo Plans website. Here is some useful information:<br>");
+				sb.append("<br><br>Signing up for a meal plan is really easy. Just follow these three steps:<br><br>");
+				sb.append("1. Go to www.mooplans.com<br>");
+				sb.append("2. Select one of the price packages from the list of weekly, monthly, or semesterly subscriptions. If you have not logged in, you will be asked to do so before you can make a payment. (Just click 'Already a Member' in the registration page)<br>");
+				sb.append("3 .Enjoy - your account will be credited immediately, but you won't be able to spend your meals until the beginning of the Fall semester. If you just reserved the plan, we'll remind you to get the full package over the summer.<br><br>");
+				sb.append("You've probably already seen us around campus. Moo Plans is growing extremely fast in the Albany area! Apparently nobody really likes their current meal plans (As if that were a surprise). I hope that you enjoy Moo Plans as much as we do! Feel free to respond with any questions or concerns.<br><br>");
+				sb.append("Best Regards,<br>");
+				sb.append("The Moo Plans Team");
 
-				message.setContent("<img src = \"http://i65.tinypic.com/j9buo4.jpg\"/>"+"<br><br>"+sb.toString(), "text/html" );
-				message.setSubject("Registration!");
+				message.setContent("<img src = \"http://i68.tinypic.com/157dn46.png\"/>"+"<br><br>"+sb.toString(), "text/html" );
+				message.setSubject("Moo Plans - Registration!");
 				break;
 
 
 			case 2:
 				sb.append("You've successfully added "+points+" points to your account.<br>");
 				sb.append("You have total "+user.getUser_points()+" points.<br><br>Happy Eating!");
-				message.setContent("<img src = \"http://i65.tinypic.com/j9buo4.jpg\"/>"+"<br><br>"+sb.toString(), "text/html" );
-				message.setSubject("Points Added!");
+				message.setContent("<img src = \"http://i68.tinypic.com/157dn46.png\"/>"+"<br><br>"+sb.toString(), "text/html" );
+				message.setSubject("Moo Plans - Points Added!");
 				break;
 			}
 			message.setSentDate(new Date());
@@ -120,8 +120,9 @@ public class EmailDAO {
 			sb.append("<tr><td>Total Points</td><td>"+total+"</td></tr>");
 			sb.append("</tbody></table>");
 			sb.append("<br><br>Delivery Address<br>" +user.getUser_address());
+			sb.append("<br>Phone: "+user.getUser_phone());
 
-			message.setContent("<img src = \"http://i65.tinypic.com/j9buo4.jpg\"/>"+"<br><br>"+sb.toString(), "text/html" );
+			message.setContent("<img src = \"http://i68.tinypic.com/157dn46.png\"/>"+"<br><br>"+sb.toString(), "text/html" );
 			message.setSubject("Moo Plans Order #"+orderId);
 			message.setSentDate(new Date());
 			Transport.send(message);
@@ -134,7 +135,7 @@ public class EmailDAO {
 
 	public static void sendOrderMailRest(User user, HashMap<Integer, String> items, int orderId){
 
-		final String INIT = "Customer, "+user.getUser_firstname()+",\nhas ordered food from MooPlans<br>"
+		final String INIT = "Customer "+user.getUser_firstname()+",\nhas ordered food from MooPlans<br>"
 				+"<br>Order Summary:<br><br>"
 				+"<table><thead><tr><th>Food Item</th><th>Points</th></tr></thead><tbody>";
 
@@ -195,8 +196,9 @@ public class EmailDAO {
 				sbb.append("<tr><td>Total Points</td><td>"+total+"</td></tr>");
 				sbb.append("</tbody></table>");
 				sbb.append("<br><br>Please delivery food at Address:<br>" +user.getUser_address());
+				sbb.append("<br>Phone: "+user.getUser_phone());
 
-				message.setContent("<img src = \"http://i65.tinypic.com/j9buo4.jpg\"/>"+"<br><br>"+sbb.toString(), "text/html" );
+				message.setContent("<img src = \"http://i68.tinypic.com/157dn46.png\"/>"+"<br><br>"+sbb.toString(), "text/html" );
 				message.setSubject("Moo Plans Order #"+orderId);
 				message.setSentDate(new Date());
 				Transport.send(message);

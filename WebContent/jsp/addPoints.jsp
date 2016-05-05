@@ -153,7 +153,7 @@ body .dot {
 <input type="hidden" name="cmd" value="_cart"/>
 <input type="hidden" name="business" value="${initParam['business']}"/>
 
-<input type="hidden" name="item_name_1" value="Mini Package - 1"/>
+<input type="hidden" name="item_name_1" value="Meal Plan"/>
 <input type="hidden" name="amount_1" value="<%=pay%>" />
 <!-- <input type="text" name="quantity_1" value="1"/> -->
 <input style="display: none;" type="submit" value="Payment"/>
