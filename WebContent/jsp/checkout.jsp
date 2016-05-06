@@ -12,7 +12,7 @@
 <script src="../js/socialSharing.js" type="text/javascript"></script>
 <title>Check out</title>
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="../css/bootstrap-timepicker.min.css">
+<link rel="stylesheet" type="text/css" href="../css/jquery.timepicker.css">
 <style type="text/css">
 .panel-default > .panel-heading {
     background-color: #2a363b;
@@ -170,10 +170,7 @@ h3{
 						<div class="form-group">
 						<label class="col-md-4 control-label" for="time">Deliver By</label>						
 						 	<div class="col-md-8">
-								<div class="input-group bootstrap-timepicker timepicker">
-            						<input id="timepicker1" name="time" type="text" class="form-control input-small">
-            						<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-        						</div>
+						 	 <input id="basicExample" name="time" class="time ui-timepicker-input" type="text" autocomplete="off">
 							</div>
 						</div>
 
@@ -205,13 +202,43 @@ h3{
 <form action="${pageContext.request.contextPath}/Logout" id="logoutForm" method="post"></form>
 <script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
-<script src="../js/bootstrap-timepicker.min.js"></script>
+<script src="../js/jquery.timepicker.min.js"></script>
 <script src="../js/loading.js"></script>
 <script type="text/javascript">
 $( "#logout" ).click(function() {
 	  $( "#logoutForm" ).submit();
 });
 
-   $('#timepicker1').timepicker();
+   /* $('#timepicker1').timepicker('minuteStep','30'); */
+   
+   function getTime(){
+	   var date = new Date();
+	   var hours = date.getHours();
+	   var mins = date.getMinutes();
+	   
+	   //console.log(parseInt(hours + 1) + ":30")
+	   
+	   if(mins>15){
+		   return parseInt(hours + 2) + ":00";
+	   }else{
+		   return parseInt(hours + 1) + ":30";
+	   }
+   }
+   
+   
+   $('#basicExample').timepicker({
+	    'disableTimeRanges': [
+	                          ['9:01am', '9:59am'],
+	                          ['10:01am', '10:59am'],
+	                          ['2:01pm', '2:59pm'],
+	                          ['3:01pm', '3:59pm'],
+	                          ['4:01pm', '4:59pm'],
+	                          ['9:01pm', '9:59pm'],
+	                          ['10:01pm', '10:59pm']
+	                         ],
+	                 	    'minTime': getTime(),
+	                	    'maxTime': '11:00pm'
+	});
+   
 </script>
 </body>
