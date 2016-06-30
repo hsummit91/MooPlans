@@ -17,7 +17,7 @@ import com.mooplans.model.User;
 
 public class PayPalDAO {
 
-	public static float getBill(Integer dishId){
+	public static float getBill(Integer dishId){ // NOT USED
 
 		float points = 0;
 		try{
@@ -172,7 +172,7 @@ public class PayPalDAO {
 		return pointsAdded;
 	}
 
-	public static Dishes getDishDetails(int dishId){
+	public static Dishes getDishDetails(int dishId){ //NOT USED
 
 		Dishes dishes = new Dishes();
 		try{

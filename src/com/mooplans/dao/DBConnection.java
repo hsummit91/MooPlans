@@ -1,16 +1,19 @@
 package com.mooplans.dao;
 
 
+import java.sql.CallableStatement;
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+
 public class DBConnection {
 
 	public static Connection connection;
 	public static PreparedStatement pstmt;
+	public static CallableStatement cstmt;
 	public static ResultSet rs;
 	
 	public DBConnection(){}
@@ -35,6 +38,9 @@ public class DBConnection {
 			}
 			if(pstmt != null){
 				pstmt.close();
+			}
+			if(cstmt != null){
+				cstmt.close();
 			}
 			if(rs != null){
 				rs.close();

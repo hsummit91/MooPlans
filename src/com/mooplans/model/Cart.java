@@ -1,6 +1,10 @@
 package com.mooplans.model;
 
 import java.util.HashMap;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 /**
  *
  * @author fahad
@@ -10,8 +14,30 @@ public class Cart {
     private float totalBill;
     
     public Cart(){
-     cartItems = new HashMap<>();
-      
+     cartItems = new HashMap<>();     
+    }
+    
+    public JSONArray getCartArray(){
+    	JSONArray cartArray = new JSONArray();
+    	for(Integer key: cartItems.keySet()){
+    		JSONObject cartObject = new JSONObject();
+    		try {
+				cartObject.put("dishId", key);
+				cartObject.put("dishName", cartItems.get(key));
+				cartArray.put(cartObject);
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+    	}
+    	return cartArray;
+    }
+    
+    public int numberOfItems(){
+    	if(cartItems == null){
+    		return 0;
+    	}else{
+    		return cartItems.size();
+    	}
     }
     public HashMap<Integer, String> getCartItems(){
         return cartItems;

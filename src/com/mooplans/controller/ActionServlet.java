@@ -51,31 +51,53 @@ public class ActionServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String action = request.getParameter("action");
 		System.out.println("Action called "+action);
-if(action != null){
-		if(action.equalsIgnoreCase("restPage")){
-			System.out.println("In Rest action");
-			JSONArray restList = DishDAO.getRestnames();
-			response.setContentType("application/json");
-			out.write(restList+"");			
-		}else if(action.equalsIgnoreCase("menuPage")){
-			System.out.println("In Menu action");
-			Cart shoppingCart;
-			shoppingCart = (Cart) session.getAttribute("cart");
-			if(shoppingCart == null){
-				System.out.println("Menu servlet where cart is null");
-				shoppingCart = new Cart();
-				session.setAttribute("cart", shoppingCart);
+		if(action != null){
+			if(action.equalsIgnoreCase("restPage")){
+				System.out.println("In Rest action");
+				
+				String mealPref = request.getParameter("mealPref");
+				String mealType = request.getParameter("mealType");
+				
+				System.out.println("MP - "+mealPref +"-MT - "+mealType);
+				
+				JSONArray restList = DishDAO.getRestnames(mealPref,mealType);
+				response.setContentType("application/json");
+				out.write(restList+"");			
+			}else if(action.equalsIgnoreCase("menuPage")){
+				System.out.println("In Menu action");
+				Cart shoppingCart;
+				shoppingCart = (Cart) session.getAttribute("cart");
+					if(shoppingCart == null){
+						System.out.println("Menu servlet where cart is null");
+						shoppingCart = new Cart();
+						session.setAttribute("cart", shoppingCart);
+					}
+
+					int restId = Integer.parseInt(request.getParameter("restId"));
+					System.out.println("Selected restaurant: "+restId);
+
+					JSONArray menuList = DishDAO.getDishDetails(restId, "", "");	
+					
+				request.setAttribute("menuList", menuList);
+				request.setAttribute("restaurant", restId+"");
+				System.out.println("===> "+menuList);
+				getServletConfig().getServletContext().getRequestDispatcher("/jsp/menu.jsp").forward(request,response);
+			}else if(action.equalsIgnoreCase("menuFilter")){
+				System.out.println("In Menu Filter");
+
+					int restId = Integer.parseInt(request.getParameter("restId"));
+					String mealPref = request.getParameter("mealPref");
+					String mealType = request.getParameter("mealType");
+					
+					System.out.println("MP - "+mealPref +"-MT - "+mealType);
+					System.out.println("Selected restaurant: "+restId);
+
+				//ArrayList<Dishes> menuList = new ArrayList<Dishes>();
+				JSONArray menuList = DishDAO.getDishDetails(restId, mealPref, mealType);	
+				response.setContentType("application/json");
+				out.write(menuList+"");	
 			}
-
-			String restName = request.getParameter("restName");
-			System.out.println("Selected restaurant: "+restName);
-
-			ArrayList<Dishes> menuList = new ArrayList<Dishes>();
-			menuList = DishDAO.getDishDetailsByName(restName);	
-			request.setAttribute("menuList", menuList); 
-			getServletConfig().getServletContext().getRequestDispatcher("/jsp/menu.jsp").forward(request,response);
-		}
-}else{
+		}else{
 			System.out.println("In addedPoints action");
 			String transactionId = request.getParameter("tx");
 			String status = request.getParameter("st");
@@ -101,6 +123,6 @@ if(action != null){
 				}
 			}
 			response.sendRedirect(getServletContext().getContextPath()+"/jsp/home.jsp");
-}
+		}
 	}
 }

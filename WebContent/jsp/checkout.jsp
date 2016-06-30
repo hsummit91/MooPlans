@@ -170,7 +170,7 @@ h3{
 						<div class="form-group">
 						<label class="col-md-4 control-label" for="time">Deliver By</label>						
 						 	<div class="col-md-8">
-						 	 <input id="basicExample" name="time" class="time ui-timepicker-input" type="text" autocomplete="off">
+						 	 <input id="basicExample" required name="time" class="time ui-timepicker-input" type="text" autocomplete="off">
 							</div>
 						</div>
 
@@ -188,7 +188,7 @@ h3{
 						<div class="form-group">
 							<label class="col-md-4 control-label" for="submit"></label>
 							<div class="col-md-4">
-								<button onclick="waitingDialog.show('Brace Yourself.. Placing Order');" type="submit" id="submit" name="submit"
+								<button onclick="checkTime();" type="submit" id="submit" name="submit"
 									class="btn btn-primary">Deliver to this address</button>
 							</div>
 						</div>
@@ -205,6 +205,16 @@ h3{
 <script src="../js/jquery.timepicker.min.js"></script>
 <script src="../js/loading.js"></script>
 <script type="text/javascript">
+function checkTime(){
+	var time = $("#basicExample").val();
+	console.log(time)
+	if(time == ""){
+		return false;
+	}else{
+		waitingDialog.show('Brace yourself.. Placing Order');
+	}
+}
+
 $( "#logout" ).click(function() {
 	  $( "#logoutForm" ).submit();
 });

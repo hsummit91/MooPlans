@@ -6,6 +6,14 @@
 	.btn-primary:hover {
     	background-color: #e84a5f;
     	border-color: #e84a5f;
+	}
+	.btn-primary:focus, .btn-primary:active {
+    	background-color: #e84a5f;
+    	border-color: #e84a5f;
+	}
+	.btn-primary.disabled, .btn-primary[disabled], fieldset[disabled] .btn-primary, .btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover, .btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus, .btn-primary.disabled:active, .btn-primary[disabled]:active, fieldset[disabled] .btn-primary:active, .btn-primary.disabled.active, .btn-primary.active[disabled], fieldset[disabled] .btn-primary.active {
+		background-color: #e84a5f;
+    	border-color: #e84a5f;		
 	}	
 	#example_wrapper {
         width: 98%;
