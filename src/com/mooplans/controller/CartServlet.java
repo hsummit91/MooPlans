@@ -29,7 +29,6 @@ public class CartServlet extends HttpServlet {
 	 */
 	public CartServlet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -44,12 +43,14 @@ public class CartServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
 		Cart shoppingCart;
 		shoppingCart = (Cart) session.getAttribute("cart");
 		
 		//allow access only if session exists		
 		User user = null;
+		int success = 0;
 		if(session.getAttribute("User") != null){
 			user = (User) session.getAttribute("User");
 		}
@@ -80,7 +81,8 @@ public class CartServlet extends HttpServlet {
 		}
 	
 		session.setAttribute("cart", shoppingCart);
-		
-		response.sendRedirect(getServletContext().getContextPath()+"/jsp/cart.jsp?added=true");
+		success = shoppingCart.numberOfItems();
+		//response.sendRedirect(getServletContext().getContextPath()+"/jsp/cart.jsp?added=true");
+		out.write(success+"");
 		}
 }

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.mooplans.dao.LoginDAO;
+import com.mooplans.dao.NotificationSystem;
 import com.mooplans.model.Image;
 import com.mooplans.model.User;
 
@@ -52,6 +53,7 @@ public class Login extends HttpServlet {
 		
 		String errorMsg = "";
 		Boolean isError = false;
+		
 
 		if(emailId == null || emailId.equals("")){
 			errorMsg = "Username can not be empty";

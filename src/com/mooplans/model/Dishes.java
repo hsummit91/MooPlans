@@ -11,13 +11,19 @@ public class Dishes {
 	private int restId;
 	private String rest_name;
 	private String restEmail;
+	private String restPhone;
 	private String dishDescription;
 	private String dishChoice;
 	private String dishSides;
 	private String dishHealth;
 	private ArrayList<Restaurant> rest_details;
 	
-	
+	public String getRestPhone() {
+		return restPhone;
+	}
+	public void setRestPhone(String restPhone) {
+		this.restPhone = restPhone;
+	}
 	
 	public String getDishDescription() {
 		return dishDescription;
