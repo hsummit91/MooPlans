@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.*" %>
 <%@ page import="com.mooplans.model.User" %>
+<%@ page import="com.mooplans.model.Cart" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,11 +22,19 @@
 <%
 		//allow access only if session exists
 	User user = null;
+	Cart shoppingCart = null;
 	if(session.getAttribute("User") == null){
 		out.print("Session Invalidate");
 	    response.sendRedirect("login.jsp");
 	}else {
 		user = (User) session.getAttribute("User");
+		shoppingCart = (Cart) session.getAttribute("cart");
+		
+		if(shoppingCart == null){
+			System.out.println("Cart servlet where cart is empty");
+			shoppingCart = new Cart();
+			session.setAttribute("cart", shoppingCart);
+		}
 	}
 	String userName = null;
 	String sessionID = null;
@@ -58,7 +67,7 @@
               <li><a href="pastOrders.jsp">Past Orders</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-             <li><a href="cart.jsp?added=false"><i class="glyphicon glyphicon-shopping-cart"></i></a></li>
+             <li><a href="cart.jsp?added=false"><i class="glyphicon glyphicon-shopping-cart"></i><span class="badge"><%=shoppingCart.numberOfItems() %></span></a></li>
              <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hi <%=user.getUser_firstname() %>! <span class="caret"></span></a>
                 <ul class="dropdown-menu">

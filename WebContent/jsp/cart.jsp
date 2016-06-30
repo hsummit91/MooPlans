@@ -61,7 +61,7 @@
               <li><a href="pastOrders.jsp">Past Orders</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-             <li><a href="cart.jsp?added=false"><i class="glyphicon glyphicon-shopping-cart"></i></a></li>
+             <li><a href="cart.jsp?added=false"><i class="glyphicon glyphicon-shopping-cart"></i><span class="badge"><%=shoppingCart.numberOfItems() %></span></a></li>
              <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hi <%=user.getUser_firstname()%>! <span class="caret"></span></a>
                 <ul class="dropdown-menu">
@@ -82,9 +82,9 @@
 <%if(added.equals("true")){ %>
 	<div class='alert alert-success'>Meal successfully added to cart </div>
 <%} %>
-<a href="orders.jsp" class='btn btn-primary' style='margin-left: 16px;'>Add Items</a>
+<a href="orders.jsp" class='btn btn-primary' style='margin-left: 16px;'>Add more items?</a>
 <hr>
-<h3>Cart</h3>
+<h3>Edit Your Cart</h3>
 
 <%  HashMap<Integer, String> items = shoppingCart.getCartItems(); %>
 		
@@ -96,12 +96,10 @@
 for(Integer key: items.keySet()){
 	count++;%>
 
-	<form action='../CartServlet?button=delete' method='doGet'><input type='hidden' name='dishId' value='<%=key %>'>
-
 <% 	if(count % 2 == 0){ %>
-		<tr class='even'><td><%= items.get(key)%></td><td align='center'><input type='submit' class='btn btn-primary' value='delete'></td></tr></form>
+		<tr class='even'><td><%= items.get(key)%></td><td align='center'><button class='btn btn-primary deleteItem' dishId="<%=key %>">Delete Item</button></td></tr>
 <% 	}else{ %>
-		<tr class='odd'><td><%= items.get(key)%></td><td align='center'><input type='submit' class='btn btn-primary' value='delete'></td></tr></form>	
+		<tr class='odd'><td><%= items.get(key)%></td><td align='center'><button class='btn btn-primary deleteItem' dishId="<%=key %>">Delete Item</button></td></tr>	
 <% 	}
 				
 }
@@ -122,6 +120,28 @@ if(items.size() == 0){ %>
 $( "#logout" ).click(function() {
 	  $( "#logoutForm" ).submit();
 });
+
+$('.deleteItem').click(function() {
+ 	
+ 	var dishId = $(this).attr("dishId");
+ 
+ 	console.log("ID = "+dishId)
+	
+		$.ajax({
+		  	method: "POST",
+		  	url: "../CartServlet",
+		  	data: { dishId: dishId }
+		}).done(function( msg ) {
+			console.log(msg);
+			$(".glyphicon-shopping-cart").addClass('transition');
+	        $(".badge").html(msg);
+	        location.reload();
+/* 	        setTimeout(function(){ 
+	        	$(".glyphicon-shopping-cart").removeClass('transition');
+	        }, 1000); */
+		});
+ 	
+ });
 </script>
 </body>
 </html>

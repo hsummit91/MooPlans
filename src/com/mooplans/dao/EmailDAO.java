@@ -84,7 +84,7 @@ public class EmailDAO {
 		return emailSent;
 	}
 
-	public static void sendOrderMailUser(User user, HashMap<Integer, String> items, int orderId){
+	public static void sendOrderMailUser(User user, HashMap<String, Float> items, int orderId){
 
 		Properties props = System.getProperties();
 		props.put("mail.smtp.starttls.enable", "true");
@@ -111,11 +111,11 @@ public class EmailDAO {
 			sb.append("<table><thead><tr><th>Food Item</th><th>Points</th></tr></thead><tbody>");
 
 			float total = 0;		
-			for(Integer key: items.keySet()){
-				float points = PayPalDAO.getBill(key);
-				total += points; 
-				sb.append("<tr><td>"+items.get(key)+"</td><td>"+points+"</td></tr>");
-				System.out.println("In EmailDAO Key"+items.get(key)+" value="+key);
+			for(String key: items.keySet()){
+				//float points = PayPalDAO.getBill(key);
+				total += items.get(key); 
+				sb.append("<tr><td>"+key+"</td><td>"+items.get(key)+"</td></tr>");
+				System.out.println("In EmailDAO Key"+key+" value="+items.get(key));
 			}
 			sb.append("<tr><td>Total Points</td><td>"+total+"</td></tr>");
 			sb.append("</tbody></table>");
@@ -133,7 +133,7 @@ public class EmailDAO {
 	}
 
 
-	public static void sendOrderMailRest(User user, HashMap<Integer, String> items, int orderId){
+	public static void sendOrderMailRest(User user, HashMap<Integer, Dishes> items, int orderId){
 
 		final String INIT = "Customer "+user.getUser_firstname()+",\nhas ordered food from MooPlans<br>"
 				+"<br>Order Summary:<br><br>"
@@ -168,7 +168,8 @@ public class EmailDAO {
 			 * */
 
 			for(int key : items.keySet()){
-				dishes = PayPalDAO.getDishDetails(key);
+				//dishes = PayPalDAO.getDishDetails(key); // 
+				dishes = items.get(key);
 				String email = dishes.getRestEmail();
 
 				if(finalRestList.containsKey(email)){

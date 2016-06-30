@@ -18,6 +18,7 @@ import com.mooplans.model.Cart;
 import com.mooplans.model.Dishes;
 import com.mooplans.model.Order;
 import com.mooplans.model.User;
+import com.mooplans.dao.NotificationSystem;
 
 /**
  * Servlet implementation class AddOrderShippingAddressServlet
@@ -62,6 +63,7 @@ public class AddressServlet extends HttpServlet {
 			url = "/login.jsp";
 		else user = (User) session.getAttribute("User");
 
+		
 		if(action.equalsIgnoreCase("currentAddress")){
 			name = user.getUser_firstname();
 			for(Integer key: items.keySet()){
@@ -102,8 +104,8 @@ public class AddressServlet extends HttpServlet {
 			
 //			new Thread(new Runnable() {
 //			    public void run() {
-			    	EmailDAO.sendOrderMailRest(user, items, orderId);
-					EmailDAO.sendOrderMailUser(user, items, orderId);
+			    	//EmailDAO.sendOrderMailRest(user, items, orderId);
+					//EmailDAO.sendOrderMailUser(user, items, orderId);
 //			    }
 //			}).start();
 			
@@ -112,8 +114,7 @@ public class AddressServlet extends HttpServlet {
 			message = "Thank you for your purchase. Your Order #"+orderId;
 			session.setAttribute("totalBill", String.valueOf(totalBill));
 			session.setAttribute("message", message);
-		}
-		else{
+		}else{
 			url = "/jsp/addPoints.jsp";
 			items.clear();
 			message = "Not enough points. Please add points";

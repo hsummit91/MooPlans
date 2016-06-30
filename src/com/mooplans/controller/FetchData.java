@@ -8,12 +8,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.mooplans.dao.LoginDAO;
 import com.mooplans.dao.OrderDAO;
+import com.mooplans.model.Cart;
 
 /**
  * Servlet implementation class FetchData
@@ -43,6 +45,8 @@ public class FetchData extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		String action = request.getParameter("action");
+		HttpSession session = request.getSession();
+		Cart shoppingCart = (Cart) session.getAttribute("cart");
 		
 		if(action == null){
 			action = "";
@@ -60,6 +64,11 @@ public class FetchData extends HttpServlet {
 			JSONArray userDetails = OrderDAO.getPastOrders(userId);
 	        response.setContentType("application/json");
 	        out.write(userDetails+"");
+		}else if(action.equals("cartJson")){
+
+			JSONArray cartArray = shoppingCart.getCartArray();
+			response.setContentType("application/json");
+			out.write(cartArray+"");
 		}else{
 			response.sendRedirect(getServletContext().getContextPath()+"/jsp/home.html");
 		}
