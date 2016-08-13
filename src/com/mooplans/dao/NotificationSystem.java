@@ -31,6 +31,8 @@ public class NotificationSystem implements Runnable{
 				HashMap<String, Float> items = new HashMap<String, Float>();
 				HashMap<Integer, Dishes> forRestaurants = new HashMap<Integer, Dishes>();
 				
+				HashMap<Integer, String> dishNotesMap = new HashMap<Integer, String>();
+				
 				int orderId = rs.getInt("ordr_id");
 				int userId = rs.getInt("order_user_id");
 				
@@ -38,11 +40,19 @@ public class NotificationSystem implements Runnable{
 				
 				String[] splittedStr = dishOrders.split(",");
 				
+				String dishNotes = rs.getString("order_notes");
+				
+				String[] notesStr = dishNotes.split(",");
+				
 				for (int i = 0; i < splittedStr.length; i++){
 					Dishes dish = sd.getDishDataById(Integer.parseInt(splittedStr[i]));
 					items.put(dish.getDishName(), dish.getDishPrice());
 					forRestaurants.put(Integer.parseInt(splittedStr[i]), dish);
+					dishNotesMap.put(Integer.parseInt(splittedStr[i]), notesStr[i]);
 				}
+			
+				
+				System.out.println("--@@@@@@@@@@@--DISH NOTES--->"+dishNotesMap);
 				
 				System.out.println(" ~~~~~~~~~~SENDING MAIL~~~~~~~~~~~~~> "+orderId+" --FOR USER--->"+userId);
 				
@@ -55,7 +65,7 @@ public class NotificationSystem implements Runnable{
 				
 				System.out.println(" ~~~~~~~~~~SENDING MAIL TO REST~~~~~~~~~~~~~> "+orderId);
 				
-				EmailDAO.sendOrderMailRest(user, forRestaurants, orderId);
+				EmailDAO.sendOrderMailRest(user, forRestaurants, orderId, dishNotesMap);
 				
 				System.out.println(" ~~~~~~~~~~MAILS SENT~~~~~~~~~~~~~> "+orderId);
 				newOrders = 1;

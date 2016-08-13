@@ -64,6 +64,7 @@ public class CartServlet extends HttpServlet {
 		String dishName = "";
 		String dishId = "";
 		String buttonClick  = "";
+		String notes = "";
 		
 		try{
 			buttonClick  = request.getParameter("button");
@@ -73,8 +74,10 @@ public class CartServlet extends HttpServlet {
 		
 		if(buttonClick != null){
 			dishName = request.getParameter("dishName").trim();
-			dishId = request.getParameter("dishId").trim();
-			shoppingCart.addToCart(Integer.parseInt(dishId), dishName);
+			dishId = request.getParameter("dishId").trim();		
+			notes = request.getParameter("notes").trim();
+			
+			shoppingCart.addToCart(Integer.parseInt(dishId), dishName, notes);
 		}else{
 			dishId = request.getParameter("dishId").trim();
 			shoppingCart.deleteFromCart(Integer.parseInt(dishId));

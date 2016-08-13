@@ -129,7 +129,13 @@
       <div class="caption">
         <h3>Featured Dishes</h3>
         <p>Some awesome dishes you can't resist!</p>
-        <p><a href="orders.jsp" class="btn btn-primary" role="button">Place an order</a></p>
+        <p>
+        <form method="post" action="../ActionServlet?action=menuPage">
+        <input type="hidden" name="restId" value="0">
+        <input type="submit" class="btn btn-primary" value="Search Dishes">
+        </form>
+        <!-- <a href="orders.jsp" class="btn btn-primary" role="button">Place an order</a> -->
+        </p>
       </div>
     </div>
   </div>
