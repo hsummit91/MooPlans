@@ -68,10 +68,27 @@ h3{
 	//allow access only if session exists
 		
 	User user = null;
+	Cart shoppingCart = null; 
 	if(session.getAttribute("User") == null){
 		out.print("Session Invalidate");
 	    response.sendRedirect("login.jsp");
-	}else user = (User) session.getAttribute("User");
+	}else{
+		user = (User) session.getAttribute("User");
+		shoppingCart = (Cart) session.getAttribute("cart");
+		
+		if(shoppingCart == null){
+			System.out.println("Cart servlet where cart is empty");
+			shoppingCart = new Cart();
+			session.setAttribute("cart", shoppingCart);
+		}
+	}
+	
+	float bill = 0;
+	try{
+		bill = shoppingCart.getTotalBill();
+	}catch(Exception e){
+		
+	}
 %>
 <div class="container">
 	<!-- Static navbar -->
@@ -110,9 +127,9 @@ h3{
         </div><!--/.container-fluid -->
       </nav>
 
-	<div>
+<!-- 	<div>
 		<a class="btn btn-primary" href="orders.jsp" style="margin-left: 16px;">Add more items</a>
-	</div>
+	</div> -->
 	<br/>
 	
 	<div>
@@ -125,6 +142,15 @@ h3{
 				<div class="panel-body" style="font-size: x-large;">
 					Tell us where you want your food to be delivered. 
 					<strong>You are just a click away from delicious food!</strong>
+					<div>You currently have <strong><%=user.getUser_points()%> Points</strong> <a class="btn btn-primary" href="mealPlans.jsp">Add more Points?</a></div>
+					<div>
+					<hr/>
+					<p>Choose a Payment Method:</p>
+					
+					<div class="col-md-6"><input type="radio" name="checkoutType" value="points" checked> Points</div><div class="col-md-6"><%=bill %> Points</div>
+  					<div class="col-md-6"><input type="radio" name="checkoutType" value="cash"> Cash<br></div><div class="col-md-6">$<%=bill %></div>
+					
+					</div>
 				</div>
 			</div>
 		</div>

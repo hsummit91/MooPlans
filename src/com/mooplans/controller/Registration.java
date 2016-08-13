@@ -1,6 +1,7 @@
 package com.mooplans.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URLEncoder;
 
 import javax.servlet.ServletException;
@@ -8,6 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import com.mooplans.dao.EmailDAO;
 import com.mooplans.dao.LoginDAO;
@@ -39,11 +43,25 @@ public class Registration extends HttpServlet {
 	 */
 	@SuppressWarnings("deprecation")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
+		PrintWriter out = response.getWriter();
+		
 		String url = "/jsp/register.jsp";
 		String pay = "";
 		String errorMsg = "";
 		Boolean isError = false;
+		int ID = 0;
+		String app = "web";
+		
+		try{
+			app = request.getParameter("app");
+		}catch(Exception e){
+			// request from web app
+			app = "web";
+		}
+		if(app == null){
+			app = "web";
+		}
 		
 		try{
 			pay = request.getParameter("pay");
@@ -92,7 +110,7 @@ public class Registration extends HttpServlet {
 			User userObject = new User(password, firstname, lastname, emailId, 
 					phone, university, address, role, id, points);
 
-			int ID = LoginDAO.registerUser(userObject);
+			ID = LoginDAO.registerUser(userObject);
 
 			if (ID == 0) {
 				errorMsg =  "Registration failed, please try again";
@@ -123,6 +141,26 @@ public class Registration extends HttpServlet {
 		if(errorMsg != ""){
 			isError = true;
 		}
-		response.sendRedirect(getServletContext().getContextPath()+url+"?errorMsg="+URLEncoder.encode(errorMsg)+"&isError="+isError+"&pay="+pay);
+		
+		if(app.equals("ios")){
+			JSONObject rigisterArray = new JSONObject();
+			try {
+				rigisterArray.put("userEmail", emailId);
+				rigisterArray.put("success", ID);
+				rigisterArray.put("firstName", firstname);
+				rigisterArray.put("lastName", lastname);
+				rigisterArray.put("phone", phone);
+				rigisterArray.put("address", address);
+				rigisterArray.put("university", university);
+				rigisterArray.put("Error", errorMsg);
+				rigisterArray.put("isError", isError);
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+			response.setContentType("application/json");
+			out.write(rigisterArray+"");
+		}else{		
+			response.sendRedirect(getServletContext().getContextPath()+url+"?errorMsg="+URLEncoder.encode(errorMsg)+"&isError="+isError+"&pay="+pay);
+		}
 	}
 }

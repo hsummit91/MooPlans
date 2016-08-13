@@ -133,7 +133,7 @@ public class EmailDAO {
 	}
 
 
-	public static void sendOrderMailRest(User user, HashMap<Integer, Dishes> items, int orderId){
+	public static void sendOrderMailRest(User user, HashMap<Integer, Dishes> items, int orderId, HashMap<Integer, String> notes){
 
 		final String INIT = "Customer "+user.getUser_firstname()+",\nhas ordered food from MooPlans<br>"
 				+"<br>Order Summary:<br><br>"
@@ -169,8 +169,10 @@ public class EmailDAO {
 
 			for(int key : items.keySet()){
 				//dishes = PayPalDAO.getDishDetails(key); // 
+				String dishNote = notes.get(key);
 				dishes = items.get(key);
 				String email = dishes.getRestEmail();
+				dishes.setComments(dishNote);
 
 				if(finalRestList.containsKey(email)){
 					ArrayList<Dishes> l1 = finalRestList.get(email);
@@ -193,6 +195,11 @@ public class EmailDAO {
 				for(Dishes dish : itemList){
 					total += dish.getDishPrice(); 
 					sbb.append("<tr><td>"+dish.getDishName()+"</td><td>"+dish.getDishPrice()+"</td></tr>");
+					String cmnt = dish.getComments();
+					if(cmnt.equals("")){
+						cmnt = "no comments";
+					}
+					sbb.append("<tr colspan=2><td>  <i>Comments: "+cmnt+"</i></td></tr>");
 				}
 				sbb.append("<tr><td>Total Points</td><td>"+total+"</td></tr>");
 				sbb.append("</tbody></table>");

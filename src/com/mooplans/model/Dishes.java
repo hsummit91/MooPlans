@@ -18,6 +18,17 @@ public class Dishes {
 	private String dishHealth;
 	private ArrayList<Restaurant> rest_details;
 	
+	private String comments;
+	
+	
+	public String getComments() {
+		return comments;
+	}
+	public void setComments(String comments) {
+		this.comments = comments;
+	}
+	
+	
 	public String getRestPhone() {
 		return restPhone;
 	}

@@ -13,31 +13,17 @@ import java.util.HashMap;
 import com.mooplans.model.Dishes;
 import com.mooplans.model.Order;
 import com.mooplans.model.Restaurant;
+import com.mooplans.model.StartupData;
 import com.mooplans.model.User;
 
 public class PayPalDAO {
 
-	public static float getBill(Integer dishId){ // NOT USED
-
-		float points = 0;
-		try{
-			getConnection();
-			String sql = "SELECT dishes.dish_price"
-					+ " FROM dishes WHERE dish_id="+dishId;
-			pstmt = connection.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-
-			while(rs.next()){
-				Dishes dishes = new Dishes();
-				dishes.setDishPrice(rs.getFloat(1)); 
-				points = dishes.getDishPrice();
-			}
-		}catch(SQLException e){
-			e.printStackTrace();
-		}finally{
-			release();
-		}
-		return points;
+	public static float getBill(Integer dishId){
+		
+		StartupData sd = StartupData.getInstance();		
+		Dishes dish = sd.getDishDataById(dishId);
+		
+		return dish.getDishPrice();
 	}
 
 	private static String getCurrentTimeStamp() {
@@ -47,20 +33,22 @@ public class PayPalDAO {
 
 	}
 
-	public static int createOrder(User user, HashMap<Integer, String> items){
+	public static int createOrder(User user, HashMap<Integer, String> items, HashMap<Integer, String> notes){
 
 		float totalBill = 0;
 		int orderId = 0;
 		StringBuilder sb = new StringBuilder();
+		StringBuilder sb2 = new StringBuilder();
 		for(Integer key: items.keySet()){
 			// Get all Dish Points here and prepare Bill
 			totalBill += getBill(key);
 			sb.append(Integer.toString(key)).append(",");
+			sb2.append(notes.get(key)).append("|");
 		}
 		try{
 			getConnection();
-			String sql = "INSERT INTO orders (order_user_id, order_total,order_deliverat,order_date,order_phone,delivery_time,order_ids)"
-					+ " VALUES (?, ?, ?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO orders (order_user_id, order_total,order_deliverat,order_date,order_phone,delivery_time,order_notes,order_ids)"
+					+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 			pstmt = connection.prepareStatement(sql);
 			pstmt.setInt(1, user.getUser_id());
 			pstmt.setInt(2, (int)totalBill);
@@ -68,9 +56,10 @@ public class PayPalDAO {
 			pstmt.setString(4, getCurrentTimeStamp());
 			pstmt.setString(5, user.getUser_phone());
 			pstmt.setString(6, user.getDelivery_time());
+			pstmt.setString(7, sb2.toString());
 			String order_ids = sb.toString();
 			order_ids = order_ids.substring(0, order_ids.length()-1);
-			pstmt.setString(7, order_ids);
+			pstmt.setString(8, order_ids);
 			pstmt.executeUpdate();
 
 			String sql2 = "SELECT order_id FROM orders ORDER BY order_id DESC LIMIT 1";
@@ -172,7 +161,7 @@ public class PayPalDAO {
 		return pointsAdded;
 	}
 
-	public static Dishes getDishDetails(int dishId){ //NOT USED
+/*	public static Dishes getDishDetails(int dishId){ //NOT USED
 
 		Dishes dishes = new Dishes();
 		try{
@@ -196,6 +185,6 @@ public class PayPalDAO {
 			release();
 		}
 		return dishes;
-	}
+	}*/
 
 }
