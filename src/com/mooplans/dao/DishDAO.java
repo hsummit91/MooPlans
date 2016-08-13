@@ -188,7 +188,7 @@ public class DishDAO {
 		
 		try{
 			getConnection();
-			String sql = "SELECT dish_name, dish_category, dish_price, dish_id, dish_health, dish_description, dish_sides"
+			String sql = "SELECT dish_name, dish_category, dish_price, dish_id, dish_health, dish_description, dish_sides, dish_full_price"
 					+ " FROM dishes WHERE ";
 			
 			String[] mpArray = mealPref.split(",");
@@ -236,7 +236,9 @@ public class DishDAO {
 				sql += ") ";
 			}
 			
-			sql += "AND dish_rest_id = "+restId;
+			if(restId > 0){
+				sql += "AND dish_rest_id = "+restId;
+			}
 			
 			System.out.println("==>"+sql+"<==");
 
@@ -256,6 +258,7 @@ public class DishDAO {
 					dishFilter.put("dishHealth", rs.getString(5));
 					dishFilter.put("dishDesc", rs.getString(6));
 					dishFilter.put("dishSides", rs.getString(7));
+					dishFilter.put("dishFullPrice", rs.getDouble(8));
 					menuFilter.put(dishFilter);					
 				}catch(Exception e){
 					

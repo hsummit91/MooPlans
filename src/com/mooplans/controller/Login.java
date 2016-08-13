@@ -1,6 +1,7 @@
 package com.mooplans.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
@@ -11,6 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import com.mooplans.dao.LoginDAO;
 import com.mooplans.dao.NotificationSystem;
@@ -43,13 +48,27 @@ public class Login extends HttpServlet {
 	 */
 	@SuppressWarnings("deprecation")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
+		PrintWriter out = response.getWriter();
+		
 		HttpSession session=request.getSession();
 		String url = "/jsp/login.jsp";
 		
 		String emailId= request.getParameter("email");
 		String password=request.getParameter("password");
 		String pay=request.getParameter("pay");
+		String app = "web";
+		int ID = 0;
+		
+		try{
+			app = request.getParameter("app");
+		}catch(Exception e){
+			// request from web app
+			app = "web";
+		}
+		if(app == null){
+			app = "web";
+		}
 		
 		String errorMsg = "";
 		Boolean isError = false;
@@ -65,9 +84,9 @@ public class Login extends HttpServlet {
 		}else {
 
 			System.out.println("userName ="+emailId);
-			System.out.println("password ="+password);
+			//System.out.println("password ="+password);
 
-			int ID = LoginDAO.checkUserDetails(emailId, password);
+			ID = LoginDAO.checkUserDetails(emailId, password);
 
 			System.out.println("ID ####> "+ID);
 			System.out.println("Checking for pay-->"+pay);
@@ -111,8 +130,24 @@ public class Login extends HttpServlet {
 		if(errorMsg != ""){
 			isError = true;
 		}
-		//rd = request.getRequestDispatcher(url);
-		//rd.forward(request, response);
-		response.sendRedirect(getServletContext().getContextPath()+url+"?errorMsg="+URLEncoder.encode(errorMsg)+"&isError="+isError+"&pay="+pay);
+		
+		System.out.println("app==="+app);
+		
+		if(app.equals("ios")){
+			JSONObject loginArray = new JSONObject();
+			try {
+				loginArray.put("userEmail", emailId);
+				loginArray.put("userId", ID);
+				loginArray.put("Error", errorMsg);
+				loginArray.put("isError", isError);
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+			response.setContentType("application/json");
+			out.write(loginArray+"");
+		}else{
+			response.sendRedirect(getServletContext().getContextPath()+url+"?errorMsg="+URLEncoder.encode(errorMsg)+"&isError="+isError+"&pay="+pay);
+		}
+		
 	}
 }

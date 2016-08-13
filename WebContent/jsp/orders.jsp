@@ -82,10 +82,11 @@
         </div><!--/.container-fluid -->
       </nav>
       
-      <!--#################### FILTERS  #################-->
+         <!--#################### FILTERS  #################-->
       
       <div class="col-md-3 thumbnail">
 		<div class="caption"><h3>Search Filters</h3>
+		
 		<div class="col-md-12 thumbnail">
 		<div class="caption"><h3>Meal Preference</h3>
 		<div class="row">
@@ -100,37 +101,27 @@
 		</div>
 		
 		<div class="col-md-12 thumbnail">
-		<div class="caption"><h3>Meal Type</h3>
+		<div class="caption"><h3>Categories</h3>
 		<div class="row">
-		  <div class="col-md-12"  id="mealType">
+		  <div class="col-md-12" id="category">
+		  	<div class="ui-widget">
+	  			<input id="cTags" size="32">
+			</div>
+		  </div>
+		  
+		</div>
+		</div>
+		</div>
+		
+		<div class="col-md-12 thumbnail">
+		<div class="row">
+		  <div class="col-md-12">
 		    <div class="input-group">
 		      <span class="input-group-addon">
-		        <input type="checkbox" name="mealType" value="breakfast">
+		        <input type="checkbox" name="dineIn" id="dineIn" value="1">
 		      </span>
-		      <input type="button" class="form-control" value="Breakfast" aria-label="...">
+		      <input type="button" class="form-control" value="Dine-in" aria-label="...">
 		    </div><!-- /input-group -->
-		    
-		    <div class="input-group">
-		      <span class="input-group-addon">
-		        <input type="checkbox" name="mealType" value="lunch">
-		      </span>
-		      <input type="button" class="form-control" value="Lunch" aria-label="...">
-		    </div><!-- /input-group -->
-		    
-		    <div class="input-group">
-		      <span class="input-group-addon">
-		        <input type="checkbox" name="mealType" value="dinner">
-		      </span>
-		      <input type="button" class="form-control" value="Dinner" aria-label="...">
-		    </div><!-- /input-group -->
-		    
-		    <div class="input-group">
-		      <span class="input-group-addon">
-		        <input type="checkbox" name="mealType" value="half-meal">
-		      </span>
-		      <input type="button" class="form-control" value="Half-Meal" aria-label="...">
-		    </div><!-- /input-group -->
-		    
 		  </div><!-- /.col-lg-6 -->
 		  		  
 		</div>
@@ -139,9 +130,8 @@
 		<div class="col-md-12 thumbnail">
 		  <button class="col-md-12 btn btn-primary" onclick="getFilters()">Add Filter</button>
 	  	</div>
-		
+
 		</div>
-		</div>		
 		
 	  </div>
 	  
@@ -209,39 +199,31 @@ $( document ).ready(function() {
 	function getFilters() {         
  	    var mealPref = "";
  	    var mealType = "";
- 	    
-/*  	    var $set = $('#mealPreference :checked');
- 	    var len = $set.length;
- 	    $set.each(function(index, element) {
- 	        if (index == len - 1) {
- 	        	mealPref += $(this).val();
- 	        }else{
- 	        	mealPref += $(this).val() + ",";	
- 	        }
- 	    }); */
+ 	   	var dineIn = 0;
  	    
  	    var temp = $("#tags").val();
  	    var length1 = temp.length;
- 	    //console.log("length -"+length1)
+
  	    if(temp.charAt(length1-2) == ","){
  	    	mealPref = temp.slice(0, temp.length-2);
  	    }else{
  	    	mealPref = temp;
  	    }
  	    
- 	    //console.log("====>"+mealPref)
+ 	    if($('#dineIn').is(":checked")){
+ 	    	dineIn = 1;
+ 	    }
+ 	    	    
+ 	    var temp = $("#cTags").val();
+ 	    var length1 = temp.length;
 
- 	    var $set = $('#mealType :checked');
- 	    var len = $set.length;
- 	    $set.each(function(index, element) {
- 	        if (index == len - 1) {
- 	        	mealType += $(this).val();
- 	        }else{
- 	        	mealType += $(this).val() + ",";	
- 	        }
- 	    });
+ 	    if(temp.charAt(length1-2) == ","){
+ 	    	mealType = temp.slice(0, temp.length-2);
+ 	    }else{
+ 	    	mealType = temp;
+ 	    }
  	    
- 	    console.log(mealPref+" == "+mealType);
+ 	    console.log(mealPref+" == "+mealType+ " == "+dineIn);
  	    
  	   getRestaurants(mealPref,mealType);
  	 }
@@ -253,6 +235,13 @@ $( document ).ready(function() {
 	      "kosher",
 	      "halal"
 	    ];
+	    
+		var categories = [
+		  "breakfast",
+		  "lunch",
+		  "dinner",
+		  "half-meal"
+		]; 
 	    function split( val ) {
 	      return val.split( /,\s*/ );
 	    }
@@ -291,6 +280,39 @@ $( document ).ready(function() {
 	          return false;
 	        }
 	      });
+	    
+		    $( "#cTags" )
+		      // don't navigate away from the field on tab when selecting an item
+		      .bind( "keydown", function( event ) {
+		        if ( event.keyCode === $.ui.keyCode.TAB &&
+		            $( this ).autocomplete( "instance" ).menu.active ) {
+		          event.preventDefault();
+		        }
+		      })
+		      .autocomplete({
+		        minLength: 0,
+		        source: function( request, response ) {
+		          // delegate back to autocomplete, but extract the last term
+		          response( $.ui.autocomplete.filter(
+		        		  categories, extractLast( request.term ) ) );
+		        },
+		        focus: function() {
+		          // prevent value inserted on focus
+		          return false;
+		        },
+		        select: function( event, ui ) {
+		          var terms = split( this.value );
+		          // remove the current input
+		          terms.pop();
+		          // add the selected item
+		          terms.push( ui.item.value );
+		          // add placeholder to get the comma-and-space at the end
+		          terms.push( "" );
+		          this.value = terms.join( ", " );
+		          return false;
+		        }
+		      });
+		    
 	  });
 </script>
 </body>

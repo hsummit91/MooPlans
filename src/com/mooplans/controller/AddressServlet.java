@@ -52,6 +52,7 @@ public class AddressServlet extends HttpServlet {
 		Cart shoppingCart;
 		shoppingCart = (Cart) session.getAttribute("cart");
 		HashMap<Integer, String> items = shoppingCart.getCartItems();
+		HashMap<Integer, String> notes = shoppingCart.getCartNotes();
 		String name = null;
 		String shippingAddress = null;
 		String phone = null;
@@ -100,7 +101,7 @@ public class AddressServlet extends HttpServlet {
 		boolean pointsDeducted = PayPalDAO.updateUserPoints(user, items);
 		if(pointsDeducted){
 			// Create the new order and update order table
-			int orderId = PayPalDAO.createOrder(user, items);
+			int orderId = PayPalDAO.createOrder(user, items, notes);
 			
 //			new Thread(new Runnable() {
 //			    public void run() {

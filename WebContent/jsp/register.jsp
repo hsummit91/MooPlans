@@ -144,7 +144,7 @@ td{
 							placeholder="Home/University Address" required /></td>
 					</tr>
 					<tr>
-						<td>University</td>
+						<td>Preferred Delivery Location</td>
 						<td><select name="university" required="required">
 								<option selected="selected" value="Campus Center">University at Albany: Campus Center</option>
 								<option value="Dutch Quad">Dutch Quad</option>

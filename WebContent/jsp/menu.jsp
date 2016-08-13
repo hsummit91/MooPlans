@@ -104,12 +104,26 @@
       
       <div class="col-md-3 thumbnail">
 		<div class="caption"><h3>Search Filters</h3>
+		
 		<div class="col-md-12 thumbnail">
 		<div class="caption"><h3>Meal Preference</h3>
 		<div class="row">
 		  <div class="col-md-12" id="mealPreference">
 		  	<div class="ui-widget">
 	  			<input id="tags" size="32">
+			</div>
+		  </div>
+		  
+		</div>
+		</div>
+		</div>
+		
+		<div class="col-md-12 thumbnail">
+		<div class="caption"><h3>Categories</h3>
+		<div class="row">
+		  <div class="col-md-12" id="category">
+		  	<div class="ui-widget">
+	  			<input id="cTags" size="32">
 			</div>
 		  </div>
 		  
@@ -127,37 +141,14 @@
 		</div>
 		
 		<div class="col-md-12 thumbnail">
-		<div class="caption"><h3>Meal Type</h3>
 		<div class="row">
-		  <div class="col-md-12"  id="mealType">
+		  <div class="col-md-12">
 		    <div class="input-group">
 		      <span class="input-group-addon">
-		        <input type="checkbox" name="mealType" value="breakfast">
+		        <input type="checkbox" name="dineIn" id="dineIn" value="1">
 		      </span>
-		      <input type="button" class="form-control" value="Breakfast" aria-label="...">
+		      <input type="button" class="form-control" value="Dine-in" aria-label="...">
 		    </div><!-- /input-group -->
-		    
-		    <div class="input-group">
-		      <span class="input-group-addon">
-		        <input type="checkbox" name="mealType" value="lunch">
-		      </span>
-		      <input type="button" class="form-control" value="Lunch" aria-label="...">
-		    </div><!-- /input-group -->
-		    
-		    <div class="input-group">
-		      <span class="input-group-addon">
-		        <input type="checkbox" name="mealType" value="dinner">
-		      </span>
-		      <input type="button" class="form-control" value="Dinner" aria-label="...">
-		    </div><!-- /input-group -->
-		    
-		    <div class="input-group">
-		      <span class="input-group-addon">
-		        <input type="checkbox" name="mealType" value="half-meal">
-		      </span>
-		      <input type="button" class="form-control" value="Half-Meal" aria-label="...">
-		    </div><!-- /input-group -->
-		    
 		  </div><!-- /.col-lg-6 -->
 		  		  
 		</div>
@@ -166,8 +157,11 @@
 		<div class="col-md-12 thumbnail">
 		  <button class="col-md-12 btn btn-primary" onclick="getFilters()">Add Filter</button>
 	  	</div>
-		
-		</div>
+
+		<div class="col-md-12 thumbnail">
+		  <a href="jsp/orders.jsp" class="col-md-12 btn btn-primary" role="button">Search Restaurants?</a>
+	  	</div>
+
 		</div>
 		
 	  </div>
@@ -185,10 +179,11 @@
 			%>
 		 	<div class="col-xs-12 col-sm-12 col-md-12 thumbnail">
 			<!-- <div> -->
-			<img alt="DISH" src="images/o-crop-u4520.jpg" style="padding-top: 1em;padding-bottom: 1em;" class="col-xs-12 col-sm-6 col-md-3" />
+			<img alt="DISH" src="images/foodPics/dish<%=rest.getJSONObject(i).get("dishId") %>.jpg" style="padding-top: 1em;padding-bottom: 1em;" class="col-xs-12 col-sm-6 col-md-3" />
 				<div class="col-md-9">
-		        	<div class="col-md-9"><h4><%=rest.getJSONObject(i).get("dishName")%></h4></div>
-		        	<div class="col-md-3"><h4 class="btn-primary" style="margin-left: 7px;border-radius:5px;margin-right: 17px;padding-left: 6px;"><%=rest.getJSONObject(i).get("dishPrice")%> P </h4></div>
+		        	<div class="col-md-8"><h4><%=rest.getJSONObject(i).get("dishName")%></h4></div>
+		        	<div class="col-md-2"><h4 class="btn-primary" style="border-radius:5px;margin-right: -7px;padding-left: 6px;"><%=rest.getJSONObject(i).get("dishPrice")%> P </h4></div>
+		        	<div class="col-md-2"><h4 class="btn-primary" style="border-radius:5px;margin-right: -26px;padding-left: 6px;">$<%=rest.getJSONObject(i).get("dishFullPrice")%></h4></div>
 		        	
 		        	<div class="col-md-9"><%=rest.getJSONObject(i).get("dishCat")%></div>
 		        	<div class="col-md-3"><button dishId="<%=rest.getJSONObject(i).get("dishId") %>" dishName="<%=rest.getJSONObject(i).get("dishName") %>" class="btn btn-primary openDialog">Add</button></div>
@@ -198,7 +193,9 @@
 			<!-- </div> -->
 			<div class="dishDialog" id="dialogDesc_<%=rest.getJSONObject(i).get("dishId") %>" title="<%=rest.getJSONObject(i).get("dishName") %>">
 			  <p><span class="ui-icon ui-icon-info" style="float:left; margin:0 7px 20px 0;"></span><%=rest.getJSONObject(i).get("dishDesc") %></p>
-			  <button dishId="<%=rest.getJSONObject(i).get("dishId") %>" dishName="<%=rest.getJSONObject(i).get("dishName") %>" class="btn btn-primary addToCart">Add to Cart</button>
+			  <p><h4>Additional Notes: </h4></p>
+			  <p><textarea style="margin-left: 22px;" rows="4" cols="50" id="<%=rest.getJSONObject(i).get("dishId") %>_notes"></textarea></p>
+			  <button style="margin-left: 22px;" dishId="<%=rest.getJSONObject(i).get("dishId") %>" dishName="<%=rest.getJSONObject(i).get("dishName") %>" class="btn btn-primary addToCart">Add to Cart</button>
 			</div>
 			</div>        	
 			<%}%>
@@ -251,7 +248,7 @@ String restaurant = (String) request.getAttribute("restaurant");
 	  	$( "#logoutForm" ).submit();
 	});
 	
-	function call(){
+	function call(){ // refrshng the page and shwing added items to cart
 	    $.ajax({
 		  	method: "POST",
 		  	url: "./FetchData",
@@ -279,12 +276,13 @@ String restaurant = (String) request.getAttribute("restaurant");
  		    	
  		    	var dishId = $(this).attr("dishId");
  		    	var dishName = $(this).attr("dishName");
- 		    	console.log("ID = "+dishId+" - Name = "+dishName)
-				call();
+ 		    	var notes = $("#"+dishId+"_notes").val();
+ 		    	console.log("ID = "+dishId+" - Name = "+dishName+" - NOTES = "+notes)
+
   		 		$.ajax({
  				  	method: "POST",
  				  	url: "./CartServlet",
- 				  	data: { button: "add", dishId: dishId, dishName: dishName }
+ 				  	data: { button: "add", dishId: dishId, dishName: dishName, notes: notes }
  				}).done(function( msg ) {
  					console.log(msg);
  					$(".glyphicon-shopping-cart").addClass('transition');
@@ -323,39 +321,34 @@ String restaurant = (String) request.getAttribute("restaurant");
  	function getFilters() {         
  	    var mealPref = "";
  	    var mealType = "";
- 	    
-/*  	    var $set = $('#mealPreference :checked');
- 	    var len = $set.length;
- 	    $set.each(function(index, element) {
- 	        if (index == len - 1) {
- 	        	mealPref += $(this).val();
- 	        }else{
- 	        	mealPref += $(this).val() + ",";	
- 	        }
- 	    }); */
+ 	   	var dineIn = 0;
  	    
  	    var temp = $("#tags").val();
  	    var length1 = temp.length;
- 	    //console.log("length -"+length1)
+
  	    if(temp.charAt(length1-2) == ","){
  	    	mealPref = temp.slice(0, temp.length-2);
  	    }else{
  	    	mealPref = temp;
  	    }
  	    
- 	    //console.log("====>"+mealPref)
-
- 	    var $set = $('#mealType :checked');
- 	    var len = $set.length;
- 	    $set.each(function(index, element) {
- 	        if (index == len - 1) {
- 	        	mealType += $(this).val();
- 	        }else{
- 	        	mealType += $(this).val() + ",";	
- 	        }
- 	    });
+ 	    if($('#dineIn').is(":checked")){
+ 	    	dineIn = 1;
+ 	    }
  	    
- 	    console.log(mealPref+" == "+mealType);
+ 	  	var lRange =  $( "#slider-range" ).slider( "values", 0 );
+	    var hRange = $( "#slider-range" ).slider( "values", 1 );
+ 	    
+ 	    var temp = $("#cTags").val();
+ 	    var length1 = temp.length;
+
+ 	    if(temp.charAt(length1-2) == ","){
+ 	    	mealType = temp.slice(0, temp.length-2);
+ 	    }else{
+ 	    	mealType = temp;
+ 	    }
+ 	    
+ 	    console.log(mealPref+" == "+mealType+ " == "+dineIn+ " == "+lRange+" == "+hRange);
  	    
  	    getDishes(mealPref,mealType);
  	 }
@@ -375,8 +368,9 @@ String restaurant = (String) request.getAttribute("restaurant");
  				text += '<div class="col-xs-12 col-sm-12 col-md-12 thumbnail">';
  				text += '<img class="col-xs-12 col-sm-6 col-md-3" src="images/o-crop-u4520.jpg" style="padding-top: 1em;padding-bottom: 1em;" />';
  				text += '<div class="col-md-9">';
- 				text += '<div class="col-md-9"><h4>'+msg[i].dishName+'</h4></div>';
- 				text += '<div class="col-md-3"><h4 class="btn-primary" style="margin-left: 7px;border-radius:5px;margin-right: 17px;padding-left: 6px;">'+msg[i].dishPrice+' P </h4></div>';
+ 				text += '<div class="col-md-8"><h4>'+msg[i].dishName+'</h4></div>';
+ 				text += '<div class="col-md-2"><h4 class="btn-primary" style="border-radius:5px;margin-right: -7px;padding-left: 6px;">'+msg[i].dishPrice+' P </h4></div>';
+ 				text += '<div class="col-md-2"><h4 class="btn-primary" style="border-radius:5px;margin-right: -26px;padding-left: 6px;">$'+msg[i].dishFullPrice+'</h4></div>';
  				
  				text += '<div class="col-md-9">'+msg[i].dishCat+'</div>';
  				text += '<div class="col-md-3"><button dishId="'+msg[i].dishId+'" class="btn btn-primary openDialog">Add</button></div>';
@@ -386,7 +380,7 @@ String restaurant = (String) request.getAttribute("restaurant");
  				text += '</div>';
  				
  				text += '<div class="dishDialog" id="dialogDesc_'+msg[i].dishId+'" title='+msg[i].dishName+'>';
- 				text += '<p><span class="ui-icon ui-icon-info" style="float:left; margin:0 7px 20px 0;"></span>'+msg[i].dishName+'</p>';
+ 				text += '<p><span class="ui-icon ui-icon-info" style="float:left; margin:0 7px 20px 0;"></span>'+msg[i].dishDesc+'</p>';
  				text += '<button dishId='+msg[i].dishId+' class="btn btn-primary addToCart">Add to Cart</button>';
  				
  				text += '</div>';
@@ -395,19 +389,6 @@ String restaurant = (String) request.getAttribute("restaurant");
  			}
  			
  			$("#dishes").html(text);
- 			
-/*  			 $(".restImages").click(function(){
- 					var rest = $(this).attr("restId");
- 					console.log("-->RestID-->"+rest)
- 					
- 				$('<input />').attr('type', 'hidden')
- 				              .attr('name', 'restId')
- 				              .attr('value', rest)
- 				              .appendTo('#ordersForm');
- 				$('#ordersForm').submit();					
- 					
- 					//window.location.href = "menu.jsp?cust="+cust;
- 			    }); */
  			    
  	 		    $( ".dishDialog" ).dialog({
 	 	 		      resizable: false,
@@ -429,6 +410,14 @@ String restaurant = (String) request.getAttribute("restaurant");
  		      "kosher",
  		      "halal"
  		    ];
+ 		    
+ 		    var categories = [
+ 		      "breakfast",
+ 		      "lunch",
+ 		      "dinner",
+ 		      "half-meal"
+ 		    ]; 
+ 		    
  		    function split( val ) {
  		      return val.split( /,\s*/ );
  		    }
@@ -469,6 +458,38 @@ String restaurant = (String) request.getAttribute("restaurant");
  		      });
  		    
  		    
+ 		    $( "#cTags" )
+		      // don't navigate away from the field on tab when selecting an item
+		      .bind( "keydown", function( event ) {
+		        if ( event.keyCode === $.ui.keyCode.TAB &&
+		            $( this ).autocomplete( "instance" ).menu.active ) {
+		          event.preventDefault();
+		        }
+		      })
+		      .autocomplete({
+		        minLength: 0,
+		        source: function( request, response ) {
+		          // delegate back to autocomplete, but extract the last term
+		          response( $.ui.autocomplete.filter(
+		        		  categories, extractLast( request.term ) ) );
+		        },
+		        focus: function() {
+		          // prevent value inserted on focus
+		          return false;
+		        },
+		        select: function( event, ui ) {
+		          var terms = split( this.value );
+		          // remove the current input
+		          terms.pop();
+		          // add the selected item
+		          terms.push( ui.item.value );
+		          // add placeholder to get the comma-and-space at the end
+		          terms.push( "" );
+		          this.value = terms.join( ", " );
+		          return false;
+		        }
+		      });
+ 		    
  		    $( "#slider-range" ).slider({
  	 		      range: true,
  	 		      min: 0,
@@ -505,19 +526,6 @@ String restaurant = (String) request.getAttribute("restaurant");
  			$( "#dialogDesc_"+dishId ).dialog( "open" ); 
  	  }
  	  
-/*  	  $(function() {
- 		    $( "#slider-range" ).slider({
- 		      range: true,
- 		      min: 0,
- 		      max: 500,
- 		      values: [ 75, 300 ],
- 		      slide: function( event, ui ) {
- 		        $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
- 		      }
- 		    });
- 		    $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
- 		      " - $" + $( "#slider-range" ).slider( "values", 1 ) );
- 		  }); */
 </script>
 </body>
 </html>
