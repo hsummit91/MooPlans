@@ -96,7 +96,14 @@ public class ActionServlet extends HttpServlet {
 				JSONArray menuList = DishDAO.getDishDetails(restId, mealPref, mealType);	
 				response.setContentType("application/json");
 				out.write(menuList+"");	
-			}
+			}else if(action.equalsIgnoreCase("getFeaturedDishes")){
+				
+				int isFeatured = Integer.parseInt(request.getParameter("isFeatured"));
+
+				JSONArray menuList = DishDAO.getFeaturedDishes(isFeatured);	
+				response.setContentType("application/json");
+				out.write(menuList+"");	
+			}	
 		}else{
 			System.out.println("In addedPoints action");
 			String transactionId = request.getParameter("tx");

@@ -69,6 +69,16 @@ public class FetchData extends HttpServlet {
 			JSONArray cartArray = shoppingCart.getCartArray();
 			response.setContentType("application/json");
 			out.write(cartArray+"");
+		}else if(action.equals("firstTimeData")){
+			
+			int userId = Integer.parseInt(request.getParameter("userId"));
+			String gender= request.getParameter("gender");
+			String allergies=request.getParameter("allergies");
+			String diet= request.getParameter("diet");
+			String cuisine=request.getParameter("cuisine");
+			
+			String updateData = LoginDAO.updateUserFirstTimeData(gender, allergies, diet, cuisine, userId);
+			out.write(updateData+"");
 		}else{
 			response.sendRedirect(getServletContext().getContextPath()+"/jsp/home.html");
 		}

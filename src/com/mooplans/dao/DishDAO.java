@@ -273,4 +273,41 @@ public class DishDAO {
 		return menuFilter;
 	}
 	
+	public static JSONArray getFeaturedDishes(int isFeatured){
+		JSONArray menuFilter = new JSONArray();
+		
+		try{
+			getConnection();
+			String sql = "SELECT dish_name, dish_category, dish_price, dish_id, dish_health, dish_description, dish_sides, dish_full_price"
+					+ " FROM dishes WHERE isFeatured = ?";
+		
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, isFeatured);
+			rs = pstmt.executeQuery();
+		
+			while(rs.next()){			
+				JSONObject dishFilter = new JSONObject();
+				try{
+					dishFilter.put("dishName", rs.getString(1));
+					dishFilter.put("dishCat", rs.getString(2));
+					dishFilter.put("dishPrice", rs.getInt(3));
+					dishFilter.put("dishId", rs.getInt(4));
+					dishFilter.put("dishHealth", rs.getString(5));
+					dishFilter.put("dishDesc", rs.getString(6));
+					dishFilter.put("dishSides", rs.getString(7));
+					dishFilter.put("dishFullPrice", rs.getDouble(8));
+					menuFilter.put(dishFilter);					
+				}catch(Exception e){
+					
+				}		
+			}
+			System.out.println(menuFilter);
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			release();
+		}
+		return menuFilter;
+	}
+	
 }
