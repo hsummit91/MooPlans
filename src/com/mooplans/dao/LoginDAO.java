@@ -69,15 +69,16 @@ public class LoginDAO {
 		JSONObject userDetails = new JSONObject();
 		try{
 			getConnection();
-			String sql = "select user_password, user_firstname, user_lastname, user_email,"
-					+ "user_phone, user_university, user_address, user_role, user_points, user_image from user where user_id = ?";
+			String sql = "select firstTimeData, user_firstname, user_lastname, user_email,"
+					+ "user_phone, user_university, user_address, user_role, user_points, user_image, gender, allergies, diet, cuisine "
+					+ "from user where user_id = ?";
 			pstmt = connection.prepareStatement(sql);
 			pstmt.setInt(1, ID);
 			rs = pstmt.executeQuery();
 
 			if(rs.next()){
 				userDetails.put("userId",ID);
-				userDetails.put("password", rs.getString(1));
+				userDetails.put("firstTimeData", rs.getString(1));
 				userDetails.put("firstName", rs.getString(2));
 				userDetails.put("lastName", rs.getString(3));
 				userDetails.put("email", rs.getString(4));
@@ -86,7 +87,11 @@ public class LoginDAO {
 				userDetails.put("address", rs.getString(7));
 				userDetails.put("role", rs.getString(8));
 				userDetails.put("points", rs.getString(9));		
-				userDetails.put("image", rs.getString(10));	
+				userDetails.put("image", rs.getString(10));
+				userDetails.put("gender", rs.getString(11));
+				userDetails.put("allergies", rs.getString(12));
+				userDetails.put("diet", rs.getString(13));
+				userDetails.put("cuisine", rs.getString(14));
 			}
 
 		}catch(SQLException e){
@@ -253,6 +258,30 @@ public class LoginDAO {
 		}
 	}
 
+	public static String updateUserFirstTimeData(String gender, String allergies, String diet, String cuisine, int userId){
+		String success = "success";
+		try{
+			getConnection();
+			String sql = "UPDATE user set gender = ?, allergies = ?, "
+					+ "diet = ?, cuisine = ?, firstTimeData = 1 WHERE user_id = ?";
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setString(1, gender);
+			pstmt.setString(2, allergies);
+			pstmt.setString(3, diet);
+			pstmt.setString(4, cuisine);
+			pstmt.setInt(5, userId);
+
+			pstmt.executeUpdate();
+
+		}catch(SQLException e){
+			success = "failure";
+			e.printStackTrace();
+		}finally{
+			release();
+		}
+		return success;
+	}
+	
 	public static int getUserID(User user){
 		int ID = 0;
 		try{
