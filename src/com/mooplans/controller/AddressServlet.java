@@ -74,18 +74,6 @@ public class AddressServlet extends HttpServlet {
 			shippingAddress = request.getParameter("address");
 			time = request.getParameter("time");
 			
-/*			int hr = time.charAt(0);
-			int hr1 = hr - 1;
-			String mins = "";
-			if(time.charAt(2) == 0){
-				mins = "45";
-			}else if(time.charAt(2) == 3){
-				mins = "15";
-			}*/
-			
-/*			System.out.println("DELIVERY TIME: "+time);
-			System.out.println("PREPARATION TIME: "+ hr1 +":"+ mins);*/
-			
 			user.setDelivery_time(time);
 			user.setUser_address(shippingAddress);
 		}
@@ -102,14 +90,6 @@ public class AddressServlet extends HttpServlet {
 		if(pointsDeducted){
 			// Create the new order and update order table
 			int orderId = PayPalDAO.createOrder(user, items, notes);
-			
-//			new Thread(new Runnable() {
-//			    public void run() {
-			    	//EmailDAO.sendOrderMailRest(user, items, orderId);
-					//EmailDAO.sendOrderMailUser(user, items, orderId);
-//			    }
-//			}).start();
-			
 			
 			url = "/jsp/orderSummary.jsp";
 			message = "Thank you for your purchase. Your Order #"+orderId;

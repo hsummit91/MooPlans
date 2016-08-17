@@ -43,7 +43,7 @@ public class PayPalDAO {
 			// Get all Dish Points here and prepare Bill
 			totalBill += getBill(key);
 			sb.append(Integer.toString(key)).append(",");
-			sb2.append(notes.get(key)).append("|");
+			sb2.append(notes.get(key)).append(",");
 		}
 		try{
 			getConnection();

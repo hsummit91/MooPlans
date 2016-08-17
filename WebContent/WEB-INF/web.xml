@@ -20,11 +20,9 @@
     <param-name>returnurl</param-name>
     <param-value>http://52.37.72.68:8080/MooPlans/ActionServlet</param-value>
   </context-param>
-  
- <servlet>
- <servlet-name>StartupServlet</servlet-name>
- <servlet-class>com.mooplans.controller.StartupServlet</servlet-class>
- <load-on-startup>7</load-on-startup>
- </servlet>
- 
+  <servlet>
+    <servlet-name>StartupServlet</servlet-name>
+    <servlet-class>com.mooplans.controller.StartupServlet</servlet-class>
+    <load-on-startup>7</load-on-startup>
+  </servlet>
 </web-app>
