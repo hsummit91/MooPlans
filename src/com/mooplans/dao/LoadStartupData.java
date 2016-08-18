@@ -19,7 +19,7 @@ public class LoadStartupData {
 
 			try{
 				getConnection();
-				String sql = "SELECT user_id, user_firstname, user_email, user_phone FROM user";
+				String sql = "SELECT user_id, user_firstname, user_email, user_phone, user_points FROM user";
 				pstmt = connection.prepareStatement(sql);
 				rs = pstmt.executeQuery();
 				
@@ -34,6 +34,7 @@ public class LoadStartupData {
 					user.setUser_firstname(rs.getString(2));
 					user.setUser_email(rs.getString(3));
 					user.setUser_phone(rs.getString(4));
+					user.setUser_points(rs.getInt(5));
 					userData.put(userId, user);
 				}
 				System.out.println("LOADING COMPLETE -------- USER DATA SIZE *********** "+userData.size());
