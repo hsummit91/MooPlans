@@ -113,8 +113,11 @@ public class Login extends HttpServlet {
 					System.out.println("###NULL===");
 					if(u.getUser_role().equalsIgnoreCase("student")){
 						url = "/jsp/home.jsp";
-					}else if(u.getUser_role().equalsIgnoreCase("restaurant")){ // for future work
-						url = "/jsp/restaurant.jsp";
+					}else if(u.getUser_role().equalsIgnoreCase("restaurant")){ // Added for new build
+						url = "/restaurant/index.jsp";
+					}
+					else if(u.getUser_role().equalsIgnoreCase("admin")){ // Added for new build
+						url = "/admin/index.jsp";
 					}
 				}
 			}
