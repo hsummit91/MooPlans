@@ -7,10 +7,15 @@
 <meta http-equiv="Content-Type"
 	content="text/html;
          charset=UTF-8">
-<link href="style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 <title>Update restaurant</title>
 </head>
 <body>
+
+<ul class="nav navbar-nav navbar-right">
+		<li><a href="#" id="logout">Logout</a></li>
+	</ul>
+	
 	<sql:setDataSource var="dbSource" driver="com.mysql.jdbc.Driver"
 		url="jdbc:mysql://moop2823825443.c1cyexirjeyj.us-west-2.rds.amazonaws.com/moop2823825443"
 		user="moop2823825443" password="mooplans2016" />
@@ -21,7 +26,7 @@
 	</sql:query>
 
 
-	<div align="center">
+	<div align="center" class="bootstrap">
 		<form action="update.jsp" method="post">
 			<h1>Update Restaurant Details</h1>
 			<%--  <p class="mystyle">
@@ -53,9 +58,18 @@
 				<input type="text" value="${row.rest_meal_type}"
 					name="rest_meal_type" />
 				<br><br>
-				<input type="submit" value="Update" />
+				<input type="submit" value="Update" class="btn btn-primary btn-lg"/>
 			</c:forEach>
 		</form>
 	</div>
+			<script src="../js/jquery.min.js" type="text/javascript"></script>
+	<script src="../js/bootstrap.min.js" type="text/javascript"></script>
+	<form action="${pageContext.request.contextPath}/Logout"
+		id="logoutForm" method="post"></form>
+	<script type="text/javascript">
+$( "#logout" ).click(function() {
+	  $( "#logoutForm" ).submit();
+});
+</script>
 </body>
 </html>
