@@ -9,9 +9,9 @@ function callMenu(){
 }
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Calling Menu</title>
+<title>Calling Admin</title>
 </head>
 <body onload="callMenu()">
-	<form id="redirectForm" action="http://52.37.72.68:8080/MooPlans/index.html" name="formName" method="post"></form>
+	<form id="redirectForm" action="../index.html" name="adminName"></form>
 </body>
 </html>
