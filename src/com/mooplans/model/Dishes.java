@@ -108,9 +108,6 @@ public class Dishes {
 	public float getDishPrice() {
 		return dishPrice;
 	}
-	public void setDishPrice(int dishPrice) {
-		this.dishPrice = dishPrice;
-	}
 	
 
 }

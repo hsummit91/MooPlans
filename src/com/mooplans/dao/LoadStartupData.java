@@ -67,7 +67,7 @@ public class LoadStartupData {
 					
 					dish.setDishId(dishId);
 					dish.setDishName(rs.getString(2));
-					dish.setDishPrice(rs.getInt(3));
+					dish.setDishPrice(rs.getFloat(3));
 					dish.setRestId(rs.getInt(4));
 					dish.setRest_name(rs.getString(5));
 					dish.setDishCategory(rs.getString(6));
