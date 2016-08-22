@@ -170,7 +170,7 @@ public class DishDAO {
 				Dishes dishes = new Dishes();
 				dishes.setDishName(rs.getString(1));
 				dishes.setDishCategory(rs.getString(2));
-				dishes.setDishPrice(rs.getInt(3)); 
+				dishes.setDishPrice(rs.getFloat(3)); 
 				dishes.setDishId(rs.getInt(4)); 
 				userDishes.add(dishes);
 			}
@@ -253,7 +253,7 @@ public class DishDAO {
 				try{
 					dishFilter.put("dishName", rs.getString(1));
 					dishFilter.put("dishCat", rs.getString(2));
-					dishFilter.put("dishPrice", rs.getInt(3));
+					dishFilter.put("dishPrice", rs.getFloat(3));
 					dishFilter.put("dishId", rs.getInt(4));
 					dishFilter.put("dishHealth", rs.getString(5));
 					dishFilter.put("dishDesc", rs.getString(6));
@@ -290,7 +290,7 @@ public class DishDAO {
 				try{
 					dishFilter.put("dishName", rs.getString(1));
 					dishFilter.put("dishCat", rs.getString(2));
-					dishFilter.put("dishPrice", rs.getInt(3));
+					dishFilter.put("dishPrice", rs.getFloat(3));
 					dishFilter.put("dishId", rs.getInt(4));
 					dishFilter.put("dishHealth", rs.getString(5));
 					dishFilter.put("dishDesc", rs.getString(6));
