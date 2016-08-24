@@ -63,19 +63,19 @@
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
               <li class="active"><a href="#">Home</a></li>
-              <li><a href="orders.jsp">Place Order</a></li>
-              <li><a href="pastOrders.jsp">Past Orders</a></li>
+<!--               <li><a href="orders.jsp">Place Order</a></li>
+              <li><a href="pastOrders.jsp">Past Orders</a></li> -->
             </ul>
             <ul class="nav navbar-nav navbar-right">
-             <li><a href="cart.jsp?added=false"><i class="glyphicon glyphicon-shopping-cart"></i><span class="badge"><%=shoppingCart.numberOfItems() %></span></a></li>
+             <%-- <li><a href="cart.jsp?added=false"><i class="glyphicon glyphicon-shopping-cart"></i><span class="badge"><%=shoppingCart.numberOfItems() %></span></a></li> --%>
              <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hi <%=user.getUser_firstname() %>! <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><a href="mealPlans.jsp"><%=user.getUser_points()%> Points</a></li>
                   <li><a href="mealPlans.jsp">Purchase a Meal Plan</a></li>
-                  <li role="separator" class="divider"></li>
+<!--                   <li role="separator" class="divider"></li>
                   <li class="dropdown-header">Profile Settings</li>
-                  <li><a href="myProfile.jsp">View Profile</a></li>
+                  <li><a href="myProfile.jsp">View Profile</a></li> -->
                 </ul>
               </li>
               <li><a href="#" id="logout">Logout</a></li>
@@ -120,7 +120,7 @@
       <div class="caption">
         <h3>Featured Restaurants</h3>
         <p>We have some great local restaurants to order from!</p>
-        <p><a href="orders.jsp" class="btn btn-primary" role="button">See All Restaurants</a></p>
+        <!-- <p><a href="orders.jsp" class="btn btn-primary" role="button">See All Restaurants</a></p> -->
       </div>
     </div>
   </div>  <div class="col-sm-6 col-md-4">
@@ -130,10 +130,10 @@
         <h3>Featured Dishes</h3>
         <p>Some awesome dishes you can't resist!</p>
         <p>
-        <form method="post" action="../ActionServlet?action=menuPage">
+<!--         <form method="post" action="../ActionServlet?action=menuPage">
         <input type="hidden" name="restId" value="0">
         <input type="submit" class="btn btn-primary" value="Search Dishes">
-        </form>
+        </form> -->
         <!-- <a href="orders.jsp" class="btn btn-primary" role="button">Place an order</a> -->
         </p>
       </div>

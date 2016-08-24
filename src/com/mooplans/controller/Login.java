@@ -52,7 +52,7 @@ public class Login extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		HttpSession session=request.getSession();
-		String url = "/jsp/login.jsp";
+		String url = "/index.html";
 		
 		String emailId= request.getParameter("email");
 		String password=request.getParameter("password");

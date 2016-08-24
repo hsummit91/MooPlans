@@ -46,7 +46,7 @@ public class Registration extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 		
-		String url = "/jsp/register.jsp";
+		String url = "/index.html";
 		String pay = "";
 		String errorMsg = "";
 		Boolean isError = false;
@@ -73,16 +73,28 @@ public class Registration extends HttpServlet {
 			
 		}
 		String firstname= request.getParameter("firstname");
-		String lastname=request.getParameter("lastname");
+		String lastname= "";
 		String emailId= request.getParameter("email");
 		String password=request.getParameter("password");
 		String phone=request.getParameter("phone");
-		String university= request.getParameter("university");
-		String address=request.getParameter("address");
+		String university= "";
+		String address= "";
 		String role = "student";
 		int points = 0;
 		int id = 0;
 
+/*		try{
+			firstname= request.getParameter("firstname");
+			lastname=request.getParameter("lastname");
+			emailId= request.getParameter("email");
+			password=request.getParameter("password");
+			phone=request.getParameter("phone");
+			university= request.getParameter("university");
+			address=request.getParameter("address");
+		}catch(Exception e){
+			
+		}*/
+		
 		if(firstname == null || firstname.equals("")){
 			errorMsg = "Fist name can not be empty";
 		}
@@ -97,13 +109,13 @@ public class Registration extends HttpServlet {
 			errorMsg = "Phone can not be empty";
 		}
 
-		if(university == null || university.equals("")){
+/*		if(university == null || university.equals("")){
 			errorMsg = "University can not be empty";
 		}
 
 		if(address == null || address.equals("")){
 			errorMsg =  "Address can not be empty";
-		}
+		}*/
 
 		else {
 
@@ -131,10 +143,10 @@ public class Registration extends HttpServlet {
 				
 				// Set success message
 				System.out.println("Registraion done success ID :"+ID);
-				url = "/jsp/login.jsp";
+				url = "/index.html";
 				errorMsg="Registration_Successful";
 				isError=true;
-				pay="0";
+				//pay="0";
 			}
 		}
 		

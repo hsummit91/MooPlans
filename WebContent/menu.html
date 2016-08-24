@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<!--[if IE 9]><html class="ie ie9"> <![endif]-->
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="pizza, delivery food, fast food, sushi, take away, chinese, italian food">
+    <meta name="description" content="">
+    
+    <title>Moo Plans - Order Menu</title>
+    <!-- Favicons-->
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="img/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="img/apple-icon-144x144.png">
+    
+    <!-- GOOGLE WEB FONT -->
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,900,400italic,700italic,300,300italic' rel='stylesheet' type='text/css'>
+
+    <!-- BASE CSS -->
+    <link href="css/base.css" rel="stylesheet">
+    
+     <!-- Radio and check inputs -->
+    <link href="css/skins/square/grey.css" rel="stylesheet">
+    <link href="css/skins/square/green.css" rel="stylesheet">
+    <link href="css/ion.rangeSlider.css" rel="stylesheet">
+    <link href="css/ion.rangeSlider.skinFlat.css" rel="stylesheet" >
+
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+<!--[if lte IE 8]>
+    <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a>.</p>
+<![endif]-->
+
+	<div id="preloader">
+        <div class="sk-spinner sk-spinner-wave" id="status">
+            <div class="sk-rect1"></div>
+            <div class="sk-rect2"></div>
+            <div class="sk-rect3"></div>
+            <div class="sk-rect4"></div>
+            <div class="sk-rect5"></div>
+        </div>
+    </div><!-- End Preload -->
+
+    <!-- Header ================================================== -->
+       <header class="bar">
+    <div class="container-fluid ">
+        
+        <div class="row">
+            <div class="col--md-4 col-sm-4 col-xs-4">
+                <a href="index.html" id="logo">
+                <img src="img/logo.png" width="234" height="49" style="margin-top:1px;" alt="" data-retina="true" class="hidden-xs">
+                <img src="img/logo_mobile.png" width="44" height="35" alt="" data-retina="true" class="hidden-lg hidden-md hidden-sm">
+                </a>
+            </div>
+            <nav class="col--md-8 col-sm-8 col-xs-8">
+            <a class="cmn-toggle-switch cmn-toggle-switch__htx open_close" href="javascript:void(0);"><span>Menu mobile</span></a>
+            <div class="main-menu">
+                <div id="header_menu">
+                    <img src="img/logo.png" width="234" height="49" alt="" data-retina="true">
+                </div>
+                <a href="#" class="open_close" id="close_in"><i class="icon_close"></i></a>
+                <ul>
+                    <li class="submenu">
+                    <a href="javascript:void(0);" class="show-submenu">Hi ABCDE<i class="icon-down-open-mini"></i></a>
+                    <ul>
+                        <li><a href="#">0 points</a></li>
+                        <li><a href="#">Purchase a meal plan</a></li>
+                        <hr>
+                        <li><a href="#">Profile settings</a></li>
+                        <li><a href="#">View Profile</a></li>
+                        
+                    </ul>
+                    </li>
+                    <li><a href="order_home.html">Home</a></li>
+                    <li><a href="#">Place Order</a></li>
+                    <li><a href="#">Past Order</a></li>
+                    <li><a href="#">Logout</a></li>
+                </ul>
+            </div><!-- End main-menu -->
+            </nav>
+        </div><!-- End row -->
+        
+    </div><!-- End container -->
+    </header>
+    <!-- End Header =============================================== -->
+
+
+
+
+
+<!-- Content ================================================== -->
+<div class="container margin_120">
+    <div class="main_title">
+           <h2 class="nomargin_top">Place Order</h2>
+            
+        </div>
+    
+	<div class="row">
+    
+		<div class="col-md-3">
+			
+			<div id="filters_col">
+				<a data-toggle="collapse" href="#collapseFilters" aria-expanded="true" aria-controls="collapseFilters" id="filters_col_bt">Filters <i class="icon-plus-1 pull-right"></i></a>
+				<div class="collapse" id="collapseFilters">
+                <div class="filter_type">
+                    <h6></h6>
+                    	<h5>Meal Preference</h5>
+                        <div class="form-group">
+						
+						      <select class="form-control" name="meal_preference">
+									<option value="" selected>Meal Preference</option>
+									<option value="Veg">Veg</option>
+									<option value="Vegan">Vegan</option>
+                                    <option value="Kosher">Kosher</option>
+									<option value="Halal">Halal</option>
+								</select>
+					   </div>
+                    </div>
+                     <div class="filter_type">
+                         <h5>Categories</h5>
+                        <div class="form-group">
+						
+						      <select class="form-control" name="categories">
+									<option value="" selected>Categories</option>
+									<option value="breakfast">Breakfast</option>
+									<option value="lunch">Lunch</option>
+                                    <option value="dinner">Dinner</option>
+									<option value="halfmeal">Half-Meal</option>
+								</select>
+					   </div>
+                    </div>
+                         <div class="filter_type">
+                         <h5>Price Range</h5>
+                        <input type="text" id="range" value="" name="range">
+                </div>
+                    <div class="filter_type">
+						<h5>Options</h5>
+						<ul class="nomargin">
+							<li><label><input type="checkbox" class="icheck">Delivery</label></li>
+							<li><label><input type="checkbox" class="icheck">Take Away</label></li>
+							<li><label><input type="checkbox" class="icheck">Dine In</label></li>
+						</ul>
+					</div>
+                    
+						<!--<div class="checkbox-holder1 text-left">
+						<div class="checkbox1">
+							<input type="checkbox" value="accept_2" id="check_2" name="check_2" />
+                            <label for="check_2"><span>Dine In</span></label>
+						</div>
+					</div>-->
+					<h6></h6>
+				<a class="btn_full" href="#" style="margin-bottom:10px;">Add Filter </a>
+                 <a class="btn_full" href="restaurant_list.html">Search Restaurant? </a>   
+                    
+                    
+					
+					
+					
+				</div><!--End collapse -->
+			</div><!--End filters col-->
+		</div><!--End col-md 3-->
+        
+		<div class="col-md-6">
+
+
+            <div class="strip_list_menu" >
+				
+				<div class="row">
+					<div class="col-md-12 col-sm-12">
+						<div class="desc">
+							<div class="thumb_strip">
+								<img src="img/classic_burger.png" alt="">
+							</div>
+							
+							<h3>Classic burger and fries</h3>
+							<div class="type">
+								Classic Burger Fries offers all the tempting tastes of a juicy cheeseburger and fries combo.
+                                
+							</div>
+							
+                            <h5 style="color:#67c03a;">$12.50 <span style="color:#3d4144;">or</span> 2 Meals</h5>
+                             <div class="line"><h6></h6></div>
+						</div>
+                       
+					</div>
+				
+                    	
+                    <div id="filtersMenu_col">
+				<a data-toggle="collapse" href="#collapseFiltersMenu1" aria-expanded="true" aria-controls="collapseFiltersMenu" id="filtersMenu_col_bt">More details <i class="icon-plus-1 pull-right"></i></a>
+				<div class="collapse" id="collapseFiltersMenu1">
+                <div class="filterMenu_type">
+                    <h6></h6>
+                            <h5>Choose One Side</h5>
+						<div >
+							<label><input type="radio" value="" checked name="side_1" class="icheck">Mashed Potatoes</label>
+						</div>
+                   <div ><label><input type="radio" value="" name="side_1" class="icheck">Fries</label></div>
+                    <div ><label><input type="radio" value="" name="side_1" class="icheck">Fries Pickled</label></div>
+                    <div ><label><input type="radio" value="" name="side_1" class="icheck">Veggies</label></div>
+                    </div><!--End filterMenu_type -->
+                    
+                    <div class="filterMenu_type">
+                    
+                            <h5>Choose One Drink</h5>
+						<div >
+							<label><input type="radio" value="" checked name="drink_1" class="icheck">Sprite</label>
+						</div>
+                   <div ><label><input type="radio" value="" name="drink_1" class="icheck">Pepsi</label></div>
+                    <div ><label><input type="radio" value="" name="drink_1" class="icheck">Coca-cola</label></div>
+                    <div ><label><input type="radio" value="" name="drink_1" class="icheck">Lemonade</label></div>
+                        <div ><label><input type="radio" value="" name="drink_1" class="icheck">Gator-Aide</label></div>
+                    <div ><label><input type="radio" value="" name="drink_1" class="icheck">Water</label></div>
+                    </div><!--End filterMenu_type -->
+                    
+                    <div class="filterMenu_type">
+                    
+                            <h5>Substitutions</h5>
+						<div >
+							<label><input type="radio" value="" checked name="sub_1" class="icheck">Vergan Burger(+$4 or 1/2 meal)</label>
+						</div>
+                   <div ><label><input type="radio" value="" name="sub_1" class="icheck">Gluten Free Bun (+$3 or Free for Meal Plan)</label></div>
+                    <div ><label><input type="radio" value="" name="sub_1" class="icheck">No Dairy Products</label></div>
+                    
+                    </div><!--End filterMenu_type -->
+                    <div class="filterMenu_type">
+                    
+                            <h5>How Spicy</h5>
+						
+							<label><input type="radio" value="" checked name="spicy_1" class="icheck">1</label>
+						
+                   <label><input type="radio" value="" name="spicy_1" class="icheck">2</label>
+                    <label><input type="radio" value="" name="spicy_1" class="icheck">3</label>
+                    
+                    </div><!--End filterMenu_type -->
+                    <a href="#" class="btn_full">Add</a>
+                    </div><!--End collapse -->
+			</div><!--End filtersMenu col-->
+                    
+                    
+				</div><!-- End row-->
+                
+			</div><!-- End strip_list_menu-->
+            <div class="strip_list_menu" >
+				
+				<div class="row">
+					<div class="col-md-12 col-sm-12">
+						<div class="desc">
+							<div class="thumb_strip">
+								<img src="img/polenta.png" alt="">
+							</div>
+							
+							<h3>Soft Polenta</h3>
+							<div class="type">
+								Soft creamy with the earthy-flavoured mushrooms that will keep you eating it again and again.
+                                
+							</div>
+							<div class="line"><h6></h6></div>
+                            <h5 style="color:#67c03a;">$7.50 <span style="color:#3d4144;">or</span> 1 Meal</h5>
+						</div>
+					</div>
+					   	
+                    <div id="filtersMenu_col">
+				<a data-toggle="collapse" href="#collapseFiltersMenu" aria-expanded="true" aria-controls="collapseFiltersMenu" id="filtersMenu_col_bt">More details <i class="icon-plus-1 pull-right"></i></a>
+				<div class="collapse" id="collapseFiltersMenu">
+                <div class="filterMenu_type">
+                    <h6></h6>
+                            <h5>Choose One Side</h5>
+						<div >
+							<label><input type="radio" value="" checked name="side_1" class="icheck">Mashed Potatoes</label>
+						</div>
+                   <div ><label><input type="radio" value="" name="side_1" class="icheck">Fries</label></div>
+                    <div ><label><input type="radio" value="" name="side_1" class="icheck">Fries Pickled</label></div>
+                    <div ><label><input type="radio" value="" name="side_1" class="icheck">Veggies</label></div>
+                    </div><!--End filterMenu_type -->
+                    
+                    <div class="filterMenu_type">
+                    
+                            <h5>Choose One Drink</h5>
+						<div >
+							<label><input type="radio" value="" checked name="drink_1" class="icheck">Sprite</label>
+						</div>
+                   <div ><label><input type="radio" value="" name="drink_1" class="icheck">Pepsi</label></div>
+                    <div ><label><input type="radio" value="" name="drink_1" class="icheck">Coca-cola</label></div>
+                    <div ><label><input type="radio" value="" name="drink_1" class="icheck">Lemonade</label></div>
+                        <div ><label><input type="radio" value="" name="drink_1" class="icheck">Gator-Aide</label></div>
+                    <div ><label><input type="radio" value="" name="drink_1" class="icheck">Water</label></div>
+                    </div><!--End filterMenu_type -->
+                    
+                    <div class="filterMenu_type">
+                    
+                            <h5>Substitutions</h5>
+						<div >
+							<label><input type="radio" value="" checked name="sub_1" class="icheck">Vergan Burger(+$4 or 1/2 meal)</label>
+						</div>
+                   <div ><label><input type="radio" value="" name="sub_1" class="icheck">Gluten Free Bun (+$3 or Free for Meal Plan)</label></div>
+                    <div ><label><input type="radio" value="" name="sub_1" class="icheck">No Dairy Products</label></div>
+                    
+                    </div><!--End filterMenu_type -->
+                    <div class="filterMenu_type">
+                    
+                            <h5>How Spicy</h5>
+						
+							<label><input type="radio" value="" checked name="spicy_1" class="icheck">1</label>
+						
+                   <label><input type="radio" value="" name="spicy_1" class="icheck">2</label>
+                    <label><input type="radio" value="" name="spicy_1" class="icheck">3</label>
+                    
+                    </div><!--End filterMenu_type -->
+                    <a href="#" class="btn_full">Add</a>
+                    </div><!--End collapse -->
+			</div><!--End filtersMenu col-->
+                    
+                    
+				</div><!-- End row-->
+                
+			</div><!-- End strip_list_menu-->
+				
+        
+            
+           
+            
+            
+            <div class="strip_list_menu" >
+				
+				<div class="row">
+					<div class="col-md-12 col-sm-12">
+						<div class="desc">
+							<div class="thumb_strip">
+								<img src="img/spring_veg.png" alt="">
+							</div>
+							
+							<h3>Spring Vegetables</h3>
+							<div class="type">
+								From asparagus and artichokes to peas and fava beans,fresh crop of sweet, versatile vegetables that brighten any meal.
+                                
+							</div>
+							<div class="line"><h6></h6></div>
+                            <h5 style="color:#67c03a;">$14.50 <span style="color:#3d4144;">or</span> 1 Meal</h5>
+						</div>
+					</div>
+					 <div id="filtersMenu_col">
+				<a data-toggle="collapse" href="#collapseFiltersMenu2" aria-expanded="true" aria-controls="collapseFiltersMenu" id="filtersMenu_col_bt">More details <i class="icon-plus-1 pull-right"></i></a>
+				<div class="collapse" id="collapseFiltersMenu2">
+                <div class="filterMenu_type">
+                    <h6></h6>
+                            <h5>Choose One Side</h5>
+						<div >
+							<label><input type="radio" value="" checked name="side_1" class="icheck">Mashed Potatoes</label>
+						</div>
+                   <div ><label><input type="radio" value="" name="side_1" class="icheck">Fries</label></div>
+                    <div ><label><input type="radio" value="" name="side_1" class="icheck">Fries Pickled</label></div>
+                    <div ><label><input type="radio" value="" name="side_1" class="icheck">Veggies</label></div>
+                    </div><!--End filterMenu_type -->
+                    
+                    <div class="filterMenu_type">
+                    
+                            <h5>Choose One Drink</h5>
+						<div >
+							<label><input type="radio" value="" checked name="drink_1" class="icheck">Sprite</label>
+						</div>
+                   <div ><label><input type="radio" value="" name="drink_1" class="icheck">Pepsi</label></div>
+                    <div ><label><input type="radio" value="" name="drink_1" class="icheck">Coca-cola</label></div>
+                    <div ><label><input type="radio" value="" name="drink_1" class="icheck">Lemonade</label></div>
+                        <div ><label><input type="radio" value="" name="drink_1" class="icheck">Gator-Aide</label></div>
+                    <div ><label><input type="radio" value="" name="drink_1" class="icheck">Water</label></div>
+                    </div><!--End filterMenu_type -->
+                    
+                    <div class="filterMenu_type">
+                    
+                            <h5>Substitutions</h5>
+						<div >
+							<label><input type="radio" value="" checked name="sub_1" class="icheck">Vergan Burger(+$4 or 1/2 meal)</label>
+						</div>
+                   <div ><label><input type="radio" value="" name="sub_1" class="icheck">Gluten Free Bun (+$3 or Free for Meal Plan)</label></div>
+                    <div ><label><input type="radio" value="" name="sub_1" class="icheck">No Dairy Products</label></div>
+                    
+                    </div><!--End filterMenu_type -->
+                    <div class="filterMenu_type">
+                    
+                            <h5>How Spicy</h5>
+						
+							<label><input type="radio" value="" checked name="spicy_1" class="icheck">1</label>
+						
+                   <label><input type="radio" value="" name="spicy_1" class="icheck">2</label>
+                    <label><input type="radio" value="" name="spicy_1" class="icheck">3</label>
+                    
+                    </div><!--End filterMenu_type -->
+                    <a href="#" class="btn_full">Add</a>
+                    </div><!--End collapse -->
+			</div><!--End filtersMenu col-->
+				</div><!-- End row-->
+                
+			</div><!-- End strip_list_menu-->
+			
+             
+    
+            
+		</div><!-- End col-md-6-->
+        
+        
+        <div class="col-md-3" id="sidebar">
+            <div class="theiaStickySidebar">
+				<div id="cart_box" >
+					<h3>Your order <i class="icon_cart_alt pull-right"></i></h3>
+					<table class="table table_summary">
+					<tbody>
+					<tr>
+						<td>
+							<a href="#0" class="remove_item"><i class="icon_minus_alt"></i></a> <strong>1x</strong> Soft Polenta
+						</td>
+						<td>
+							<strong class="pull-right">$7.50</strong>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="#0" class="remove_item"><i class="icon_minus_alt"></i></a> <strong>2x</strong> Chicken Burger with fries
+						</td>
+						<td>
+							<strong class="pull-right">$25</strong>
+						</td>
+					</tr>
+					
+					</tbody>
+					</table>
+					<hr>
+					<div class="row" id="options_2">
+						<div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
+							<label><input type="radio" value="" checked name="option_2" class="icheck">Delivery</label>
+						</div>
+						<div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
+							<label><input type="radio" value="" name="option_2" class="icheck">Take Away</label>
+						</div>
+					</div><!-- Edn options 2 -->
+                    
+					<hr>
+                    <table class="table table_summary">
+					<tbody>
+					<tr>
+						<td>
+							 Total Points <span class="pull-right">5</span>
+						</td>
+					</tr>
+					
+					</tbody>
+					</table>
+					<hr>
+					<table class="table table_summary">
+					<tbody>
+					<tr>
+						<td>
+							 Subtotal <span class="pull-right">$32.50</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							 Delivery fee <span class="pull-right">$3</span>
+						</td>
+                        <td>
+							 Delivery free
+						</td>
+					</tr>
+					<tr>
+						<td class="total">
+							 TOTAL <span class="pull-right">$32.50</span>
+						</td>
+					</tr>
+					</tbody>
+					</table>
+					<hr>
+					<a class="btn_full" href="cart_step1.html">Order now</a>
+				</div><!-- End cart_box -->
+                </div><!-- End theiaStickySidebar -->
+			</div><!-- End col-md-3 -->
+	</div><!-- End row -->
+</div><!-- End container -->
+<!-- End Content =============================================== -->
+
+ <!-- Footer ================================================== -->
+    <footer>
+    <div class="container">
+        <div class="row">
+           
+            <div class="col-md-2 col-sm-2">
+                <h3>Moo Plans</h3>
+                <ul>
+                    <li><a href="#">Catering</a></li>
+                    <li><a href="#">Faq</a></li>
+                    <li><a href="#">Office</a></li>
+                    
+                    <li><a href="#">Developers</a></li>
+                    <li><a href="#">Contacts</a></li>
+                    <li><a href="#">Become a Restaurant</a></li>
+                    <li><a href="#">Business Info</a></li>
+                    
+                </ul>
+            </div>
+            <div class="col-md-5 col-sm-5" id="newsletter">
+                <h3>Newsletter</h3>
+                <p>
+                    Join our newsletter to keep be informed about offers and news.
+                </p>
+                <div id="message-newsletter_2">
+                </div>
+                <form method="post" action="assets/newsletter.php" name="newsletter_2" id="newsletter_2">
+                    <div class="form-group">
+                        <input name="email_newsletter_2" id="email_newsletter_2" type="email" value="" placeholder="Your mail" class="form-control">
+                    </div>
+                    <input type="submit" value="Subscribe" class="btn_1" id="submit-newsletter_2">
+                </form>
+            </div>
+            <div class="col-md-5 col-sm-5">
+                <h3>Settings</h3>
+                <div class="styled-select">
+                    <select class="form-control" name="lang" id="lang">
+                        <option value="English" selected>English</option>
+                        <option value="French">French</option>
+                        <option value="Spanish">Spanish</option>
+
+                    </select>
+                </div>
+               
+                
+                <h3>Secure payments with</h3>
+                <p>
+                    <img src="img/cards.png" alt="" class="img-responsive">
+                </p>
+            </div>
+            </div>
+        </div><!-- End row -->
+        <div class="row">
+            <div class="col-md-12">
+                <div id="social_footer">
+                    <ul>
+                        <li><a href="www.facebook.com/mooplans"><i class="icon-facebook"></i></a></li>
+                        <li><a href="www.twitter.com/mooplans"><i class="icon-twitter"></i></a></li>
+                      
+                        <li><a href="www.instagram.com/mooplans"><i class="icon-instagram"></i></a></li>
+                        
+                    </ul>
+                    <p>
+                       2016 MOO PLANS LLC. ALL RIGHTS RESERVED.
+                    </p>
+                </div>
+            </div>
+        </div><!-- End row -->
+    </div><!-- End container -->
+    </footer>
+    <!-- End Footer =============================================== -->
+
+<div class="layer"></div><!-- Mobile menu overlay mask -->
+
+<!-- Login modal -->   
+<div class="modal fade" id="login_2" tabindex="-1" role="dialog" aria-labelledby="myLogin" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content modal-popup">
+				<a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
+				<form action="#" class="popup-form" id="myLogin">
+                	<div><img src="img/logo_m.png" /></div>
+                    
+					<input id="author" type="text" class="form-control form-white" placeholder="Username">
+					<input id="lock" type="password" class="form-control form-white" placeholder="Password">
+					<div class="text-left">
+						<a href="#">Forgot Password?</a>
+					</div>
+					<button type="submit" class="btn btn-submit">Sign up</button>
+				</form>
+			</div>
+		</div>
+	</div><!-- End modal -->   
+    
+
+    
+<!-- COMMON SCRIPTS -->
+<script src="js/jquery-1.11.2.min.js"></script>
+<script src="js/common_scripts_min.js"></script>
+<script src="js/functions.js"></script>
+<script src="assets/validate.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- SPECIFIC SCRIPTS -->
+<script src="js/theia-sticky-sidebar.js"></script>
+<script>
+    jQuery('#sidebar').theiaStickySidebar({
+      additionalMarginTop: 80
+    });
+</script>
+<script src="js/ion.rangeSlider.js"></script>
+<script>
+    $(function () {
+		 'use strict';
+        $("#range").ionRangeSlider({
+            hide_min_max: true,
+            keyboard: true,
+            min: 0,
+            max: 20,
+            from: 0,
+            to:5,
+            type: 'double',
+            step: 1,
+            prefix: "$ ",
+            grid: true
+        });
+    });
+</script>
+</body>
+</html>

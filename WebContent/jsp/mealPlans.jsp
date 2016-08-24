@@ -48,19 +48,19 @@
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
               <li><a href="home.jsp">Home</a></li>
-              <li><a href="orders.jsp">Place Order</a></li>
-              <li><a href="pastOrders.jsp">Past Orders</a></li>
+<!--               <li><a href="orders.jsp">Place Order</a></li>
+              <li><a href="pastOrders.jsp">Past Orders</a></li> -->
             </ul>
             <ul class="nav navbar-nav navbar-right">
-             <li><a href="cart.jsp?added=false"><i class="glyphicon glyphicon-shopping-cart"></i></a></li>
+             <!-- <li><a href="cart.jsp?added=false"><i class="glyphicon glyphicon-shopping-cart"></i></a></li> -->
              <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hi <%=user.getUser_firstname()%>! <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><a href="#"><%=user.getUser_points()%> Points</a></li>
                   <li><a href="#">Purchase a Meal Plan</a></li>
-                  <li role="separator" class="divider"></li>
+<!--                   <li role="separator" class="divider"></li>
                   <li class="dropdown-header">Profile Settings</li>
-                  <li><a href="myProfile.jsp">View Profile</a></li>
+                  <li><a href="myProfile.jsp">View Profile</a></li> -->
                 </ul>
               </li>
               <li><a href="#" id="logout">Logout</a></li>
