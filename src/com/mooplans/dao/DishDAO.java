@@ -188,7 +188,7 @@ public class DishDAO {
 		
 		try{
 			getConnection();
-			String sql = "SELECT dish_name, dish_category, dish_price, dish_id, dish_health, dish_description, dish_sides, dish_full_price"
+			String sql = "SELECT dish_name, dish_category, dish_price, dish_id, dish_health, dish_description, dish_sides, dish_full_price, dish_rest_id"
 					+ " FROM dishes WHERE ";
 			
 			String[] mpArray = mealPref.split(",");
@@ -259,6 +259,7 @@ public class DishDAO {
 					dishFilter.put("dishDesc", rs.getString(6));
 					dishFilter.put("dishSides", rs.getString(7));
 					dishFilter.put("dishFullPrice", rs.getDouble(8));
+					dishFilter.put("restaurantId", rs.getInt(9));
 					menuFilter.put(dishFilter);					
 				}catch(Exception e){
 					
@@ -278,7 +279,7 @@ public class DishDAO {
 		
 		try{
 			getConnection();
-			String sql = "SELECT dish_name, dish_category, dish_price, dish_id, dish_health, dish_description, dish_sides, dish_full_price"
+			String sql = "SELECT dish_name, dish_category, dish_price, dish_id, dish_health, dish_description, dish_sides, dish_full_price, dish_rest_id"
 					+ " FROM dishes WHERE isFeatured = ?";
 		
 			pstmt = connection.prepareStatement(sql);
@@ -296,6 +297,7 @@ public class DishDAO {
 					dishFilter.put("dishDesc", rs.getString(6));
 					dishFilter.put("dishSides", rs.getString(7));
 					dishFilter.put("dishFullPrice", rs.getDouble(8));
+					dishFilter.put("restaurantId", rs.getInt(9));
 					menuFilter.put(dishFilter);					
 				}catch(Exception e){
 					

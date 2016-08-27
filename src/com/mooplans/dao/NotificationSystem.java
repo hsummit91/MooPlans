@@ -48,7 +48,11 @@ public class NotificationSystem implements Runnable{
 					Dishes dish = sd.getDishDataById(Integer.parseInt(splittedStr[i]));
 					items.put(dish.getDishName(), dish.getDishPrice());
 					forRestaurants.put(Integer.parseInt(splittedStr[i]), dish);
-					dishNotesMap.put(Integer.parseInt(splittedStr[i]), notesStr[i]);
+					try{
+						dishNotesMap.put(Integer.parseInt(splittedStr[i]), notesStr[i]);
+					}catch(Exception e){
+						
+					}
 				}
 			
 				

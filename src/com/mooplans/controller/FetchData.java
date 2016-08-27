@@ -77,7 +77,8 @@ public class FetchData extends HttpServlet {
 			String diet= request.getParameter("diet");
 			String cuisine=request.getParameter("cuisine");
 			
-			String updateData = LoginDAO.updateUserFirstTimeData(gender, allergies, diet, cuisine, userId);
+			JSONObject updateData = LoginDAO.updateUserFirstTimeData(gender, allergies, diet, cuisine, userId);
+			response.setContentType("application/json");
 			out.write(updateData+"");
 		}else{
 			response.sendRedirect(getServletContext().getContextPath()+"/jsp/home.html");

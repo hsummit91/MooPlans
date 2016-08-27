@@ -196,7 +196,7 @@ public class EmailDAO {
 					total += dish.getDishPrice(); 
 					sbb.append("<tr><td>"+dish.getDishName()+"</td><td>"+dish.getDishPrice()+"</td></tr>");
 					String cmnt = dish.getComments();
-					if(cmnt.equals("")){
+					if(cmnt == null || cmnt.equals("")){
 						cmnt = "no comments";
 					}
 					sbb.append("<tr colspan=2><td>  <i>Comments: "+cmnt+"</i></td></tr>");

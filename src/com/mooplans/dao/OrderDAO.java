@@ -85,7 +85,7 @@ public class OrderDAO {
 		try{
 			getConnection();
 			String sql = "SELECT order_id, order_total, order_deliverat, order_date, order_ids "
-					   + "FROM orders where order_user_id = ?";
+					   + "FROM orders where order_user_id = ? order by order_date DESC";
 			pstmt = connection.prepareStatement(sql);
 			pstmt.setInt(1, ID);
 			rs = pstmt.executeQuery();

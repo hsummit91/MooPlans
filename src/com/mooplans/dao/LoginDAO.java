@@ -1,5 +1,6 @@
 package com.mooplans.dao;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -82,6 +83,7 @@ public class LoginDAO {
 				userDetails.put("firstName", rs.getString(2));
 				userDetails.put("lastName", rs.getString(3));
 				userDetails.put("email", rs.getString(4));
+				userDetails.put("userEmail", rs.getString(4));
 				userDetails.put("phone", rs.getString(5));
 				userDetails.put("university", rs.getString(6));
 				userDetails.put("address", rs.getString(7));
@@ -166,6 +168,7 @@ public class LoginDAO {
 	}
 
 	public static int registerUser(User user){
+		
 		int ID = 0;
 		try{
 			// Check if the email and phone number exists
@@ -176,7 +179,7 @@ public class LoginDAO {
 				String sql = "INSERT INTO user (user_password, user_firstname, user_lastname, user_email,"
 						+ " user_phone, user_university, user_address, user_role, user_points)"
 						+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-				pstmt = connection.prepareStatement(sql);
+				pstmt = connection.prepareStatement(sql, pstmt.RETURN_GENERATED_KEYS);
 				pstmt.setString(1, user.getUser_password());
 				pstmt.setString(2, user.getUser_firstname());
 				pstmt.setString(3, user.getUser_lastname());
@@ -186,9 +189,17 @@ public class LoginDAO {
 				pstmt.setString(7, user.getUser_address());
 				pstmt.setString(8, user.getUser_role());
 				pstmt.setInt(9, user.getUser_points());
-				ID = pstmt.executeUpdate();
-			}
-			else return -1;
+				pstmt.executeUpdate();
+
+		        try (ResultSet generatedKeys = pstmt.getGeneratedKeys()) {
+		            if (generatedKeys.next()) {
+		            	ID = generatedKeys.getInt(1);
+		            }else {
+		                throw new SQLException("Creating user failed, no ID obtained.");
+		            }
+		        }
+				
+			}else return -1;
 
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -258,7 +269,8 @@ public class LoginDAO {
 		}
 	}
 
-	public static String updateUserFirstTimeData(String gender, String allergies, String diet, String cuisine, int userId){
+	public static JSONObject updateUserFirstTimeData(String gender, String allergies, String diet, String cuisine, int userId){
+		JSONObject jo = new JSONObject();
 		String success = "success";
 		try{
 			getConnection();
@@ -279,7 +291,14 @@ public class LoginDAO {
 		}finally{
 			release();
 		}
-		return success;
+		
+		try {
+			jo.put("result", success);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		
+		return jo;
 	}
 	
 	public static int getUserID(User user){
