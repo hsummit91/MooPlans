@@ -46,7 +46,7 @@ public class Registration extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 		
-		String url = "/index.html";
+		String url = "/index.jsp";
 		String pay = "";
 		String errorMsg = "";
 		Boolean isError = false;
@@ -73,27 +73,15 @@ public class Registration extends HttpServlet {
 			
 		}
 		String firstname= request.getParameter("firstname");
-		String lastname= "";
+		String lastname= request.getParameter("lastname");;
 		String emailId= request.getParameter("email");
 		String password=request.getParameter("password");
 		String phone=request.getParameter("phone");
 		String university= "";
-		String address= "";
+		String address= request.getParameter("address");
 		String role = "student";
 		int points = 0;
 		int id = 0;
-
-/*		try{
-			firstname= request.getParameter("firstname");
-			lastname=request.getParameter("lastname");
-			emailId= request.getParameter("email");
-			password=request.getParameter("password");
-			phone=request.getParameter("phone");
-			university= request.getParameter("university");
-			address=request.getParameter("address");
-		}catch(Exception e){
-			
-		}*/
 		
 		if(firstname == null || firstname.equals("")){
 			errorMsg = "Fist name can not be empty";
@@ -111,11 +99,11 @@ public class Registration extends HttpServlet {
 
 /*		if(university == null || university.equals("")){
 			errorMsg = "University can not be empty";
-		}
+		}*/
 
 		if(address == null || address.equals("")){
 			errorMsg =  "Address can not be empty";
-		}*/
+		}
 
 		else {
 
@@ -126,8 +114,7 @@ public class Registration extends HttpServlet {
 
 			if (ID == 0) {
 				errorMsg =  "Registration failed, please try again";
-			}
-			else if (ID < 0) {
+			}else if (ID < 0) {
 				errorMsg = "Email ID already registered";
 			}else{
 				// Sending welcome email to user
@@ -143,7 +130,7 @@ public class Registration extends HttpServlet {
 				
 				// Set success message
 				System.out.println("Registraion done success ID :"+ID);
-				url = "/index.html";
+				url = "/index.jsp";
 				errorMsg="Registration_Successful";
 				isError=true;
 				//pay="0";
@@ -165,6 +152,7 @@ public class Registration extends HttpServlet {
 				rigisterArray.put("address", address);
 				rigisterArray.put("university", university);
 				rigisterArray.put("Error", errorMsg);
+				rigisterArray.put("userId", ID);
 				rigisterArray.put("isError", isError);
 			} catch (JSONException e) {
 				e.printStackTrace();
