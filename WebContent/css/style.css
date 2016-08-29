@@ -649,6 +649,13 @@ video {
 	margin:0;
 	padding:0;
 }
+.high_light1{
+	padding:30px 0 50px 0;
+	background:#e84b60;
+	color:#fff;
+	font-size:16px;
+}
+
 .high_light a{
 	border: none;
 	font-family: inherit;
@@ -1500,7 +1507,7 @@ ul.opening_list li span{
    text-transform:uppercase;
 }
 .feature {
-	padding:5px 30px 10px 150px;
+	padding:10px 30px 15px 150px;
 	position:relative;
 	background:#fff;
 	margin-bottom:10px;
@@ -1512,8 +1519,8 @@ ul.opening_list li span{
 .feature i{
 	margin:0;
 	position:absolute; 
-	top:30px;
-	left:30px;
+	top:10px;
+	left:25px;
 	padding:0;
 	margin:0;
 	width:65px;
@@ -1525,7 +1532,7 @@ ul.opening_list li span{
 	border-radius: 50%;
 	border:1px dashed #ccc;
 	font-size:34px;
-	color:#6dcff6;
+	color:#e84b60;
 }
 
 /*2.7 Contacts*/

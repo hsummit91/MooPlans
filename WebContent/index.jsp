@@ -77,7 +77,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col--md-4 col-sm-4 col-xs-4">
-                <a href="index.html" id="logo">
+                <a href="#" id="logo">
                 <img src="img/logo.png" width="234" height="49" style="margin-top:1px;" alt="" data-retina="true" class="hidden-xs">
                 <img src="img/logo_mobile.png" width="44" height="35" alt="" data-retina="true" class="hidden-lg hidden-md hidden-sm">
                 </a>
@@ -93,10 +93,10 @@
                     
                     <li><a href="#0" data-toggle="modal" data-target="#login_2">Login</a></li>
                     <li><a href="#0" data-toggle="modal" data-target="#register">Register</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Newsletter</a></li>
-                    <li><a href="#">Pricing</a></li>
-                    <li><a href="#">Order Now</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <!-- <li><a href="#">Newsletter</a></li> -->
+                    <!-- <li><a href="#">Pricing</a></li> -->
+                    <li><a data-toggle="modal" data-target="#login_2">Order Now</a></li>
                 </ul>
             </div><!-- End main-menu -->
             </nav>
@@ -114,10 +114,10 @@
             <p>
                 Convenient and quick meals delivered directly to you
             </p>
-            <p>
+<!--             <p>
                 !! Website Under Construction !!
-            </p>
-            <a class="btn_1" href="#">Order Now </a>
+            </p> -->
+            <a class="btn_1" data-toggle="modal" data-target="#login_2">Order Now </a>
             
         </div><!-- End sub_content -->
     </div>
@@ -408,7 +408,7 @@
                     
                 </ul>
             </div>
-            <div class="col-md-5 col-sm-5" id="newsletter">
+<!--             <div class="col-md-5 col-sm-5" id="newsletter">
                 <h3>Newsletter</h3>
                 <p>
                     Join our newsletter to keep be informed about offers and news.
@@ -421,7 +421,7 @@
                     </div>
                     <input type="submit" value="Subscribe" class="btn_1" id="submit-newsletter_2">
                 </form>
-            </div>
+            </div> -->
             <div class="col-md-5 col-sm-5">
                 <h3>Settings</h3>
                 <div class="styled-select">

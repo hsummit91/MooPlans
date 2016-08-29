@@ -204,8 +204,8 @@
 				}
 				String opt = "";
 				
-				out.println(options);
-				out.println(options.length());
+				//out.println(options);
+				//out.println(options.length());
 				
 				if(options.length() > 0){
 					opt += "<div><strong>Item | Type | Price</strong></div>";
