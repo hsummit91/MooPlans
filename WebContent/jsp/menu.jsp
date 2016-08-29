@@ -222,7 +222,7 @@
 					<div class="col-md-12 col-sm-12">
 						<div class="desc">
 							<div class="thumb_strip">
-								<img src="images/foodPics/dish<%=rest.getJSONObject(i).get("dishId") %>.jpg" alt="<%=rest.getJSONObject(i).get("dishName")%>">
+								<img src="img/apple-icon-114x114.png" alt="<%=rest.getJSONObject(i).get("dishName")%>">
 							</div>
 							
 							<h3><%=rest.getJSONObject(i).get("dishName")%></h3>

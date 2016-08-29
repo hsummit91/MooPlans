@@ -242,11 +242,11 @@
 							 Delivery free
 						</td>
 					</tr> -->
-					<tr>
+<!-- 					<tr>
 						<td class="total">
 							 TOTAL <span class="pull-right" id="finalBill"></span>
 						</td>
-					</tr>
+					</tr> -->
 					</tbody>
 					</table>
 					<hr>

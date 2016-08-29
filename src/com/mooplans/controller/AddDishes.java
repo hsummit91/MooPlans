@@ -57,7 +57,7 @@ public class AddDishes extends HttpServlet {
 		for (int m = 2; m <= 50; m++) {
 				String temp = Arrays.toString(request.getParameterValues("choices"+m));
 				if(temp.length() != 0 )
-				choices.add(temp);
+				choices.add(temp+"#");
 		}
 		
 		String str1 = Arrays.toString(dish_allergen);  
@@ -65,22 +65,13 @@ public class AddDishes extends HttpServlet {
 		String str3 = Arrays.toString(dish_health);  
 		String str4 = choices.toString(); 
 
-		System.out.println(" conversion1 " +str4);
 		
-str1 = str1.substring(1, str1.length()-1).replaceAll("  ", ",").replaceAll("null", "").replaceAll(" , ", "").replaceAll(",,", "").replaceAll(",,, ", "");
-str2 = str2.substring(1, str2.length()-1).replaceAll("  ", ",").replaceAll("null", "").replaceAll(" , ", "").replaceAll(",,", "").replaceAll(",,, ", "");
-str3 = str3.substring(1, str3.length()-1).replaceAll("  ", ",").replaceAll("null", "").replaceAll(" , ", "").replaceAll(",,", "").replaceAll(",,, ", "");
-str4 = str4.substring(1, str4.length()-1).replaceAll("null", "").replaceAll("  ", ",").replaceAll(", ,", "").replaceAll(" , ", "").replaceAll(",,", "").replaceAll(",,, ", "");
-
-
-		System.out.println(str1);
-		System.out.println(str2);
-		System.out.println(str3);
-		System.out.println(" conversion2 " +str4);
-		
-		String bOpen = "[";
-		String str5 = bOpen.concat(ch[0]).concat(", ").concat(ch[1]).concat(", ").concat(ch[2]).concat("], ").concat(str4).trim();
-		System.out.println(str5);
+		str1 = str1.substring(1, str1.length()-1).replaceAll("  ", ",").replaceAll("null", "").replaceAll(" , ", "").replaceAll(",,", "").replaceAll(",,, ", "");
+		str2 = str2.substring(1, str2.length()-1).replaceAll("  ", ",").replaceAll("null", "").replaceAll(" , ", "").replaceAll(",,", "").replaceAll(",,, ", "");
+		str3 = str3.substring(1, str3.length()-1).replaceAll("  ", ",").replaceAll("null", "").replaceAll(" , ", "").replaceAll(",,", "").replaceAll(",,, ", "");
+		str4 = str4.substring(1, str4.length()-1).replaceAll("null#", "").replaceAll("  ", ",").replaceAll(", ,", "").replaceAll(" , ", "").replaceAll(",,", "").replaceAll(",,, ", "").replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("#, ", "#");
+	
+		String str5 = ch[0].concat(", ").concat(ch[1]).concat(", ").concat(ch[2]).concat("#").concat(str4).trim();
 
 		String dish_full_price = request.getParameter("dish_full_price");
 		float dish_point = 0;
@@ -93,7 +84,7 @@ str4 = str4.substring(1, str4.length()-1).replaceAll("null", "").replaceAll("  "
 		}
 
 		String dish_points = String.format("%.02f", dish_point/5);
-		System.out.println(dish_points + " points.");
+		//System.out.println(dish_points + " points.");
 
 
 		request.setAttribute("dish_allergen", str1);

@@ -97,8 +97,8 @@
 			</div>
 		
 		<p class="col-md-12" style="color: blue">Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.</p>
-			<div class="col-md-9" style="float:center"><label class="col-md-3">Allergen(s) *</label> 
-			<select  style="width:40%" name="dish_allergen" multiple required="required">
+			<div class="col-md-9" style="float:center"><label class="col-md-3">Allergen(s)</label> 
+			<select  style="width:40%" name="dish_allergen" multiple>
 				  <option value="Eggs">Eggs</option>
 				  <option value="Wheat">Wheat</option>
 				  <option value="Peanuts">Peanuts</option>
@@ -112,8 +112,8 @@
 				  Other <input width="250px" type="text" name="dish_allergen" />
      	   </div>
 
-     	<div class="col-md-9"><label class="col-md-3">Diet(s) *</label> 
-			<select style="width:40%" name="dish_health" multiple required="required">
+     	<div class="col-md-9"><label class="col-md-3">Diet(s)</label> 
+			<select style="width:40%" name="dish_health" multiple>
 				  <option value="Gluten Free">Gluten Free</option>
 				  <option value="Kosher">Kosher</option>
 				  <option value="Low Fat">Low Fat</option>
