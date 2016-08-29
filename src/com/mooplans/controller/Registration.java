@@ -46,7 +46,7 @@ public class Registration extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 		
-		String url = "/index.html";
+		String url = "/index.jsp";
 		String pay = "";
 		String errorMsg = "";
 		Boolean isError = false;
@@ -130,7 +130,7 @@ public class Registration extends HttpServlet {
 				
 				// Set success message
 				System.out.println("Registraion done success ID :"+ID);
-				url = "/index.html";
+				url = "/index.jsp";
 				errorMsg="Registration_Successful";
 				isError=true;
 				//pay="0";
