@@ -17,7 +17,7 @@
 
       <sql:update dataSource="${dbSource}" var="dbResult">
          INSERT INTO restaurant(rest_name, rest_phone, rest_status, rest_email, rest_health, rest_meal_type)
-            VALUES (?,?,?,?,?);
+            VALUES (?,?,?,?,?,?);
          <sql:param value="${param.rest_name}" />
          <sql:param value="${param.rest_phone}" />
          <sql:param value="${param.rest_status}" />
@@ -26,7 +26,7 @@
          <sql:param value="${param.rest_meal_type}" />
       </sql:update>
       <c:if test="${dbResult>=1}">
-         <c:redirect url="jstl/index.jsp" >
+         <c:redirect url="index.jsp" >
             <c:param name="msg" value="1 record inserted" />
          </c:redirect>
       </c:if>

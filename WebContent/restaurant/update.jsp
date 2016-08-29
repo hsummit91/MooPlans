@@ -13,22 +13,23 @@
                          url="jdbc:mysql://moop2823825443.c1cyexirjeyj.us-west-2.rds.amazonaws.com/moop2823825443"
                          user="moop2823825443" password="mooplans2016"/>
 
+
       <sql:update dataSource="${dbSource}" var="dbResult">
-         UPDATE dishes SET dish_name=?, dish_price=?, dish_category=?,
-            dish_description=?, dish_choice=?, dish_sides=?, dish_health=?, dish_full_price=? WHERE dish_id=?;
+         UPDATE dishes SET dish_name=?, dish_description=?, dish_category=?, dish_allergen=?,
+           dish_health=? , dish_full_price=? , dish_command=?, dish_choice=?  WHERE dish_id=?;
          <sql:param value="${param.dish_name}" />
-         <sql:param value="${param.dish_price}" />
-         <sql:param value="${param.dish_category}" />
          <sql:param value="${param.dish_description}" />
-         <sql:param value="${param.dish_choice}" />
-         <sql:param value="${param.dish_sides}" />
+         <sql:param value="${param.dish_category}" />
+          <sql:param value="${param.dish_allergen}" />
           <sql:param value="${param.dish_health}" />
            <sql:param value="${param.dish_full_price}" />
+         <sql:param value="${param.dish_command}" />
+         <sql:param value="${param.dish_choice}" />
          <sql:param value="${param.id}" />
       </sql:update>
 
       <c:if test="${dbResult>=1}">
-         <c:redirect url="index.jsp" >
+         <c:redirect url="view.jsp" >
             <c:param name="msg" value="1 record updated" />
          </c:redirect>
       </c:if>

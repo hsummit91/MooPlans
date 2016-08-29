@@ -29,36 +29,28 @@
 	<div align="center" class="bootstrap">
 		<form action="update.jsp" method="post">
 			<h1>Update Dish Details</h1>
-			<%--  <p class="mystyle">
-               Update Address ID <c:out value="${param.id}"/>
-            </p> --%>
 			<c:forEach var="row" items="${dbResult.rows}">
 				<input type="hidden" value="${row.dish_id}" name="id" />
-				<label>Enter the name of the dish</label>
-				<input type="text" value="${row.dish_name}" name="dish_name" />
-				<br>
-				<label>Enter Price</label>
-				<input type="text" value="${row.dish_price}" name="dish_price" />
-				<br>
-				<label>Enter Category</label>
-				<input type="text" value="${row.dish_category}" name="dish_category" />
+				<label>Enter dish name</label>
+				<input type="text" value="${row.dish_name}" name="dish_name" style="width:50%"/>
 				<br>
 				<label>Enter Description</label>
-				<input type="text" value="${row.dish_description}"
-					name="dish_description" />
+				<input type="text" value="${row.dish_description}" name="dish_description" style="width:50%"/>
 				<br>
-				<label>Enter Choice</label>
-				<input type="text" value="${row.dish_choice}" name="dish_choice" />
+				<label>Enter Cuisine</label>
+				<input type="text" value="${row.dish_category}" name="dish_category" style="width:50%"/>
 				<br>
-				<label>Enter Sides</label>
-				<input type="text" value="${row.dish_sides}" name="dish_sides" />
+				<label>Enter Allergen</label>
+				<input type="text" value="${row.dish_health}" name="dish_allergen" style="width:50%"/>
 				<br>
 				<label>Enter Health</label>
-				<input type="text" value="${row.dish_health}" name="dish_health" />
+				<input type="text" value="${row.dish_health}" name="dish_health" style="width:50%"/>
 				<br>
 				<label>Full Price</label>
-				<input type="text" value="${row.dish_full_price}"
-					name="dish_full_price" />
+				<input type="text" value="${row.dish_full_price}"name="dish_full_price" style="width:50%" />
+				<br>
+				<label>Enter Choice</label>
+				<input type="text" value="${row.dish_choice}" name="dish_choice" style="width:50%"/>
 				<br>
 				<br>
 				<input type="submit" value="Update" class="btn btn-primary btn-lg"/>
