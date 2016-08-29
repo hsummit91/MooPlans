@@ -123,72 +123,14 @@ public class DishDAO {
 		return restDetails;
 	}
 	
-	public static ArrayList<Dishes> getDishDetails(){
-		ArrayList<Dishes> userDishes = new ArrayList<Dishes>();
-		
-		try{
-			getConnection();
-			String sql = "SELECT dishes.dish_name, dishes.dish_category, restaurant.rest_name, dishes.dish_price"
-					+ " FROM dishes INNER JOIN restaurant ON dishes.dish_rest_id=restaurant.rest_id"
-					+ " WHERE restaurant.rest_status <> 0 ";
-			pstmt = connection.prepareStatement(sql);
-
-			getConnection(); // connection  re-established
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()){
-				Dishes dishes = new Dishes();
-				dishes.setDishName(rs.getString(1));
-				dishes.setDishCategory(rs.getString(2));
-				dishes.setRest_name(rs.getString(3));
-				dishes.setDishPrice(rs.getFloat(4)); 
-				//dishes.setRest_details(getRestDetails());
-				userDishes.add(dishes);
-			}
-		}catch(SQLException e){
-			e.printStackTrace();
-		}finally{
-			release();
-		}
-		return userDishes;
-	}
-	
-	public static ArrayList<Dishes> getDishDetailsByName(String restName){
-		ArrayList<Dishes> userDishes = new ArrayList<Dishes>();
-		
-		try{
-			getConnection();
-			String sql = "SELECT dish_name, dishes.dish_category, dishes.dish_price, dishes.dish_id"
-					+ " FROM dishes INNER JOIN restaurant ON dishes.dish_rest_id=restaurant.rest_id"
-					+ " WHERE restaurant.rest_status <> 0 and restaurant.rest_name=(?)";
-
-			pstmt = connection.prepareStatement(sql);
-			pstmt.setString(1, restName);
-			rs = pstmt.executeQuery();
-		
-			while(rs.next()){
-				Dishes dishes = new Dishes();
-				dishes.setDishName(rs.getString(1));
-				dishes.setDishCategory(rs.getString(2));
-				dishes.setDishPrice(rs.getFloat(3)); 
-				dishes.setDishId(rs.getInt(4)); 
-				userDishes.add(dishes);
-			}
-		}catch(SQLException e){
-			e.printStackTrace();
-		}finally{
-			release();
-		}
-		return userDishes;
-	}
-	
 	public static JSONArray getDishDetails(int restId, String mealPref, String mealType){
 		//ArrayList<Dishes> userDishes = new ArrayList<Dishes>();
 		JSONArray menuFilter = new JSONArray();
 		
 		try{
 			getConnection();
-			String sql = "SELECT dish_name, dish_category, dish_price, dish_id, dish_health, dish_description, dish_sides, dish_full_price, dish_rest_id"
+			String sql = "SELECT dish_name, dish_category, dish_price, dish_id, dish_health, "
+					+ "dish_description, dish_sides, dish_full_price, dish_rest_id, dish_command, dish_choice"
 					+ " FROM dishes WHERE ";
 			
 			String[] mpArray = mealPref.split(",");
@@ -253,16 +195,18 @@ public class DishDAO {
 				try{
 					dishFilter.put("dishName", rs.getString(1));
 					dishFilter.put("dishCat", rs.getString(2));
-					dishFilter.put("dishPrice", rs.getFloat(3));
+					dishFilter.put("dishPrice", String.format( "%.2f",rs.getFloat(3)));
 					dishFilter.put("dishId", rs.getInt(4));
 					dishFilter.put("dishHealth", rs.getString(5));
 					dishFilter.put("dishDesc", rs.getString(6));
 					dishFilter.put("dishSides", rs.getString(7));
-					dishFilter.put("dishFullPrice", rs.getDouble(8));
+					dishFilter.put("dishFullPrice", String.format( "%.2f",rs.getFloat(8)));
 					dishFilter.put("restaurantId", rs.getInt(9));
+					dishFilter.put("dishCommand", rs.getString(10));
+					dishFilter.put("dishChoice", rs.getString(11));
 					menuFilter.put(dishFilter);					
 				}catch(Exception e){
-					
+ 
 				}		
 			}
 			System.out.println(menuFilter);
@@ -279,7 +223,8 @@ public class DishDAO {
 		
 		try{
 			getConnection();
-			String sql = "SELECT dish_name, dish_category, dish_price, dish_id, dish_health, dish_description, dish_sides, dish_full_price, dish_rest_id"
+			String sql = "SELECT dish_name, dish_category, dish_price, dish_id, dish_health, "
+					+ "dish_description, dish_sides, dish_full_price, dish_rest_id, dish_command, dish_choice"
 					+ " FROM dishes WHERE isFeatured = ?";
 		
 			pstmt = connection.prepareStatement(sql);
@@ -291,13 +236,15 @@ public class DishDAO {
 				try{
 					dishFilter.put("dishName", rs.getString(1));
 					dishFilter.put("dishCat", rs.getString(2));
-					dishFilter.put("dishPrice", rs.getFloat(3));
+					dishFilter.put("dishPrice", String.format( "%.2f",rs.getFloat(3)));
 					dishFilter.put("dishId", rs.getInt(4));
 					dishFilter.put("dishHealth", rs.getString(5));
 					dishFilter.put("dishDesc", rs.getString(6));
 					dishFilter.put("dishSides", rs.getString(7));
-					dishFilter.put("dishFullPrice", rs.getDouble(8));
+					dishFilter.put("dishFullPrice", String.format( "%.2f",rs.getFloat(8)));
 					dishFilter.put("restaurantId", rs.getInt(9));
+					dishFilter.put("dishCommand", rs.getString(10));
+					dishFilter.put("dishChoice", rs.getString(11));
 					menuFilter.put(dishFilter);					
 				}catch(Exception e){
 					

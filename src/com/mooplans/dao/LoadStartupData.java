@@ -51,7 +51,7 @@ public class LoadStartupData {
 				getConnection();
 				String sql = "SELECT d.dish_id, d.dish_name, d.dish_price, d.dish_rest_id, r.rest_name, "
 						+ "d.dish_category, d.dish_description, d.dish_choice, r.rest_email, r.rest_phone, "
-						+ "d.dish_sides, d.dish_health FROM dishes as d join restaurant as r "
+						+ "d.dish_sides, d.dish_health, d.dish_full_price FROM dishes as d join restaurant as r "
 						+ "on d.dish_rest_id = r.rest_id";
 				pstmt = connection.prepareStatement(sql);
 				rs = pstmt.executeQuery();
@@ -67,7 +67,7 @@ public class LoadStartupData {
 					
 					dish.setDishId(dishId);
 					dish.setDishName(rs.getString(2));
-					dish.setDishPrice(rs.getFloat(3));
+					dish.setDishPrice(Float.parseFloat(String.format( "%.2f",rs.getFloat(3))));
 					dish.setRestId(rs.getInt(4));
 					dish.setRest_name(rs.getString(5));
 					dish.setDishCategory(rs.getString(6));
@@ -77,6 +77,7 @@ public class LoadStartupData {
 					dish.setRestPhone(rs.getString(10));
 					dish.setDishSides(rs.getString(11));
 					dish.setDishHealth(rs.getString(12));
+					dish.setDishFullPrice(Float.parseFloat(String.format( "%.2f",rs.getFloat(13))));
 					
 					dishData.put(dishId, dish);
 				}

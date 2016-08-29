@@ -25,6 +25,14 @@ public class PayPalDAO {
 		
 		return dish.getDishPrice();
 	}
+	
+	public static float getPriceBill(Integer dishId){
+		
+		StartupData sd = StartupData.getInstance();		
+		Dishes dish = sd.getDishDataById(dishId);
+		
+		return dish.getDishFullPrice();
+	}
 
 	private static String getCurrentTimeStamp() {
 
@@ -33,33 +41,32 @@ public class PayPalDAO {
 
 	}
 
-	public static int createOrder(User user, HashMap<Integer, String> items, HashMap<Integer, String> notes){
+	public static int createOrder(User user, HashMap<Integer, String> items, HashMap<Integer, String> notes, String paymentMode, float totalBill){
 
-		float totalBill = 0;
 		int orderId = 0;
 		StringBuilder sb = new StringBuilder();
 		StringBuilder sb2 = new StringBuilder();
 		for(Integer key: items.keySet()){
 			// Get all Dish Points here and prepare Bill
-			totalBill += getBill(key);
 			sb.append(Integer.toString(key)).append(",");
-			sb2.append(notes.get(key)).append(",");
+			sb2.append(notes.get(key)).append("##");
 		}
 		try{
 			getConnection();
-			String sql = "INSERT INTO orders (order_user_id, order_total,order_deliverat,order_date,order_phone,delivery_time,order_notes,order_ids)"
-					+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO orders (order_user_id, order_total, order_deliverat, order_date, order_phone, delivery_time, payment_mode, order_notes, order_ids)"
+					+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			pstmt = connection.prepareStatement(sql);
 			pstmt.setInt(1, user.getUser_id());
-			pstmt.setInt(2, (int)totalBill);
+			pstmt.setFloat(2, totalBill);
 			pstmt.setString(3, user.getUser_address());
 			pstmt.setString(4, getCurrentTimeStamp());
 			pstmt.setString(5, user.getUser_phone());
 			pstmt.setString(6, user.getDelivery_time());
-			pstmt.setString(7, sb2.toString());
+			pstmt.setString(7, paymentMode);
+			pstmt.setString(8, sb2.toString());
 			String order_ids = sb.toString();
 			order_ids = order_ids.substring(0, order_ids.length()-1);
-			pstmt.setString(8, order_ids);
+			pstmt.setString(9, order_ids);
 			pstmt.executeUpdate();
 
 			String sql2 = "SELECT order_id FROM orders ORDER BY order_id DESC LIMIT 1";
@@ -160,31 +167,5 @@ public class PayPalDAO {
 		}
 		return pointsAdded;
 	}
-
-/*	public static Dishes getDishDetails(int dishId){ //NOT USED
-
-		Dishes dishes = new Dishes();
-		try{
-			getConnection();
-			String sql = "SELECT dishes.dish_name, dishes.dish_price, restaurant.rest_email "
-					+ "FROM dishes  join restaurant "
-					+ "on dishes.dish_rest_id = restaurant.rest_id "
-					+ "WHERE dish_id="+dishId;
-			pstmt = connection.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-
-			while(rs.next()){
-				dishes.setDishName(rs.getString(1));
-				dishes.setDishPrice(rs.getFloat(2));
-				dishes.setRestEmail(rs.getString(3));
-				System.out.println("in pp DAO "+dishes.getDishName()+" "+dishes.getDishPrice()+" "+dishes.getRestEmail());
-			}
-		}catch(SQLException e){
-			e.printStackTrace();
-		}finally{
-			release();
-		}
-		return dishes;
-	}*/
 
 }

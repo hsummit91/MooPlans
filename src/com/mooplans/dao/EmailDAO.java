@@ -84,7 +84,7 @@ public class EmailDAO {
 		return emailSent;
 	}
 
-	public static void sendOrderMailUser(User user, HashMap<String, Float> items, int orderId){
+	public static void sendOrderMailUser(User user, HashMap<String, Float> items, int orderId, String paymentMode){
 
 		Properties props = System.getProperties();
 		props.put("mail.smtp.starttls.enable", "true");
@@ -108,17 +108,17 @@ public class EmailDAO {
 			sb.append("Hi "+user.getUser_firstname()+",\n");
 			sb.append("Thanks for using MooPlans to Order Food<br>");
 			sb.append("<br>Your Order Summary:<br><br>");
-			sb.append("<table><thead><tr><th>Food Item</th><th>Points</th></tr></thead><tbody>");
+			sb.append("<table><thead><tr><th>Food Item</th><th>Price</th></tr></thead><tbody>");
 
 			float total = 0;		
 			for(String key: items.keySet()){
-				//float points = PayPalDAO.getBill(key);
 				total += items.get(key); 
 				sb.append("<tr><td>"+key+"</td><td>"+items.get(key)+"</td></tr>");
 				System.out.println("In EmailDAO Key"+key+" value="+items.get(key));
 			}
-			sb.append("<tr><td>Total Points</td><td>"+total+"</td></tr>");
+			sb.append("<tr><td>Total Price</td><td>"+total+"</td></tr>");
 			sb.append("</tbody></table>");
+			sb.append("<br><br>Payment Mode: <strong>" +paymentMode+"</strong>");
 			sb.append("<br><br>Delivery Address<br>" +user.getUser_address());
 			sb.append("<br>Phone: "+user.getUser_phone());
 
@@ -133,11 +133,11 @@ public class EmailDAO {
 	}
 
 
-	public static void sendOrderMailRest(User user, HashMap<Integer, Dishes> items, int orderId, HashMap<Integer, String> notes){
+	public static void sendOrderMailRest(User user, HashMap<Integer, Dishes> items, int orderId, HashMap<Integer, String> notes, String paymentMode){
 
 		final String INIT = "Customer "+user.getUser_firstname()+",\nhas ordered food from MooPlans<br>"
 				+"<br>Order Summary:<br><br>"
-				+"<table><thead><tr><th>Food Item</th><th>Points</th></tr></thead><tbody>";
+				+"<table><thead><tr><th>Food Item</th><th>Price</th></tr></thead><tbody>";
 
 		Properties props = System.getProperties();
 		props.put("mail.smtp.starttls.enable", "true");
@@ -193,16 +193,23 @@ public class EmailDAO {
 				message.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
 
 				for(Dishes dish : itemList){
-					total += dish.getDishPrice(); 
-					sbb.append("<tr><td>"+dish.getDishName()+"</td><td>"+dish.getDishPrice()+"</td></tr>");
+					if(paymentMode.equals("points")){
+						total += dish.getDishPrice();
+						sbb.append("<tr><td>"+dish.getDishName()+"</td><td>"+dish.getDishPrice()+"</td></tr>");
+					}else{
+						total += dish.getDishFullPrice();
+						sbb.append("<tr><td>"+dish.getDishName()+"</td><td>"+dish.getDishFullPrice()+"</td></tr>");
+					}
+					 
 					String cmnt = dish.getComments();
 					if(cmnt == null || cmnt.equals("")){
 						cmnt = "no comments";
 					}
 					sbb.append("<tr colspan=2><td>  <i>Comments: "+cmnt+"</i></td></tr>");
 				}
-				sbb.append("<tr><td>Total Points</td><td>"+total+"</td></tr>");
+				sbb.append("<tr><td>Total Price</td><td>"+total+"</td></tr>");
 				sbb.append("</tbody></table>");
+				sbb.append("<br><br>Payment Mode: <strong>" +paymentMode+"</strong>");
 				sbb.append("<br><br>Please delivery food at Address:<br>" +user.getUser_address());
 				sbb.append("<br>Phone: "+user.getUser_phone());
 

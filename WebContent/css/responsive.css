@@ -27,6 +27,7 @@
 	#sub_content h1{ font-size:42px;}
 	.strip_list, .strip_list .go_to{height:auto;}
 	#hero_video{ background: #333 url(../img/sub_header_home.png); background-size:cover; background-position: center center;}
+    	
 }
 /* Small Devices, Tablets */
 @media only screen and (max-width : 767px) {
@@ -57,7 +58,7 @@
 		
 	.strip_list, .strip_list .go_to a.btn_1{ margin-top:20px; width:100%;}
 	
-	/* Responsive table cart */
+	/* Responsive table cart 
 	.table.cart-list {margin-bottom:30px; }
 	.table.cart-list, .table.cart-list thead, .table.cart-list tbody, .table.cart-list th, .table.cart-list td, .table.cart-list  tr{ display: block; border:0; }
 	.table.cart-list thead tr { position: absolute;top: -9999px;left: -9999px;}
@@ -67,7 +68,7 @@
 	.table.cart-list td:nth-of-type(1):before { content: "Item"; font-weight: bold; color:#111;}
 	.table.cart-list td:nth-of-type(2):before { content: "Price"; font-weight: bold; color:#111;}
 	.table.cart-list td:nth-of-type(3):before { content: "Add to cart"; font-weight: bold;  color:#111;}
-	.thumb_cart{ display:none;}
+	.thumb_cart{ display:none;}*/
 	
 	.bs-wizard > .bs-wizard-step .bs-wizard-stepnum {font-size: 12px;}
 	.bs-wizard > .bs-wizard-step > .bs-wizard-dot {margin-top: -17px;} 
@@ -132,6 +133,9 @@
 	#custom-search-input input.btn_search{right:15px;top:10px;}
 	.desc{padding-left:0; text-align:center;}
 	.thumb_strip{position:static; margin:auto; margin-bottom:10px;}
+    
+	.thumb_strip1{position:static; margin:auto; margin-bottom:1px;}
+    
 	.opening{ display:block;}
 	.features-content {padding: 10%;}
 	h3.slide_typo {letter-spacing:0;}

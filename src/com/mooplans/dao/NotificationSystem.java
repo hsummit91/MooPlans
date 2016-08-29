@@ -3,6 +3,7 @@ package com.mooplans.dao;
 import static com.mooplans.dao.DBConnThread.*;
 
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.HashMap;
 
 import com.mooplans.model.Dishes;
@@ -42,11 +43,19 @@ public class NotificationSystem implements Runnable{
 				
 				String dishNotes = rs.getString("order_notes");
 				
-				String[] notesStr = dishNotes.split(",");
+				String[] notesStr = dishNotes.split("##");
+				
+				String paymentMode = rs.getString("payment_mode");
 				
 				for (int i = 0; i < splittedStr.length; i++){
 					Dishes dish = sd.getDishDataById(Integer.parseInt(splittedStr[i]));
-					items.put(dish.getDishName(), dish.getDishPrice());
+					
+					if(paymentMode.equals("points")){
+						items.put(dish.getDishName(), dish.getDishPrice());
+					}else{
+						items.put(dish.getDishName(), dish.getDishFullPrice());
+					}
+					
 					forRestaurants.put(Integer.parseInt(splittedStr[i]), dish);
 					try{
 						dishNotesMap.put(Integer.parseInt(splittedStr[i]), notesStr[i]);
@@ -65,11 +74,11 @@ public class NotificationSystem implements Runnable{
 				user.setUser_phone(rs.getString("order_phone"));
 				
 				
-				EmailDAO.sendOrderMailUser(user, items, orderId);
+				EmailDAO.sendOrderMailUser(user, items, orderId, paymentMode);
 				
 				System.out.println(" ~~~~~~~~~~SENDING MAIL TO REST~~~~~~~~~~~~~> "+orderId);
 				
-				EmailDAO.sendOrderMailRest(user, forRestaurants, orderId, dishNotesMap);
+				EmailDAO.sendOrderMailRest(user, forRestaurants, orderId, dishNotesMap, paymentMode);
 				
 				System.out.println(" ~~~~~~~~~~MAILS SENT~~~~~~~~~~~~~> "+orderId);
 				newOrders = 1;
@@ -94,7 +103,7 @@ public class NotificationSystem implements Runnable{
 				try {
 					release();
 					System.out.println("SLEEEEEPINNNNGGGGG");
-					Thread.sleep(300000);
+					Thread.sleep(600000);
 					System.out.println("WAKIIIIIINNNNNGGGGGG UPPP !!!");
 				} catch (InterruptedException e) {
 					e.printStackTrace();

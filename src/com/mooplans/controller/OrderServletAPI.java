@@ -58,6 +58,7 @@ public class OrderServletAPI extends HttpServlet {
 		String name = null;
 		String shippingAddress = null;
 		String phone = null;
+		String paymentMode = "";
 		String time = null;
 		int userId = 0;
 		
@@ -97,6 +98,11 @@ public class OrderServletAPI extends HttpServlet {
 			time = request.getParameter("time");
 			phone = request.getParameter("phone");
 			
+			try{
+				paymentMode = request.getParameter("paymentMode");
+			}catch(Exception e){
+				paymentMode = "points";
+			}
 			user.setDelivery_time(time);
 			user.setUser_address(shippingAddress);
 		}
@@ -114,7 +120,7 @@ public class OrderServletAPI extends HttpServlet {
 		int success = 0;
 		if(pointsDeducted){
 			// Create the new order and update order table
-			int orderId = PayPalDAO.createOrder(user, items, notes);
+			int orderId = PayPalDAO.createOrder(user, items, notes, paymentMode, totalBill);
 			
 			message = "Thank you for your purchase. Your Order #"+orderId;
 			success = 1;

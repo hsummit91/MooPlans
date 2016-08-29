@@ -60,6 +60,7 @@ public class AddressServlet extends HttpServlet {
 		String message = null;
 		String time = null;
 		User user = null;
+		String checkout = "";
 		if(session.getAttribute("User") == null)
 			url = "/login.jsp";
 		else user = (User) session.getAttribute("User");
@@ -73,26 +74,38 @@ public class AddressServlet extends HttpServlet {
 		}else if(action.equalsIgnoreCase("newAddress")){
 			shippingAddress = request.getParameter("address");
 			time = request.getParameter("time");
+			checkout = request.getParameter("checkoutType");
 			
 			user.setDelivery_time(time);
 			user.setUser_address(shippingAddress);
 		}
 
 		// Calling PayDAO to deduct User points based on his order and make entry in the order table(s)
+		
+		
 		float totalBill = 0;
+		
 		for(Integer key: items.keySet()){
 			System.out.println("Key"+items.get(key)+" value="+key);
 			// Get all Dish Points here and prepare Bill
-			totalBill += PayPalDAO.getBill(key); 
+			if(checkout.equals("points")){
+				totalBill += PayPalDAO.getBill(key); 
+			}else if(checkout.equals("cash")){
+				totalBill += PayPalDAO.getPriceBill(key);
+			}
 		}
 		
 		boolean pointsDeducted = PayPalDAO.updateUserPoints(user, items);
 		if(pointsDeducted){
 			// Create the new order and update order table
-			int orderId = PayPalDAO.createOrder(user, items, notes);
+			int orderId = PayPalDAO.createOrder(user, items, notes, checkout, totalBill);
 			
 			url = "/jsp/orderSummary.jsp";
 			message = "Thank you for your purchase. Your Order #"+orderId;
+			
+			session.setAttribute("deliveryTime", time);
+			session.setAttribute("deliveryAddress", shippingAddress);
+			session.setAttribute("paymentMode", checkout);
 			session.setAttribute("totalBill", String.valueOf(totalBill));
 			session.setAttribute("message", message);
 		}else{

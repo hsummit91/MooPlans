@@ -17,6 +17,7 @@ public class Dishes {
 	private String dishSides;
 	private String dishHealth;
 	private ArrayList<Restaurant> rest_details;
+	private float dishFullPrice;
 	
 	private String comments;
 	
@@ -107,6 +108,12 @@ public class Dishes {
 	}
 	public float getDishPrice() {
 		return dishPrice;
+	}
+	public float getDishFullPrice() {
+		return dishFullPrice;
+	}
+	public void setDishFullPrice(float dishFullPrice) {
+		this.dishFullPrice = dishFullPrice;
 	}
 	
 

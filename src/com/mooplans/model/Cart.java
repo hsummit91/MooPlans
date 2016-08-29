@@ -5,6 +5,7 @@ import java.util.HashMap;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import com.mooplans.dao.PayPalDAO;
 /**
  *
@@ -13,12 +14,18 @@ import com.mooplans.dao.PayPalDAO;
 public class Cart {
     HashMap<Integer, String> cartItems;
     HashMap<Integer, String> cartNotes;
+    HashMap<Integer, Float> cartPrice;
+    HashMap<Integer, Float> cartFullPrice;
     private float totalBill;
+    
+    JSONArray priceArray = new JSONArray();
     PayPalDAO pd;
     
     public Cart(){
      cartItems = new HashMap<>();     
      cartNotes = new HashMap<>(); 
+     cartFullPrice = new HashMap<Integer, Float>();
+     cartPrice = new HashMap<Integer, Float>();
      pd = new PayPalDAO();
     }
     
@@ -29,6 +36,8 @@ public class Cart {
     		try {
 				cartObject.put("dishId", key);
 				cartObject.put("dishName", cartItems.get(key));
+				cartObject.put("dishPrice", cartPrice.get(key));
+				cartObject.put("dishFullPrice", cartFullPrice.get(key));
 				cartArray.put(cartObject);
 			} catch (JSONException e) {
 				e.printStackTrace();
@@ -50,24 +59,45 @@ public class Cart {
     public HashMap<Integer, String> getCartNotes(){
         return cartNotes;
     }
-    public void addToCart(int id, String itemName, String notes){
+    public HashMap<Integer, Float> getCartPrice(){
+        return cartPrice;
+    }
+    public HashMap<Integer, Float> getCartFullPrice(){
+        return cartFullPrice;
+    }
+    public void addToCart(int id, String itemName, String notes, float dishPrice, float dishFullPrice){
         cartItems.put(id, itemName);
         cartNotes.put(id, notes);
+        cartFullPrice.put(id, dishFullPrice);
+        cartPrice.put(id,dishPrice);
     }
     
     public void deleteFromCart(int itemId){
         cartItems.remove(itemId);
         cartNotes.remove(itemId);
+        cartPrice.remove(itemId);
+        cartFullPrice.remove(itemId);
     }
 	public float getTotalBill() {		
 		float totalBill = 0;
 		for(Integer key: cartItems.keySet()){
 			System.out.println(key +" ---- "+pd.getBill(key));
-			totalBill += pd.getBill(key);
+			totalBill += Float.parseFloat(String.format( "%.2f",pd.getBill(key)));
 		}
 		System.out.println("========>"+totalBill);
 		return totalBill;
 	}
+	
+	public float getTotalPriceBill() {		
+		float totalBill = 0;
+		for(Integer key: cartItems.keySet()){
+			System.out.println(key +" ---- "+pd.getPriceBill(key));
+			totalBill += Float.parseFloat(String.format( "%.2f",pd.getPriceBill(key)));
+		}
+		System.out.println("========>"+totalBill);
+		return totalBill;
+	}
+	
 	public void setTotalBill(float totalBill) {
 		this.totalBill = totalBill;
 	}    

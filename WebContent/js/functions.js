@@ -56,7 +56,7 @@ jQuery(function($) {
 	});
 });
 
-<!-- Magnific popup -->	
+// Magnific popup -->	
 $(function () {
 'use strict';
 $('.video_pop').magnificPopup({type:'iframe'});	/* video modal*/
@@ -80,13 +80,13 @@ $('.magnific-gallery').each(function() {
 }); 
 }); 
 
-<!-- Radio and checkbox styles -->	
+// Radio and checkbox styles -->	
 $('input.icheck').iCheck({
    checkboxClass: 'icheckbox_square-grey',
    radioClass: 'iradio_square-grey'
  });
  
-<!-- Collapse filters close on mobile-->	
+// Collapse filters close on mobile-->	
 $(window).bind('resize load',function(){
 if( $(this).width() < 991 )
 {
@@ -100,13 +100,13 @@ $('.collapse#collapseFilters').addClass('in');
 }   
 });
 
-<!-- Tooltip -->	
+// Tooltip -->	
 $('.tooltip-1').tooltip({html:true});
 
-<!-- Pace holder -->	
+// Pace holder -->	
 $('input, textarea').placeholder();
 
-<!-- Accordion -->	
+// Accordion -->	
 function toggleChevron(e) {
     $(e.target)
         .prev('.panel-heading')
@@ -115,7 +115,7 @@ function toggleChevron(e) {
 }
 $('.panel-group').on('hidden.bs.collapse shown.bs.collapse', toggleChevron);
 
-<!-- Cat nav onclick active -->	
+// Cat nav onclick active -->	
 $('ul#cat_nav li a').on('click', function(){
     $('ul#cat_nav li a.active').removeClass('active');
     $(this).addClass('active');
