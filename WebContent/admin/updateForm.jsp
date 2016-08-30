@@ -57,6 +57,10 @@
 				<label>Enter meal type</label>
 				<input type="text" value="${row.rest_meal_type}"
 					name="rest_meal_type" />
+					<br>
+					<label>Enter Delivery Fee</label>
+				<input type="text" value="${row.rest_delivery_fee}"
+					name="rest_delivery_fee" />
 				<br><br>
 				<input type="submit" value="Update" class="btn btn-primary btn-lg"/>
 			</c:forEach>

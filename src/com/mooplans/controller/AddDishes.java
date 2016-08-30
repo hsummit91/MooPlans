@@ -83,7 +83,7 @@ public class AddDishes extends HttpServlet {
 			System.out.println(numberAsString + " is not a valid number.");
 		}
 
-		String dish_points = String.format("%.02f", dish_point/5);
+		String dish_points = String.format("%.02f", dish_point/10);
 		//System.out.println(dish_points + " points.");
 
 

@@ -16,14 +16,15 @@
 
 
       <sql:update dataSource="${dbSource}" var="dbResult">
-         INSERT INTO restaurant(rest_name, rest_phone, rest_status, rest_email, rest_health, rest_meal_type)
-            VALUES (?,?,?,?,?,?);
+         INSERT INTO restaurant(rest_name, rest_phone, rest_status, rest_email, rest_health, rest_meal_type, rest_delivery_fee)
+            VALUES (?,?,?,?,?,?,?);
          <sql:param value="${param.rest_name}" />
          <sql:param value="${param.rest_phone}" />
          <sql:param value="${param.rest_status}" />
          <sql:param value="${param.rest_email}" />
          <sql:param value="${param.rest_health}" />
          <sql:param value="${param.rest_meal_type}" />
+          <sql:param value="${param.rest_delivery_fee}" />
       </sql:update>
       <c:if test="${dbResult>=1}">
          <c:redirect url="index.jsp" >

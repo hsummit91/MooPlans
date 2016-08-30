@@ -49,6 +49,7 @@
 			<div class="col-md-12"><label class="col-md-3">Enter email address</label> <input type="text" name="rest_email" class="col-md-6" /></div> 
 			<div class="col-md-12"><label class="col-md-3">Enter health</label> <input type="text" name="rest_health" class="col-md-6" /></div> 
 			<div class="col-md-12"><label class="col-md-3">Meal type</label> <input type="text" name="rest_meal_type" class="col-md-6" /></div> 
+			<div class="col-md-12"><label class="col-md-3">Delivery Fee (optional)</label> <input type="text" name="rest_meal_type" class="col-md-6" /></div> 
 
 			<div class="col-md-12" style="margin-top: 10px;margin-bottom: 10px;"><input type="submit" value="Add New Restaurant"
 				class="btn btn-primary btn-lg" /></div>
@@ -70,6 +71,7 @@
 				<td>Email</td>
 				<td>Health</td>
 				<td>Meal Type</td>
+				<td>Delivery Fee</td>
 				<td colspan="2"></td>
 			</tr>
 			<c:forEach var="row" items="${dbResult.rows}">
@@ -87,6 +89,7 @@
 					<td><c:out value="${row.rest_email}" /></td>
 					<td><c:out value="${row.rest_health}" /></td>
 					<td><c:out value="${row.rest_meal_type}" /></td>
+					<td><c:out value="${row.rest_delivery_fee}" /></td>
 					<td><a
 						href="updateForm.jsp?id=<c:out
                            value="${row.rest_id}"/>">Update</a>
