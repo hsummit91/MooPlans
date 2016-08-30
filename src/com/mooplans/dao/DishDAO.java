@@ -130,7 +130,7 @@ public class DishDAO {
 		try{
 			getConnection();
 			String sql = "SELECT dish_name, dish_category, dish_price, dish_id, dish_health, "
-					+ "dish_description, dish_sides, dish_full_price, dish_rest_id, dish_command, dish_choice"
+					+ "dish_description, dish_sides, dish_full_price, dish_rest_id"
 					+ " FROM dishes WHERE ";
 			
 			String[] mpArray = mealPref.split(",");
@@ -202,8 +202,6 @@ public class DishDAO {
 					dishFilter.put("dishSides", rs.getString(7));
 					dishFilter.put("dishFullPrice", String.format( "%.2f",rs.getFloat(8)));
 					dishFilter.put("restaurantId", rs.getInt(9));
-					dishFilter.put("dishCommand", rs.getString(10));
-					dishFilter.put("dishChoice", rs.getString(11));
 					menuFilter.put(dishFilter);					
 				}catch(Exception e){
  
@@ -224,7 +222,7 @@ public class DishDAO {
 		try{
 			getConnection();
 			String sql = "SELECT dish_name, dish_category, dish_price, dish_id, dish_health, "
-					+ "dish_description, dish_sides, dish_full_price, dish_rest_id, dish_command, dish_choice"
+					+ "dish_description, dish_sides, dish_full_price, dish_rest_id"
 					+ " FROM dishes WHERE isFeatured = ?";
 		
 			pstmt = connection.prepareStatement(sql);
@@ -243,9 +241,34 @@ public class DishDAO {
 					dishFilter.put("dishSides", rs.getString(7));
 					dishFilter.put("dishFullPrice", String.format( "%.2f",rs.getFloat(8)));
 					dishFilter.put("restaurantId", rs.getInt(9));
-					dishFilter.put("dishCommand", rs.getString(10));
-					dishFilter.put("dishChoice", rs.getString(11));
 					menuFilter.put(dishFilter);					
+				}catch(Exception e){
+					
+				}		
+			}
+			System.out.println(menuFilter);
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			release();
+		}
+		return menuFilter;
+	}
+	
+	public static JSONArray getMealChoices(int dishId){
+		JSONArray menuFilter = new JSONArray();
+		
+		try{
+			getConnection();
+			String sql = "SELECT dish_choice FROM dishes WHERE dish_id = ?";
+		
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, dishId);
+			rs = pstmt.executeQuery();
+		
+			if(rs.next()){			
+				try{
+					menuFilter.put(rs.getString(1));					
 				}catch(Exception e){
 					
 				}		

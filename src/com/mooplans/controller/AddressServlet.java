@@ -94,8 +94,13 @@ public class AddressServlet extends HttpServlet {
 				totalBill += PayPalDAO.getPriceBill(key);
 			}
 		}
-		
-		boolean pointsDeducted = PayPalDAO.updateUserPoints(user, items);
+		boolean pointsDeducted = false;
+		if(checkout.equals("cash")){
+			pointsDeducted = true;
+		}else{
+			pointsDeducted = PayPalDAO.updateUserPoints(user, items);
+		}
+			
 		if(pointsDeducted){
 			// Create the new order and update order table
 			int orderId = PayPalDAO.createOrder(user, items, notes, checkout, totalBill);
@@ -109,9 +114,9 @@ public class AddressServlet extends HttpServlet {
 			session.setAttribute("totalBill", String.valueOf(totalBill));
 			session.setAttribute("message", message);
 		}else{
-			url = "/jsp/addPoints.jsp";
+			url = "/jsp/OrderError.jsp";
 			items.clear();
-			message = "Not enough points. Please add points";
+			message = "Not enough points. Please purchase a meal plan or check-out using cash";
 			session.setAttribute("errMessage", message);
 		}
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);

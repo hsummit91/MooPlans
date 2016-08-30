@@ -15,20 +15,20 @@
     
     <title>Moo Plans - Packages</title>
     <!-- Favicons-->
-    <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="57x57" href="../img/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="../img/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="../img/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="../img/apple-icon-144x144.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="img/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="img/apple-icon-144x144.png">
     
     <!-- GOOGLE WEB FONT -->
     <link href='https://fonts.googleapis.com/css?family=Lato:400,700,900,400italic,700italic,300,300italic' rel='stylesheet' type='text/css'>
 
     <!-- BASE CSS -->
-    <link href="../css/base.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
     
     <!-- Radio and check inputs -->
-    <link href="../css/skins/square/grey.css" rel="stylesheet">
+    <link href="css/skins/square/grey.css" rel="stylesheet">
 
     <!--[if lt IE 9]>
       <script src="js/html5shiv.min.js"></script>
@@ -44,8 +44,18 @@
 	User user = null;
 	if(session.getAttribute("User") == null){
 		out.print("Session Invalidate");
-	    response.sendRedirect("login.jsp");
-	}else user = (User) session.getAttribute("User");
+	    response.sendRedirect("index.jsp");
+	}else {
+		user = (User) session.getAttribute("User");
+	}
+	
+	String error = "";
+	try{		
+		error = (String)session.getAttribute("errMessage");
+	}catch(Exception e){
+		error = "Something went wrong.. please try again.";
+	}
+	
 %>
 <!--[if lte IE 8]>
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a>.</p>
@@ -67,28 +77,28 @@
         
         <div class="row">
             <div class="col--md-4 col-sm-4 col-xs-4">
-                <a href="home.jsp" id="logo">
-                <img src="../img/logo.png" width="234" height="49" style="margin-top:1px;" alt="" data-retina="true" class="hidden-xs">
-                <img src="../img/logo_mobile.png" width="44" height="35" alt="" data-retina="true" class="hidden-lg hidden-md hidden-sm">
+                <a href="jsp/home.jsp" id="logo">
+                <img src="img/logo.png" width="234" height="49" style="margin-top:1px;" alt="" data-retina="true" class="hidden-xs">
+                <img src="img/logo_mobile.png" width="44" height="35" alt="" data-retina="true" class="hidden-lg hidden-md hidden-sm">
                 </a>
             </div>
             <nav class="col--md-8 col-sm-8 col-xs-8">
             <a class="cmn-toggle-switch cmn-toggle-switch__htx open_close" href="javascript:void(0);"><span>Menu mobile</span></a>
             <div class="main-menu">
                 <div id="header_menu">
-                    <img src="../img/logo.png" width="234" height="49" alt="" data-retina="true">
+                    <img src="img/logo.png" width="234" height="49" alt="" data-retina="true">
                 </div>
                 <a href="#" class="open_close" id="close_in"><i class="icon_close"></i></a>
                  <ul>
                     <li class="submenu">
                     <a href="javascript:void(0);" class="show-submenu">Hi <%=user.getUser_firstname() %>! <i class="icon-down-open-mini"></i></a>
                     <ul>
-                        <li><a href="mealPlans.jsp"><%=user.getUser_points()%> points</a></li>
+                        <li><a href="#"><%=user.getUser_points()%> points</a></li>
                       </ul>
                     </li>
-                    <li><a href="home.jsp">Home</a></li>
+                    <li><a href="jsp/home.jsp">Home</a></li>
                     <!-- <li><a href="#">Calender</a></li> -->
-                    <li><a href="myProfile.jsp">Account</a></li>
+                    <li><a href="jsp/myProfile.jsp">Account</a></li>
                     <li><a class="active" href="#">Meal Plans</a></li>
                     <li><a href="#"  id="logout">Logout</a></li>
                 </ul>
@@ -102,12 +112,14 @@
 
 
 
-
-
 <!-- Content ================================================== -->
  <div class="container margin_60">
       <div class="container margin_60">
-        
+        		<div id="errDialog" class="alert alert-danger" role="alert">
+			  	<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+			  	<span class="sr-only">Error:</span>
+			  	<span id="dispError"><%=error%></span>
+				</div>
         <div class="main_title">
            <h2 class="nomargin_top">Available Packages</h2>
             
@@ -136,11 +148,11 @@
                            <div class="row">
             	
                                <div class="col-md-3 col-sm-3 " >
-                	<a class="strip_list grid" href="addPoints.jsp?pay=36" >
+                	<a class="strip_list grid" href="jsp/addPoints.jsp?pay=36" >
                     	<div class="ribbon_1">Popular</div>
                     	<div class="desc">
 							<div class="thumb_strip">
-								<img src="../img/36Weekly.png" alt="">
+								<img src="img/36Weekly.png" alt="">
 							</div>
 	
 						</div>
@@ -149,11 +161,11 @@
             
             
                <div class="col-md-3 col-sm-3" >
-                	<a class="strip_list grid" href="addPoints.jsp?pay=60" >
+                	<a class="strip_list grid" href="jsp/addPoints.jsp?pay=60" >
                     	<div class="ribbon_1">Popular</div>
                     	<div class="desc">
 							<div class="thumb_strip">
-								<img src="../img/60weekly.png" alt="">
+								<img src="img/60weekly.png" alt="">
 							</div>
 							
 							
@@ -163,11 +175,11 @@
                 </div><!-- End col-md-4-->   
             
             <div class="col-md-3 col-sm-3" >
-                	<a class="strip_list grid" href="#0" data-toggle="modal" href="addPoints.jsp?pay=84" data-target="#package">
+                	<a class="strip_list grid" href="#0" data-toggle="modal" href="jsp/addPoints.jsp?pay=84" data-target="#package">
                     	<div class="ribbon_1">Popular</div>
                     	<div class="desc">
 							<div class="thumb_strip">
-								<img src="../img/84weekly.png" alt="">
+								<img src="img/84weekly.png" alt="">
 							</div>
 							
 							
@@ -176,11 +188,11 @@
                 </div><!-- End col-md-6-->
                                
                                <div class="col-md-3 col-sm-3" >
-                	<a class="strip_list grid" href="#0" data-toggle="modal" href="addPoints.jsp?pay=108" data-target="#package">
+                	<a class="strip_list grid" href="#0" data-toggle="modal" href="jsp/addPoints.jsp?pay=108" data-target="#package">
                     	<div class="ribbon_1">Popular</div>
                     	<div class="desc">
 							<div class="thumb_strip">
-								<img src="../img/108weekly.png" alt="">
+								<img src="img/108weekly.png" alt="">
 							</div>
 							
 						</div>
@@ -189,11 +201,11 @@
             </div><!-- End row-->
         <div class="row">
      <div class="col-md-3 col-sm-3" >
-                	<a class="strip_list grid" href="#0" data-toggle="modal" href="addPoints.jsp?pay=132" data-target="#package">
+                	<a class="strip_list grid" href="#0" data-toggle="modal" href="jsp/addPoints.jsp?pay=132" data-target="#package">
                     	<div class="ribbon_1">Popular</div>
                     	<div class="desc">
 							<div class="thumb_strip">
-								<img src="../img/132weekly.png" alt="">
+								<img src="img/132weekly.png" alt="">
 							</div>
 							
 							
@@ -202,11 +214,11 @@
                 </div><!-- End col-md-6-->
                                
                                <div class="col-md-3 col-sm-3" >
-                	<a class="strip_list grid" href="#0" data-toggle="modal" href="addPoints.jsp?pay=156" data-target="#package">
+                	<a class="strip_list grid" href="#0" data-toggle="modal" href="jsp/addPoints.jsp?pay=156" data-target="#package">
                     	<div class="ribbon_1">Popular</div>
                     	<div class="desc">
 							<div class="thumb_strip">
-								<img src="../img/156weekly.png" alt="">
+								<img src="img/156weekly.png" alt="">
 							</div>
 							
 						</div>
@@ -232,11 +244,11 @@
                            <div class="row">
             	
                                <div class="col-md-3 col-sm-3 " >
-                	<a class="strip_list grid" href="addPoints.jsp?pay=160" >
+                	<a class="strip_list grid" href="jsp/addPoints.jsp?pay=160" >
                     	<div class="ribbon_1">Popular</div>
                     	<div class="desc">
 							<div class="thumb_strip">
-								<img src="../img/160monthly.png" alt="">
+								<img src="img/160monthly.png" alt="">
 							</div>
 	
 						</div>
@@ -245,11 +257,11 @@
             
             
                <div class="col-md-3 col-sm-3" >
-                	<a class="strip_list grid" href="addPoints.jsp?pay=320" >
+                	<a class="strip_list grid" href="jsp/addPoints.jsp?pay=320" >
                     	<div class="ribbon_1">Popular</div>
                     	<div class="desc">
 							<div class="thumb_strip">
-								<img src="../img/320monthly.png" alt="">
+								<img src="img/320monthly.png" alt="">
 							</div>
 							
 							
@@ -259,11 +271,11 @@
                 </div><!-- End col-md-4-->   
             
             <div class="col-md-3 col-sm-3" >
-                	<a class="strip_list grid" href="addPoints.jsp?pay=479" >
+                	<a class="strip_list grid" href="jsp/addPoints.jsp?pay=479" >
                     	<div class="ribbon_1">Popular</div>
                     	<div class="desc">
 							<div class="thumb_strip">
-								<img src="../img/479monthly.png" alt="">
+								<img src="img/479monthly.png" alt="">
 							</div>
 							
 							
@@ -272,11 +284,11 @@
                 </div><!-- End col-md-6-->
                                
                                <div class="col-md-3 col-sm-3" >
-                	<a class="strip_list grid" href="addPoints.jsp?pay=639" >
+                	<a class="strip_list grid" href="jsp/addPoints.jsp?pay=639" >
                     	<div class="ribbon_1">Popular</div>
                     	<div class="desc">
 							<div class="thumb_strip">
-								<img src="../img/639monthly.png" alt="">
+								<img src="img/639monthly.png" alt="">
 							</div>
 							
 						</div>
@@ -285,11 +297,11 @@
             </div><!-- End row-->
         <div class="row">
      <div class="col-md-3 col-sm-3" >
-                	<a class="strip_list grid" href="addPoints.jsp?pay=798" >
+                	<a class="strip_list grid" href="jsp/addPoints.jsp?pay=798" >
                     	<div class="ribbon_1">Popular</div>
                     	<div class="desc">
 							<div class="thumb_strip">
-								<img src="../img/798mothly.png" alt="">
+								<img src="img/798mothly.png" alt="">
 							</div>
 							
 							
@@ -298,11 +310,11 @@
                 </div><!-- End col-md-6-->
                                
                                <div class="col-md-3 col-sm-3" >
-                	<a class="strip_list grid" href="addPoints.jsp?pay=958" >
+                	<a class="strip_list grid" href="jsp/addPoints.jsp?pay=958" >
                     	<div class="ribbon_1">Popular</div>
                     	<div class="desc">
 							<div class="thumb_strip">
-								<img src="../img/958monthly.png" alt="">
+								<img src="img/958monthly.png" alt="">
 							</div>
 							
 						</div>
@@ -326,11 +338,11 @@
                            <div class="row">
             	
                                <div class="col-md-3 col-sm-3 " >
-                	<a class="strip_list grid" href="addPoints.jsp?pay=1296" >
+                	<a class="strip_list grid" href="jsp/addPoints.jsp?pay=1296" >
                     	<div class="ribbon_1">Popular</div>
                     	<div class="desc">
 							<div class="thumb_strip">
-								<img src="../img/1296semesterly.png" alt="">
+								<img src="img/1296semesterly.png" alt="">
 							</div>
 	<h6>Compare to UAlbany at : $2,000</h6>
 						</div>
@@ -339,11 +351,11 @@
             
             
                <div class="col-md-3 col-sm-3" >
-                	<a class="strip_list grid" href="addPoints.jsp?pay=1890" >
+                	<a class="strip_list grid" href="jsp/addPoints.jsp?pay=1890" >
                     	<div class="ribbon_1">Popular</div>
                     	<div class="desc">
 							<div class="thumb_strip">
-								<img src="../img/1890semesterly.png" alt="">
+								<img src="img/1890semesterly.png" alt="">
 							</div>
 							
 							<h6>Compare to UAlbany at : $2,405</h6>
@@ -353,11 +365,11 @@
                 </div><!-- End col-md-4-->   
             
             <div class="col-md-3 col-sm-3" >
-                	<a class="strip_list grid" href="addPoints.jsp?pay=2484" >
+                	<a class="strip_list grid" href="jsp/addPoints.jsp?pay=2484" >
                     	<div class="ribbon_1">Popular</div>
                     	<div class="desc">
 							<div class="thumb_strip">
-								<img src="../img/2484semesterly.png" alt="">
+								<img src="img/2484semesterly.png" alt="">
 							</div>
 							
 							
@@ -366,11 +378,11 @@
                 </div><!-- End col-md-6-->
                                
                                <div class="col-md-3 col-sm-3" >
-                	<a class="strip_list grid" href="addPoints.jsp?pay=3078" >
+                	<a class="strip_list grid" href="jsp/addPoints.jsp?pay=3078" >
                     	<div class="ribbon_1">Popular</div>
                     	<div class="desc">
 							<div class="thumb_strip">
-								<img src="../img/3078semesterly.png" alt="">
+								<img src="img/3078semesterly.png" alt="">
 							</div>
 							
 						</div>
@@ -423,7 +435,7 @@
             <div class="row">
                 <div class="col-md-4 col-sm-3">
                   	<h3>Secure payments with</h3>
-                    <p><img src="../img/cards.png" alt="" class="img-responsive"></p>
+                    <p><img src="img/cards.png" alt="" class="img-responsive"></p>
                     
                 </div>
                 <div class="col-md-3 col-sm-3">
@@ -494,7 +506,7 @@
 			<div class="modal-content modal-popup">
 				<a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
 				<form action="Login" name="login" method="post" class="popup-form" id="myLogin">
-                	<div><img src="../img/logo_m.png" /></div>
+                	<div><img src="img/logo_m.png" /></div>
                                         
                     <input type="hidden" id="isError" value="" />
 					<input type="hidden" id="message" value="" />
@@ -517,7 +529,7 @@
 			<div class="modal-content modal-popup">
 				<a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
 				<form class="popup-form" method="post" name="register" action="Registration" id="myRegister">
-                	<div><img src="../img/logo_m.png" /></div>
+                	<div><img src="img/logo_m.png" /></div>
                 	<input id="author" type="text" name="firstname" class="form-control form-white" placeholder="Name" required>
                 	<input id="author" type="text" maxlength="10" name="phone" title="1234567890" pattern="\d{10}" class="form-control form-white" placeholder="Phone" required>
 					<input id="author" type="text" name="email" class="form-control form-white" placeholder="Email" required>
@@ -565,28 +577,18 @@
 
  <form action="${pageContext.request.contextPath}/Logout" id="logoutForm" method="post"></form>   
 <!-- COMMON SCRIPTS -->
-<script src="../js/jquery-1.11.2.min.js"></script>
-<script src="../js/common_scripts_min.js"></script>
-<script src="../js/functions.js"></script>
-<script src="../assets/validate.js"></script>
+<script src="js/jquery-1.11.2.min.js"></script>
+<script src="js/common_scripts_min.js"></script>
+<script src="js/functions.js"></script>
+<script src="assets/validate.js"></script>
 
 <!-- SPECIFIC SCRIPTS -->
-<script src="../js/theia-sticky-sidebar.js"></script>
+<script src="js/theia-sticky-sidebar.js"></script>
 <script>
     jQuery('#sidebar').theiaStickySidebar({
       additionalMarginTop: 80
     });
-    
-    $(document).ready(function() {
-		var msg = $("#dispError").html();
-    	if(msg == null || msg == ""){
-    		
-    	}else{
-    		$("#errDialog").show();
-    	}
-
-    });
-    
+      
     $( "#logout" ).click(function() {
     	  $( "#logoutForm" ).submit();
     });

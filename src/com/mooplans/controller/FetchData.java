@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.mooplans.dao.DishDAO;
 import com.mooplans.dao.LoginDAO;
 import com.mooplans.dao.OrderDAO;
 import com.mooplans.model.Cart;
@@ -80,6 +81,14 @@ public class FetchData extends HttpServlet {
 			JSONObject updateData = LoginDAO.updateUserFirstTimeData(gender, allergies, diet, cuisine, userId);
 			response.setContentType("application/json");
 			out.write(updateData+"");
+		}else if(action.equals("getMealChoices")){
+			
+			int dishId = Integer.parseInt(request.getParameter("dishId"));
+			System.out.println("---------"+dishId);
+			JSONArray menuList = DishDAO.getMealChoices(dishId);	
+			response.setContentType("application/json");
+			out.write(menuList+"");	
+		
 		}else{
 			response.sendRedirect(getServletContext().getContextPath()+"/jsp/home.html");
 		}
