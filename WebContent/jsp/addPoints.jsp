@@ -21,6 +21,7 @@
 	if(pay == null){
 		pay = "0";
 	}
+	double tax = Integer.parseInt(pay) * (0.08);
 %>
 <form id="payment" action="${initParam['posturl']}" method="post">
 <input type="hidden" name="upload" value="1"/>
@@ -30,6 +31,7 @@
 
 <input type="hidden" name="item_name_1" value="Meal Plan"/>
 <input type="hidden" name="amount_1" value="<%=pay%>" />
+<input type="hidden" name="tax_1" value="<%=tax%>" />
 <!-- <input type="text" name="quantity_1" value="1"/> -->
 <input style="display: none;" type="submit" value="Payment"/>
 </form>
