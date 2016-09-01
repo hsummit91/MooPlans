@@ -6,6 +6,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -43,35 +44,80 @@ public class AddDishes extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		String dish_command = request.getParameter("dish_command");
+		System.out.println("Commmand:" +dish_command);
+
+		String header1 = "\"categoryName\"";
+		String header2 = "\"allowed\"";
+		String header3 = "\"categoryData\"";
+
+		String  [] categoryName = new String[50];
+		Integer [] allowed = new Integer[50];
+		int index=0;
+
+		StringTokenizer st2 = new StringTokenizer(dish_command, ",");
+		while (st2.hasMoreElements()) {
+
+			String catName = st2.nextElement().toString();
+			Integer allwd = Integer.parseInt(st2.nextElement().toString());
+
+			StringBuilder sb = new StringBuilder();
+			sb.append("\ncategoryName : " + catName);
+			sb.append("\nallowed : " + allwd);
+			sb.append("\n*******************\n");
+			System.out.println(sb.toString());
+
+			categoryName[index] = catName;
+			allowed[index] = allwd;
+			index++;
+		}
+
+
+		List<String> items = new ArrayList<String>();
+		String item = request.getParameter("item");
+		String type = request.getParameter("type");
+		String price = request.getParameter("price");
+
+		StringBuilder item1 = new StringBuilder();
+		item1.append("{\"item\":\"").append(item).append("\",");
+		item1.append("\"type\":\"").append(type).append("\",");
+		item1.append("\"price\":\"").append(price).append("\"},");
+
+
+		StringBuilder temp = new StringBuilder();
+
+		for (int k = 2; k <= 50; k++) {
+			if(request.getParameterValues("item"+k) != null){
+				temp.append("{\"item\":\"").append(Arrays.toString(request.getParameterValues("item"+k))).append("\",");
+				temp.append("\"type\":\"").append(Arrays.toString(request.getParameterValues("type"+k))).append("\",");
+				temp.append("\"price\":\"").append(Arrays.toString(request.getParameterValues("price"+k))).append("\"},");
+			}
+		}
+		items.add(item1.toString().concat(temp.toString().replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\}\\{", "\\},\\{").replaceAll("\\},\\]", "\\}\\]")));
+
 		String[] dish_allergen = new String[50];
 		String[] dish_category = new String[50];
 		String[] dish_health = new String[50];
-		//String[] choices = null;
 		List<String> choices = new ArrayList<String>();
 
 		dish_category = request.getParameterValues("dish_category");
 		dish_allergen = request.getParameterValues("dish_allergen");
 		dish_health = request.getParameterValues("dish_health");
-		
-		String[] ch = request.getParameterValues("choices");
-		for (int m = 2; m <= 50; m++) {
-				String temp = Arrays.toString(request.getParameterValues("choices"+m));
-				if(temp.length() != 0 )
-				choices.add(temp+"#");
-		}
-		
+
 		String str1 = Arrays.toString(dish_allergen);  
 		String str2 = Arrays.toString(dish_category);  
 		String str3 = Arrays.toString(dish_health);  
-		String str4 = choices.toString(); 
+		String str4 = items.toString(); 
 
-		
+		//	System.out.println(" conversion1 " +str4);
+
 		str1 = str1.substring(1, str1.length()-1).replaceAll("  ", ",").replaceAll("null", "").replaceAll(" , ", "").replaceAll(",,", "").replaceAll(",,, ", "");
 		str2 = str2.substring(1, str2.length()-1).replaceAll("  ", ",").replaceAll("null", "").replaceAll(" , ", "").replaceAll(",,", "").replaceAll(",,, ", "");
 		str3 = str3.substring(1, str3.length()-1).replaceAll("  ", ",").replaceAll("null", "").replaceAll(" , ", "").replaceAll(",,", "").replaceAll(",,, ", "");
-		str4 = str4.substring(1, str4.length()-1).replaceAll("null#", "").replaceAll("  ", ",").replaceAll(", ,", "").replaceAll(" , ", "").replaceAll(",,", "").replaceAll(",,, ", "").replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("#, ", "#");
-	
-		String str5 = ch[0].concat(", ").concat(ch[1]).concat(", ").concat(ch[2]).concat("#").concat(str4).trim();
+		//	str4 = str4.substring(1, str4.length()-1).replaceAll("null", "").replaceAll("  ", ",").replaceAll(", ,", "").replaceAll(" , ", "").replaceAll(",,", "").replaceAll(",,, ", "").replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("#, ", "#");
+
+		//	System.out.println(" conversion2 " +str4);
+
 
 		String dish_full_price = request.getParameter("dish_full_price");
 		float dish_point = 0;
@@ -83,14 +129,14 @@ public class AddDishes extends HttpServlet {
 			System.out.println(numberAsString + " is not a valid number.");
 		}
 
-		String dish_points = String.format("%.02f", dish_point/10);
-		//System.out.println(dish_points + " points.");
+		String dish_points = String.format("%.02f", (dish_point/10));
+		System.out.println(dish_points + " points.");
 
 
 		request.setAttribute("dish_allergen", str1);
 		request.setAttribute("dish_category", str2);
 		request.setAttribute("dish_health", str3);
-		request.setAttribute("dish_choice", str5);
+		request.setAttribute("dish_choice", str4);
 		request.setAttribute("dish_points", dish_points);
 		RequestDispatcher rd = request.getRequestDispatcher("/restaurant/insert.jsp");
 		rd.forward(request, response);

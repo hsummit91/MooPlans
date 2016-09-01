@@ -92,7 +92,7 @@
 		<input width="20px" type='radio' name='dish_category' value='Algerian' id="Algerian"/> Algerian
 		<input width="20px" type='radio' name='dish_category' value='Nigerian' id="Nigerian"/> Nigerian
 		<input width="20px" type='radio' name='dish_category' value='Libyan' id="Libyan"/> Libyan <br>
-		Other <input width="250px" type="text" name="dish_category" />
+		<!-- Other <input width="250px" type="text" name="dish_category" /> -->
 		</div>
 			</div>
 		
@@ -147,11 +147,11 @@
 			            <div id='TextBoxesGroup5' class="col-md-12">
 						<div id="TextBoxDiv5">
 						 <label>#1 Choose a </label>
-						 <input style="width:20%" type='text' id='sides1' name="choices" placeholder="protein,cheese,bread, other.,">
+						 <input style="width:20%" type='text' id='item1' name="item" placeholder="protein,cheese,bread, other.,">
 						  <label>Item Name </label>
-						 <input style="width:20%" type='text' id='sides1' name="choices" placeholder="white bread,swiss cheese, other.,">
+						 <input style="width:20%" type='text' id='type1' name="type" placeholder="white bread,swiss cheese, other.,">
 						  <label>$ Item Price </label>
-						 <input style="width:20%" type='text' id='sides1' name="choices" placeholder="0.00 or 00.00"  pattern="^\d+(\.)\d{2}$">
+						 <input style="width:20%" type='text' id='price1' name="price" placeholder="0.00 or 00.00"  pattern="^\d+(\.)\d{2}$">
 						</div>
 					</div>
 			            </td>

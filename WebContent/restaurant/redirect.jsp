@@ -12,6 +12,6 @@ function callMenu(){
 <title>Calling Admin</title>
 </head>
 <body onload="callMenu()">
-	<form id="redirectForm" action="../index.jsp" name="adminName"></form>
+	<form id="redirectForm" action="../index.html" name="adminName"></form>
 </body>
 </html>

@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+	
 	var counter = 2;
 
 	$("#addButton").click(function () {
@@ -10,12 +10,12 @@ $(document).ready(function(){
 		var newTextBoxDiv = $(document.createElement('div'))
 		.attr("id", 'TextBoxDiv5' + counter);
 		newTextBoxDiv.after().html('<label>#'+ counter + ' Choose a </label>' +
-				'<input style="width:20%" type="text" name="choices' + counter +
-				'" id="sides' + counter + '" value="" placeholder="protein,cheese,bread, other.,">' + 
-				'<label> Item Name</label><input style="width:20%" type="text" name="choices' + counter +
-				'" id="sides' + counter + '" value="" placeholder="white bread,swiss chees, other.,">' +
-				'<label> $ Item Price</label><input style="width:20%" type="text" name="choices' + counter +
-				'" id="sides' + counter + '" value="" placeholder="0.00 or 00.00">');
+				'<input style="width:20%" type="text" name="item' + counter +
+				'" id="item' + counter + '" value="" placeholder="protein,cheese,bread, other.,">' + 
+				'<label> Item Name</label><input style="width:20%" type="text" name="type' + counter +
+				'" id="type' + counter + '" value="" placeholder="white bread,swiss chees, other.,">' +
+				'<label> $ Item Price</label><input style="width:20%" type="text" name="price' + counter +
+				'" id="price' + counter + '" value="" placeholder="0.00 or 00.00">');
 
 		newTextBoxDiv.appendTo("#TextBoxesGroup5");
 		counter++;
@@ -30,5 +30,5 @@ $(document).ready(function(){
 		counter--;
 		$("#TextBoxDiv5" + counter).remove();
 
-	});
+	});	
 });
