@@ -84,7 +84,7 @@ public class EmailDAO {
 		return emailSent;
 	}
 
-	public static void sendOrderMailUser(User user, HashMap<String, Float> items, int orderId, String paymentMode){
+	public static void sendOrderMailUser(User user, HashMap<String, Float> items, int orderId, String paymentMode, float totalBill){
 
 		Properties props = System.getProperties();
 		props.put("mail.smtp.starttls.enable", "true");
@@ -110,13 +110,13 @@ public class EmailDAO {
 			sb.append("<br>Your Order Summary:<br><br>");
 			sb.append("<table><thead><tr><th>Food Item</th><th>Price</th></tr></thead><tbody>");
 
-			float total = 0;		
+			//float total = 0;		
 			for(String key: items.keySet()){
-				total += items.get(key); 
+				//total += items.get(key); 
 				sb.append("<tr><td>"+key+"</td><td>"+items.get(key)+"</td></tr>");
 				System.out.println("In EmailDAO Key"+key+" value="+items.get(key));
 			}
-			sb.append("<tr><td>Total Price</td><td>"+total+"</td></tr>");
+			sb.append("<tr><td>Total Price</td><td>"+totalBill+"</td></tr>");
 			sb.append("</tbody></table>");
 			sb.append("<br><br>Payment Mode: <strong>" +paymentMode+"</strong>");
 			sb.append("<br><br>Delivery Address<br>" +user.getUser_address());

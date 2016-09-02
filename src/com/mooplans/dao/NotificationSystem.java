@@ -47,6 +47,8 @@ public class NotificationSystem implements Runnable{
 				
 				String paymentMode = rs.getString("payment_mode");
 				
+				float totalBill = Float.parseFloat(rs.getString("order_total"));
+				
 				for (int i = 0; i < splittedStr.length; i++){
 					Dishes dish = sd.getDishDataById(Integer.parseInt(splittedStr[i]));
 					
@@ -74,7 +76,7 @@ public class NotificationSystem implements Runnable{
 				user.setUser_phone(rs.getString("order_phone"));
 				
 				
-				EmailDAO.sendOrderMailUser(user, items, orderId, paymentMode);
+				EmailDAO.sendOrderMailUser(user, items, orderId, paymentMode, totalBill);
 				
 				System.out.println(" ~~~~~~~~~~SENDING MAIL TO REST~~~~~~~~~~~~~> "+orderId);
 				
