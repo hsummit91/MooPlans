@@ -5,7 +5,10 @@ import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.StringTokenizer;
 
 import javax.servlet.RequestDispatcher;
@@ -15,6 +18,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 /**
@@ -77,24 +84,119 @@ public class AddDishes extends HttpServlet {
 		String item = request.getParameter("item");
 		String type = request.getParameter("type");
 		String price = request.getParameter("price");
-
+		
+		JSONArray choiceArray = new JSONArray();
+		
+		HashMap<String, JSONObject> choiceMap = new HashMap<String, JSONObject>();
+		
+		JSONObject firstItem = new JSONObject();
+		JSONArray itemsArray = new JSONArray();
+		JSONObject itemsObj = new JSONObject();
+		
+		int allowedCounter = 1;
+		
+		try{
+			firstItem.put("categoryName", item);
+			firstItem.put("allowed",allowed[0]);
+			
+			itemsObj.put("type", type);
+			itemsObj.put("price", price);
+			
+			itemsArray.put(itemsObj);
+			
+			firstItem.put("categoryData", itemsArray);
+			
+		}catch(Exception e){
+			
+		}
+		
+		System.out.println("JSONN-----"+choiceArray);
+		
+		choiceMap.put(item, firstItem);
+		
 		StringBuilder item1 = new StringBuilder();
 		item1.append("{\"item\":\"").append(item).append("\",");
 		item1.append("\"type\":\"").append(type).append("\",");
 		item1.append("\"price\":\"").append(price).append("\"},");
 
-
+		
 		StringBuilder temp = new StringBuilder();
 
 		for (int k = 2; k <= 50; k++) {
-			if(request.getParameterValues("item"+k) != null){
+			
+			//System.out.println("====>"+k+"<======"+request.getParameter("type"+k));
+			
+			if(request.getParameter("item"+k) != null){
+				
+				String itm = request.getParameter("item"+k);
+				if(choiceMap.containsKey(itm)){
+					//System.out.println("CONTAINS!!"+itm);
+					JSONObject choiceItem = choiceMap.get(itm);
+					JSONArray cItemArray = null;
+					try {
+						cItemArray = (JSONArray) choiceMap.get(itm).get("categoryData");
+						
+						String iType = request.getParameter("type"+k);
+						String iPrice = request.getParameter("price"+k);
+						
+						JSONObject cItem = new JSONObject();
+						cItem.put("type", iType);
+						cItem.put("price", iPrice);
+						
+						cItemArray.put(cItem);
+						choiceMap.put(itm, choiceItem);
+						
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}else{
+					JSONObject choiceItem = new JSONObject();
+					JSONArray cItemArray = null;
+					try {
+						cItemArray = new JSONArray();
+						
+						String iType = request.getParameter("type"+k);
+						String iPrice = request.getParameter("price"+k);
+						
+						JSONObject cItem = new JSONObject();
+						cItem.put("type", iType);
+						cItem.put("price", iPrice);
+						
+						cItemArray.put(cItem);
+						choiceItem.put("categoryName", itm);
+						choiceItem.put("allowed", allowed[allowedCounter]);
+						allowedCounter++;
+						choiceItem.put("categoryData", cItemArray);
+						choiceMap.put(itm, choiceItem);
+						
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
+				
+				
+				
 				temp.append("{\"item\":\"").append(Arrays.toString(request.getParameterValues("item"+k))).append("\",");
 				temp.append("\"type\":\"").append(Arrays.toString(request.getParameterValues("type"+k))).append("\",");
 				temp.append("\"price\":\"").append(Arrays.toString(request.getParameterValues("price"+k))).append("\"},");
+			}else{
+				continue;
 			}
 		}
+		
+		
 		items.add(item1.toString().concat(temp.toString().replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\}\\{", "\\},\\{").replaceAll("\\},\\]", "\\}\\]")));
 
+		
+	    Iterator it = choiceMap.entrySet().iterator();
+	    while (it.hasNext()) {
+	        Map.Entry pair = (Map.Entry)it.next();
+	        //System.out.println("############"+pair.getKey() + " = " + pair.getValue());
+	        choiceArray.put(pair.getValue());
+	        it.remove(); // avoids a ConcurrentModificationException
+	    }
+		System.out.println("FINAL JSON ---"+choiceArray);
+		
 		String[] dish_allergen = new String[50];
 		String[] dish_category = new String[50];
 		String[] dish_health = new String[50];
@@ -136,7 +238,7 @@ public class AddDishes extends HttpServlet {
 		request.setAttribute("dish_allergen", str1);
 		request.setAttribute("dish_category", str2);
 		request.setAttribute("dish_health", str3);
-		request.setAttribute("dish_choice", str4);
+		request.setAttribute("dish_choice", choiceArray.toString());
 		request.setAttribute("dish_points", dish_points);
 		RequestDispatcher rd = request.getRequestDispatcher("/restaurant/insert.jsp");
 		rd.forward(request, response);

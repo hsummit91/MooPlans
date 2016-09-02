@@ -34,7 +34,7 @@ public class LoadStartupData {
 					user.setUser_firstname(rs.getString(2));
 					user.setUser_email(rs.getString(3));
 					user.setUser_phone(rs.getString(4));
-					user.setUser_points(rs.getInt(5));
+					user.setUser_points(Float.parseFloat(String.format( "%.2f",rs.getFloat(5))));
 					userData.put(userId, user);
 				}
 				System.out.println("LOADING COMPLETE -------- USER DATA SIZE *********** "+userData.size());
@@ -51,7 +51,7 @@ public class LoadStartupData {
 				getConnection();
 				String sql = "SELECT d.dish_id, d.dish_name, d.dish_price, d.dish_rest_id, r.rest_name, "
 						+ "d.dish_category, d.dish_description, d.dish_choice, r.rest_email, r.rest_phone, "
-						+ "d.dish_sides, d.dish_health, d.dish_full_price FROM dishes as d join restaurant as r "
+						+ "d.dish_sides, d.dish_health, d.dish_full_price, r.rest_delivery_fee FROM dishes as d join restaurant as r "
 						+ "on d.dish_rest_id = r.rest_id";
 				pstmt = connection.prepareStatement(sql);
 				rs = pstmt.executeQuery();
@@ -78,10 +78,11 @@ public class LoadStartupData {
 					dish.setDishSides(rs.getString(11));
 					dish.setDishHealth(rs.getString(12));
 					dish.setDishFullPrice(Float.parseFloat(String.format( "%.2f",rs.getFloat(13))));
+					dish.setDeliveryFee(rs.getInt(14));
 					
 					dishData.put(dishId, dish);
 				}
-				System.out.println("LOADING COMPLETE -------- DISH DATA SIZE *********** "+dishData.size());
+				System.out.println("LOADING COMPLETE -------- DISH DATA SIZE *********** "+dishData);
 			}catch(SQLException e){
 				e.printStackTrace();
 			}finally{

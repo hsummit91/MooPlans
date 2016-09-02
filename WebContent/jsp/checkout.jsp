@@ -4,6 +4,8 @@
 <%@ page import="com.mooplans.model.User"%>
 <%@ page import="com.mooplans.model.Cart"%>
 <%@ page import="com.mooplans.model.Order"%>
+<%@ page import="com.mooplans.model.StartupData"%>
+<%@ page import="com.mooplans.model.Dishes"%>
 <!DOCTYPE html>
 <!--[if IE 9]><html class="ie ie9"> <![endif]-->
 <html>
@@ -45,6 +47,8 @@
 <%
 	//allow access only if session exists
 		
+	StartupData sd = StartupData.getInstance();		
+	
 	User user = null;
 	Cart shoppingCart = null; 
 	if(session.getAttribute("User") == null){
@@ -147,7 +151,8 @@
 					</div>
 					<div class="form-group">
 						<label>Address</label>
-						<select  class="form-control" id="address" name="address" >
+						<textarea class="form-control" id="address" name="address" rows="4" cols="50" ></textarea>
+<!-- 						<select  class="form-control" id="address" name="address" >
 								<option selected="selected" value="Campus Center">University at Albany: Campus Center</option>
 								<option value="Dutch Quad">Dutch Quad</option>
 								<option value="Colonial Quad">Colonial Quad</option>
@@ -157,7 +162,7 @@
 								<option value="Liberty Terrace Apartments">Liberty Terrace Apartments</option>
 								<option value="Empire Commons">Empire Commons</option>
 								<option value="Alumni (Bus Stop)">Alumni (Bus Stop)</option>
-						</select>
+						</select> -->
 					</div>
 					<hr>
 					<div class="row">
@@ -190,7 +195,30 @@
 					<%  HashMap<Integer, String> items = shoppingCart.getCartItems();
 					HashMap<Integer, Float> cPrice = shoppingCart.getCartPrice();
 					 int count = 0;
+					 int deliveryFee = 0;
+					 double finalBill = 0;
+					 double finalBillTax = 0;
+					 double finalPoints = 0;
+					 double totalBill = 0;
+					 HashMap<Integer,Integer> delivery = new HashMap();
 						for(Integer key: items.keySet()){
+							//out.println(key);
+							Dishes dish = sd.getDishDataById(key);
+							if(!delivery.containsKey(dish.getRestId())){
+								delivery.put(dish.getRestId(), dish.getDeliveryFee());
+								deliveryFee += dish.getDeliveryFee();
+							}
+							//dish.getRestId();
+							
+							//deliveryFee += dish.getDeliveryFee();
+							finalBill = priceBill + deliveryFee;
+							
+							finalBillTax = finalBill * (0.08);
+							
+							totalBill = finalBill + finalBillTax;
+							
+							finalPoints = totalBill/10;
+							
 							count++;%>
 					<tr>
 						<td>
@@ -234,19 +262,26 @@
 					<hr>
 					<table class="table table_summary">
 					<tbody>
-<!-- 					<tr>
+ 					<tr>
 						<td>
-							 Delivery fee <span class="pull-right">$0</span>
+							 Delivery fee 
 						</td>
                         <td>
-							 Delivery free
+							 <span class="pull-right">$<%=deliveryFee %></span>
 						</td>
-					</tr> -->
-<!-- 					<tr>
+					</tr> 
+ 					<tr>
 						<td class="total">
-							 TOTAL <span class="pull-right" id="finalBill"></span>
+							 TOTAL <span class="pull-right" id="finalBill">$<%=Float.parseFloat(String.format( "%.2f",totalBill)) %></span>
+							 <input type="hidden" name="finalBill" value="<%=Float.parseFloat(String.format( "%.2f",totalBill))%>" />
+							 <input type="hidden" name="finalPoints" value="<%=Float.parseFloat(String.format( "%.2f",finalPoints))%>" />
 						</td>
-					</tr> -->
+					</tr> 
+					 <tr>
+						<td class="total">
+							 TOTAL POINTS <span class="pull-right" id="finalPts"><%=Float.parseFloat(String.format( "%.2f",finalPoints)) %>P</span>
+						</td>
+					</tr>
 					</tbody>
 					</table>
 					<hr>

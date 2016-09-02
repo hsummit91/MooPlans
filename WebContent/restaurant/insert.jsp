@@ -26,6 +26,7 @@
 	String dish_allergen = (String) request.getAttribute("dish_allergen");
 	String dish_health = (String) request.getAttribute("dish_health");
 	String dish_choice = (String) request.getAttribute("dish_choice");
+	out.println(dish_choice);
 	String dish_points = (String) request.getAttribute("dish_points");
 %>
 	<sql:setDataSource var="dbSource" driver="com.mysql.jdbc.Driver"

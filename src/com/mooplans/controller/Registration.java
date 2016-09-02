@@ -77,8 +77,8 @@ public class Registration extends HttpServlet {
 		String emailId= request.getParameter("email");
 		String password=request.getParameter("password");
 		String phone=request.getParameter("phone");
-		String university= "";
-		String address= request.getParameter("address");
+		String university= request.getParameter("university");
+		String address= "";
 		String role = "student";
 		int points = 0;
 		int id = 0;
@@ -97,13 +97,13 @@ public class Registration extends HttpServlet {
 			errorMsg = "Phone can not be empty";
 		}
 
-/*		if(university == null || university.equals("")){
+		if(university == null || university.equals("")){
 			errorMsg = "University can not be empty";
-		}*/
-
-		if(address == null || address.equals("")){
-			errorMsg =  "Address can not be empty";
 		}
+
+/*		if(address == null || address.equals("")){
+			errorMsg =  "Address can not be empty";
+		}*/
 
 		else {
 
@@ -131,8 +131,8 @@ public class Registration extends HttpServlet {
 				// Set success message
 				System.out.println("Registraion done success ID :"+ID);
 				url = "/index.jsp";
-				errorMsg="Registration_Successful";
-				isError=true;
+				errorMsg="";
+				isError=false;
 				//pay="0";
 			}
 		}

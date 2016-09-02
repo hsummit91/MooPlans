@@ -31,7 +31,7 @@
 
 <input type="hidden" name="item_name_1" value="Meal Plan"/>
 <input type="hidden" name="amount_1" value="<%=pay%>" />
-<input type="hidden" name="tax_1" value="<%=tax%>" />
+<%-- <input type="hidden" name="tax_1" value="<%=tax%>" /> --%>
 <!-- <input type="text" name="quantity_1" value="1"/> -->
 <input style="display: none;" type="submit" value="Payment"/>
 </form>

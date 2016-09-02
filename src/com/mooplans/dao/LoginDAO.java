@@ -127,7 +127,7 @@ public class LoginDAO {
 				user.setUser_university(rs.getString(6));
 				user.setUser_address(rs.getString(7));
 				user.setUser_role(rs.getString(8));
-				user.setUser_points(rs.getInt(9));
+				user.setUser_points(Float.parseFloat(String.format( "%.2f",rs.getFloat(9))));
 				user.setUser_image(rs.getString(10));
 			}
 
@@ -188,7 +188,7 @@ public class LoginDAO {
 				pstmt.setString(6, user.getUser_university());
 				pstmt.setString(7, user.getUser_address());
 				pstmt.setString(8, user.getUser_role());
-				pstmt.setInt(9, user.getUser_points());
+				pstmt.setFloat(9, user.getUser_points());
 				pstmt.executeUpdate();
 
 		        try (ResultSet generatedKeys = pstmt.getGeneratedKeys()) {
@@ -258,7 +258,7 @@ public class LoginDAO {
 			pstmt.setString(4, user.getUser_university());
 			pstmt.setString(5, user.getUser_address());
 			pstmt.setString(6, user.getUser_role());
-			pstmt.setInt(7, user.getUser_points());
+			pstmt.setFloat(7, user.getUser_points());
 			pstmt.setString(8, user.getUser_email());
 			pstmt.executeUpdate();
 

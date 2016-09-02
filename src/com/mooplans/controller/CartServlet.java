@@ -80,6 +80,8 @@ public class CartServlet extends HttpServlet {
 			dishId = request.getParameter("dishId").trim();		
 			notes = request.getParameter("notes").trim();
 			
+			System.out.println("notes---->>>"+notes);
+			
 			dishFullPrice = Float.parseFloat(request.getParameter("dishFullPrice"));
 			dishPrice = Float.parseFloat(request.getParameter("dishPrice"));
 			

@@ -18,7 +18,20 @@ public class Dishes {
 	private String dishHealth;
 	private ArrayList<Restaurant> rest_details;
 	private float dishFullPrice;
+	private int deliveryFee;
 	
+	@Override
+	public String toString() {
+		return "Dishes [dishId=" + dishId + ", dishName=" + dishName
+				+ ", dishCategory=" + dishCategory + ", dishPrice=" + dishPrice
+				+ ", restId=" + restId + ", rest_name=" + rest_name
+				+ ", restEmail=" + restEmail + ", restPhone=" + restPhone
+				+ ", dishDescription=" + dishDescription + ", dishChoice="
+				+ dishChoice + ", dishSides=" + dishSides + ", dishHealth="
+				+ dishHealth + ", rest_details=" + rest_details
+				+ ", dishFullPrice=" + dishFullPrice + ", deliveryFee="
+				+ deliveryFee + ", comments=" + comments + "]";
+	}
 	private String comments;
 	
 	
@@ -114,6 +127,12 @@ public class Dishes {
 	}
 	public void setDishFullPrice(float dishFullPrice) {
 		this.dishFullPrice = dishFullPrice;
+	}
+	public int getDeliveryFee() {
+		return deliveryFee;
+	}
+	public void setDeliveryFee(int deliveryFee) {
+		this.deliveryFee = deliveryFee;
 	}
 	
 

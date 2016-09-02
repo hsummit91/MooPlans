@@ -57,7 +57,7 @@
 		if(pay == null){
 			pay = "0";
 		}
-		System.out.println("Login|====>"+pay+"<====|");
+		//System.out.println("Login|====>"+pay+"<====|");
 	%>	
     <!--[if lte IE 8]>
         <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a>.</p>
@@ -114,9 +114,9 @@
             <p>
                 Convenient and quick meals delivered directly to you
             </p>
-            <p>
+<!--             <p>
                 "Our website and ordering platform are still currently in development. While you can currently order food - we have not yet implemented all of the fanciness that is still being created. It is for this reason that many dishes are currently being hidden. While we considered extending our launch date to next week, we decided to keep the ordering systems online for now to allow everyone to order the simple dishes. Chipotle customization is currently not available, so we have pre-made dishes to choose from. Please bare with us as our UAlbany Alumni programmers do their best to provide the best customer experience possible."
-            </p> 
+            </p>  -->
             <a class="btn_1" data-toggle="modal" data-target="#login_2">Order Now </a>
             
         </div><!-- End sub_content -->
@@ -468,10 +468,16 @@
 		<div class="modal-dialog">
 			<div class="modal-content modal-popup">
 			
-			    <div id="errDialog" style="display:none" class="alert alert-danger" role="alert">
+			    <div id="errDialog" style="display:none;width: 85%;margin-left: 6%;margin-top:3%" class="alert alert-danger" role="alert">
 			  	<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
 			  	<span class="sr-only">Error:</span>
 			  	Something went wrong.. please try again
+				</div>
+				
+				<div id="successDialog" style="display:none;width: 85%;margin-left: 6%;margin-top:3%" class="alert alert-success" role="alert">
+			  	<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+			  	<span class="sr-only">Error:</span>
+			  	Registration successful.. Please log-in
 				</div>
 			
 				<a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
@@ -484,7 +490,7 @@
 					<input type="hidden" id="message" value="" />
 					<input type="hidden" name="pay" id="payL" value="0" />
 					<div class="text-left">
-						<a href="#">Forgot Password?</a>
+						<!-- <a href="#">Forgot Password?</a> -->
 					</div>
 					<input type="hidden" id="isError" value="<%=isError %>" />
 					<button type="submit" class="btn btn-submit">Sign in</button>
@@ -498,7 +504,7 @@
 		<div class="modal-dialog">
 			<div class="modal-content modal-popup">
 				<a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
-				<form action="#" class="popup-form" id="myRegister">
+				<form  method="post" name="register" action="Registration" class="popup-form" id="myRegister">
                 	<div><img src="img/logo_m.png" /></div>
                 	<input id="author" type="text" name="firstname" class="form-control form-white" placeholder="Name" required>
                 	<input id="author" type="text" maxlength="10" name="phone" title="1234567890" pattern="\d{10}" class="form-control form-white" placeholder="Phone" required>
@@ -515,7 +521,6 @@
 								<option value="Empire Commons">Empire Commons</option>
 								<option value="Alumni (Bus Stop)">Alumni (Bus Stop)</option>
 					</select>
-                    <input type="hidden" id="isError" value="" />
 					<input type="hidden" id="message" value="" />
 					<input type="hidden" id="pay" name="pay" value="0" />
 					
@@ -720,6 +725,9 @@ function onLoad(){
 	var error = $("#isError").val();
 	if(error == "true"){
 		$("#errDialog").show();
+		$('#login_2').modal('show');
+	}else if(error == "false"){
+		$("#successDialog").show();
 		$('#login_2').modal('show');
 	}
 }

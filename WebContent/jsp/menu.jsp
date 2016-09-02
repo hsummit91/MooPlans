@@ -187,33 +187,7 @@
 			<%
 			JSONArray rest = (JSONArray) request.getAttribute("menuList");
 			//out.println(rest.length());
-			for (int i = 0; i < rest.length(); i++) { 
-				String command = null;
-				String options = null;
-				try{
-					command = (String) rest.getJSONObject(i).get("dishCommand");				
-					options = (String) rest.getJSONObject(i).get("dishChoice");
-				}catch(Exception e){
-					
-				}
-				if(command == null){
-					command = "";
-				}
-				if(options == null){
-					options = "";
-				}
-				String opt = "";
-				
-				//out.println(options);
-				//out.println(options.length());
-				
-				if(options.length() > 0){
-					opt += "<div><strong>Item | Type | Price</strong></div>";
-					String[] splitOp = options.split("#");
-					for(int j=0;j<splitOp.length;j++){
-						opt += "<div>"+splitOp[j]+"</div>";
-					}
-				}
+			for (int i = 0; i < rest.length(); i++) {
 				
 			%>
             <div class="strip_list_menu" >
@@ -244,24 +218,13 @@
 				
                     	
                     <div id="filtersMenu_col">
-				<a data-toggle="collapse" href="#collapseFiltersMenu<%=rest.getJSONObject(i).get("dishId") %>" aria-expanded="true" aria-controls="collapseFiltersMenu" id="filtersMenu_col_bt" class="collapsed">More details <i class="icon-plus-1 pull-right"></i></a>
+				<a data-toggle="collapse" dishId="<%=rest.getJSONObject(i).get("dishId") %>" href="#collapseFiltersMenu<%=rest.getJSONObject(i).get("dishId") %>" aria-expanded="true" aria-controls="collapseFiltersMenu" id="filtersMenu_col_bt" class="collapsed fetchSides">More details <i class="icon-plus-1 pull-right"></i></a>
 				<div class="collapse" id="collapseFiltersMenu<%=rest.getJSONObject(i).get("dishId") %>">
-                
-                 <div class="filterMenu_type">
-                    <h6></h6>
-                            <h5>You can add <%=command %> to this order.</h5>
-						<div>
-							<strong>Please choose from : </strong> <%=opt %>
-						</div>
-						<h6></h6>
-						<div>Please write your choices in the box below</div>
-                  </div>
                 
                 <div class="filterMenu_type">
                     <h6></h6>
-                            <h5>Notes:</h5>
-						<div >
-							<textarea style="margin-left: 22px;" rows="4" cols="50" id="<%=rest.getJSONObject(i).get("dishId") %>_notes"></textarea>
+						<div id="collapseFiltersDiv<%=rest.getJSONObject(i).get("dishId") %>">
+							<%-- <textarea style="margin-left: 22px;" rows="4" cols="50" id="<%=rest.getJSONObject(i).get("dishId") %>_notes"></textarea> --%>
 						</div>
 					<h6></h6>
                     </div><!--End filterMenu_type -->
@@ -285,6 +248,7 @@
 					<table class="table table_summary">
 					<tbody id="shoppingCart">
 					<%  HashMap<Integer, String> items = shoppingCart.getCartItems();
+					HashMap<Integer, String> notes = shoppingCart.getCartNotes();
                 		HashMap<Integer, Float> cPrice = shoppingCart.getCartPrice();
                 		   HashMap<Integer, Float> cFPrice = shoppingCart.getCartFullPrice();
 					 int count = 0;
@@ -298,6 +262,7 @@
 							<strong class="pull-right"><%=cPrice.get(key) %>P</strong>
 						</td>
 					</tr>
+					<%-- <tr><td colspan=2><%=notes.get(key) %></td></tr> --%>
 					<% 	} 
 						if(items.size() == 0){ %>
 							<tr><td>No items in cart</td></tr>
@@ -537,11 +502,25 @@
  		    	var dishPrice = $(this).attr("dishP");
  		    	var dishFullPrice = $(this).attr("dishFP");
  		    	
- 		    	var notes = $("#"+dishId+"_notes").val();
+ 		    	//var notes = $("#"+dishId+"_notes").val();
+ 		    	var notes = "";
+ 		    	var price = 0;
+ 		    	$("input:checkbox:checked").each(function(){    		
+ 		    		notes += $(this).attr("sType") +" - "+ $(this).val();
+ 		    		price = price +  parseInt($(this).val());
+				});
+ 		    	
+ 		    	$("input:radio:checked").each(function(){    		
+ 		    		notes += $(this).attr("sType") +" - "+ $(this).val();
+ 		    		price = price +  parseInt($(this).val());
+				});
+ 		    	
+ 		    	sessionStorage.setItem(dishId, price);
+ 		    	
  		    	//var notes = "";
  		    	console.log("ID = "+dishId+" - Name = "+dishName+" - NOTES = "+notes+" ==dishFullPrice=="+dishFullPrice+" -dishPrice- "+dishPrice)
 
-  		 		$.ajax({
+   		 		$.ajax({
  				  	method: "POST",
  				  	url: "./CartServlet",
  				  	data: { button: "add", dishId: dishId, dishName: dishName, notes: notes, dishPrice : dishPrice, dishFullPrice : dishFullPrice }
@@ -555,7 +534,7 @@
  	 		        	$(".glyphicon-shopping-cart").removeClass('transition');
  	 		        }, 1000);
  	 		     // $( "#dialogDesc_"+dishId ).dialog( "close" );	
- 				}); 
+ 				});  
  		    	
  		    });
  		    
@@ -577,6 +556,44 @@
  					});
  			 	
  			 });
+ 		   
+ 		   $('body').on('click', '.fetchSides', function() {
+			 	
+			 	var dishId = $(this).attr("dishId");
+			 
+			 	console.log("ID = "+dishId)
+				
+			 	//$("#collapseFiltersMenu"+dishId).html("GK!");
+			 	
+ 					$.ajax({
+					  	method: "POST",
+					  	url: "./FetchData",
+					  	data: { dishId: dishId, action : "getMealChoices" }
+					}).done(function( msg ) {
+						console.log(msg)
+						var choiceArray = $.parseJSON(msg);
+						var text = "";
+						for(i=0;i<choiceArray.length;i++){
+							console.log(choiceArray[i].categoryName);
+							console.log(choiceArray[i].allowed);
+							text += "<h4>"+choiceArray[i].categoryName+" (choose "+choiceArray[i].allowed+")</h5>";
+							for(j=0;j<choiceArray[i].categoryData.length;j++){
+								
+								if(choiceArray[i].allowed == 1){
+									text +=	'<input type="radio" name="'+choiceArray[i].categoryName+'" sType="'+choiceArray[i].categoryData[j].type+'" value="'+choiceArray[i].categoryData[j].price+'"> '+choiceArray[i].categoryData[j].type+' - '+choiceArray[i].categoryData[j].price+' <br>'
+								}else{
+									text +=	'<input type="checkbox" name="'+choiceArray[i].categoryName+'" sType="'+choiceArray[i].categoryData[j].type+'" value="'+choiceArray[i].categoryData[j].price+'"> '+choiceArray[i].categoryData[j].type+' - '+choiceArray[i].categoryData[j].price+' <br>'
+								}
+								
+								console.log(choiceArray[i].categoryData[j].type +" -- "+choiceArray[i].categoryData[j].price);
+							}
+							console.log("================");
+						}
+						
+						$("#collapseFiltersDiv"+dishId).html(text);
+					}); 
+			 	
+			 });
  		   
  	});
  	
@@ -644,11 +661,11 @@
 	 			text += '</div>';
 	 			text += '</div>';
  				text += '<div id="filtersMenu_col">';
- 	 			text += '<a data-toggle="collapse" href="#collapseFiltersMenu'+msg[i].dishId+'" aria-expanded="true" aria-controls="collapseFiltersMenu" id="filtersMenu_col_bt" class="collapsed">More details <i class="icon-plus-1 pull-right"></i></a>';
+ 	 			text += '<a data-toggle="collapse" dishId="'+msg[i].dishId+'" href="#collapseFiltersMenu'+msg[i].dishId+'" aria-expanded="true" aria-controls="collapseFiltersMenu" id="filtersMenu_col_bt" class="collapsed fetchSides">More details <i class="icon-plus-1 pull-right"></i></a>';
 				text += '<div class="collapse" id="collapseFiltersMenu'+msg[i].dishId+'">';
 				text += '<div class="filterMenu_type">';
-                text += '<h6></h6><h5>Notes:</h5>';
-                text += '<div><textarea style="margin-left: 22px;" rows="4" cols="50" id="'+msg[i].dishId+'_notes"></textarea></div>';
+                text += '<h6></h6>';
+                text += '<div id="collapseFiltersDiv'+msg[i].dishId+'"></div>';
                 text += '<h6></h6>';
                 text += '</div><!--End filterMenu_type -->';
 	 			text += '<a href="#" dishId="'+msg[i].dishId+'" dishName="'+msg[i].dishName+'" dishP="'+msg[i].dishPrice+'" dishFP="'+msg[i].dishFullPrice+'" class="btn_full addToCart">Add</a>';

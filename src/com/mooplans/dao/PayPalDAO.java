@@ -94,13 +94,13 @@ public class PayPalDAO {
 		}
 
 		boolean deductedPoints = false;
-		int total = user.getUser_points() - (int) totalBill;
+		float total = user.getUser_points() - (float) totalBill;
 		if(total>=0){
 			try{
 				getConnection();
 				String sql = "UPDATE user SET user_points = ? where user_email = ? and user_id=?";
 				pstmt = connection.prepareStatement(sql);
-				pstmt.setInt(1, total);
+				pstmt.setFloat(1, Float.parseFloat(String.format( "%.2f",total)));
 				pstmt.setString(2, user.getUser_email());
 				pstmt.setInt(3, user.getUser_id());
 				int row = pstmt.executeUpdate();
@@ -123,27 +123,31 @@ public class PayPalDAO {
 
 		int txCompleted = 0;
 		float pointsAdded = 0;
-		int points=0;
+		float points=0;
 
 		try{
 			getConnection();
 
 			// Get points based on the amount from 
-
+			System.out.println("==========>amount=======>"+amount);
+			
 			String sql2 = "SELECT points FROM meal_plans where amount="+amount;
 			pstmt = connection.prepareStatement(sql2);
 			rs = pstmt.executeQuery();
-			while(rs.next()){
-				points = rs.getInt(1); 
+			if(rs.next()){
+				points = rs.getFloat(1); 
+			}else{
+				points = 0;
 			}
-			int newPoints = user.getUser_points() + points;
+			System.out.println("==========>points=======>"+points);
+			float newPoints = Float.parseFloat(String.format( "%.2f",user.getUser_points())) + points;
 
 			String sql1 = "INSERT INTO user_payment (tx_id, user_id, amount, payment_date, status)"
 					+ " VALUES (?, ?, ?, ?, ?)";
 			pstmt = connection.prepareStatement(sql1);
 			pstmt.setString(1, tx_id);
 			pstmt.setInt(2, user.getUser_id());
-			pstmt.setInt(3, amount);
+			pstmt.setFloat(3, amount);
 			pstmt.setString(4, getCurrentTimeStamp());
 			pstmt.setString(5, status);
 			txCompleted = pstmt.executeUpdate();
@@ -151,7 +155,7 @@ public class PayPalDAO {
 			if(txCompleted>0){
 				String sql = "UPDATE user SET user_points = ? where user_email = ? and user_id=?";
 				pstmt = connection.prepareStatement(sql);
-				pstmt.setInt(1, newPoints);
+				pstmt.setFloat(1, newPoints);
 				pstmt.setString(2, user.getUser_email());
 				pstmt.setInt(3, user.getUser_id());
 				int row = pstmt.executeUpdate();

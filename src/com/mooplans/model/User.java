@@ -6,7 +6,8 @@ public class User{
 	
 	private String user_password, user_firstname,user_lastname,user_email,delivery_time;
 	private String user_phone,user_university, user_address, user_role, user_image,user_message;
-	private int user_id,user_points;
+	private int user_id;
+	private float user_points;
 	
 	public User(){
 		// Default constructor
@@ -23,7 +24,7 @@ public class User{
 	public User(String user_password, String user_firstname,
 			String user_lastname, String user_email, String user_phone,
 			String user_university, String user_address, String user_role,
-			int user_id, int user_points) {
+			int user_id, float user_points) {
 		this.user_password = user_password;
 		this.user_firstname = user_firstname;
 		this.user_lastname = user_lastname;
@@ -114,10 +115,10 @@ public class User{
 	public void setUser_id(int user_id) {
 		this.user_id = user_id;
 	}
-	public int getUser_points() {
-		return user_points;
+	public float getUser_points() {
+		return Float.parseFloat(String.format( "%.2f",user_points));
 	}
-	public void setUser_points(int user_points) {
+	public void setUser_points(float user_points) {
 		this.user_points = user_points;
 	}
 	

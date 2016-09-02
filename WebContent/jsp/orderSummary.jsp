@@ -85,7 +85,7 @@
                     <li class="submenu">
                     <a href="javascript:void(0);" class="show-submenu">Hi <%=user.getUser_firstname() %>! <i class="icon-down-open-mini"></i></a>
                     <ul>
-                        <li><a href="mealPlans.jsp"><%=user.getUser_points()%> points</a></li>
+                        <li><a href="mealPlans.jsp"><%=user.getUser_points()%></a></li>
                       </ul>
                     </li>
                     <li><a href="jsp/home.jsp">Home</a></li>

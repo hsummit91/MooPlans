@@ -101,7 +101,7 @@
                     <li class="submenu">
                     <a href="javascript:void(0);" class="show-submenu">Hi <%=user.getUser_firstname() %>! <i class="icon-down-open-mini"></i></a>
                     <ul>
-                        <li><a href="mealPlans.jsp"><%=user.getUser_points()%> points</a></li>
+                        <li><a href="mealPlans.jsp"><%=user.getUser_points() %> points</a></li>
                       </ul>
                     </li>
                     <li><a href="#" class="active">Home</a></li>
@@ -124,7 +124,7 @@
         
         <div class="main_title">
            <h2 class="nomargin_top" style="color:#fff;">Welcome Back <%=user.getUser_firstname()%>!</h2>
-            <h2 class="nomargin_top" style="color:#fff;">You have <strong><%=user.getUser_points()%></strong> Moo points. What would you like to order today?</h2>
+            <h2 class="nomargin_top" style="color:#fff;">You have <strong><%=user.getUser_points() %></strong> Moo points. What would you like to order today?</h2>
         </div>
         
         

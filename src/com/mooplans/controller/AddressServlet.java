@@ -60,6 +60,8 @@ public class AddressServlet extends HttpServlet {
 		String message = null;
 		String time = null;
 		User user = null;
+		float finalBill = 0;
+		float finalPoints = 0;
 		String checkout = "";
 		if(session.getAttribute("User") == null)
 			url = "/login.jsp";
@@ -75,6 +77,9 @@ public class AddressServlet extends HttpServlet {
 			shippingAddress = request.getParameter("address");
 			time = request.getParameter("time");
 			checkout = request.getParameter("checkoutType");
+			finalBill = Float.parseFloat(request.getParameter("finalBill"));
+			finalPoints = Float.parseFloat(request.getParameter("finalPoints"));
+			
 			
 			user.setDelivery_time(time);
 			user.setUser_address(shippingAddress);
@@ -85,7 +90,7 @@ public class AddressServlet extends HttpServlet {
 		
 		float totalBill = 0;
 		
-		for(Integer key: items.keySet()){
+/*		for(Integer key: items.keySet()){
 			System.out.println("Key"+items.get(key)+" value="+key);
 			// Get all Dish Points here and prepare Bill
 			if(checkout.equals("points")){
@@ -93,6 +98,12 @@ public class AddressServlet extends HttpServlet {
 			}else if(checkout.equals("cash")){
 				totalBill += PayPalDAO.getPriceBill(key);
 			}
+		}*/
+		
+		if(checkout.equals("points")){
+			totalBill = finalPoints; 
+		}else if(checkout.equals("cash")){
+			totalBill = finalBill;
 		}
 		boolean pointsDeducted = false;
 		if(checkout.equals("cash")){
