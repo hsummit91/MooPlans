@@ -151,7 +151,7 @@
 					</div>
 					<div class="form-group">
 						<label>Address</label>
-						<textarea class="form-control" id="address" name="address" rows="4" cols="50" ></textarea>
+						<textarea class="form-control" id="address" required name="address" rows="4" cols="50" ></textarea>
 <!-- 						<select  class="form-control" id="address" name="address" >
 								<option selected="selected" value="Campus Center">University at Albany: Campus Center</option>
 								<option value="Dutch Quad">Dutch Quad</option>
@@ -209,9 +209,9 @@
 								deliveryFee += dish.getDeliveryFee();
 							}
 							//dish.getRestId();
-							
+							//out.println("----------->"+shoppingCart.getDishExtra());
 							//deliveryFee += dish.getDeliveryFee();
-							finalBill = priceBill + deliveryFee;
+							finalBill = priceBill + deliveryFee + shoppingCart.getDishExtra();
 							
 							finalBillTax = finalBill * (0.08);
 							
@@ -443,8 +443,11 @@
     
     function checkTime(){
     	var time = $("#basicExample").val();
+    	var addr = $("#address").val();
     	console.log(time)
     	if(time == ""){
+    		return false;
+    	}else if(addr == ""){
     		return false;
     	}else{
     		waitingDialog.show('Brace yourself.. Placing Order');

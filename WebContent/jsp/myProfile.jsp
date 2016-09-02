@@ -176,7 +176,7 @@
 					</div>
 
                   
-                    <a style="font-size:18px; padding:8px 8px;" class="btn_full " href="store.html"> Order Now <i class="icon_wallet"></i> </a>
+                    <a style="font-size:18px; padding:8px 8px;" class="btn_full " href="home.jsp"> Order Now <i class="icon_wallet"></i> </a>
                 
                 
              

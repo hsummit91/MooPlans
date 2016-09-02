@@ -68,6 +68,7 @@ public class CartServlet extends HttpServlet {
 		
 		float dishPrice = 0;
 		float dishFullPrice = 0;
+		int dishExtra = 0;
 		
 		try{
 			buttonClick  = request.getParameter("button");
@@ -80,12 +81,15 @@ public class CartServlet extends HttpServlet {
 			dishId = request.getParameter("dishId").trim();		
 			notes = request.getParameter("notes").trim();
 			
-			System.out.println("notes---->>>"+notes);
+			dishExtra = Integer.parseInt(request.getParameter("dishExtra"));
+			
+			System.out.println("notes---->>>"+notes+"========>"+dishExtra);
 			
 			dishFullPrice = Float.parseFloat(request.getParameter("dishFullPrice"));
 			dishPrice = Float.parseFloat(request.getParameter("dishPrice"));
 			
-			shoppingCart.addToCart(Integer.parseInt(dishId), dishName, notes, dishPrice, dishFullPrice);
+			
+			shoppingCart.addToCart(Integer.parseInt(dishId), dishName, notes, dishPrice, dishFullPrice, dishExtra);
 		}else{
 			dishId = request.getParameter("dishId").trim();
 			shoppingCart.deleteFromCart(Integer.parseInt(dishId));

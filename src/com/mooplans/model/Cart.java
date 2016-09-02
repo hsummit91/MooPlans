@@ -17,6 +17,7 @@ public class Cart {
     HashMap<Integer, Float> cartPrice;
     HashMap<Integer, Float> cartFullPrice;
     private float totalBill;
+    private int dishExtra;
     
     JSONArray priceArray = new JSONArray();
     PayPalDAO pd;
@@ -26,6 +27,8 @@ public class Cart {
      cartNotes = new HashMap<>(); 
      cartFullPrice = new HashMap<Integer, Float>();
      cartPrice = new HashMap<Integer, Float>();
+     dishExtra = 0;
+     
      pd = new PayPalDAO();
     }
     
@@ -65,11 +68,12 @@ public class Cart {
     public HashMap<Integer, Float> getCartFullPrice(){
         return cartFullPrice;
     }
-    public void addToCart(int id, String itemName, String notes, float dishPrice, float dishFullPrice){
+    public void addToCart(int id, String itemName, String notes, float dishPrice, float dishFullPrice, int dishExtra){
         cartItems.put(id, itemName);
         cartNotes.put(id, notes);
         cartFullPrice.put(id, dishFullPrice);
         cartPrice.put(id,dishPrice);
+        this.dishExtra = dishExtra;
     }
     
     public void deleteFromCart(int itemId){
@@ -98,6 +102,14 @@ public class Cart {
 		return totalBill;
 	}
 	
+	public int getDishExtra() {
+		return dishExtra;
+	}
+
+	public void setDishExtra(int dishExtra) {
+		this.dishExtra = dishExtra;
+	}
+
 	public void setTotalBill(float totalBill) {
 		this.totalBill = totalBill;
 	}    

@@ -517,13 +517,15 @@
  		    	
  		    	sessionStorage.setItem(dishId, price);
  		    	
+ 		    	console.log("price--->"+price)
+ 		    	
  		    	//var notes = "";
  		    	console.log("ID = "+dishId+" - Name = "+dishName+" - NOTES = "+notes+" ==dishFullPrice=="+dishFullPrice+" -dishPrice- "+dishPrice)
 
    		 		$.ajax({
  				  	method: "POST",
  				  	url: "./CartServlet",
- 				  	data: { button: "add", dishId: dishId, dishName: dishName, notes: notes, dishPrice : dishPrice, dishFullPrice : dishFullPrice }
+ 				  	data: { button: "add", dishId: dishId, dishName: dishName, notes: notes, dishPrice : dishPrice, dishFullPrice : dishFullPrice, dishExtra: price }
  				}).done(function( msg ) {
  					console.log(msg);
  					$(".glyphicon-shopping-cart").addClass('transition');
