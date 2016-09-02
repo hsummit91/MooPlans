@@ -270,16 +270,20 @@
 							 <span class="pull-right">$<%=deliveryFee %></span>
 						</td>
 					</tr> 
+					<tr>
+					<td>Tax </td>
+					<td><span class="pull-right">8%</span></td>
+					</tr>
  					<tr>
 						<td class="total">
-							 TOTAL <span class="pull-right" id="finalBill">$<%=Float.parseFloat(String.format( "%.2f",totalBill)) %></span>
+							 Total <span class="pull-right" id="finalBill"> $<%=Float.parseFloat(String.format( "%.2f",totalBill)) %></span>
 							 <input type="hidden" name="finalBill" value="<%=Float.parseFloat(String.format( "%.2f",totalBill))%>" />
 							 <input type="hidden" name="finalPoints" value="<%=Float.parseFloat(String.format( "%.2f",finalPoints))%>" />
 						</td>
 					</tr> 
 					 <tr>
 						<td class="total">
-							 TOTAL POINTS <span class="pull-right" id="finalPts"><%=Float.parseFloat(String.format( "%.2f",finalPoints)) %>P</span>
+							 Total <span class="pull-right" id="finalPts"> <%=Float.parseFloat(String.format( "%.2f",finalPoints)) %>P</span>
 						</td>
 					</tr>
 					</tbody>

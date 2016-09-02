@@ -506,12 +506,12 @@
  		    	var notes = "";
  		    	var price = 0;
  		    	$("input:checkbox:checked").each(function(){    		
- 		    		notes += $(this).attr("sType") +" - "+ $(this).val();
+ 		    		notes += $(this).attr("sType") +" - $"+ $(this).val();
  		    		price = price +  parseInt($(this).val());
 				});
  		    	
  		    	$("input:radio:checked").each(function(){    		
- 		    		notes += $(this).attr("sType") +" - "+ $(this).val();
+ 		    		notes += $(this).attr("sType") +" - $"+ $(this).val();
  		    		price = price +  parseInt($(this).val());
 				});
  		    	
@@ -582,9 +582,9 @@
 							for(j=0;j<choiceArray[i].categoryData.length;j++){
 								
 								if(choiceArray[i].allowed == 1){
-									text +=	'<input type="radio" name="'+choiceArray[i].categoryName+'" sType="'+choiceArray[i].categoryData[j].type+'" value="'+choiceArray[i].categoryData[j].price+'"> '+choiceArray[i].categoryData[j].type+' - '+choiceArray[i].categoryData[j].price+' <br>'
+									text +=	'<input type="radio" name="'+choiceArray[i].categoryName+'" sType="'+choiceArray[i].categoryData[j].type+'" value="'+choiceArray[i].categoryData[j].price+'"> '+choiceArray[i].categoryData[j].type+' - $'+choiceArray[i].categoryData[j].price+' <br>'
 								}else{
-									text +=	'<input type="checkbox" name="'+choiceArray[i].categoryName+'" sType="'+choiceArray[i].categoryData[j].type+'" value="'+choiceArray[i].categoryData[j].price+'"> '+choiceArray[i].categoryData[j].type+' - '+choiceArray[i].categoryData[j].price+' <br>'
+									text +=	'<input type="checkbox" name="'+choiceArray[i].categoryName+'" sType="'+choiceArray[i].categoryData[j].type+'" value="'+choiceArray[i].categoryData[j].price+'"> '+choiceArray[i].categoryData[j].type+' - $'+choiceArray[i].categoryData[j].price+' <br>'
 								}
 								
 								console.log(choiceArray[i].categoryData[j].type +" -- "+choiceArray[i].categoryData[j].price);

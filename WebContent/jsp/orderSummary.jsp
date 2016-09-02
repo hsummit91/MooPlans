@@ -189,6 +189,14 @@
 				</tr>
 			<%}%>	
 				<tr>
+					<td>
+						 Tax:
+					</td>
+					<td>
+						<strong class="pull-right">8%</strong>
+					</td>
+				</tr>
+				<tr>
 					<td class="total_confirm">
 						 TOTAL
 					</td>

@@ -81,6 +81,7 @@ public class LoginDAO {
 				userDetails.put("userId",ID);
 				userDetails.put("firstTimeData", rs.getString(1));
 				userDetails.put("firstName", rs.getString(2));
+				userDetails.put("name", rs.getString(2));
 				userDetails.put("lastName", rs.getString(3));
 				userDetails.put("email", rs.getString(4));
 				userDetails.put("userEmail", rs.getString(4));
