@@ -95,24 +95,28 @@ public class AddDishes extends HttpServlet {
 		
 		int allowedCounter = 1;
 		
-		try{
-			firstItem.put("categoryName", item);
-			firstItem.put("allowed",allowed[0]);
+		if(item == ""){
 			
-			itemsObj.put("type", type);
-			itemsObj.put("price", price);
-			
-			itemsArray.put(itemsObj);
-			
-			firstItem.put("categoryData", itemsArray);
-			
-		}catch(Exception e){
-			
+		}else{
+			try{
+				firstItem.put("categoryName", item);
+				firstItem.put("allowed",allowed[0]);
+				
+				itemsObj.put("type", type);
+				itemsObj.put("price", price);
+				
+				itemsArray.put(itemsObj);
+				
+				firstItem.put("categoryData", itemsArray);
+				
+			}catch(Exception e){
+				
+			}
+		
+			System.out.println("JSONN-----"+choiceArray);
+		
+			choiceMap.put(item, firstItem);		
 		}
-		
-		System.out.println("JSONN-----"+choiceArray);
-		
-		choiceMap.put(item, firstItem);
 		
 		StringBuilder item1 = new StringBuilder();
 		item1.append("{\"item\":\"").append(item).append("\",");
