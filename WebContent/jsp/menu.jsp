@@ -196,7 +196,7 @@
 					<div class="col-md-12 col-sm-12">
 						<div class="desc">
 							<div class="thumb_strip">
-								<img src="img/apple-icon-114x114.png" alt="<%=rest.getJSONObject(i).get("dishName")%>">
+								<img src="<%=rest.getJSONObject(i).get("dishImage")%>" alt="<%=rest.getJSONObject(i).get("dishName")%>">
 							</div>
 							
 							<h3><%=rest.getJSONObject(i).get("dishName")%></h3>
@@ -229,6 +229,12 @@
 					<h6></h6>
                     </div><!--End filterMenu_type -->
 
+                <div class="filterMenu_type">
+                <h4>Additional Notes: </h4> 
+						 <textarea style="margin-left: 22px;" rows="4" cols="50" id="<%=rest.getJSONObject(i).get("dishId") %>_notes"></textarea>
+					<h6></h6>
+                    </div>
+                    
                     <a href="#" dishId="<%=rest.getJSONObject(i).get("dishId") %>" dishName="<%=rest.getJSONObject(i).get("dishName") %>" dishP="<%=rest.getJSONObject(i).get("dishPrice") %>" dishFP="<%=rest.getJSONObject(i).get("dishFullPrice") %>" class="btn_full addToCart">Add</a>
                     </div><!--End collapse -->
 			</div><!--End filtersMenu col-->
@@ -502,19 +508,22 @@
  		    	var dishPrice = $(this).attr("dishP");
  		    	var dishFullPrice = $(this).attr("dishFP");
  		    	
- 		    	//var notes = $("#"+dishId+"_notes").val();
+ 		    	var aNotes = $("#"+dishId+"_notes").val();
  		    	var notes = "";
  		    	var price = 0;
- 		    	$("input:checkbox:checked").each(function(){    		
- 		    		notes += $(this).attr("sType") +" - $"+ $(this).val();
+ 		    	$("#collapseFiltersMenu"+dishId+" input:checkbox:checked").each(function(){    		
+ 		    		notes += $(this).attr("sType") +" - $"+ $(this).val()+" ";
  		    		price = price +  parseInt($(this).val());
 				});
  		    	
- 		    	$("input:radio:checked").each(function(){    		
- 		    		notes += $(this).attr("sType") +" - $"+ $(this).val();
+ 		    	$("#collapseFiltersMenu"+dishId+" input:radio:checked").each(function(){    		
+ 		    		notes += $(this).attr("sType") +" - $"+ $(this).val()+" ";
  		    		price = price +  parseInt($(this).val());
 				});
  		    	
+ 		    	if(aNotes != null){
+ 		    		notes += "Notes: "+aNotes;
+ 		    	}
  		    	sessionStorage.setItem(dishId, price);
  		    	
  		    	console.log("price--->"+price)
@@ -652,7 +661,7 @@
  				text += '<div class="col-md-12 col-sm-12">';
  				text += '<div class="desc">';
  				text += '<div class="thumb_strip">';
- 				text += '<img src="images/foodPics/dish'+msg[i].dishId+'.jpg" alt="">';
+ 				text += '<img src="'+msg[i].dishImage+'" alt="">';
  				text += '</div>';
  				text += '<h3>'+msg[i].dishName+'</h3>';
  				text += '<div class="type">'+msg[i].dishDesc+'</div>';

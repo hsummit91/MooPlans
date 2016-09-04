@@ -344,7 +344,7 @@
   			text += '<div class="col-md-9 col-sm-9">';
   			text += '<div class="desc">';
   			text += '<div class="thumb_strip">';
-  			text += '<img src="../images/restLogos/'+msg[i].restName+'.jpg" alt="">';
+  			text += '<img src="../images/restLogos/rest'+msg[i].restId+'.jpg" alt="">';
   			text += '</div>';
   			text += '<div class="rating">';
   			text += '<i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i>';
