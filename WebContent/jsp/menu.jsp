@@ -186,7 +186,7 @@
 
 			<%
 			JSONArray rest = (JSONArray) request.getAttribute("menuList");
-			//out.println(rest.length());
+			out.println(rest.length());
 			for (int i = 0; i < rest.length(); i++) {
 				
 			%>
@@ -587,7 +587,13 @@
 						for(i=0;i<choiceArray.length;i++){
 							console.log(choiceArray[i].categoryName);
 							console.log(choiceArray[i].allowed);
-							text += "<h4>"+choiceArray[i].categoryName+" (choose "+choiceArray[i].allowed+")</h5>";
+							var allowed = "";
+							if(choiceArray[i].allowed == undefined || choiceArray[i].allowed == 0){
+								allowed = "as many as you want";
+							}else{
+								allowed = choiceArray[i].allowed;
+							}
+							text += "<h4>"+choiceArray[i].categoryName+" (choose "+allowed+")</h5>";
 							for(j=0;j<choiceArray[i].categoryData.length;j++){
 								
 								if(choiceArray[i].allowed == 1){
