@@ -85,13 +85,13 @@ public class PayPalDAO {
 	}
 
 
-	public static boolean updateUserPoints(User user, HashMap<Integer, String> items){
+	public static boolean updateUserPoints(User user, HashMap<Integer, String> items, float totalBill){
 
-		float totalBill = 0;
-		for(Integer key: items.keySet()){
+		//float totalBill = 0;
+/*		for(Integer key: items.keySet()){
 			// Get all Dish Points here and prepare Bill
 			totalBill += getBill(key); 
-		}
+		}*/
 
 		boolean deductedPoints = false;
 		float total = user.getUser_points() - (float) totalBill;

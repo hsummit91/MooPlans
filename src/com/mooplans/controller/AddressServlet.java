@@ -109,7 +109,7 @@ public class AddressServlet extends HttpServlet {
 		if(checkout.equals("cash")){
 			pointsDeducted = true;
 		}else{
-			pointsDeducted = PayPalDAO.updateUserPoints(user, items);
+			pointsDeducted = PayPalDAO.updateUserPoints(user, items, totalBill);
 		}
 			
 		if(pointsDeducted){

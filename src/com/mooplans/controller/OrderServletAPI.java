@@ -115,7 +115,7 @@ public class OrderServletAPI extends HttpServlet {
 			totalBill += PayPalDAO.getBill(key); 
 		}
 		
-		boolean pointsDeducted = PayPalDAO.updateUserPoints(user, items);
+		boolean pointsDeducted = PayPalDAO.updateUserPoints(user, items, totalBill);
 		JSONObject returnObject = new JSONObject();
 		int success = 0;
 		if(pointsDeducted){
