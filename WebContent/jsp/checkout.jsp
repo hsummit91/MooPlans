@@ -212,12 +212,16 @@
 							//out.println("----------->"+shoppingCart.getDishExtra());
 							//deliveryFee += dish.getDeliveryFee();
 							finalBill = priceBill + deliveryFee + shoppingCart.getDishExtra();
+							//out.print("finalBill -"+finalBill+"<br>");
 							
 							finalBillTax = finalBill * (0.08);
+							//out.print("billtax -"+finalBillTax+"<br>");
 							
 							totalBill = finalBill + finalBillTax;
+							//out.print("totalBill -"+totalBill+"<br>");
 							
 							finalPoints = totalBill/10;
+							//out.print("finalPoints -"+finalPoints+"<br>");
 							
 							count++;%>
 					<tr>
@@ -272,7 +276,7 @@
 					</tr> 
 					<tr>
 					<td>Tax </td>
-					<td><span class="pull-right">8%</span></td>
+					<td><span class="pull-right">$<%=String.format( "%.2f",finalBillTax) %></span></td>
 					</tr>
  					<tr>
 						<td class="total">

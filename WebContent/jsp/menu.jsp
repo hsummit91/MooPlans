@@ -186,7 +186,7 @@
 
 			<%
 			JSONArray rest = (JSONArray) request.getAttribute("menuList");
-			out.println(rest.length());
+			//out.println(rest.length());
 			for (int i = 0; i < rest.length(); i++) {
 				
 			%>
@@ -513,12 +513,12 @@
  		    	var price = 0;
  		    	$("#collapseFiltersMenu"+dishId+" input:checkbox:checked").each(function(){    		
  		    		notes += $(this).attr("sType") +" - $"+ $(this).val()+" ";
- 		    		price = price +  parseInt($(this).val());
+ 		    		price = price +  parseFloat($(this).val());
 				});
  		    	
  		    	$("#collapseFiltersMenu"+dishId+" input:radio:checked").each(function(){    		
  		    		notes += $(this).attr("sType") +" - $"+ $(this).val()+" ";
- 		    		price = price +  parseInt($(this).val());
+ 		    		price = price +  parseFloat($(this).val());
 				});
  		    	
  		    	if(aNotes != null){
