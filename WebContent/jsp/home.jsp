@@ -127,6 +127,11 @@
             <h2 class="nomargin_top" style="color:#fff;">You have <strong><%=user.getUser_points() %></strong> Moo points. What would you like to order today?</h2>
         </div>
         
+         <div>
+         <h2 class="nomargin_top" style="color:#fff;">"We are currently experiencing issues adding multiple items to one order. 
+                 If you have this problem, simply place multiple orders! Happy eating!"</h2>
+        </div>
+        
         
         <div class="row">
             	<div class="col-md-4 col-sm-4 " >

@@ -94,7 +94,7 @@ msg += '"'+$('#price' + i).val() + '"},';
 
 var url = 'sides=#' + msg ;
 
-alert(url);
+//alert(url);
 
 //window.location = 'AddDishes?' + url;
 

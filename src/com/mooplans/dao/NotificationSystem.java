@@ -105,7 +105,7 @@ public class NotificationSystem implements Runnable{
 				try {
 					release();
 					System.out.println("SLEEEEEPINNNNGGGGG");
-					Thread.sleep(600000);
+					Thread.sleep(300000);
 					System.out.println("WAKIIIIIINNNNNGGGGGG UPPP !!!");
 				} catch (InterruptedException e) {
 					e.printStackTrace();

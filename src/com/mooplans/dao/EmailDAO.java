@@ -103,7 +103,7 @@ public class EmailDAO {
 			MimeMessage message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(username));
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(user.getUser_email()));
-			message.addRecipient(Message.RecipientType.BCC, new InternetAddress("mooplansorders@gmail.com"));
+			message.addRecipient(Message.RecipientType.CC, new InternetAddress("mooplansorders@gmail.com"));
 
 			StringBuilder sb = new StringBuilder();
 			sb.append("Hi "+user.getUser_firstname()+",\n");

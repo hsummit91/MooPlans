@@ -139,8 +139,8 @@
 			
 			<p class="col-md-12" style="color: blue">Customized Options</p>	
 			<div class="col-md-12"><label class="col-md-3">Command </label> 
-			<input type="text"   placeholder="ex.Choose a bread,meat,dressings and upto 3 toppings"
-			name="dish_command" class="col-md-6" required="required"/></div>
+			<input type="text"   placeholder="Category for sides. eg:bread,1,drinks,2,protein,1"
+			name="dish_command" class="col-md-6" /></div>
 			<table id="dataTable" class="col-md-12" style="text-align: center;">
 			        <tr>
 			            <td>
