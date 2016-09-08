@@ -376,6 +376,12 @@
   			text += '</div>';		 */		
   			
   		}
+  		
+  		if(msg.length==0){
+  			text += '<div class="strip_list" >';
+  			text += '<h3> Sorry we are closed for today.. Please check back tomorrow!</h3>';
+  			text += '</div>';
+  		}
   		text += '</form>';
   		$("#restaurants").html(text); 
   		

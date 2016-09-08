@@ -89,6 +89,13 @@ public class FetchData extends HttpServlet {
 			response.setContentType("application/json");
 			out.write(menuList+"");	
 		
+		}else if(action.equals("getallOrders")){
+			
+			System.out.println("----GET ALL ORDERS-----");
+			JSONArray menuList = OrderDAO.getAllOrders();	
+			response.setContentType("application/json");
+			out.write(menuList+"");	
+		
 		}else{
 			response.sendRedirect(getServletContext().getContextPath()+"/jsp/home.html");
 		}

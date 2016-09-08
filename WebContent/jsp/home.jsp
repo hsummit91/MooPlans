@@ -175,10 +175,11 @@
 							
 							<h3>Featured Dishes</h3>
                             <h4>Some awesome dishes you can't resist!</h4>
-                            <form method="post" action="../ActionServlet?action=menuPage">
+<!--                             <form method="post" action="../ActionServlet?action=menuPage">
         					<input type="hidden" name="restId" value="0">
         					<input type="submit" class="btn_1" value="Search Dishes">
-        					</form>
+        					</form> -->
+        					<a class="btn_1" href="orders.jsp">Search Dishes </a>
                             <!-- <a class="btn_1" href="menu.html">Search Dishes </a> -->
 						</div>
                     </div>

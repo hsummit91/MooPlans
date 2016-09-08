@@ -122,4 +122,53 @@ public class OrderDAO {
 		
 		return userDetailsArr;
 	}
+	
+	public static JSONArray getAllOrders(){
+		JSONArray userDetailsArr = new JSONArray();
+		try{
+			getConnection();
+			String sql = "SELECT order_id, order_total, order_deliverat, order_date, order_ids, order_user_id, "
+					   + "order_phone, delivery_time, is_polled, order_notes, payment_mode "
+					   + "FROM orders order by order_date DESC LIMIT 20";
+			pstmt = connection.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			while(rs.next()){
+				JSONObject userDetails = new JSONObject();
+				userDetails.put("userId",rs.getInt(6));
+				userDetails.put("orderId", rs.getString(1));
+				userDetails.put("orderTotal", rs.getString(2));
+				userDetails.put("deliver", rs.getString(3));
+				userDetails.put("orderDate", rs.getString(4));
+				userDetails.put("orderPhone", rs.getString(7));
+				userDetails.put("time", rs.getString(8));
+				userDetails.put("mailSent", rs.getString(9));
+				userDetails.put("notes", rs.getString(10));
+				userDetails.put("paymentMode", rs.getString(11));
+				
+				String sql2 = "select dish_name from dishes where dish_id in ("+rs.getString(5)+")";
+				pstmt = connection.prepareStatement(sql2);
+				ResultSet rs1 = pstmt.executeQuery();
+				ArrayList<String> dishes = new ArrayList<String>();
+				while(rs1.next()){
+					dishes.add(rs1.getString(1));
+				}
+				userDetails.put("orderItems", dishes);
+				userDetailsArr.put(userDetails);
+			}
+			
+
+		}catch(SQLException e){
+			e.printStackTrace();
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}finally{
+			release();
+		}
+		
+		System.out.println("ORDERS = "+userDetailsArr);
+		
+		return userDetailsArr;
+	}
+	
 }
