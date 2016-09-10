@@ -114,9 +114,17 @@
             <p>
                 Convenient and quick meals delivered directly to you
             </p>
-<!--             <p>
-                "Our website and ordering platform are still currently in development. While you can currently order food - we have not yet implemented all of the fanciness that is still being created. It is for this reason that many dishes are currently being hidden. While we considered extending our launch date to next week, we decided to keep the ordering systems online for now to allow everyone to order the simple dishes. Chipotle customization is currently not available, so we have pre-made dishes to choose from. Please bare with us as our UAlbany Alumni programmers do their best to provide the best customer experience possible."
-            </p>  -->
+            <hr>
+         	<p>
+                "<strong>The Good News:</strong> Chipotle loves what we're doing and want's to put us through the official channels for offering delivery with a student discount!
+            </p>
+            <p>
+            	<strong>The Bad News:</strong> We have to shut down Chipotle delivery for a few weeks. Sorry!" 
+            </p>  
+            <p>
+            	<strong>Don't think that the Moo Plans Chipotle food will be gone though. We're going to be giving away a whole bunch of free Chipotle food!</strong>
+            </p>
+            <hr>
             <a class="btn_1" data-toggle="modal" data-target="#login_2">Order Now </a>
             
         </div><!-- End sub_content -->
