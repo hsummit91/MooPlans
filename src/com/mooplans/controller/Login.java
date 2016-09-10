@@ -3,7 +3,10 @@ package com.mooplans.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URLEncoder;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -129,6 +132,8 @@ public class Login extends HttpServlet {
 
 		System.out.println("errorMsg ==>"+errorMsg);
 		System.out.println("Session Validation ==>"+session.getAttribute("user"));
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		System.out.println("Logged in at - "+dateFormat.format(new Date()));
 		
 		if(errorMsg != ""){
 			isError = true;

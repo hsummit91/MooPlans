@@ -73,7 +73,7 @@ public class Registration extends HttpServlet {
 			
 		}
 		String firstname= request.getParameter("firstname");
-		String lastname= request.getParameter("lastname");;
+		String lastname= request.getParameter("lastname");
 		String emailId= request.getParameter("email");
 		String password=request.getParameter("password");
 		String phone=request.getParameter("phone");
@@ -83,17 +83,17 @@ public class Registration extends HttpServlet {
 		int points = 0;
 		int id = 0;
 		
-		if(firstname == null || firstname.equals("")){
+		if(firstname.trim() == null || firstname.trim().equals("")){
 			errorMsg = "Fist name can not be empty";
 		}
-		if(emailId == null || emailId.equals("")){
+		if(emailId.trim() == null || emailId.trim().equals("")){
 			errorMsg =  "Username can not be empty";
 			if(password == null || password.equals("")){
 				errorMsg = "User and Password can not be Empty..!!";
 			}
 		}
 
-		if(phone == null || phone.equals("")){
+		if(phone.trim() == null || phone.trim().equals("")){
 			errorMsg = "Phone can not be empty";
 		}
 

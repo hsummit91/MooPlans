@@ -178,7 +178,7 @@
 						<div class="col-md-6 col-sm-6">
 							<div class="form-group">
 								<label>Delivery time</label>
-									<input id="basicExample" required name="time" class="time ui-timepicker-input form-control" type="text" autocomplete="off">
+									<input id="basicExample" required onkeydown="return false" name="time" class="time ui-timepicker-input form-control" type="text" autocomplete="off">
 							</div>
 						</div>
 					</div>

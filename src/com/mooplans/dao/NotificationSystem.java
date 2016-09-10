@@ -3,6 +3,8 @@ package com.mooplans.dao;
 import static com.mooplans.dao.DBConnThread.*;
 
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -72,10 +74,15 @@ public class NotificationSystem implements Runnable{
 				System.out.println(" ~~~~~~~~~~SENDING MAIL~~~~~~~~~~~~~> "+orderId+" --FOR USER--->"+userId);
 				
 				User user = sd.getUserDataById(userId);
-				user.setUser_address(rs.getString("order_deliverat"));
-				user.setUser_phone(rs.getString("order_phone"));
-				
-				
+				String deliver = rs.getString("order_deliverat");
+				if(deliver != null){
+					user.setUser_address(deliver);
+				}
+				String phone = rs.getString("order_phone");
+				if(phone != null){
+					user.setUser_phone(phone);
+				}
+					
 				EmailDAO.sendOrderMailUser(user, items, orderId, paymentMode, totalBill);
 				
 				System.out.println(" ~~~~~~~~~~SENDING MAIL TO REST~~~~~~~~~~~~~> "+orderId);
@@ -95,20 +102,27 @@ public class NotificationSystem implements Runnable{
 		return newOrders;
 	}
 
+	public void restartThread(){
+		Thread t = new Thread(new NotificationSystem());
+		t.start();
+	}
+	
 	@Override
 	public void run() {
 		int pollOrders = 0;
+	     DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		while(true){
 			pollOrders = getOrders();
 			
 			if(pollOrders == 0){
 				try {
 					release();
-					System.out.println("SLEEEEEPINNNNGGGGG");
+					System.out.println("SLEEEEEPINNNNGGGGG "+dateFormat.format(new Date()));
 					Thread.sleep(300000);
-					System.out.println("WAKIIIIIINNNNNGGGGGG UPPP !!!");
+					System.out.println("WAKIIIIIINNNNNGGGGGG UPPP !!! "+dateFormat.format(new Date()));
 				} catch (InterruptedException e) {
 					e.printStackTrace();
+					restartThread();
 				}
 			}
 		}

@@ -58,10 +58,13 @@ public class OrderServletAPI extends HttpServlet {
 		String name = null;
 		String shippingAddress = null;
 		String phone = null;
-		String paymentMode = "";
 		String time = null;
 		int userId = 0;
 		
+		float finalBill = 0;
+		float finalPoints = 0;
+		String checkout = "";
+		float totalBill = 0;
 		String message = null;
 		
 		User user = null;
@@ -99,28 +102,47 @@ public class OrderServletAPI extends HttpServlet {
 			phone = request.getParameter("phone");
 			
 			try{
-				paymentMode = request.getParameter("paymentMode");
+				finalBill = Float.parseFloat(request.getParameter("finalBill"));
 			}catch(Exception e){
-				paymentMode = "points";
+				finalBill = 0;
 			}
+			
+			try{
+				finalPoints = Float.parseFloat(request.getParameter("finalPoints"));
+			}catch(Exception e){
+				finalPoints = 0;
+			}
+						
+			try{
+				checkout = request.getParameter("checkoutType");
+			}catch(Exception e){
+				checkout = "points";
+			}
+			
+			if(checkout.equals("points")){
+				totalBill = finalPoints; 
+			}else if(checkout.equals("cash")){
+				totalBill = finalBill;
+			}
+			
 			user.setDelivery_time(time);
 			user.setUser_address(shippingAddress);
 		}
 
 		// Calling PayDAO to deduct User points based on his order and make entry in the order table(s)
-		float totalBill = 0;
-		for(Integer key: items.keySet()){
-			System.out.println("Key"+items.get(key)+" value="+key);
-			// Get all Dish Points here and prepare Bill
-			totalBill += PayPalDAO.getBill(key); 
+		
+		boolean pointsDeducted = false;
+		if(checkout.equals("cash")){
+			pointsDeducted = true;
+		}else{
+			pointsDeducted = PayPalDAO.updateUserPoints(user, items, totalBill);
 		}
 		
-		boolean pointsDeducted = PayPalDAO.updateUserPoints(user, items, totalBill);
 		JSONObject returnObject = new JSONObject();
 		int success = 0;
 		if(pointsDeducted){
 			// Create the new order and update order table
-			int orderId = PayPalDAO.createOrder(user, items, notes, paymentMode, totalBill);
+			int orderId = PayPalDAO.createOrder(user, items, notes, checkout, totalBill);
 			
 			message = "Thank you for your purchase. Your Order #"+orderId;
 			success = 1;
@@ -135,6 +157,9 @@ public class OrderServletAPI extends HttpServlet {
 		}
 		
 		try {
+			returnObject.put("deliveryTime", time);
+			returnObject.put("deliveryAddress", shippingAddress);			
+			returnObject.put("paymentMode", checkout);
 			returnObject.put("message", message);
 			returnObject.put("success", success);
 		} catch (JSONException e) {
