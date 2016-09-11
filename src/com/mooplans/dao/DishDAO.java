@@ -45,7 +45,7 @@ public class DishDAO {
 		
 		try{
 			getConnection();
-			String sql = "SELECT rest_name,rest_id,rest_health,rest_meal_type"
+			String sql = "SELECT rest_name,rest_id,rest_health,rest_meal_type,rest_delivery_fee"
 						+ " FROM restaurant"
 						+ " WHERE ";
 			
@@ -110,6 +110,7 @@ public class DishDAO {
 					rest.put("restId", rs.getString(2));
 					rest.put("restHealth", rs.getString(3));
 					rest.put("restMealType", rs.getString(4));
+					rest.put("deliveryFee", rs.getString(5));
 					restDetails.put(rest);					
 				}catch(Exception e){
 					
