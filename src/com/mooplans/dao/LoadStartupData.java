@@ -51,7 +51,9 @@ public class LoadStartupData {
 				getConnection();
 				String sql = "SELECT d.dish_id, d.dish_name, d.dish_price, d.dish_rest_id, r.rest_name, "
 						+ "d.dish_category, d.dish_description, d.dish_choice, r.rest_email, r.rest_phone, "
-						+ "d.dish_sides, d.dish_health, d.dish_full_price, r.rest_delivery_fee FROM dishes as d join restaurant as r "
+						+ "d.dish_sides, d.dish_health, d.dish_full_price, r.rest_delivery_fee, "
+						+ "r.rest_type, d.discounted_price, d.marketing_fee, d.discounted_points, d.marketing_fee_points "
+						+ "FROM dishes as d join restaurant as r "
 						+ "on d.dish_rest_id = r.rest_id";
 				pstmt = connection.prepareStatement(sql);
 				rs = pstmt.executeQuery();
@@ -79,6 +81,11 @@ public class LoadStartupData {
 					dish.setDishHealth(rs.getString(12));
 					dish.setDishFullPrice(Float.parseFloat(String.format( "%.2f",rs.getFloat(13))));
 					dish.setDeliveryFee(rs.getInt(14));
+					dish.setRestaurantType(rs.getInt(15));
+					dish.setDcntPrice(Float.parseFloat(String.format( "%.2f",rs.getFloat(16))));
+					dish.setMrktFee(Float.parseFloat(String.format( "%.2f",rs.getFloat(17))));
+					dish.setDcntPoints(Float.parseFloat(String.format( "%.2f",rs.getFloat(18))));
+					dish.setMrktPoints(Float.parseFloat(String.format( "%.2f",rs.getFloat(19))));
 					
 					dishData.put(dishId, dish);
 				}

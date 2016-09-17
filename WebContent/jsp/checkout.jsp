@@ -67,9 +67,15 @@
 	
 	float bill = 0;
 	float priceBill = 0;
+	float dcntBill = 0;
+	float ptsDcntBill = 0;
+	double savings = 0;
+	float pointSavings = 0;
 	try{
 		bill = shoppingCart.getTotalBill();
 		priceBill = shoppingCart.getTotalPriceBill();
+		dcntBill = shoppingCart.getDiscountedBill();
+		ptsDcntBill = shoppingCart.getDiscountedPointsBill();
 	}catch(Exception e){
 		
 	}
@@ -192,14 +198,25 @@
 					<h3>Your order <i class="icon_cart_alt pull-right"></i></h3>
 					<table class="table table_summary">
 					<tbody id="shoppingCart">
-					<%  HashMap<Integer, String> items = shoppingCart.getCartItems();
-					HashMap<Integer, Float> cPrice = shoppingCart.getCartPrice();
+					<%  
+					 HashMap<Integer, String> items = shoppingCart.getCartItems();
+					 HashMap<Integer, Float> cPrice = shoppingCart.getCartPrice();
+					 
+					 HashMap<Integer, Float> dPrice = shoppingCart.getCartDcntPrice();
+					 HashMap<Integer, Float> dPoints = shoppingCart.getCartDcntPoints();
+					 
 					 int count = 0;
 					 int deliveryFee = 0;
 					 double finalBill = 0;
 					 double finalBillTax = 0;
 					 double finalPoints = 0;
 					 double totalBill = 0;
+					 double totalDcntBill = 0;
+					 
+					 double discountedPrice = 0;
+					 double discountedPoints = 0;
+					 double dcntTax = 0;
+					 
 					 HashMap<Integer,Integer> delivery = new HashMap();
 						for(Integer key: items.keySet()){
 							//out.println(key);
@@ -208,8 +225,9 @@
 								delivery.put(dish.getRestId(), dish.getDeliveryFee());
 								deliveryFee += dish.getDeliveryFee();
 							}
+				
 							//dish.getRestId();
-							//out.println("----------->"+shoppingCart.getDishExtra());
+							//out.println("-----EXTRA------>"+shoppingCart.getDishExtra());
 							//deliveryFee += dish.getDeliveryFee();
 							finalBill = priceBill + deliveryFee + shoppingCart.getDishExtra();
 							//out.print("finalBill -"+finalBill+"<br>");
@@ -220,8 +238,34 @@
 							totalBill = finalBill + finalBillTax;
 							//out.print("totalBill -"+totalBill+"<br>");
 							
-							finalPoints = totalBill/10;
+							discountedPrice = dcntBill + deliveryFee + shoppingCart.getDishExtra();
+							
+							dcntTax = discountedPrice * (0.08);
+							
+							totalDcntBill = discountedPrice + dcntTax;
 							//out.print("finalPoints -"+finalPoints+"<br>");
+							
+							//discountedPrice = dish.getDcntPrice();
+							//out.println(discountedPrice);
+							
+							//discountedPoints = dish.getDcntPoints();
+							//out.println(discountedPoints);
+							//out.print("type 1 -> finalPoints = "+savings+"<br>");
+							savings = totalBill - dcntBill;
+							//out.print("type 1 -> finalPoints = "+savings+"<br>");
+							
+							pointSavings = bill - ptsDcntBill;
+
+							if(dish.getRestaurantType() == 1){
+								finalPoints = ptsDcntBill + ( shoppingCart.getDishExtra() / 10 );
+								//out.print("type 1 -> finalPoints = "+finalPoints+" -- "+dcntBill+"<br>");
+								//out.print("type 1  = "+ptsDcntBill+" -- "+( shoppingCart.getDishExtra() / 10 )+"<br>");
+							}else{
+								finalPoints = bill + ( shoppingCart.getDishExtra() / 10 );
+								totalBill = totalDcntBill;
+								//out.print("type 1 -> totalBill = "+totalBill+" -- "+dcntBill+"<br>");
+								//out.print("type 1  = "+bill+" -- "+( shoppingCart.getDishExtra() / 10 )+"<br>");
+							}
 							
 							count++;%>
 					<tr>
@@ -235,16 +279,18 @@
 					<% 	} 
 						if(items.size() == 0){ %>
 							<tr><td>No items in cart</td></tr>
-						<% } %>				
+						<% }else{ %>	
+							<tr><td colspan=2>+ sides/options extra</td></tr>
+						<% } %>	
 					</tbody>
 					</table>
 					<hr>
 					<div class="row" id="options_2">
 						<div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
-							<label class="rdio"><input type="radio" value="points" checked name="checkoutType" class="icheck">Points</label>
+							<label class="rdio" style="margin-left: 11px;"><input type="radio" value="points" checked onclick="checkValue()" name="checkoutType"> Points</label>
 						</div>
 						<div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
-							<label class="rdio"><input type="radio" value="cash" name="checkoutType" class="icheck">Cash</label>
+							<label class="rdio"><input type="radio" value="cash" onclick="checkValue()" name="checkoutType"> Cash</label>
 						</div>
 					</div><!-- Edn options 2 -->
                     
@@ -252,21 +298,26 @@
                     <table class="table table_summary">
 					<tbody>
 					<tr>
-						<td>
+						<td class="points">
 							 Total Points <span class="pull-right" id="pointsBill"><%=bill %></span>
 						</td>
 					</tr>
 					<tr>
-						<td>
+						<td class="cash" style="display: none;">
 							 Cash Price <span class="pull-right" id="priceBill"><%=priceBill %></span>
 						</td>
 					</tr>
+<%-- 					<tr>
+						<td class="points">
+							You save points! <span class="pull-right" id="priceBill"><%=Float.parseFloat(String.format( "%.2f",pointSavings )) %>P</span>
+						</td>
+					</tr> --%>
 					</tbody>
 					</table>
 					<hr>
 					<table class="table table_summary">
 					<tbody>
- 					<tr>
+ 					<tr class="cash" style="display: none;">
 						<td>
 							 Delivery fee 
 						</td>
@@ -274,29 +325,38 @@
 							 <span class="pull-right">$<%=deliveryFee %></span>
 						</td>
 					</tr> 
-					<tr>
+					<tr class="cash" style="display: none;">
 					<td>Tax </td>
 					<td><span class="pull-right">$<%=String.format( "%.2f",finalBillTax) %></span></td>
 					</tr>
- 					<tr>
-						<td class="total">
-							 Total <span class="pull-right" id="finalBill"> $<%=Float.parseFloat(String.format( "%.2f",totalBill)) %></span>
+ 					<tr class="cash" style="display: none;">
+						<td class="total" >
+							 Total
 							 <input type="hidden" name="finalBill" value="<%=Float.parseFloat(String.format( "%.2f",totalBill))%>" />
 							 <input type="hidden" name="finalPoints" value="<%=Float.parseFloat(String.format( "%.2f",finalPoints))%>" />
 						</td>
+						<td class="total"><span class="pull-right" id="finalBill"> $<%=Float.parseFloat(String.format( "%.2f",totalBill)) %></span></td>
 					</tr> 
 					 <tr>
-						<td class="total">
-							 Total <span class="pull-right" id="finalPts"> <%=Float.parseFloat(String.format( "%.2f",finalPoints)) %>P</span>
+						<td class="total points">
+							 Total 
 						</td>
+						<td class="total points"><span class="pull-right" id="finalPts"> <%=Float.parseFloat(String.format( "%.2f",finalPoints)) %>P</span></td>
 					</tr>
 					</tbody>
+					</table>
+					<hr class="cash" style="display: none;">
+					<table class="table table_summary cash" style="display: none;">
+					<tr>
+					<td colspan="2" style="font-weight: bolder;">You can save upto <span style="font-weight: bolder;">$<%=Float.parseFloat(String.format( "%.2f",savings )) %></span> with a meal plan!</td>
+					<td><a class="btn_full_outline" href="mealPlans.jsp"> Buy a meal plan?</a></td>
+					</tr>
 					</table>
 					<hr>
 					<button onclick="checkTime();" type="submit" id="submit" name="submit"
 									class="btn_full">Deliver to this address</button>
 					<!-- <a class="btn_full" href="cart_step2.html">Go to Checkout</a> -->
-                    <a class="btn_full_outline" href="../jsp/orders.jsp"><i class="icon-right"></i> Add other items</a>
+                    <a class="btn_full_outline" href="orders.jsp"><i class="icon-right"></i> Add other items</a>
 				</div><!-- End cart_box -->
                 </div><!-- End theiaStickySidebar -->
 			</div><!-- End col-md-3 -->
@@ -437,8 +497,17 @@
     });
     
 
-
-    
+	function checkValue(){
+		var val = $('input[name=checkoutType]:checked').val();
+		
+		if(val == "cash"){
+			$(".points").hide();
+			$(".cash").show();
+		}else{
+			$(".points").show();
+			$(".cash").hide();
+		}
+	}    
     
 /*     $('input:radio').click(function() {
     	paymentMode = this.value;

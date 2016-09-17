@@ -26,6 +26,22 @@ public class PayPalDAO {
 		return dish.getDishPrice();
 	}
 	
+	public static float getDiscountedPointsBill(Integer dishId){
+		
+		StartupData sd = StartupData.getInstance();		
+		Dishes dish = sd.getDishDataById(dishId);
+		
+		return dish.getDcntPoints();
+	}
+	
+	public static float getDiscountedBill(Integer dishId){
+		
+		StartupData sd = StartupData.getInstance();		
+		Dishes dish = sd.getDishDataById(dishId);
+		
+		return dish.getDcntPrice();
+	}
+	
 	public static float getPriceBill(Integer dishId){
 		
 		StartupData sd = StartupData.getInstance();		

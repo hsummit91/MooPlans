@@ -20,6 +20,12 @@ public class Dishes {
 	private float dishFullPrice;
 	private int deliveryFee;
 	
+	private int restaurantType;
+	private float dcntPrice;
+	private float dcntPoints;
+	private float mrktFee;
+	private float mrktPoints;
+	
 	@Override
 	public String toString() {
 		return "Dishes [dishId=" + dishId + ", dishName=" + dishName
@@ -30,7 +36,10 @@ public class Dishes {
 				+ dishChoice + ", dishSides=" + dishSides + ", dishHealth="
 				+ dishHealth + ", rest_details=" + rest_details
 				+ ", dishFullPrice=" + dishFullPrice + ", deliveryFee="
-				+ deliveryFee + ", comments=" + comments + "]";
+				+ deliveryFee + ", restaurantType=" + restaurantType
+				+ ", dcntPrice=" + dcntPrice + ", dcntPoints=" + dcntPoints
+				+ ", mrktFee=" + mrktFee + ", mrktPoints=" + mrktPoints
+				+ ", comments=" + comments + "]";
 	}
 	private String comments;
 	
@@ -133,6 +142,36 @@ public class Dishes {
 	}
 	public void setDeliveryFee(int deliveryFee) {
 		this.deliveryFee = deliveryFee;
+	}
+	public int getRestaurantType() {
+		return restaurantType;
+	}
+	public void setRestaurantType(int restaurantType) {
+		this.restaurantType = restaurantType;
+	}
+	public float getDcntPrice() {
+		return dcntPrice;
+	}
+	public void setDcntPrice(float dcntPrice) {
+		this.dcntPrice = dcntPrice;
+	}
+	public float getDcntPoints() {
+		return dcntPoints;
+	}
+	public void setDcntPoints(float dcntPoints) {
+		this.dcntPoints = dcntPoints;
+	}
+	public float getMrktFee() {
+		return mrktFee;
+	}
+	public void setMrktFee(float mrktFee) {
+		this.mrktFee = mrktFee;
+	}
+	public float getMrktPoints() {
+		return mrktPoints;
+	}
+	public void setMrktPoints(float mrktPoints) {
+		this.mrktPoints = mrktPoints;
 	}
 	
 

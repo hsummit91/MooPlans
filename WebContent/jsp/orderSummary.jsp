@@ -304,7 +304,9 @@
 			</div>
 		</div>
 	</div><!-- End modal -->   
-<% items.clear();
+<% 
+	items.clear();
+	shoppingCart.setDishExtra(0);
 	session.setAttribute("message", "");
 %>
 <form action="${pageContext.request.contextPath}/Logout" id="logoutForm" method="post"></form>
