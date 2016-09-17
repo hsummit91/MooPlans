@@ -119,7 +119,7 @@ public class PayPalDAO {
 		return deductedPoints;
 	}
 
-	public static float addPoints(User user, String tx_id, int amount, String status){
+	public static float addPoints(User user, String tx_id, float amount, String status){
 
 		int txCompleted = 0;
 		float pointsAdded = 0;
@@ -131,7 +131,7 @@ public class PayPalDAO {
 			// Get points based on the amount from 
 			System.out.println("==========>amount=======>"+amount);
 			
-			String sql2 = "SELECT points FROM meal_plans where amount="+amount;
+			String sql2 = "SELECT points FROM meal_plans where amount like "+amount;
 			pstmt = connection.prepareStatement(sql2);
 			rs = pstmt.executeQuery();
 			if(rs.next()){

@@ -163,7 +163,7 @@
                 </div><!-- End col-md-4-->   
             
             <div class="col-md-3 col-sm-3" >
-                	<a class="strip_list grid" href="#0" data-toggle="modal" href="addPoints.jsp?pay=84" data-target="#package">
+                	<a class="strip_list grid" href="addPoints.jsp?pay=84" >
                     	<div class="ribbon_1">Popular</div>
                     	<div class="desc">
 							<div class="thumb_strip">
@@ -176,7 +176,7 @@
                 </div><!-- End col-md-6-->
                                
                                <div class="col-md-3 col-sm-3" >
-                	<a class="strip_list grid" href="#0" data-toggle="modal" href="addPoints.jsp?pay=108" data-target="#package">
+                	<a class="strip_list grid" href="addPoints.jsp?pay=108" data-target="#package">
                     	<div class="ribbon_1">Popular</div>
                     	<div class="desc">
 							<div class="thumb_strip">
@@ -189,7 +189,7 @@
             </div><!-- End row-->
         <div class="row">
      <div class="col-md-3 col-sm-3" >
-                	<a class="strip_list grid" href="#0" data-toggle="modal" href="addPoints.jsp?pay=132" data-target="#package">
+                	<a class="strip_list grid" href="addPoints.jsp?pay=132" data-target="#package">
                     	<div class="ribbon_1">Popular</div>
                     	<div class="desc">
 							<div class="thumb_strip">
@@ -202,7 +202,7 @@
                 </div><!-- End col-md-6-->
                                
                                <div class="col-md-3 col-sm-3" >
-                	<a class="strip_list grid" href="#0" data-toggle="modal" href="addPoints.jsp?pay=156" data-target="#package">
+                	<a class="strip_list grid" href="addPoints.jsp?pay=156" data-target="#package">
                     	<div class="ribbon_1">Popular</div>
                     	<div class="desc">
 							<div class="thumb_strip">
@@ -270,19 +270,19 @@
 						</div>
                     </a><!-- End strip_list-->
                 </div><!-- End col-md-6-->
-                               
-                               <div class="col-md-3 col-sm-3" >
+                
+                  <div class="col-md-3 col-sm-3" >
                 	<a class="strip_list grid" href="addPoints.jsp?pay=639" >
                     	<div class="ribbon_1">Popular</div>
                     	<div class="desc">
 							<div class="thumb_strip">
 								<img src="../img/639monthly.png" alt="">
 							</div>
-							
 						</div>
                     </a><!-- End strip_list-->
                 </div><!-- End col-md-6-->
             </div><!-- End row-->
+            
         <div class="row">
      <div class="col-md-3 col-sm-3" >
                 	<a class="strip_list grid" href="addPoints.jsp?pay=798" >

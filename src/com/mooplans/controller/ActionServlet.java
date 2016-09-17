@@ -114,7 +114,7 @@ public class ActionServlet extends HttpServlet {
 				session.setAttribute("message", "Your previous transaction was cancelled.");
 			}else{
 				final User user = (User)session.getAttribute("User");
-				final float points = PayPalDAO.addPoints(user, transactionId, (int)amount, status);
+				final float points = PayPalDAO.addPoints(user, transactionId, amount, status);
 				if(points>0){
 					
 					new Thread(new Runnable() {

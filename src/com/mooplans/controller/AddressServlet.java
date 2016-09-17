@@ -14,10 +14,12 @@ import javax.servlet.http.HttpSession;
 
 import com.mooplans.dao.EmailDAO;
 import com.mooplans.dao.PayPalDAO;
+import com.mooplans.dao.SMSTwillio;
 import com.mooplans.model.Cart;
 import com.mooplans.model.Dishes;
 import com.mooplans.model.Order;
 import com.mooplans.model.User;
+import com.twilio.sdk.TwilioRestException;
 import com.mooplans.dao.NotificationSystem;
 
 /**
@@ -67,7 +69,7 @@ public class AddressServlet extends HttpServlet {
 			url = "/login.jsp";
 		else user = (User) session.getAttribute("User");
 
-		
+
 		if(action.equalsIgnoreCase("currentAddress")){
 			name = user.getUser_firstname();
 			for(Integer key: items.keySet()){
@@ -79,18 +81,18 @@ public class AddressServlet extends HttpServlet {
 			checkout = request.getParameter("checkoutType");
 			finalBill = Float.parseFloat(request.getParameter("finalBill"));
 			finalPoints = Float.parseFloat(request.getParameter("finalPoints"));
-			
-			
+
+
 			user.setDelivery_time(time);
 			user.setUser_address(shippingAddress);
 		}
 
 		// Calling PayDAO to deduct User points based on his order and make entry in the order table(s)
-		
-		
+
+
 		float totalBill = 0;
-		
-/*		for(Integer key: items.keySet()){
+
+		/*		for(Integer key: items.keySet()){
 			System.out.println("Key"+items.get(key)+" value="+key);
 			// Get all Dish Points here and prepare Bill
 			if(checkout.equals("points")){
@@ -99,7 +101,7 @@ public class AddressServlet extends HttpServlet {
 				totalBill += PayPalDAO.getPriceBill(key);
 			}
 		}*/
-		
+
 		if(checkout.equals("points")){
 			totalBill = finalPoints; 
 		}else if(checkout.equals("cash")){
@@ -111,14 +113,21 @@ public class AddressServlet extends HttpServlet {
 		}else{
 			pointsDeducted = PayPalDAO.updateUserPoints(user, items, totalBill);
 		}
-			
+
 		if(pointsDeducted){
 			// Create the new order and update order table
 			int orderId = PayPalDAO.createOrder(user, items, notes, checkout, totalBill);
-			
+
 			url = "/jsp/orderSummary.jsp";
 			message = "Thank you for your purchase. Your Order #"+orderId;
-			
+
+			try{
+				SMSTwillio.sendSMS(user, orderId);
+			}catch(TwilioRestException e){
+				System.out.println("SMS NOT SENT with orderId: "+user.getUser_id()+" user_id: "+user.getUser_id()+" for number: "+user.getUser_phone());
+				e.printStackTrace();
+			}
+
 			session.setAttribute("deliveryTime", time);
 			session.setAttribute("deliveryAddress", shippingAddress);
 			session.setAttribute("paymentMode", checkout);
