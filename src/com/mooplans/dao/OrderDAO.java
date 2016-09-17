@@ -146,12 +146,12 @@ public class OrderDAO {
 				userDetails.put("notes", rs.getString(10));
 				userDetails.put("paymentMode", rs.getString(11));
 				
-				String sql2 = "select dish_name from dishes where dish_id in ("+rs.getString(5)+")";
+				String sql2 = "select dish_name, rest_name from dishes join restaurant on rest_id = dish_rest_id where dish_id in ("+rs.getString(5)+")";
 				pstmt = connection.prepareStatement(sql2);
 				ResultSet rs1 = pstmt.executeQuery();
 				ArrayList<String> dishes = new ArrayList<String>();
 				while(rs1.next()){
-					dishes.add(rs1.getString(1));
+					dishes.add(rs1.getString(1) + " - " + rs1.getString(2));
 				}
 				userDetails.put("orderItems", dishes);
 				userDetailsArr.put(userDetails);
