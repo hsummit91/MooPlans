@@ -161,6 +161,7 @@ public class EmailDAO {
 			float total = 0;
 			Dishes dishes;
 			HashMap<String, ArrayList<Dishes>> finalRestList = new HashMap<>();
+			HashMap<String, ArrayList<Dishes>> faxRestList = new HashMap<>();
 			/*
 			 * Creating new HashMap to Store the following
 			 * Key | Value
@@ -173,6 +174,7 @@ public class EmailDAO {
 				String dishNote = notes.get(key);
 				dishes = items.get(key);
 				String email = dishes.getRestEmail();
+				String fax = dishes.getRestFax();
 				dishes.setComments(dishNote);
 
 				if(finalRestList.containsKey(email)){
@@ -183,8 +185,17 @@ public class EmailDAO {
 					l2.add(dishes);
 					finalRestList.put(email, l2);
 				}
+				
+				if(faxRestList.containsKey(fax)){
+					ArrayList<Dishes> l3 = faxRestList.get(fax);
+					l3.add(dishes);
+				}else{
+					ArrayList<Dishes> l4 = new ArrayList<>();
+					l4.add(dishes);
+					faxRestList.put(fax, l4);
+				}
 			}
-
+			
 			for(String email : finalRestList.keySet()){
 				message =  new MimeMessage(session);
 				message.setFrom(new InternetAddress(username));
@@ -192,8 +203,9 @@ public class EmailDAO {
 
 				ArrayList<Dishes> itemList = finalRestList.get(email);
 				message.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
-
+				
 				for(Dishes dish : itemList){
+					
 					if(paymentMode.equals("points")){
 						total += dish.getDishPrice();
 						sbb.append("<tr><td>"+dish.getDishName()+"</td><td>"+dish.getDishPrice()+"</td></tr>");
@@ -221,6 +233,50 @@ public class EmailDAO {
 				total = 0;
 				System.out.println("Order details email sent to restaurant: "+email);
 			}
+			
+			// Sending same details for fax
+			
+			for(String fax : faxRestList.keySet()){
+				if(!fax.equals("") && fax.contains("@")){
+				message =  new MimeMessage(session);
+				message.setFrom(new InternetAddress(username));
+				StringBuilder sbb = new StringBuilder(INIT);
+
+				ArrayList<Dishes> itemList = faxRestList.get(fax);
+				message.addRecipient(Message.RecipientType.TO, new InternetAddress(fax));
+				
+				for(Dishes dish : itemList){
+					
+					if(paymentMode.equals("points")){
+						total += dish.getDishPrice();
+						sbb.append("<tr><td>"+dish.getDishName()+"</td><td>"+dish.getDishPrice()+"</td></tr>");
+					}else{
+						total += dish.getDishFullPrice();
+						sbb.append("<tr><td>"+dish.getDishName()+"</td><td>"+dish.getDishFullPrice()+"</td></tr>");
+					}
+					 
+					String cmnt = dish.getComments();
+					if(cmnt == null || cmnt.equals("")){
+						cmnt = "no comments";
+					}
+					sbb.append("<tr colspan=2><td>  <i>Comments: "+cmnt+"</i></td></tr>");
+				}
+				sbb.append("<tr><td>Total Price</td><td>"+total+"</td></tr>");
+				sbb.append("</tbody></table>");
+				sbb.append("<br><br>Payment Mode: <strong>" +paymentMode+"</strong>");
+				sbb.append("<br><br>Please delivery food at Address:<br>" +user.getUser_address());
+				sbb.append("<br>Phone: "+user.getUser_phone());
+
+				message.setContent("<img src = \"http://i68.tinypic.com/157dn46.png\"/>"+"<br><br>"+sbb.toString(), "text/html" );
+				message.setSubject("Moo Plans Order #"+orderId);
+				message.setSentDate(new Date());
+				Transport.send(message);
+				total = 0;
+				System.out.println("Order details fax sent to restaurant: "+fax);
+				}else
+					System.out.println("Order cannot be sent as fax number not found:"+fax+":check for empty or invalid fax");
+			}
+			
 		}catch (MessagingException e){ 
 			e.printStackTrace();
 		}

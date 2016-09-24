@@ -12,6 +12,7 @@ public class Dishes {
 	private String rest_name;
 	private String restEmail;
 	private String restPhone;
+	private String restFax;
 	private String dishDescription;
 	private String dishChoice;
 	private String dishSides;
@@ -26,21 +27,24 @@ public class Dishes {
 	private float mrktFee;
 	private float mrktPoints;
 	
+	
 	@Override
 	public String toString() {
 		return "Dishes [dishId=" + dishId + ", dishName=" + dishName
 				+ ", dishCategory=" + dishCategory + ", dishPrice=" + dishPrice
 				+ ", restId=" + restId + ", rest_name=" + rest_name
 				+ ", restEmail=" + restEmail + ", restPhone=" + restPhone
-				+ ", dishDescription=" + dishDescription + ", dishChoice="
-				+ dishChoice + ", dishSides=" + dishSides + ", dishHealth="
-				+ dishHealth + ", rest_details=" + rest_details
-				+ ", dishFullPrice=" + dishFullPrice + ", deliveryFee="
-				+ deliveryFee + ", restaurantType=" + restaurantType
-				+ ", dcntPrice=" + dcntPrice + ", dcntPoints=" + dcntPoints
-				+ ", mrktFee=" + mrktFee + ", mrktPoints=" + mrktPoints
-				+ ", comments=" + comments + "]";
+				+ ", restFax=" + restFax + ", dishDescription="
+				+ dishDescription + ", dishChoice=" + dishChoice
+				+ ", dishSides=" + dishSides + ", dishHealth=" + dishHealth
+				+ ", rest_details=" + rest_details + ", dishFullPrice="
+				+ dishFullPrice + ", deliveryFee=" + deliveryFee
+				+ ", restaurantType=" + restaurantType + ", dcntPrice="
+				+ dcntPrice + ", dcntPoints=" + dcntPoints + ", mrktFee="
+				+ mrktFee + ", mrktPoints=" + mrktPoints + ", comments="
+				+ comments + "]";
 	}
+	
 	private String comments;
 	
 	
@@ -172,6 +176,12 @@ public class Dishes {
 	}
 	public void setMrktPoints(float mrktPoints) {
 		this.mrktPoints = mrktPoints;
+	}
+	public String getRestFax() {
+		return restFax;
+	}
+	public void setRestFax(String restFax) {
+		this.restFax = restFax;
 	}
 	
 

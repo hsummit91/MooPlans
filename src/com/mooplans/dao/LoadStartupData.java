@@ -52,7 +52,7 @@ public class LoadStartupData {
 				String sql = "SELECT d.dish_id, d.dish_name, d.dish_price, d.dish_rest_id, r.rest_name, "
 						+ "d.dish_category, d.dish_description, d.dish_choice, r.rest_email, r.rest_phone, "
 						+ "d.dish_sides, d.dish_health, d.dish_full_price, r.rest_delivery_fee, "
-						+ "r.rest_type, d.discounted_price, d.marketing_fee, d.discounted_points, d.marketing_fee_points "
+						+ "r.rest_type, d.discounted_price, d.marketing_fee, d.discounted_points, d.marketing_fee_points, r.rest_fax "
 						+ "FROM dishes as d join restaurant as r "
 						+ "on d.dish_rest_id = r.rest_id";
 				pstmt = connection.prepareStatement(sql);
@@ -86,6 +86,7 @@ public class LoadStartupData {
 					dish.setMrktFee(Float.parseFloat(String.format( "%.2f",rs.getFloat(17))));
 					dish.setDcntPoints(Float.parseFloat(String.format( "%.2f",rs.getFloat(18))));
 					dish.setMrktPoints(Float.parseFloat(String.format( "%.2f",rs.getFloat(19))));
+					dish.setRestFax(rs.getString(20));
 					
 					dishData.put(dishId, dish);
 				}
