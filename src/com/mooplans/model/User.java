@@ -1,5 +1,7 @@
 package com.mooplans.model;
 
+import java.util.Date;
+
 public class User{
 
 	private static final long serialVersionUID = 1L;
@@ -8,6 +10,7 @@ public class User{
 	private String user_phone,user_university, user_address, user_role, user_image,user_message;
 	private int user_id;
 	private float user_points;
+	private Date orderTimestamp;
 	
 	public User(){
 		// Default constructor
@@ -120,6 +123,14 @@ public class User{
 	}
 	public void setUser_points(float user_points) {
 		this.user_points = user_points;
+	}
+
+	public Date getOrderTime() {
+		return orderTimestamp;
+	}
+
+	public void setOrderTime(Date orderTime) {
+		this.orderTimestamp = orderTime;
 	}
 	
 }
