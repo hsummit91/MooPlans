@@ -22,19 +22,25 @@ public class EmailDAO {
 
 		boolean emailSent = true;
 
-		Properties props = System.getProperties();
-		props.put("mail.smtp.starttls.enable", "true");
-		props.put("mail.smtp.port", "587");
-		props.put("mail.smtp.host", "m.outlook.com");
+		//final String username = "thecows@mooplans.com", password = "-1holbrook";
+		final String username = "mooplansorders@gmail.com", password = "-1holbrook";
+		
+		Properties props = new Properties();
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.socketFactory.port", "465");
+		props.put("mail.smtp.socketFactory.class",
+				"javax.net.ssl.SSLSocketFactory");
 		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.port", "465");
 
-		final String username = "thecows@mooplans.com", password = "-1holbrook";
-		try{
-			Session session = Session.getDefaultInstance(props, new Authenticator(){
+		Session session = Session.getDefaultInstance(props,
+			new javax.mail.Authenticator() {
 				protected PasswordAuthentication getPasswordAuthentication() {
 					return new PasswordAuthentication(username, password);
 				}
 			});
+
+		try {
 
 			MimeMessage message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(username));
@@ -86,20 +92,26 @@ public class EmailDAO {
 
 	public static void sendOrderMailUser(User user, HashMap<String, Float> items, int orderId, String paymentMode, float totalBill){
 
-		Properties props = System.getProperties();
-		props.put("mail.smtp.starttls.enable", "true");
-		props.put("mail.smtp.port", "587");
-		props.put("mail.smtp.host", "m.outlook.com");
+		//final String username = "thecows@mooplans.com", password = "-1holbrook";
+		final String username = "mooplansorders@gmail.com", password = "-1holbrook";
+		
+		Properties props = new Properties();
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.socketFactory.port", "465");
+		props.put("mail.smtp.socketFactory.class",
+				"javax.net.ssl.SSLSocketFactory");
 		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.port", "465");
 
-		final String username = "thecows@mooplans.com", password = "-1holbrook";
-		try{
-			Session session = Session.getDefaultInstance(props, new Authenticator(){
+		Session session = Session.getDefaultInstance(props,
+			new javax.mail.Authenticator() {
 				protected PasswordAuthentication getPasswordAuthentication() {
 					return new PasswordAuthentication(username, password);
 				}
 			});
 
+		try {
+		
 			MimeMessage message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(username));
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(user.getUser_email()));
@@ -140,19 +152,25 @@ public class EmailDAO {
 				+"<br>Order Summary:<br><br>"
 				+"<table><thead><tr><th>Food Item</th><th>Price</th></tr></thead><tbody>";
 
-		Properties props = System.getProperties();
-		props.put("mail.smtp.starttls.enable", "true");
-		props.put("mail.smtp.port", "587");
-		props.put("mail.smtp.host", "m.outlook.com");
+		//final String username = "thecows@mooplans.com", password = "-1holbrook";
+		final String username = "mooplansorders@gmail.com", password = "-1holbrook";
+		
+		Properties props = new Properties();
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.socketFactory.port", "465");
+		props.put("mail.smtp.socketFactory.class",
+				"javax.net.ssl.SSLSocketFactory");
 		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.port", "465");
 
-		final String username = "thecows@mooplans.com", password = "-1holbrook";
-		try{
-			Session session = Session.getDefaultInstance(props, new Authenticator(){
+		Session session = Session.getDefaultInstance(props,
+			new javax.mail.Authenticator() {
 				protected PasswordAuthentication getPasswordAuthentication() {
 					return new PasswordAuthentication(username, password);
 				}
 			});
+
+		try {
 
 			MimeMessage message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(username));

@@ -104,11 +104,11 @@ public class SMSTwillio extends TimerTask{
 			message.put("Body", testSMS);
 			factory.create(message);
 			
-			System.out.println("\nSMS sent to: "+eligiblePhone.get(0));
+			System.out.println("SMS sent to: "+eligiblePhone.get(0));
 			eligiblePhone.remove(0);
 			if(eligiblePhone.size() > 0)
 				smsList.remove(0);
-			System.out.println("\nCurrent SMS list size: "+smsList.size());
+			System.out.println("Current SMS list size: "+smsList.size());
 		}
 	}
 }
