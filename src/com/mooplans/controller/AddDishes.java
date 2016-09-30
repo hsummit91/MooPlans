@@ -66,7 +66,7 @@ public class AddDishes extends HttpServlet {
 		while (st2.hasMoreElements()) {
 
 			String catName = st2.nextElement().toString();
-			Integer allwd = Integer.parseInt(st2.nextElement().toString());
+			Integer allwd = Integer.parseInt(st2.nextElement().toString().trim());
 
 			StringBuilder sb = new StringBuilder();
 			sb.append("\ncategoryName : " + catName);
