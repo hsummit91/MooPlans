@@ -492,7 +492,7 @@
 		  	url: "./FetchData",
 		  	data: { action: "cartJson" }
 		}).done(function( msg ) {
-			console.log("===========>"+msg.length)
+			//console.log("===========>"+msg.length)
 			$("#shoppingCart").empty();
 			var text = "";
 			var txtBtn = "";

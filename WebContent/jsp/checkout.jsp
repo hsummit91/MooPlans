@@ -40,7 +40,24 @@
       <script src="js/html5shiv.min.js"></script>
       <script src="js/respond.min.js"></script>
     <![endif]-->
+<style type="text/css">
+.foo {
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  color: white;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, .2);
+}
 
+.green {
+  background: #67c03a;
+}
+</style>
 </head>
 
 <body>
@@ -270,7 +287,7 @@
 							count++;%>
 					<tr>
 						<td>
-							<a href="#0" class="remove_item deleteItem" dishId="<%=key %>"></a> <%= items.get(key)%> X <%= cQty.get(key)%>
+							<a href="#0" class="remove_item deleteItem" dishId="<%=key %>"></a> <%= items.get(key)%> X <span class="foo green" title="quantity"><%= cQty.get(key)%></span>
 						</td>
 						<td>
 							<strong class="pull-right"><%=cPrice.get(key) %>P</strong>
