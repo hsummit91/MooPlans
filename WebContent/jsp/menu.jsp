@@ -498,7 +498,7 @@
 			var txtBtn = "";
 			for(i=0;i<msg.length;i++){	
 				
-				text += '<tr><td><a href="#0" class="remove_item deleteItem" dishId="'+msg[i].dishId+'"><i class="icon_minus_alt"></i></a> '+msg[i].dishName+' X '+msg[i].qty+'</td>';
+				text += '<tr><td><a href="#0" class="remove_item deleteItem" dishId="'+msg[i].dishId+'"><i class="icon_minus_alt"></i></a> '+msg[i].dishName+' X <span class="foo green" title="quantity">'+msg[i].qty+'</span></td>';
 				text += '<td><strong class="pull-right">'+msg[i].dishPrice+'P</strong></td></tr>';
 				
 				//text += '<div class="col-md-12 thumbnail"><div class="col-md-6">'+msg[i].dishName+'</div><div class="col-md-6"><button class="btn btn-primary deleteItem" dishId="'+msg[i].dishId+'">X</button></div></div>';
