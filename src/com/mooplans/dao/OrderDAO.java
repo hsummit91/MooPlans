@@ -9,13 +9,16 @@ import static com.mooplans.dao.DBConnection.rs;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.mooplans.model.Dishes;
 import com.mooplans.model.Order;
 import com.mooplans.model.OrderItems;
+import com.mooplans.model.StartupData;
 import com.mooplans.model.User;
 
 import static com.mooplans.dao.LoginDAO.*;
@@ -125,6 +128,7 @@ public class OrderDAO {
 	
 	public static JSONArray getAllOrders(){
 		JSONArray userDetailsArr = new JSONArray();
+		HashMap<Integer, Dishes> dishData = StartupData.getInstance().getDishData();
 		try{
 			getConnection();
 			String sql = "SELECT order_id, order_total, order_deliverat, order_date, order_ids, order_user_id, "
@@ -146,13 +150,25 @@ public class OrderDAO {
 				userDetails.put("notes", rs.getString(10));
 				userDetails.put("paymentMode", rs.getString(11));
 				
-				String sql2 = "select dish_name, rest_name from dishes join restaurant on rest_id = dish_rest_id where dish_id in ("+rs.getString(5)+")";
+				String dishIds = rs.getString(5);
+				String[] dishArr = dishIds.split(",");
+				System.out.println("--dishID--"+dishIds);
+				ArrayList<String> dishes = new ArrayList<String>();
+				
+				for(int i=0;i<dishArr.length;i++){
+					Dishes d = dishData.get(Integer.parseInt(dishArr[i]));
+					//System.out.println(d);
+					
+					dishes.add(d.getDishName() +" - "+d.getRest_name() );
+				}
+				
+				/*String sql2 = "select dish_name, rest_name from dishes join restaurant on rest_id = dish_rest_id where dish_id in ("+rs.getString(5)+")";
 				pstmt = connection.prepareStatement(sql2);
 				ResultSet rs1 = pstmt.executeQuery();
 				ArrayList<String> dishes = new ArrayList<String>();
 				while(rs1.next()){
 					dishes.add(rs1.getString(1) + " - " + rs1.getString(2));
-				}
+				}*/
 				userDetails.put("orderItems", dishes);
 				userDetailsArr.put(userDetails);
 			}

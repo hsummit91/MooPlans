@@ -58,6 +58,7 @@ public class Cart {
 				cartObject.put("dishName", cartItems.get(key));
 				cartObject.put("dishPrice", cartPrice.get(key));
 				cartObject.put("dishFullPrice", cartFullPrice.get(key));
+				cartObject.put("qty", cartQty.get(key));
 				cartArray.put(cartObject);
 			} catch (JSONException e) {
 				e.printStackTrace();
@@ -86,14 +87,15 @@ public class Cart {
         return cartFullPrice;
     }
     public void addToCart(int id, String itemName, String notes, float dishPrice, float dishFullPrice, float dishExtra){
-/*    	if(cartItems.containsKey(id)){
+    	if(cartItems.containsKey(id)){
     		int newQty = cartQty.get(id);
+    		System.out.println("-OLD qty-"+newQty);
     		newQty++;
     		cartQty.put(id, newQty);
     		System.out.println("-qty-"+newQty);
-    	}else{*/
+    	}else{
 	        cartItems.put(id, itemName);
-	        cartNotes.put(id, notes);
+	        cartNotes.put(id, itemName+":["+notes+"]");
 	        cartFullPrice.put(id, dishFullPrice);
 	        cartPrice.put(id,dishPrice);
 	        cartDcntPrice.put(id,dishData.get(id).getDcntPrice());
@@ -101,7 +103,7 @@ public class Cart {
 	        
 	        cartQty.put(id,qty);
 	        this.dishExtra += dishExtra;
- //   	}
+    	}
         
 /*        JSONObject item = new JSONObject();
         try {
@@ -122,22 +124,22 @@ public class Cart {
     
     public void deleteFromCart(int itemId){
     	
-/*    	int qty = cartQty.get(itemId);
+    	int qty = cartQty.get(itemId);
     	if(qty > 1){
     		qty--;
     		cartQty.put(itemId, qty);
-    	}else{*/
+    	}else{
             cartItems.remove(itemId);
             cartNotes.remove(itemId);
             cartPrice.remove(itemId);
             cartFullPrice.remove(itemId);	
- //   	}
+    	}
     }
 	public float getTotalBill() {		
 		float totalBill = 0;
 		for(Integer key: cartItems.keySet()){
 			System.out.println(key +" ---- "+PayPalDAO.getBill(key));
-			totalBill += Float.parseFloat(String.format( "%.2f",PayPalDAO.getBill(key)));
+			totalBill += Float.parseFloat(String.format( "%.2f",PayPalDAO.getBill(key))) * cartQty.get(key);
 		}
 		System.out.println("====getTotalBill====>"+totalBill);
 		return totalBill;
@@ -147,7 +149,7 @@ public class Cart {
 		float totalBill = 0;
 		for(Integer key: cartItems.keySet()){
 			System.out.println(key +" ---- "+PayPalDAO.getDiscountedPointsBill(key));
-			totalBill += Float.parseFloat(String.format( "%.2f",PayPalDAO.getDiscountedPointsBill(key)));
+			totalBill += Float.parseFloat(String.format( "%.2f",PayPalDAO.getDiscountedPointsBill(key))) * cartQty.get(key);
 		}
 		System.out.println("====getDiscountedPointsBill====>"+totalBill);
 		return totalBill;
@@ -157,7 +159,7 @@ public class Cart {
 		float totalBill = 0;
 		for(Integer key: cartItems.keySet()){
 			System.out.println(key +" ---- "+PayPalDAO.getDiscountedBill(key));
-			totalBill += Float.parseFloat(String.format( "%.2f",PayPalDAO.getDiscountedBill(key)));
+			totalBill += Float.parseFloat(String.format( "%.2f",PayPalDAO.getDiscountedBill(key))) * cartQty.get(key);
 		}
 		System.out.println("====getDiscountedBill====>"+totalBill);
 		return totalBill;
@@ -167,7 +169,7 @@ public class Cart {
 		float totalBill = 0;
 		for(Integer key: cartItems.keySet()){
 			System.out.println(key +" ---- "+PayPalDAO.getPriceBill(key));
-			totalBill += Float.parseFloat(String.format( "%.2f",PayPalDAO.getPriceBill(key)));
+			totalBill += Float.parseFloat(String.format( "%.2f",PayPalDAO.getPriceBill(key))) * cartQty.get(key);
 		}
 		System.out.println("====getTotalPriceBill====>"+totalBill);
 		return totalBill;
@@ -203,5 +205,13 @@ public class Cart {
 
 	public void setCartFullPrice(HashMap<Integer, Float> cartFullPrice) {
 		this.cartFullPrice = cartFullPrice;
+	}
+
+	public HashMap<Integer, Integer> getCartQty() {
+		return cartQty;
+	}
+
+	public void setCartQty(HashMap<Integer, Integer> cartQty) {
+		this.cartQty = cartQty;
 	}    
 }

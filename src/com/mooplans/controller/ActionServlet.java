@@ -94,6 +94,7 @@ public class ActionServlet extends HttpServlet {
 
 				//ArrayList<Dishes> menuList = new ArrayList<Dishes>();
 				JSONArray menuList = DishDAO.getDishDetails(restId, mealPref, mealType);	
+				response.setCharacterEncoding("UTF-8");
 				response.setContentType("application/json");
 				out.write(menuList+"");	
 			}else if(action.equalsIgnoreCase("getFeaturedDishes")){

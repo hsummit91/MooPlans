@@ -254,15 +254,17 @@
 					<table class="table table_summary">
 					<tbody id="shoppingCart">
 					<%  HashMap<Integer, String> items = shoppingCart.getCartItems();
-					HashMap<Integer, String> notes = shoppingCart.getCartNotes();
+						HashMap<Integer, String> notes = shoppingCart.getCartNotes();
                 		HashMap<Integer, Float> cPrice = shoppingCart.getCartPrice();
-                		   HashMap<Integer, Float> cFPrice = shoppingCart.getCartFullPrice();
+                		HashMap<Integer, Float> cFPrice = shoppingCart.getCartFullPrice();
+                		HashMap<Integer, Integer> cartQty = shoppingCart.getCartQty();
+                		   
 					 int count = 0;
 						for(Integer key: items.keySet()){
 							count++;%>
 					<tr>
 						<td>
-							<a href="#0" class="remove_item deleteItem" dishId="<%=key %>"><i class="icon_minus_alt"></i></a> <%= items.get(key)%>
+							<a href="#0" class="remove_item deleteItem" dishId="<%=key %>"><i class="icon_minus_alt"></i></a> <%= items.get(key)%> X <%= cartQty.get(key)%>
 						</td>
 						<td>
 							<strong class="pull-right"><%=cPrice.get(key) %>P</strong>
@@ -479,7 +481,7 @@
 			var txtBtn = "";
 			for(i=0;i<msg.length;i++){	
 				
-				text += '<tr><td><a href="#0" class="remove_item deleteItem" dishId="'+msg[i].dishId+'"><i class="icon_minus_alt"></i></a> '+msg[i].dishName+'</td>';
+				text += '<tr><td><a href="#0" class="remove_item deleteItem" dishId="'+msg[i].dishId+'"><i class="icon_minus_alt"></i></a> '+msg[i].dishName+' X '+msg[i].qty+'</td>';
 				text += '<td><strong class="pull-right">'+msg[i].dishPrice+'P</strong></td></tr>';
 				
 				//text += '<div class="col-md-12 thumbnail"><div class="col-md-6">'+msg[i].dishName+'</div><div class="col-md-6"><button class="btn btn-primary deleteItem" dishId="'+msg[i].dishId+'">X</button></div></div>';
@@ -596,13 +598,19 @@
 							text += "<h4>"+choiceArray[i].categoryName+" (choose "+allowed+")</h5>";
 							for(j=0;j<choiceArray[i].categoryData.length;j++){
 								
-								if(choiceArray[i].allowed == 1){
-									text +=	'<input type="radio" name="'+choiceArray[i].categoryName+'" sType="'+choiceArray[i].categoryData[j].type+'" value="'+choiceArray[i].categoryData[j].price+'"> '+choiceArray[i].categoryData[j].type+' - $'+choiceArray[i].categoryData[j].price+' <br>'
-								}else{
-									text +=	'<input type="checkbox" name="'+choiceArray[i].categoryName+'" sType="'+choiceArray[i].categoryData[j].type+'" value="'+choiceArray[i].categoryData[j].price+'"> '+choiceArray[i].categoryData[j].type+' - $'+choiceArray[i].categoryData[j].price+' <br>'
+								var sidesPrice = choiceArray[i].categoryData[j].price;
+								
+								if(sidesPrice == "" || sidesPrice == null || sidesPrice == undefined){
+									sidesPrice = 0;
 								}
 								
-								console.log(choiceArray[i].categoryData[j].type +" -- "+choiceArray[i].categoryData[j].price);
+								if(choiceArray[i].allowed == 1){
+									text +=	'<input type="radio" name="'+choiceArray[i].categoryName+'" sType="'+choiceArray[i].categoryData[j].type+'" value="'+sidesPrice+'"> '+choiceArray[i].categoryData[j].type+' - $'+sidesPrice+' <br>'
+								}else{
+									text +=	'<input type="checkbox" name="'+choiceArray[i].categoryName+'" sType="'+choiceArray[i].categoryData[j].type+'" value="'+sidesPrice+'"> '+choiceArray[i].categoryData[j].type+' - $'+sidesPrice+' <br>'
+								}
+								
+								console.log(choiceArray[i].categoryData[j].type +" -- "+sidesPrice);
 							}
 							console.log("================");
 						}

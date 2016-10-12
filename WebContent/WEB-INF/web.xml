@@ -25,4 +25,7 @@
     <servlet-class>com.mooplans.controller.StartupServlet</servlet-class>
     <load-on-startup>7</load-on-startup>
   </servlet>
+   <error-page>
+        <location>/general-error.html</location>
+    </error-page>
 </web-app>

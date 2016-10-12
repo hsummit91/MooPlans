@@ -55,6 +55,7 @@ public class AddressServlet extends HttpServlet {
 		shoppingCart = (Cart) session.getAttribute("cart");
 		HashMap<Integer, String> items = shoppingCart.getCartItems();
 		HashMap<Integer, String> notes = shoppingCart.getCartNotes();
+		HashMap<Integer, Integer> cQty = shoppingCart.getCartQty();
 		String name = null;
 		String shippingAddress = null;
 		String phone = null;
@@ -116,7 +117,7 @@ public class AddressServlet extends HttpServlet {
 
 		if(pointsDeducted){
 			// Create the new order and update order table
-			int orderId = PayPalDAO.createOrder(user, items, notes, checkout, totalBill);
+			int orderId = PayPalDAO.createOrder(user, items, notes, checkout, totalBill, cQty);
 
 			url = "/jsp/orderSummary.jsp";
 			message = "Thank you for your purchase. Your Order #"+orderId;

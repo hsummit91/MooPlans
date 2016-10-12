@@ -8,6 +8,9 @@ import static com.mooplans.dao.DBConnection.rs;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -45,7 +48,7 @@ public class DishDAO {
 		
 		try{
 			getConnection();
-			String sql = "SELECT rest_name,rest_id,rest_health,rest_meal_type,rest_delivery_fee"
+			String sql = "SELECT rest_name,rest_id,rest_health,rest_meal_type,rest_delivery_fee,rest_image"
 						+ " FROM restaurant"
 						+ " WHERE ";
 			
@@ -94,7 +97,22 @@ public class DishDAO {
 				sql += ") ";
 			}
 			
-			sql += "AND restaurant.rest_status <> 0";
+			Date date = new Date();   // given date
+			Calendar calendar = GregorianCalendar.getInstance(); // creates a new calendar instance
+			calendar.setTime(date);   // assigns calendar to given date 
+			
+			int hour = calendar.get(Calendar.HOUR_OF_DAY);
+			if(hour == 0 || hour == 00){
+				hour = 24;
+			}else if(hour == 1 || hour == 01){
+				hour = 25;
+			}else if(hour == 2 || hour == 02){
+				hour = 26;
+			}
+			
+			String currentHours =  hour + "." + calendar.get(Calendar.MINUTE); // gets hour in 24h format
+			
+			sql += "AND restaurant.rest_status <> 0 AND restaurant.open_hours <= "+currentHours+" AND restaurant.close_hours >= "+currentHours;
 			
 			System.out.println("==>"+sql+"<==");
 			
@@ -111,6 +129,7 @@ public class DishDAO {
 					rest.put("restHealth", rs.getString(3));
 					rest.put("restMealType", rs.getString(4));
 					rest.put("deliveryFee", rs.getString(5));
+					rest.put("restImage", rs.getString(6));
 					restDetails.put(rest);					
 				}catch(Exception e){
 					
@@ -131,7 +150,7 @@ public class DishDAO {
 		try{
 			getConnection();
 			String sql = "SELECT dish_name, dish_category, dish_price, dish_id, dish_health, "
-					+ "dish_description, dish_sides, dish_full_price, dish_rest_id, dish_pic_url"
+					+ "dish_description, dish_sides, dish_full_price, dish_rest_id, dish_pic_url, discounted_points, discounted_price"
 					+ " FROM dishes WHERE ";
 			
 			String[] mpArray = mealPref.split(",");
@@ -204,6 +223,8 @@ public class DishDAO {
 					dishFilter.put("dishFullPrice", String.format( "%.2f",rs.getFloat(8)));
 					dishFilter.put("restaurantId", rs.getInt(9));
 					dishFilter.put("dishImage", rs.getString(10));
+					dishFilter.put("discountedPoints", String.format( "%.2f",rs.getFloat(11)));
+					dishFilter.put("discountedPrice", String.format( "%.2f",rs.getFloat(12)));
 					menuFilter.put(dishFilter);					
 				}catch(Exception e){
  

@@ -57,14 +57,18 @@ public class PayPalDAO {
 
 	}
 
-	public static int createOrder(User user, HashMap<Integer, String> items, HashMap<Integer, String> notes, String paymentMode, float totalBill){
+	public static int createOrder(User user, HashMap<Integer, String> items, HashMap<Integer, String> notes, String paymentMode, float totalBill, HashMap<Integer, Integer> cQty){
 
 		int orderId = 0;
 		StringBuilder sb = new StringBuilder();
 		StringBuilder sb2 = new StringBuilder();
 		for(Integer key: items.keySet()){
 			// Get all Dish Points here and prepare Bill
-			sb.append(Integer.toString(key)).append(",");
+			int qty = cQty.get(key);
+			System.out.println("@@@@@@@@@@@@ QTY @@@@@@@@@@@@@ "+qty);
+			for(int i=0;i<qty;i++){
+				sb.append(Integer.toString(key)).append(",");
+			}
 			sb2.append(notes.get(key)).append("##");
 		}
 		try{

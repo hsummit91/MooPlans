@@ -65,12 +65,11 @@
 		}
 	}
 	
-	float bill = 0;
+	float bill = 0; // points og
 	float priceBill = 0;
 	float dcntBill = 0;
 	float ptsDcntBill = 0;
 	double savings = 0;
-	float pointSavings = 0;
 	try{
 		bill = shoppingCart.getTotalBill();
 		priceBill = shoppingCart.getTotalPriceBill();
@@ -184,7 +183,7 @@
 						<div class="col-md-6 col-sm-6">
 							<div class="form-group">
 								<label>Delivery time</label>
-									<input id="basicExample" required onkeydown="return false" name="time" class="time ui-timepicker-input form-control" type="text" autocomplete="off">
+									<input id="basicExample" required name="time" class="time ui-timepicker-input form-control" type="text" autocomplete="off">
 							</div>
 						</div>
 					</div>
@@ -204,6 +203,8 @@
 					 
 					 HashMap<Integer, Float> dPrice = shoppingCart.getCartDcntPrice();
 					 HashMap<Integer, Float> dPoints = shoppingCart.getCartDcntPoints();
+					 
+					 HashMap<Integer, Integer> cQty = shoppingCart.getCartQty();
 					 
 					 int count = 0;
 					 int deliveryFee = 0;
@@ -229,8 +230,8 @@
 							//dish.getRestId();
 							//out.println("-----EXTRA------>"+shoppingCart.getDishExtra());
 							//deliveryFee += dish.getDeliveryFee();
-							finalBill = priceBill + deliveryFee + shoppingCart.getDishExtra();
-							//out.print("finalBill -"+finalBill+"<br>");
+							finalBill = (priceBill + deliveryFee + shoppingCart.getDishExtra());
+							//out.print("finalBill ="+finalBill+"<br>");
 							
 							finalBillTax = finalBill * (0.08);
 							//out.print("billtax -"+finalBillTax+"<br>");
@@ -238,23 +239,22 @@
 							totalBill = finalBill + finalBillTax;
 							//out.print("totalBill -"+totalBill+"<br>");
 							
-							discountedPrice = dcntBill + deliveryFee + shoppingCart.getDishExtra();
+							discountedPrice = (dcntBill + deliveryFee + shoppingCart.getDishExtra());
+							//out.print("discountedPrice -"+discountedPrice+"<br>");
 							
 							dcntTax = discountedPrice * (0.08);
 							
 							totalDcntBill = discountedPrice + dcntTax;
-							//out.print("finalPoints -"+finalPoints+"<br>");
+							//out.print("totalDcntBill -"+totalDcntBill+"<br>");
 							
 							//discountedPrice = dish.getDcntPrice();
 							//out.println(discountedPrice);
 							
 							//discountedPoints = dish.getDcntPoints();
 							//out.println(discountedPoints);
+							//out.print("type 1 -> totalBill = "+totalBill+"<br>");
+							savings = totalBill - discountedPrice;
 							//out.print("type 1 -> finalPoints = "+savings+"<br>");
-							savings = totalBill - dcntBill;
-							//out.print("type 1 -> finalPoints = "+savings+"<br>");
-							
-							pointSavings = bill - ptsDcntBill;
 
 							if(dish.getRestaurantType() == 1){
 								finalPoints = ptsDcntBill + ( shoppingCart.getDishExtra() / 10 );
@@ -270,7 +270,7 @@
 							count++;%>
 					<tr>
 						<td>
-							<a href="#0" class="remove_item deleteItem" dishId="<%=key %>"></a> <%= items.get(key)%>
+							<a href="#0" class="remove_item deleteItem" dishId="<%=key %>"></a> <%= items.get(key)%> X <%= cQty.get(key)%>
 						</td>
 						<td>
 							<strong class="pull-right"><%=cPrice.get(key) %>P</strong>
@@ -494,6 +494,8 @@
             prefix: "$ ",
             grid: true
         });
+        
+        $("#basicExample").val("ASAP (within 40 minutes from "+getCurrentTime()+")");
     });
     
 
@@ -536,6 +538,13 @@
     });
 
        /* $('#timepicker1').timepicker('minuteStep','30'); */
+       
+       function getCurrentTime(){
+    	   var date = new Date();
+    	   var hours = date.getHours();
+    	   var mins = date.getMinutes();
+    	   return hours+":"+mins;
+       }
        
        function getTime(){
     	   var date = new Date();

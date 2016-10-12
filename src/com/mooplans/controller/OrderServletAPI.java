@@ -53,6 +53,7 @@ public class OrderServletAPI extends HttpServlet {
 		
 		HashMap<Integer, String> items = new HashMap<Integer, String>();		
 		HashMap<Integer, String> notes = new HashMap<Integer, String>();
+		HashMap<Integer, Integer> cQty = new HashMap<Integer, Integer>();
 		
 		String shoppingCart = null;
 		String name = null;
@@ -85,6 +86,7 @@ public class OrderServletAPI extends HttpServlet {
 				        
 				        items.put(id, item);
 				        notes.put(id, note);
+				        cQty.put(id, 1);
 				    }
 					
 				}
@@ -142,7 +144,7 @@ public class OrderServletAPI extends HttpServlet {
 		int success = 0;
 		if(pointsDeducted){
 			// Create the new order and update order table
-			int orderId = PayPalDAO.createOrder(user, items, notes, checkout, totalBill);
+			int orderId = PayPalDAO.createOrder(user, items, notes, checkout, totalBill, cQty);
 			
 			message = "Thank you for your purchase. Your Order #"+orderId;
 			success = 1;

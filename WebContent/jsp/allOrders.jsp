@@ -50,6 +50,8 @@ $(document).ready(function() {
 		    		
 		    		var orders = "";
 		    		
+		    		console.log(msg[i].orderItems)
+		    		
 		    		for(j=0;j<msg[i].orderItems.length;j++){
 		    			orders += "<li>" + msg[i].orderItems[j] + "</li>";
 		    		}

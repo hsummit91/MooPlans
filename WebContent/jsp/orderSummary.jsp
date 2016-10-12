@@ -114,6 +114,7 @@
 		HashMap<Integer, String> items = shoppingCart.getCartItems();
 		HashMap<Integer, Float> cartPrice = shoppingCart.getCartPrice();
 		HashMap<Integer, Float> cartFullPrice = shoppingCart.getCartFullPrice();
+		HashMap<Integer, Integer> cQty = shoppingCart.getCartQty();
 	%>
 
 
@@ -181,7 +182,7 @@
 			%>
 				<tr>
 					<td>
-						 <%=items.get(key)%>
+						 <%=items.get(key)%> X <%=cQty.get(key)%>
 					</td>
 					<td>
 						 <strong class="pull-right"><%=price%></strong>
