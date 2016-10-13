@@ -147,7 +147,8 @@ public class Login extends HttpServlet {
 				loginArray.put("userEmail", emailId);
 				loginArray.put("userId", ID);
 				loginArray.put("Error", errorMsg);
-				loginArray.put("isError", isError);
+				loginArray.put("isError", true);
+				//loginArray.put("isError", isError);
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
