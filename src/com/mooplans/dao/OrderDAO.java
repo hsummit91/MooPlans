@@ -152,7 +152,7 @@ public class OrderDAO {
 				
 				String dishIds = rs.getString(5);
 				String[] dishArr = dishIds.split(",");
-				System.out.println("--dishID--"+dishIds);
+				//System.out.println("--dishID--"+dishIds);
 				ArrayList<String> dishes = new ArrayList<String>();
 				
 				for(int i=0;i<dishArr.length;i++){
