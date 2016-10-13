@@ -83,10 +83,11 @@ public class OrderServletAPI extends HttpServlet {
 				        int id = (int) cartObject.get("id");
 				        String item = (String) cartObject.get("item");
 				        String note = (String) cartObject.get("notes");
+				        int qty = (int) cartObject.get("qty");
 				        
 				        items.put(id, item);
 				        notes.put(id, note);
-				        cQty.put(id, 1);
+				        cQty.put(id, qty);
 				    }
 					
 				}
