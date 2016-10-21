@@ -255,7 +255,7 @@ public class EmailDAO {
 			// Sending same details for fax
 			
 			for(String fax : faxRestList.keySet()){
-				if(!fax.equals("") && fax.contains("@")){
+				if(!fax.equals("na")){
 				message =  new MimeMessage(session);
 				message.setFrom(new InternetAddress(username));
 				StringBuilder sbb = new StringBuilder(INIT);

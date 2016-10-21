@@ -64,7 +64,7 @@ public class NotificationSystem implements Runnable{
 					try{
 						dishNotesMap.put(Integer.parseInt(splittedStr[i]), notesStr[i]);
 					}catch(Exception e){
-						
+						//e.printStackTrace();
 					}
 				}
 			
