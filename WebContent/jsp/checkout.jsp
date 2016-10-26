@@ -512,7 +512,7 @@
             grid: true
         });
         
-        $("#basicExample").val("ASAP (within 40 minutes from "+getCurrentTime()+")");
+        $("#basicExample").val("ASAP (within 45-60 minutes from "+getCurrentTime()+")");
     });
     
 
