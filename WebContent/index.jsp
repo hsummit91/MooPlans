@@ -116,13 +116,12 @@
             </p>
             <hr>
          	<p>
-                "<strong>The Good News:</strong> Chipotle loves what we're doing and want's to put us through the official channels for offering delivery with a student discount!
+                <strong> Watch us take over the world! </strong>
             </p>
-            <p>
-            	<strong>The Bad News:</strong> We have to shut down Chipotle delivery for a few weeks. Sorry!" 
-            </p>  
-            <p>
-            	<strong>Don't think that the Moo Plans Chipotle food will be gone though. We're going to be giving away a whole bunch of free Chipotle food!</strong>
+            <p>Follow us on &nbsp;
+                <a target="_blank" href="https://www.facebook.com/mooplans/"><i class="icon-facebook" style="font-size:xx-large; border: 0.5px solid;"></i></a>
+                <a target="_blank" href="https://www.twitter.com/mooplans"><i class="icon-twitter" style="font-size:xx-large; border: 0.5px solid;"></i></a>
+                <a target="_blank" href="https://www.instagram.com/mooplans"><i class="icon-instagram" style="font-size:xx-large; border: 0.5px solid;"></i></a>
             </p>
             <hr>
             <a class="btn_1" data-toggle="modal" data-target="#login_2">Order Now </a>
@@ -164,7 +163,7 @@
             <p>
 				 Enjoy your yummy meals and enjoy rewards in terms of free meals.
 			</p>
-            <a href="#"><img src="img/app_store.png" alt="" class="img-responsive" style="height:70%;"></a>
+            <a href="https://itunes.apple.com/us/app/moo-plan-food/id1148839612" target="_blank"><img src="img/app_store.png" alt="" class="img-responsive" style="height:70%;"></a>
             
 		</div>
 		<div class="col-md-7 col-md-offset-1 text-right">
@@ -266,7 +265,7 @@
                     <span>2</span>
                     <h3 style="font-weight:bold; color:#e84b60;">Choose a restaurant</h3>
                     <p>
-                        We have more than 1000s of menus online.
+                        Even resturants that don't normally deliver!
                     </p>
                 </div>
             </div>
@@ -291,7 +290,7 @@
         </div><!-- End row -->
         
         <div id="delivery_time" class="hidden-xs">
-            <strong><span>2</span><span>2</span></strong>
+            <strong><span>4</span><span>5</span></strong>
             <h4 style="font-weight:bold; color:#e84b60;">The minutes that usually takes to deliver!</h4>
         </div>
         </div><!-- End container -->
@@ -302,7 +301,7 @@
             <img src="img/logo_m.png" />
             <h3 style=" font-weight:bold;">We also deliver it with care</h3>
             <h4 style=" color:#ffffff;">
-                Student life can open up a whole new world of friends and experiences. Life gets busy. We created Moo Plans so you can have a lifestyle and a life with heavenly food at your place.. So you can eat well and still have time for the things you love like hanging with friends and family. Check out our menu, select an option that suits you and we’ll get it right over to you, hot and ready to eat.
+                Student life can open up a whole new world of friends and experiences. Life gets busy. We created Moo Plans so you can have a lifestyle and a life with heavenly food at your place. So you can eat well and still have time for the things you love like hanging with friends and family. Check out our menu, select an option that suits you and we’ll get it right over to you, hot and ready to eat.
             </h4>
         </div><!-- End sub_content -->
     </div><!-- End subheader -->
@@ -312,7 +311,7 @@
     <div class="container margin_60">
         
         <div class="main_title">
-           <h2 class="nomargin_top">Choose from pakages</h2>
+           <h2 class="nomargin_top">Choose from packages</h2>
             
         </div>
         
@@ -389,7 +388,7 @@
         
        <div class="high_light">
       	<div class="container">
-      		<h3>Choose from over 3,000 Restaurants</h3>
+      		<h3>Choose from over 30 Restaurants</h3>
             <p>Individually cooked meals from local chefs</p>
             <a href="#">View all Restaurants</a>
         </div><!-- End container -->
@@ -453,10 +452,10 @@
             <div class="col-md-12">
                 <div id="social_footer">
                     <ul>
-                        <li><a href="www.facebook.com/mooplans"><i class="icon-facebook"></i></a></li>
-                        <li><a href="www.twitter.com/mooplans"><i class="icon-twitter"></i></a></li>
+                        <li><a target="_blank" href="https://www.facebook.com/mooplans/"><i class="icon-facebook"></i></a></li>
+                        <li><a target="_blank" href="https://www.twitter.com/mooplans"><i class="icon-twitter"></i></a></li>
                       
-                        <li><a href="www.instagram.com/mooplans"><i class="icon-instagram"></i></a></li>
+                        <li><a target="_blank" href="https://www.instagram.com/mooplans"><i class="icon-instagram"></i></a></li>
                         
                     </ul>
                     <p>
