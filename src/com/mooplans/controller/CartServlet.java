@@ -2,8 +2,6 @@ package com.mooplans.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,9 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.mooplans.dao.DishDAO;
+import org.apache.log4j.Logger;
+
 import com.mooplans.model.Cart;
-import com.mooplans.model.Dishes;
 import com.mooplans.model.User;
 
 /**
@@ -23,7 +21,9 @@ import com.mooplans.model.User;
 @WebServlet("/CartServlet")
 public class CartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	
+	static Logger log = Logger.getLogger(CartServlet.class.getName());
+	
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -83,21 +83,23 @@ public class CartServlet extends HttpServlet {
 			
 			dishExtra = Float.parseFloat(request.getParameter("dishExtra"));
 			
-			System.out.println("notes---->>>"+notes+"========>"+dishExtra);
-			
 			dishFullPrice = Float.parseFloat(request.getParameter("dishFullPrice"));
 			dishPrice = Float.parseFloat(request.getParameter("dishPrice"));
 			
-			
 			shoppingCart.addToCart(Integer.parseInt(dishId), dishName, notes, dishPrice, dishFullPrice, dishExtra);
+			
+			log.info("Dish added -- dishName=["+dishName+"], dishId=["+dishId+"], "
+					+ "dishFullPrice=["+dishFullPrice+"], dishPrice=["+dishPrice+"], "
+					+ "dishExtra=["+dishExtra+"], notes=["+notes+"]");
 		}else{
 			dishId = request.getParameter("dishId").trim();
 			shoppingCart.deleteFromCart(Integer.parseInt(dishId));
+			
+			log.info("Dish deleted -- dishId=["+dishId+"]");
 		}
 	
 		session.setAttribute("cart", shoppingCart);
 		success = shoppingCart.numberOfItems();
-		//response.sendRedirect(getServletContext().getContextPath()+"/jsp/cart.jsp?added=true");
 		out.write(success+"");
 		}
 }

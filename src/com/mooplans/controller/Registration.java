@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -24,6 +25,8 @@ import com.mooplans.model.User;
 public class Registration extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	static Logger log = Logger.getLogger(Registration.class.getName());
+	
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -68,7 +71,6 @@ public class Registration extends HttpServlet {
 			if(pay == null){
 				pay = "0";
 			}
-			System.out.println("====>"+pay+"<====");
 		}catch(Exception e){
 			
 		}
@@ -109,12 +111,16 @@ public class Registration extends HttpServlet {
 
 			User userObject = new User(password, firstname, lastname, emailId, 
 					phone, university, address, role, id, points);
-
+			
+			log.info("Registration request for user = "+userObject);
+			
 			ID = LoginDAO.registerUser(userObject);
 
 			if (ID == 0) {
+				log.info("registration failed");
 				errorMsg =  "Registration failed, please try again";
 			}else if (ID < 0) {
+				log.info("registration failed emailId exists");
 				errorMsg = "Email ID already registered";
 			}else{
 				// Sending welcome email to user
@@ -129,6 +135,7 @@ public class Registration extends HttpServlet {
 				}).start();
 				
 				// Set success message
+				log.info("registration successful");
 				System.out.println("Registraion done success ID :"+ID);
 				url = "/index.jsp";
 				errorMsg="";
@@ -155,6 +162,7 @@ public class Registration extends HttpServlet {
 				rigisterArray.put("userId", ID);
 				rigisterArray.put("isError", isError);
 			} catch (JSONException e) {
+				log.error("error while sending registration data to app ",e);
 				e.printStackTrace();
 			}
 			response.setContentType("application/json");

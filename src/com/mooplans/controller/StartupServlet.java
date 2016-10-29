@@ -1,8 +1,11 @@
 package com.mooplans.controller;
 
+import javax.servlet.Servlet;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
+
+import org.apache.log4j.Logger;
 
 import com.mooplans.dao.LoadStartupData;
 import com.mooplans.dao.NotificationSystem;
@@ -13,7 +16,10 @@ import com.mooplans.dao.NotificationSystem;
 
 public class StartupServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    
+	static Logger log = Logger.getLogger(StartupServlet.class.getName());
+	
+	Thread t = null;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -27,27 +33,21 @@ public class StartupServlet extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		
 		LoadStartupData lsd = new LoadStartupData();
-		System.out.println(".......... loading users ...........");
+		log.info("loading user data");
 		lsd.loadUsers();
+		log.info("loading user data COMPLETE");
 		
-		System.out.println(".......... loading dishes ...........");
+		log.info("loading dish data");
 		lsd.loadDishes();
+		log.info("loading dish data COMPLETE");
 		
-		//------------------------------
-		System.out.println("%%%%%%%%%%%%%%%% ........................... %%%%%%%%%%%%%%%%%");
-		Thread t = null;
 		if(t == null){
-			System.out.println("%%%%%%%%%%%%%%%% STARTING THREAD %%%%%%%%%%%%%%%%%");
+			log.info("--STARTING THREAD--");
 			t = new Thread(new NotificationSystem());
 	        t.start();
 		}else{
-			System.out.println("%%%%%%%%%%%%%%%% THREAD ALREADY STARTED %%%%%%%%%%%%%%%%%");
-		}
-		
-		//------------------------------
-	
-		
+			log.info("--THREAD IS RUNNING--");
+		}		
 		
 	}
-
 }

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -24,7 +25,9 @@ import com.mooplans.model.Cart;
 @WebServlet("/FetchData")
 public class FetchData extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    
+	static Logger log = Logger.getLogger(FetchData.class.getName());
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -55,47 +58,47 @@ public class FetchData extends HttpServlet {
 		
 		if(action.equals("getUserDetails")){
 			int userId = Integer.parseInt(request.getParameter("userId"));
+			log.info("Action called :: getUserDetails -- userId="+userId);
 			
 			JSONObject userDetails = LoginDAO.getUserDetails(userId);
 	        response.setContentType("application/json");
 	        out.write(userDetails+"");
 		}else if(action.equals("getPastOrders")){
 			int userId = Integer.parseInt(request.getParameter("userId"));
+			log.info("Action called :: getPastOrders -- userId="+userId);
 			
 			JSONArray userDetails = OrderDAO.getPastOrders(userId);
 	        response.setContentType("application/json");
 	        out.write(userDetails+"");
 		}else if(action.equals("cartJson")){
-
+			log.info("Action called :: cartJson");
 			JSONArray cartArray = shoppingCart.getCartArray();
 			response.setContentType("application/json");
 			out.write(cartArray+"");
 		}else if(action.equals("firstTimeData")){
-			
 			int userId = Integer.parseInt(request.getParameter("userId"));
 			String gender= request.getParameter("gender");
 			String allergies=request.getParameter("allergies");
 			String diet= request.getParameter("diet");
 			String cuisine=request.getParameter("cuisine");
 			
+			log.info("Action called :: firstTimeDate -- userId="+userId);
+			
 			JSONObject updateData = LoginDAO.updateUserFirstTimeData(gender, allergies, diet, cuisine, userId);
 			response.setContentType("application/json");
 			out.write(updateData+"");
 		}else if(action.equals("getMealChoices")){
-			
 			int dishId = Integer.parseInt(request.getParameter("dishId"));
-			System.out.println("---------"+dishId);
+			
+			log.info("Action called :: getMealChoices -- dishId="+dishId);
 			JSONArray menuList = DishDAO.getMealChoices(dishId);	
 			response.setContentType("application/json");
-			out.write(menuList+"");	
-		
+			out.write(menuList+"");			
 		}else if(action.equals("getallOrders")){
 			
-			System.out.println("----GET ALL ORDERS-----");
 			JSONArray menuList = OrderDAO.getAllOrders();	
 			response.setContentType("application/json");
 			out.write(menuList+"");	
-		
 		}else{
 			response.sendRedirect(getServletContext().getContextPath()+"/jsp/home.html");
 		}

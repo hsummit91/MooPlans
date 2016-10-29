@@ -1,6 +1,10 @@
 package com.mooplans.dao;
 
-import static com.mooplans.dao.DBConnThread.*;
+import static com.mooplans.dao.DBConnThread.connection;
+import static com.mooplans.dao.DBConnThread.cstmt;
+import static com.mooplans.dao.DBConnThread.getConnection;
+import static com.mooplans.dao.DBConnThread.release;
+import static com.mooplans.dao.DBConnThread.rs;
 
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -8,11 +12,16 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 
+import org.apache.log4j.Logger;
+
 import com.mooplans.model.Dishes;
 import com.mooplans.model.StartupData;
 import com.mooplans.model.User;
 
+
 public class NotificationSystem implements Runnable{
+	
+	static Logger log = Logger.getLogger(NotificationSystem.class.getName());
 
 	public int getOrders(){
 		int newOrders = 0;
@@ -20,15 +29,19 @@ public class NotificationSystem implements Runnable{
 			try{
 				getConnection();
 			}catch(Exception e){
-				System.out.println("ERR while getting connection");
+				log.error("getOrders :: connection ",e);
 				release();
 				getConnection();
 			}
 			
 			String sql = "CALL poll_orders()";
-			cstmt = connection.prepareCall(sql);
-			rs = cstmt.executeQuery();
-
+			try{
+				cstmt = connection.prepareCall(sql);
+				rs = cstmt.executeQuery();
+			}catch(Exception e){
+				log.error("getOrders :: error while getting prepareCall ",e);
+			}
+			
 			if(rs.next()){
 				StartupData sd = StartupData.getInstance();
 				HashMap<String, Float> items = new HashMap<String, Float>();
@@ -64,14 +77,11 @@ public class NotificationSystem implements Runnable{
 					try{
 						dishNotesMap.put(Integer.parseInt(splittedStr[i]), notesStr[i]);
 					}catch(Exception e){
-						//e.printStackTrace();
+						log.error("getOrders :: ",e);
 					}
 				}
 			
-				
-				System.out.println("--@@@@@@@@@@@--DISH NOTES--->"+dishNotesMap);
-				
-				System.out.println(" ~~~~~~~~~~SENDING MAIL~~~~~~~~~~~~~> "+orderId+" --FOR USER--->"+userId);
+				log.info("SENDING MAIL: OrderId=["+orderId+"] for user=["+userId+"]");
 				
 				User user = sd.getUserDataById(userId);
 				String deliver = rs.getString("order_deliverat");
@@ -85,19 +95,16 @@ public class NotificationSystem implements Runnable{
 					
 				EmailDAO.sendOrderMailUser(user, items, orderId, paymentMode, totalBill);
 				
-				System.out.println(" ~~~~~~~~~~SENDING MAIL TO REST~~~~~~~~~~~~~> "+orderId);
+				log.info("SENDING MAIL TO RESTAURANTS: OrderId=["+orderId+"]");
 				
 				EmailDAO.sendOrderMailRest(user, forRestaurants, orderId, dishNotesMap, paymentMode);
 				
-				System.out.println(" ~~~~~~~~~~MAILS SENT~~~~~~~~~~~~~> "+orderId);
 				newOrders = 1;
 			}else{
 				newOrders = 0;
 			}
 		}catch(SQLException e){
 			e.printStackTrace();
-		}finally{
-			//release();
 		}
 		return newOrders;
 	}
@@ -112,21 +119,23 @@ public class NotificationSystem implements Runnable{
 		int pollOrders = 0;
 	     DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		while(true){
-			pollOrders = getOrders();
-			
+			try{
+				pollOrders = getOrders();
+			}catch(Exception e){
+				log.error("Error calling stored procedure :: ",e);
+			}
 			if(pollOrders == 0){
 				try {
 					release();
-					System.out.println("SLEEEEEPINNNNGGGGG "+dateFormat.format(new Date()));
+					log.info("THREAD SLEEPING @ "+dateFormat.format(new Date()));
 					Thread.sleep(300000);
-					System.out.println("WAKIIIIIINNNNNGGGGGG UPPP !!! "+dateFormat.format(new Date()));
+					log.info("THREAD WAKING UP @ "+dateFormat.format(new Date()));
 				} catch (InterruptedException e) {
+					log.error("Error in polling :: ",e);
 					e.printStackTrace();
 					restartThread();
 				}
 			}
 		}
-	}
-
-	
+	}	
 }

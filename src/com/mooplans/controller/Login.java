@@ -16,14 +16,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.mooplans.dao.LoginDAO;
-import com.mooplans.dao.NotificationSystem;
 import com.mooplans.model.Image;
 import com.mooplans.model.User;
+
+import org.apache.log4j.Logger;
 
 /**
  * Servlet implementation class Login
@@ -31,7 +31,8 @@ import com.mooplans.model.User;
 @WebServlet("/Login")
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	
+	static Logger log = Logger.getLogger(Login.class.getName());
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -75,7 +76,6 @@ public class Login extends HttpServlet {
 		
 		String errorMsg = "";
 		Boolean isError = false;
-		
 
 		if(emailId == null || emailId.equals("")){
 			errorMsg = "Username can not be empty";
@@ -85,15 +85,8 @@ public class Login extends HttpServlet {
 		}else if(password == null || password.equals("")){
 			errorMsg = "Password can not be empty..";
 		}else {
-
-			System.out.println("userName ="+emailId);
-			//System.out.println("password ="+password);
-
 			ID = LoginDAO.checkUserDetails(emailId, password);
-
-			System.out.println("ID ####> "+ID);
-			System.out.println("Checking for pay-->"+pay);
-
+			
 			if (ID == 0) {
 				errorMsg = "Username and Password does not match..";
 			}else{
@@ -111,15 +104,12 @@ public class Login extends HttpServlet {
 				session.setAttribute("User", u);
 				if(!pay.equals("0")){
 					url = "/jsp/addPoints.jsp";
-					System.out.println("NOT NULL = "+pay);
 				}else{
-					System.out.println("###NULL===");
 					if(u.getUser_role().equalsIgnoreCase("student")){
 						url = "/jsp/home.jsp";
 					}else if(u.getUser_role().equalsIgnoreCase("restaurant")){ // Added for new build
 						url = "/restaurant/index.jsp";
-					}
-					else if(u.getUser_role().equalsIgnoreCase("admin")){ // Added for new build
+					}else if(u.getUser_role().equalsIgnoreCase("admin")){ // Added for new build
 						url = "/admin/index.jsp";
 					}
 				}
@@ -130,17 +120,14 @@ public class Login extends HttpServlet {
 		images = LoginDAO.getCodeImages();
 		session.setAttribute("images", images);
 
-		System.out.println("errorMsg ==>"+errorMsg);
-		System.out.println("Session Validation ==>"+session.getAttribute("user"));
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		System.out.println("Logged in at - "+dateFormat.format(new Date()));
+		
+		log.info("LOGIN :: username=["+emailId+"] userId=["+ID+"] pay=["+pay+"] app=["+app+"] login at=["+dateFormat.format(new Date())+"]");
 		
 		if(errorMsg != ""){
 			isError = true;
 		}
-		
-		System.out.println("app==="+app);
-		
+
 		if(app.equals("ios")){
 			JSONObject loginArray = new JSONObject();
 			try {

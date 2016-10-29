@@ -1,7 +1,6 @@
 package com.mooplans.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
@@ -12,15 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.mooplans.dao.EmailDAO;
+import org.apache.log4j.Logger;
+
 import com.mooplans.dao.PayPalDAO;
 import com.mooplans.dao.SMSTwillio;
 import com.mooplans.model.Cart;
-import com.mooplans.model.Dishes;
-import com.mooplans.model.Order;
 import com.mooplans.model.User;
 import com.twilio.sdk.TwilioRestException;
-import com.mooplans.dao.NotificationSystem;
 
 /**
  * Servlet implementation class AddOrderShippingAddressServlet
@@ -29,6 +26,8 @@ import com.mooplans.dao.NotificationSystem;
 public class AddressServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	static Logger log = Logger.getLogger(AddressServlet.class.getName());
+	
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -66,16 +65,15 @@ public class AddressServlet extends HttpServlet {
 		float finalBill = 0;
 		float finalPoints = 0;
 		String checkout = "";
-		if(session.getAttribute("User") == null)
+		
+		if(session.getAttribute("User") == null){
 			url = "/login.jsp";
-		else user = (User) session.getAttribute("User");
-
+		}else{
+			user = (User) session.getAttribute("User");
+		}
 
 		if(action.equalsIgnoreCase("currentAddress")){
 			name = user.getUser_firstname();
-			for(Integer key: items.keySet()){
-				System.out.println("Key"+items.get(key)+" value="+key);
-			}
 		}else if(action.equalsIgnoreCase("newAddress")){
 			shippingAddress = request.getParameter("address");
 			time = request.getParameter("time");
@@ -83,25 +81,15 @@ public class AddressServlet extends HttpServlet {
 			finalBill = Float.parseFloat(request.getParameter("finalBill"));
 			finalPoints = Float.parseFloat(request.getParameter("finalPoints"));
 
-
 			user.setDelivery_time(time);
 			user.setUser_address(shippingAddress);
 		}
-
+		
+		log.info("request for order : time=["+time+"], checkout=["+checkout+"], finalBill=["+finalBill+"], finalPoints=["+finalPoints+"] from user= "+user.getUser_email());
+		
 		// Calling PayDAO to deduct User points based on his order and make entry in the order table(s)
 
-
 		float totalBill = 0;
-
-		/*		for(Integer key: items.keySet()){
-			System.out.println("Key"+items.get(key)+" value="+key);
-			// Get all Dish Points here and prepare Bill
-			if(checkout.equals("points")){
-				totalBill += PayPalDAO.getBill(key); 
-			}else if(checkout.equals("cash")){
-				totalBill += PayPalDAO.getPriceBill(key);
-			}
-		}*/
 
 		if(checkout.equals("points")){
 			totalBill = finalPoints; 
@@ -118,22 +106,33 @@ public class AddressServlet extends HttpServlet {
 		if(pointsDeducted){
 			// Create the new order and update order table
 			int orderId = PayPalDAO.createOrder(user, items, notes, checkout, totalBill, cQty);
+			
+			if(orderId <= 0){
+				log.info("Order failed for  user "+user.getUser_email());
+				url = "/jsp/OrderError.jsp";
+				items.clear();
+				message = "Error placing order. Please try placing the order again.";
+				session.setAttribute("errMessage", message);
+			}else{
+				log.info("Order successful for order# "+orderId);
+				url = "/jsp/orderSummary.jsp";
+				message = "Thank you for your purchase. Your Order #"+orderId;
 
-			url = "/jsp/orderSummary.jsp";
-			message = "Thank you for your purchase. Your Order #"+orderId;
+				try{
+					SMSTwillio.sendSMS(user, orderId);
+				}catch(TwilioRestException e){
+					log.error("SMS NOT SENT with orderId: "+user.getUser_id()+" user_id: "+user.getUser_id()+" for number: "+user.getUser_phone());
+					log.error("error while sending sms :: ",e);
+					e.printStackTrace();
+				}
 
-			try{
-				SMSTwillio.sendSMS(user, orderId);
-			}catch(TwilioRestException e){
-				System.out.println("SMS NOT SENT with orderId: "+user.getUser_id()+" user_id: "+user.getUser_id()+" for number: "+user.getUser_phone());
-				e.printStackTrace();
+				session.setAttribute("deliveryTime", time);
+				session.setAttribute("deliveryAddress", shippingAddress);
+				session.setAttribute("paymentMode", checkout);
+				session.setAttribute("totalBill", String.valueOf(totalBill));
+				session.setAttribute("message", message);
 			}
 
-			session.setAttribute("deliveryTime", time);
-			session.setAttribute("deliveryAddress", shippingAddress);
-			session.setAttribute("paymentMode", checkout);
-			session.setAttribute("totalBill", String.valueOf(totalBill));
-			session.setAttribute("message", message);
 		}else{
 			url = "/jsp/OrderError.jsp";
 			items.clear();
